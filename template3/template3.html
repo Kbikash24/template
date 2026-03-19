@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepLab | Master Competitive Exams</title>
+    
+    <!-- Fonts: Rethink Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* -----------------------------------------------------------
+           VARIABLES & RESET
+        ----------------------------------------------------------- */
+        :root {
+            --primary: #4f46e5; /* Indigo */
+            --primary-dark: #4338ca;
+            --accent: #0ea5e9; /* Sky Blue */
+            --dark: #0f172a;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-body: #f8fafc;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rethink Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; font-family: inherit; }
+
+        /* -----------------------------------------------------------
+           UTILITIES & ANIMATIONS
+        ----------------------------------------------------------- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Elements */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+        .floating-delay { animation: float 7s ease-in-out infinite 1s; }
+
+        /* -----------------------------------------------------------
+           HEADER & NAV
+        ----------------------------------------------------------- */
+        .promo-banner {
+            background: linear-gradient(90deg, #4f46e5, #9333ea);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-main);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-link:hover { color: var(--primary); }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after { width: 100%; }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            color: var(--dark);
+        }
+
+        /* -----------------------------------------------------------
+           HERO SECTION
+        ----------------------------------------------------------- */
+        .hero {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+        .blob-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; right: -100px; }
+        .blob-2 { width: 300px; height: 300px; background: var(--accent); bottom: 50px; left: -50px; }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard-mockup {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,255,255,0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* CSS-only dashboard representation */
+        .mock-header {
+            display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;
+        }
+        .mock-chart {
+            height: 150px; background: linear-gradient(180deg, rgba(79,70,229,0.1) 0%, rgba(255,255,255,0) 100%);
+            border-radius: 8px; position: relative; margin-bottom: 20px;
+            border: 1px dashed var(--primary);
+        }
+        .mock-bar {
+            position: absolute; bottom: 0; width: 12%; background: var(--primary); border-radius: 4px 4px 0 0;
+        }
+        .mock-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .stat-box { background: #f1f5f9; padding: 15px; border-radius: 12px; text-align: center; }
+        .stat-num { font-weight: 800; color: var(--primary); display: block; }
+
+        .float-card {
+            position: absolute;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fc-1 { top: -20px; left: -20px; }
+        .fc-2 { bottom: -30px; right: -20px; }
+        .icon-box {
+            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
+        }
+
+        /* -----------------------------------------------------------
+           ANALYTICS SHOWCASE
+        ----------------------------------------------------------- */
+        .analytics-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 16px; color: var(--dark); }
+        .section-header p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+        .stat-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+
+        .stat-icon {
+            width: 60px; height: 60px;
+            margin: 0 auto 20px;
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .counter { font-size: 2.5rem; font-weight: 800; color: var(--dark); display: block; }
+        .stat-label { color: var(--text-light); font-weight: 500; }
+
+        .dashboard-preview {
+            background: var(--dark);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .dash-ui {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            color: white;
+        }
+        
+        .dash-sidebar div {
+            padding: 15px; margin-bottom: 10px; border-radius: 8px; background: rgba(255,255,255,0.1); cursor: pointer;
+        }
+        .dash-sidebar div.active { background: var(--primary); }
+        
+        .dash-main h3 { margin-bottom: 20px; }
+        .progress-wrapper { margin-bottom: 30px; }
+        .progress-bar-bg { background: rgba(255,255,255,0.2); height: 10px; border-radius: 5px; margin-top: 8px; }
+        .progress-fill { background: var(--accent); height: 100%; border-radius: 5px; width: 0; transition: width 1.5s ease-out; }
+
+        /* -----------------------------------------------------------
+           COURSES & PRICING
+        ----------------------------------------------------------- */
+        .courses-section { padding: 100px 0; position: relative; }
+
+        .filter-bar {
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 40px;
+        }
+        .filter-btn {
+            padding: 8px 20px; border-radius: 30px; background: white; border: 1px solid #e2e8f0; color: var(--text-light); font-weight: 600; transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid #f1f5f9;
+            display: flex; flex-direction: column;
+        }
+
+        .course-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+
+        .course-thumb {
+            height: 200px;
+            background-color: #ddd;
+            position: relative;
+        }
+        .course-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .badge {
+            position: absolute; top: 15px; left: 15px;
+            padding: 5px 12px; border-radius: 6px;
+            font-size: 0.8rem; font-weight: 700; color: white;
+            background: var(--primary);
+        }
+
+        .course-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+        .course-cat { color: var(--accent); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+        .course-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
+        .course-meta { display: flex; align-items: center; gap: 15px; color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px; }
+        .rating { color: #f59e0b; }
+        
+        .course-footer {
+            margin-top: auto;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .price { font-size: 1.25rem; font-weight: 800; color: var(--dark); }
+
+        /* Pricing Table */
+        .pricing-section { padding: 80px 0; background: white; }
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;
+        }
+        .price-card {
+            padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; text-align: center; transition: var(--transition);
+        }
+        .price-card.popular { border: 2px solid var(--primary); background: #f8fafc; position: relative; }
+        .popular-tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+        .plan-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+        .plan-amount { font-size: 3rem; font-weight: 800; color: var(--dark); margin-bottom: 30px; }
+        .plan-amount span { font-size: 1rem; color: var(--text-light); font-weight: 400; }
+        .features-list { margin-bottom: 30px; text-align: left; }
+        .features-list li { margin-bottom: 12px; color: var(--text-light); }
+        .features-list i { color: var(--primary); margin-right: 10px; }
+
+        /* -----------------------------------------------------------
+           RESOURCES & VIDEO
+        ----------------------------------------------------------- */
+        .resources-section { padding: 100px 0; }
+        .resource-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;
+        }
+        .res-card {
+            background: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .res-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        
+        /* Video Section */
+        .video-section { padding: 80px 0; background: var(--dark); color: white; }
+        .video-container {
+            max-width: 800px; margin: 50px auto 0;
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; background: #000;
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* -----------------------------------------------------------
+           QUIZ & CERTIFICATION
+        ----------------------------------------------------------- */
+        .quiz-section { padding: 80px 0; background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%); }
+        .quiz-ui {
+            background: white; border-radius: 20px; padding: 40px; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow-lg);
+        }
+        .quiz-timer {
+            display: inline-block; background: #fee2e2; color: #ef4444; padding: 5px 15px; border-radius: 8px; font-weight: 700; margin-bottom: 20px;
+        }
+        .question-box h3 { font-size: 1.4rem; margin-bottom: 25px; }
+        .options-grid { display: grid; gap: 15px; }
+        .option {
+            padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 15px;
+        }
+        .option:hover { border-color: var(--primary); background: #f0f9ff; }
+        .option.selected { border-color: var(--primary); background: #eff6ff; color: var(--primary); font-weight: 600; }
+        
+        .cert-preview {
+            margin-top: 40px; border: 5px double var(--primary); padding: 20px; text-align: center; display: none; /* Hidden by default */
+        }
+        .cert-preview.show { display: block; animation: fadeUp 0.5s; }
+
+        /* -----------------------------------------------------------
+           BLOG, UPDATES & COMMUNITY
+        ----------------------------------------------------------- */
+        .info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 80px 0; }
+        .blog-card { display: flex; gap: 20px; background: white; padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+        .blog-img { width: 150px; height: 100px; border-radius: 10px; object-fit: cover; }
+        .blog-content h4 { font-size: 1.1rem; margin-bottom: 8px; }
+        
+        .updates-list { background: white; padding: 30px; border-radius: 16px; box-shadow: var(--shadow-sm); }
+        .update-item { padding-bottom: 15px; border-bottom: 1px solid #eee; margin-bottom: 15px; }
+        .update-item:last-child { border: none; margin: 0; padding: 0; }
+        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; margin-right: 8px; text-transform: uppercase; font-weight: 700; }
+        .tag.gate { background: #e0e7ff; color: var(--primary); }
+        .tag.upsc { background: #fee2e2; color: #ef4444; }
+
+        /* -----------------------------------------------------------
+           FAQ & TESTIMONIALS
+        ----------------------------------------------------------- */
+        .faq-section { padding: 80px 0; background: white; }
+        .accordion { max-width: 800px; margin: 0 auto; }
+        .acc-item { border-bottom: 1px solid #e2e8f0; }
+        .acc-header {
+            padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem;
+        }
+        .acc-body {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: var(--text-light);
+        }
+        .acc-body p { padding-bottom: 20px; }
+        .acc-item.active .acc-body { max-height: 200px; }
+        .acc-item.active .fa-chevron-down { transform: rotate(180deg); }
+
+        .testimonials { padding: 80px 0; background: var(--dark); color: white; text-align: center; }
+        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .testi-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 16px; text-align: left; }
+        .student-profile { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
+        .student-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+
+        /* -----------------------------------------------------------
+           FOOTER
+        ----------------------------------------------------------- */
+        footer { background: #0f172a; color: #94a3b8; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-brand h2 { color: white; margin-bottom: 20px; font-size: 1.8rem; }
+        .footer-col h4 { color: white; margin-bottom: 20px; font-weight: 700; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 30px; text-align: center; font-size: 0.9rem; }
+
+        /* -----------------------------------------------------------
+           INTERACTIVE COMPONENTS (Chat, Modal)
+        ----------------------------------------------------------- */
+        .chatbot-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 10px 30px rgba(79,70,229,0.4); z-index: 999; transition: transform 0.3s;
+        }
+        .chatbot-btn:hover { transform: scale(1.1); }
+
+        .chat-window {
+            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 450px; background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 998; display: none; flex-direction: column; overflow: hidden;
+        }
+        .chat-header { background: var(--primary); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; }
+        .chat-input { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 10px; }
+        .chat-input input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        
+        .msg { margin-bottom: 10px; padding: 10px 15px; border-radius: 15px; font-size: 0.9rem; max-width: 80%; }
+        .msg.bot { background: white; align-self: flex-start; border: 1px solid #eee; }
+        .msg.user { background: var(--primary); color: white; align-self: flex-end; margin-left: auto; }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center;
+        }
+        .modal-box {
+            background: white; width: 100%; max-width: 500px; padding: 40px; border-radius: 24px; position: relative; animation: float 0.5s ease-out;
+        }
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-light); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .form-control { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; outline: none; font-family: inherit; transition: 0.2s; }
+        .form-control:focus { border-color: var(--primary); }
+
+        /* -----------------------------------------------------------
+           RESPONSIVE
+        ----------------------------------------------------------- */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .hero-visual { display: none; /* Simplify for mobile */ }
+            .info-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .dash-ui { grid-template-columns: 1fr; }
+            .dash-sidebar { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-actions { display: none; }
+            .mobile-menu-btn { display: block; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.5rem; }
+        }
+        
+        /* Mobile Menu Active State */
+        .mobile-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: white; z-index: 1000; padding: 80px 20px; transform: translateX(-100%); transition: transform 0.3s; display: flex; flex-direction: column; gap: 20px;
+        }
+        .mobile-nav.active { transform: translateX(0); }
+    </style>
+</head>
+<body>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        🔥 Limited Offer – Get 30% off on GATE preparation courses. Use code: PREP30
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass" id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-atom fa-spin-pulse" style="--fa-animation-duration: 3s;"></i>
+                PrepLab<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#courses" class="nav-link">Courses</a></li>
+                <li><a href="#resources" class="nav-link">Resources</a></li>
+                <li><a href="#analytics" class="nav-link">PYQs</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="lang-switch">
+                    <i class="fa-solid fa-globe"></i>
+                    <select id="langSelect" style="border:none; bg:transparent; font-family:inherit; font-weight:600; color:var(--text-main);">
+                        <option value="en">EN</option>
+                        <option value="hi">HI</option>
+                        <option value="or">OR</option>
+                    </select>
+                </div>
+                <button class="btn btn-outline" onclick="openModal('Login')">Login</button>
+                <button class="btn btn-primary" onclick="openModal('Join Course')">Join Course</button>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#" class="logo" style="margin-bottom: 30px;">PrepLab<span>.</span></a>
+        <a href="#courses" class="nav-link" onclick="toggleMenu()">Courses</a>
+        <a href="#resources" class="nav-link" onclick="toggleMenu()">Resources</a>
+        <a href="#analytics" class="nav-link" class="nav-link" onclick="toggleMenu()">PYQs</a>
+        <a href="#community" class="nav-link" onclick="toggleMenu()">Community</a>
+        <a href="#blog" class="nav-link" onclick="toggleMenu()">Blog</a>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="openModal('Join Course'); toggleMenu();">Join Course</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="container hero-grid">
+            <div class="hero-text reveal">
+                <h1>Master Competitive Exams with <span class="gradient-text">Expert Guidance</span></h1>
+                <p>Courses, PYQs, quizzes, certifications and career mentorship in one AI-powered platform. Your future starts here.</p>
+                <div class="hero-btns">
+                    <button class="btn btn-primary" onclick="scrollToSection('courses')">Start Learning <i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn btn-outline" onclick="scrollToSection('analytics')">Explore Analytics</button>
+                </div>
+            </div>
+
+            <div class="hero-visual floating reveal">
+                <div class="dashboard-mockup">
+                    <div class="mock-header">
+                        <div style="width: 20px; height: 20px; background: #ff5f56; border-radius: 50%;"></div>
+                        <div style="width: 20px; height: 20px; background: #ffbd2e; border-radius: 50%;"></div>
+                        <div style="width: 20px; height: 20px; background: #27c93f; border-radius: 50%;"></div>
+                    </div>
+                    <div class="mock-chart">
+                        <div class="mock-bar" style="left: 10%; height: 40%; animation: grow 2s infinite;"></div>
+                        <div class="mock-bar" style="left: 30%; height: 70%; animation: grow 2s infinite 0.2s;"></div>
+                        <div class="mock-bar" style="left: 50%; height: 50%; animation: grow 2s infinite 0.4s;"></div>
+                        <div class="mock-bar" style="left: 70%; height: 90%; animation: grow 2s infinite 0.6s;"></div>
+                        <div class="mock-bar" style="left: 90%; height: 60%; animation: grow 2s infinite 0.8s;"></div>
+                    </div>
+                    <div class="mock-stats">
+                        <div class="stat-box">
+                            <span class="stat-num">92%</span>
+                            <small>Accuracy</small>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-num">Top 100</span>
+                            <small>Rank</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Elements -->
+                <div class="float-card fc-1 floating-delay">
+                    <div class="icon-box" style="background: #10b981;"><i class="fa-solid fa-check"></i></div>
+                    <div>
+                        <strong style="display:block; font-size: 0.9rem;">Test Completed</strong>
+                        <small style="color:#64748b;">Fluid Mechanics</small>
+                    </div>
+                </div>
+                
+                <div class="float-card fc-2 floating">
+                    <div class="icon-box" style="background: #f59e0b;"><i class="fa-solid fa-trophy"></i></div>
+                    <div>
+                        <strong style="display:block; font-size: 0.9rem;">New Badge</strong>
+                        <small style="color:#64748b;">7 Day Streak</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics / Platform Showcase -->
+    <section class="analytics-section" id="analytics">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>PrepLab Student Platform</h2>
+                <p>Data-driven preparation. Track your progress, predict your rank, and identify weak areas instantly.</p>
+            </div>
+
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <span class="counter" data-target="15000">0</span>+
+                    <span class="stat-label">Active Students</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <span class="counter" data-target="500">0</span>+
+                    <span class="stat-label">Mock Tests</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span class="counter" data-target="98">0</span>%
+                    <span class="stat-label">Selection Rate</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-video"></i></div>
+                    <span class="counter" data-target="1200">0</span>+
+                    <span class="stat-label">Video Lessons</span>
+                </div>
+            </div>
+
+            <div class="dashboard-preview reveal">
+                <div class="dash-ui">
+                    <div class="dash-sidebar">
+                        <div class="active"><i class="fa-solid fa-gauge"></i> Dashboard</div>
+                        <div><i class="fa-solid fa-pen-to-square"></i> Mock Tests</div>
+                        <div><i class="fa-solid fa-book"></i> Courses</div>
+                        <div><i class="fa-solid fa-users"></i> Community</div>
+                    </div>
+                    <div class="dash-main">
+                        <h3>Performance Analytics</h3>
+                        <div class="progress-wrapper">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                                <span>General Aptitude</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar-bg"><div class="progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                                <span>Technical Engineering</span>
+                                <span>72%</span>
+                            </div>
+                            <div class="progress-bar-bg"><div class="progress-fill" style="width: 72%;"></div></div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                                <span>Mathematics</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar-bg"><div class="progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        
+                        <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                                <h4 style="color:var(--accent);">Predicted Rank</h4>
+                                <div style="font-size: 2rem; font-weight: 800;">450 - 600</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
+                                <h4 style="color: #f59e0b;">Study Streak</h4>
+                                <div style="font-size: 2rem; font-weight: 800;">12 Days 🔥</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses & Pricing -->
+    <section class="courses-section" id="courses">
+        <div class="blob blob-1" style="top: 50%; left: -100px; width: 300px;"></div>
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Explore Courses</h2>
+                <p>Comprehensive curriculum designed by experts from IITs and IIMs.</p>
+            </div>
+
+            <div class="filter-bar reveal">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">GATE</button>
+                <button class="filter-btn">UPSC</button>
+                <button class="filter-btn">SSC</button>
+                <button class="filter-btn">CAT</button>
+            </div>
+
+            <div class="course-grid">
+                <!-- Course 1 -->
+                <div class="course-card reveal">
+                    <div class="course-thumb">
+                        <span class="badge">Bestseller</span>
+                        <img src="https://picsum.photos/seed/gate1/400/300" alt="GATE Course">
+                    </div>
+                    <div class="course-body">
+                        <span class="course-cat">GATE & PSU</span>
+                        <h3 class="course-title">GATE 2025 Complete Mastery</h3>
+                        <div class="course-meta">
+                            <span><i class="fa-solid fa-chalkboard-user"></i> Dr. A. Sharma</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.8 (1.2k)</span>
+                        </div>
+                        <div class="course-footer">
+                            <div class="price">₹4,999</div>
+                            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="openModal('Enroll: GATE Mastery')">Join</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card reveal">
+                    <div class="course-thumb">
+                        <img src="https://picsum.photos/seed/upsc/400/300" alt="UPSC Course">
+                    </div>
+                    <div class="course-body">
+                        <span class="course-cat">UPSC CSE</span>
+                        <h3 class="course-title">GS Foundation Course 2025</h3>
+                        <div class="course-meta">
+                            <span><i class="fa-solid fa-chalkboard-user"></i> P. Kumar</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (3.5k)</span>
+                        </div>
+                        <div class="course-footer">
+                            <div class="price">₹8,499</div>
+                            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="openModal('Enroll: GS Foundation')">Join</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card reveal">
+                    <div class="course-thumb">
+                        <img src="https://picsum.photos/seed/cat/400/300" alt="CAT Course">
+                    </div>
+                    <div class="course-body">
+                        <span class="course-cat">MBA & CAT</span>
+                        <h3 class="course-title">CAT 2024 Quant & DILR</h3>
+                        <div class="course-meta">
+                            <span><i class="fa-solid fa-chalkboard-user"></i> S. Rao</span>
+                            <span class="rating"><i class="fa-solid fa-star"></i> 4.7 (900)</span>
+                        </div>
+                        <div class="course-footer">
+                            <div class="price">₹3,999</div>
+                            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="openModal('Enroll: CAT Quant')">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Subscription -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Flexible Plans</h2>
+                <p>Choose the plan that fits your preparation needs.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card reveal">
+                    <h3 class="plan-name">Starter</h3>
+                    <div class="plan-amount">₹999<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Access to Free Mocks</li>
+                        <li><i class="fa-solid fa-check"></i> Community Access</li>
+                        <li><i class="fa-solid fa-check"></i> Basic Analytics</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="openModal('Choose Starter')">Choose Plan</button>
+                </div>
+                <div class="price-card popular reveal">
+                    <div class="popular-tag">MOST POPULAR</div>
+                    <h3 class="plan-name">Pro</h3>
+                    <div class="plan-amount">₹2,499<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> All Premium Courses</li>
+                        <li><i class="fa-solid fa-check"></i> 10+ Full Length Tests</li>
+                        <li><i class="fa-solid fa-check"></i> Detailed Solutions</li>
+                        <li><i class="fa-solid fa-check"></i> Mentorship Calls</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="openModal('Choose Pro')">Choose Plan</button>
+                </div>
+                <div class="price-card reveal">
+                    <h3 class="plan-name">Elite</h3>
+                    <div class="plan-amount">₹4,999<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Everything in Pro</li>
+                        <li><i class="fa-solid fa-check"></i> 1-on-1 Doubt Solving</li>
+                        <li><i class="fa-solid fa-check"></i> Personal Study Plan</li>
+                        <li><i class="fa-solid fa-check"></i> Interview Guidance</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="openModal('Choose Elite')">Choose Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources & Video -->
+    <section class="resources-section" id="resources">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Free Resources</h2>
+            </div>
+            <div class="resource-grid reveal">
+                <div class="res-card">
+                    <i class="fa-solid fa-file-pdf res-icon"></i>
+                    <h3>Previous Year Qs</h3>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin:10px 0;">Download solved papers for last 15 years.</p>
+                    <button class="btn btn-outline" style="font-size:0.8rem;">Download</button>
+                </div>
+                <div class="res-card">
+                    <i class="fa-solid fa-book res-icon" style="color:#f59e0b"></i>
+                    <h3>Notes</h3>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin:10px 0;">Concise revision notes for all subjects.</p>
+                    <button class="btn btn-outline" style="font-size:0.8rem;">View</button>
+                </div>
+                <div class="res-card">
+                    <i class="fa-solid fa-calculator res-icon" style="color:#10b981"></i>
+                    <h3>Formula Sheets</h3>
+                    <p style="color:var(--text-light); font-size:0.9rem; margin:10px 0;">Quick revision formulas for Engineering.</p>
+                    <button class="btn btn-outline" style="font-size:0.8rem;">Download</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Lessons -->
+    <section class="video-section">
+        <div class="container" style="text-align: center;">
+            <h2>Interactive Video Lessons</h2>
+            <p style="color: #cbd5e1; margin-top: 10px;">Learn from the best instructors with HD quality content.</p>
+            <div class="video-container">
+                <!-- Placeholder iframe -->
+                <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4?controls=0" title="PrepLab Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="course-playlist" style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <button class="btn btn-primary" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">Lecture 1: Intro</button>
+                <button class="btn btn-primary" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">Lecture 2: Mechanics</button>
+                <button class="btn btn-primary" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">Lecture 3: Calculus</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz / Mock Test -->
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <div class="quiz-ui reveal">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <h2><i class="fa-solid fa-pen-ruler"></i> Quick Mock Test</h2>
+                    <span class="quiz-timer">09:45</span>
+                </div>
+                
+                <div class="question-box">
+                    <p style="color:var(--text-light); margin-bottom:10px;">Question 1 of 5</p>
+                    <h3>What is the unit of Thermal Conductivity?</h3>
+                    
+                    <div class="options-grid">
+                        <div class="option" onclick="selectOption(this)">
+                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> W/mK
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> J/kgK
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> N/m²
+                        </div>
+                        <div class="option" onclick="selectOption(this)">
+                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> W/m²
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: right; margin-top: 20px;">
+                    <button class="btn btn-primary" onclick="submitQuiz()">Submit & Get Certificate</button>
+                </div>
+
+                <!-- Certificate Result (Hidden initially) -->
+                <div class="cert-preview" id="certResult">
+                    <div style="border: 4px solid #f59e0b; padding: 30px; position: relative;">
+                        <i class="fa-solid fa-medal" style="font-size: 3rem; color: #f59e0b; margin-bottom: 10px;"></i>
+                        <h2>Certificate of Completion</h2>
+                        <p>This certifies that you have successfully completed the Quick Mock Test.</p>
+                        <h4 style="margin-top: 20px;">PrepLab Education</h4>
+                        <button class="btn btn-primary" style="margin-top: 20px;"><i class="fa-solid fa-download"></i> Download PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Grid: Blogs & Updates -->
+    <section class="container" id="blog">
+        <div class="info-grid">
+            <div class="blogs-column reveal">
+                <h2 style="margin-bottom: 25px;">Latest Blogs & Tips</h2>
+                
+                <div class="blog-card">
+                    <img src="https://picsum.photos/seed/blog1/150/100" class="blog-img" alt="Blog">
+                    <div class="blog-content">
+                        <span style="font-size:0.8rem; color:var(--primary); font-weight:700;">STRATEGY</span>
+                        <h4>How to crack GATE in 3 months?</h4>
+                        <a href="#" style="font-size:0.9rem; color:var(--accent);">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://picsum.photos/seed/blog2/150/100" class="blog-img" alt="Blog">
+                    <div class="blog-content">
+                        <span style="font-size:0.8rem; color:var(--primary); font-weight:700;">PRODUCTIVITY</span>
+                        <h4>Pomodoro Technique for Studying</h4>
+                        <a href="#" style="font-size:0.9rem; color:var(--accent);">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="updates-column reveal">
+                <h2 style="margin-bottom: 25px;">Exam Updates</h2>
+                <div class="updates-list">
+                    <div class="update-item">
+                        <span class="tag gate">GATE</span>
+                        <small style="color:var(--text-light);">Oct 12, 2023</small>
+                        <h5 style="margin-top: 5px;">GATE 2026 Exam Schedule Released</h5>
+                    </div>
+                    <div class="update-item">
+                        <span class="tag upsc">UPSC</span>
+                        <small style="color:var(--text-light);">Sep 28, 2023</small>
+                        <h5 style="margin-top: 5px;">Mains Result Declaration Date</h5>
+                    </div>
+                    <div class="update-item">
+                        <span class="tag gate">PSU</span>
+                        <small style="color:var(--text-light);">Sep 15, 2023</small>
+                        <h5 style="margin-top: 5px;">ONGC Recruitment Notification 2024</h5>
+                    </div>
+                </div>
+                
+                <h2 style="margin: 30px 0 15px;" id="community">Community</h2>
+                <div style="background: white; padding: 20px; border-radius: 16px; box-shadow: var(--shadow-sm);">
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;"><strong>@Rahul_S:</strong> Can someone explain the Second Law of Thermodynamics simply?</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-outline" style="padding: 5px 10px; font-size: 0.8rem;"><i class="fa-solid fa-arrow-up"></i> 12</button>
+                        <button class="btn btn-outline" style="padding: 5px 10px; font-size: 0.8rem;">Reply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 style="font-size: 2.5rem;">Student Success Stories</h2>
+            <div class="testi-grid">
+                <div class="testi-card reveal">
+                    <p>"PrepLab's analytics helped me identify my weak topics in Calculus. I improved my GATE score by 30 marks!"</p>
+                    <div class="student-profile">
+                        <img src="https://picsum.photos/seed/student1/50/50" class="student-img" alt="Student">
+                        <div>
+                            <strong>Anjali Verma</strong><br>
+                            <small>AIR 45 - GATE 2023</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card reveal">
+                    <p>"The mentorship calls were a game changer. The study plan was personalized and very effective."</p>
+                    <div class="student-profile">
+                        <img src="https://picsum.photos/seed/student2/50/50" class="student-img" alt="Student">
+                        <div>
+                            <strong>Vikram Singh</strong><br>
+                            <small>Selected in PSU</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card reveal">
+                    <p>"Affordable, high quality content. The mobile app is fantastic for learning on the go."</p>
+                    <div class="student-profile">
+                        <img src="https://picsum.photos/seed/student3/50/50" class="student-img" alt="Student">
+                        <div>
+                            <strong>Priya Das</strong><br>
+                            <small>CAT 99%ile</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Awards / Logos -->
+            <div style="margin-top: 60px; opacity: 0.6;">
+                <p style="margin-bottom: 20px; font-size: 0.9rem;">TRUSTED BY CANDIDATES FROM</p>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-size: 1.5rem; font-weight: 700;">
+                    <span>IIT</span>
+                    <span>IIM</span>
+                    <span>NIT</span>
+                    <span>AIIMS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="accordion reveal">
+                <div class="acc-item">
+                    <div class="acc-header">How do I access the courses after purchase? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="acc-body"><p>Immediately after payment, courses are added to your dashboard. You can access them via the "My Courses" section.</p></div>
+                </div>
+                <div class="acc-item">
+                    <div class="acc-header">Do you provide a refund? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="acc-body"><p>Yes, we offer a 7-day no-questions-asked refund policy if you are not satisfied with the content.</p></div>
+                </div>
+                <div class="acc-item">
+                    <div class="acc-header">Are the mock tests similar to the actual exam? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="acc-body"><p>Our tests are designed by experts to match the exact difficulty level and pattern of the actual competitive exams.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>PrepLab.</h2>
+                    <p>Empowering students to achieve their dreams through technology and quality education.</p>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Study Materials</a></li>
+                        <li><a href="#">Cheatsheets</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrepLab Education Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Components -->
+
+    <!-- Chatbot -->
+    <button class="chatbot-btn" onclick="toggleChat()">
+        <i class="fa-solid fa-message"></i>
+    </button>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>PrepBot 🤖</span>
+            <i class="fa-solid fa-xmark" style="cursor: pointer;" onclick="toggleChat()"></i>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="msg bot">Hello! I am PrepBot. How can I help you with your exam preparation today?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleChat(event)">
+            <button class="btn btn-primary" style="padding: 8px 12px; border-radius: 50%;" onclick="sendChat()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Generic Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <i class="fa-solid fa-xmark close-modal" onclick="closeModal()"></i>
+            <h2 id="modalTitle" style="margin-bottom: 20px;">Join PrepLab</h2>
+            <p style="margin-bottom: 20px; color: var(--text-light);">Enter your details to proceed.</p>
+            <form onsubmit="handleForm(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Preparing For</label>
+                    <select class="form-control">
+                        <option>GATE</option>
+                        <option>UPSC</option>
+                        <option>SSC</option>
+                        <option>CAT</option>
+                    </select>
+                </div>
+                
+                <!-- Simulated Payment Methods if modal is for Join -->
+                <div id="paymentSection" style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 20px;">
+                    <p style="font-size: 0.9rem; font-weight: 700; margin-bottom: 10px;">Payment Method</p>
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 1.2rem; cursor: pointer;"><i class="fa-brands fa-cc-stripe"></i></div>
+                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 1.2rem; cursor: pointer;"><i class="fa-solid fa-credit-card"></i></div>
+                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 1.2rem; cursor: pointer;">UPI</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Proceed to Pay</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 1. Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Scroll Reveal Animation (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Trigger counters if inside a revealed element
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => startCounter(counter));
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 3. Animated Counters
+        function startCounter(el) {
+            const target = +el.getAttribute('data-target');
+            const duration = 2000; // ms
+            const increment = target / (duration / 16); // 60fps
+            
+            let current = 0;
+            const updateCount = () => {
+                current += increment;
+                if (current < target) {
+                    el.innerText = Math.ceil(current);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    el.innerText = target;
+                }
+            };
+            updateCount();
+        }
+
+        // 4. Mobile Menu Toggle
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // 5. Quiz Interaction
+        function selectOption(el) {
+            // Remove selected from others
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function submitQuiz() {
+            // Hide question, show certificate
+            document.querySelector('.question-box').style.display = 'none';
+            document.querySelector('.quiz-timer').style.display = 'none';
+            document.querySelector('.quiz-ui h2').innerText = "Test Completed!";
+            document.getElementById('certResult').classList.add('show');
+        }
+
+        // 6. FAQ Accordion
+        document.querySelectorAll('.acc-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // 7. Modal Logic
+        const modal = document.getElementById('modalOverlay');
+        const modalTitle = document.getElementById('modalTitle');
+        const paymentSection = document.getElementById('paymentSection');
+
+        function openModal(type) {
+            modal.style.display = 'flex';
+            if(type === 'Login') {
+                modalTitle.innerText = "Welcome Back";
+                paymentSection.style.display = 'none';
+            } else {
+                modalTitle.innerText = type;
+                paymentSection.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal if clicked outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        function handleForm(e) {
+            e.preventDefault();
+            // Simulate processing
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "Processing...";
+            
+            setTimeout(() => {
+                btn.innerText = "Success! 🎉";
+                setTimeout(() => {
+                    closeModal();
+                    btn.innerText = originalText;
+                    e.target.reset();
+                }, 1500);
+            }, 1000);
+        }
+
+        // 8. Chatbot Logic
+        const chatWindow = document.getElementById('chatWindow');
+        const chatBody = document.getElementById('chatBody');
+        const chatInput = document.getElementById('chatInput');
+
+        function toggleChat() {
+            if (chatWindow.style.display === 'flex') {
+                chatWindow.style.display = 'none';
+            } else {
+                chatWindow.style.display = 'flex';
+            }
+        }
+
+        function sendChat() {
+            const text = chatInput.value;
+            if (!text) return;
+
+            // User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'msg user';
+            userMsg.innerText = text;
+            chatBody.appendChild(userMsg);
+            chatInput.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Bot Response (Simulated)
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'msg bot';
+                
+                // Simple keyword matching
+                const lowerText = text.toLowerCase();
+                if(lowerText.includes('price') || lowerText.includes('cost')) {
+                    botMsg.innerText = "Our courses start from ₹999. You can check the Pricing section for more details!";
+                } else if (lowerText.includes('gate')) {
+                    botMsg.innerText = "We have excellent GATE courses with full syllabus coverage and mock tests.";
+                } else if (lowerText.includes('hello') || lowerText.includes('hi')) {
+                    botMsg.innerText = "Hi there! Ask me about courses, exams, or study tips.";
+                } else {
+                    botMsg.innerText = "I'm not sure about that, but our expert mentors can help! Join the community forum.";
+                }
+                
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 1000);
+        }
+
+        function handleChat(e) {
+            if (e.key === 'Enter') sendChat();
+        }
+
+        // 9. Smooth Scroll Helper
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
