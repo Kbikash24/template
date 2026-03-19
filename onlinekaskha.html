@@ -1,0 +1,2660 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Online kaksha - Modern Online Learning Platform with 3D Interactive Experience."
+    />
+    <title>Online kaksha | The Future of Digital Learning</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* =========================================
+           VARIABLES & RESET
+           ========================================= */
+      :root {
+        /* Dark Orange and Dark Sky Blue Palette */
+        --primary: #dc5f00; /* Dark Orange */
+        --primary-dark: #b84e00; /* Darker Orange */
+        --primary-light: #fff4e6; /* Light Orange */
+        --secondary: #075985; /* Dark Sky Blue */
+        --secondary-dark: #044e6b; /* Darker Sky Blue */
+        --secondary-light: #e0f2fe; /* Light Sky Blue */
+
+        /* Neutrals */
+        --bg-body: #ffffff;
+        --bg-surface: #f8fafc; /* Slate 50 */
+        --text-main: #0f172a; /* Slate 900 */
+        --text-muted: #64748b; /* Slate 500 */
+        --border: #e2e8f0; /* Slate 200 */
+
+        /* Functional */
+        --success: #10b981;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg:
+          0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --shadow-xl:
+          0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+        /* 3D Variables */
+        --scene-perspective: 1200px;
+        --cube-size: 240px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      /* =========================================
+           UTILITIES & COMPONENTS
+           ========================================= */
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+        box-shadow: 0 4px 12px rgba(220, 95, 0, 0.3);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(220, 95, 0, 0.4);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--border);
+        color: var(--text-main);
+      }
+
+      .btn-outline:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background-color: var(--primary-light);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background-color: var(--primary-light);
+        color: var(--primary-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+      }
+
+      .section-subtitle {
+        color: var(--text-muted);
+        font-size: 1.125rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* =========================================
+           NAVBAR
+           ========================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--border);
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .brand {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .brand i {
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: var(--text-muted);
+        position: relative;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        color: var(--text-main);
+      }
+
+      /* =========================================
+           BACKGROUND CANVAS
+           ========================================= */
+      #bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* =========================================
+           HERO SECTION (3D ANIMATION)
+           ========================================= */
+      .hero {
+        position: relative;
+        padding-top: 140px;
+        padding-bottom: 100px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        line-height: 1.1;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-content h1 span {
+        color: var(--primary);
+      }
+
+      .hero-content p {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        max-width: 500px;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 3rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .stat-item strong {
+        display: block;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--text-main);
+      }
+
+      .stat-item span {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
+      /* 3D SCENE CONTAINER */
+      .hero-visual {
+        height: 500px;
+        position: relative;
+        perspective: var(--scene-perspective);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .scene-3d {
+        position: relative;
+        width: var(--cube-size);
+        height: var(--cube-size);
+        transform-style: preserve-3d;
+        transform: rotateX(-15deg) rotateY(-15deg);
+        transition: transform 0.1s ease-out; /* Smooth mouse follow */
+      }
+
+      /* 3D Floating Layers (The "Kaksha" Metaphor - Stacked Knowledge) */
+      .layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 1.5rem;
+        transform-style: preserve-3d;
+        background: white;
+        box-shadow:
+          0 20px 40px -5px rgba(0, 0, 0, 0.1),
+          0 0 0 1px var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: var(--primary-light);
+        backface-visibility: hidden; /* Performance */
+      }
+
+      /* Layer 1 - Base */
+      .layer-1 {
+        transform: translateZ(-40px) rotateX(5deg);
+        border: 2px solid var(--secondary-light);
+        background: linear-gradient(
+          135deg,
+          rgba(7, 89, 133, 0.05) 0%,
+          rgba(7, 89, 133, 0.1) 100%
+        );
+        font-size: 3.5rem;
+        color: var(--secondary);
+        opacity: 0.8;
+      }
+
+      /* Layer 2 - Middle */
+      .layer-2 {
+        transform: translateZ(0px);
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
+      }
+
+      .layer-2 .icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 8px 20px rgba(220, 95, 0, 0.3);
+      }
+      .layer-2 .icon i {
+        font-size: 2rem;
+        color: white;
+      }
+      .layer-2 h3 {
+        color: var(--text-main);
+        font-size: 1.35rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+      .layer-2 p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .layer-2 .stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+      .layer-2 .stat-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.8rem;
+        background: var(--primary-light);
+        border-radius: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--primary-dark);
+        font-weight: 600;
+      }
+      .layer-2 .stat-badge i {
+        font-size: 0.9rem;
+      }
+
+      /* Layer 3 - Top (Floating) */
+      .layer-3 {
+        transform: translateZ(40px) rotateX(-5deg);
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        animation: float 6s ease-in-out infinite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 15px 40px rgba(220, 95, 0, 0.4);
+      }
+
+      .layer-3 .logo-container {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 0.75rem 1.5rem;
+        border-radius: 1rem;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .layer-3 .badge-text {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* Floating Decorative Elements */
+      .floating-orb {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.3;
+        filter: blur(40px);
+        z-index: -1;
+      }
+
+      .orb-1 {
+        width: 200px;
+        height: 200px;
+        top: -30px;
+        right: -30px;
+        background: rgba(220, 95, 0, 0.5);
+        animation:
+          pulse 8s infinite,
+          float-orb 15s infinite ease-in-out;
+      }
+      .orb-2 {
+        width: 140px;
+        height: 140px;
+        bottom: 40px;
+        left: -40px;
+        background: rgba(7, 89, 133, 0.5);
+        animation:
+          pulse 6s infinite reverse,
+          float-orb 20s infinite ease-in-out reverse;
+      }
+
+      @keyframes float-orb {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(10px, -10px);
+        }
+        50% {
+          transform: translate(-5px, 5px);
+        }
+        75% {
+          transform: translate(5px, 10px);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateZ(40px) translateY(0) rotateX(-5deg);
+        }
+        50% {
+          transform: translateZ(40px) translateY(-15px) rotateX(0deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.3;
+        }
+      }
+
+      /* =========================================
+           FEATURES SECTION
+           ========================================= */
+      .features {
+        padding: 6rem 0;
+        background: var(--bg-surface);
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      /* Connected Resources Section */
+      .resources-connected {
+        position: relative;
+        background: #ffffff;
+        overflow: hidden;
+      }
+
+      .resources-connected::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(220, 95, 0, 0.04) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 85% 80%,
+            rgba(7, 89, 133, 0.04) 0%,
+            transparent 40%
+          );
+        pointer-events: none;
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .resource-card {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        border: 2px solid #e2e8f0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: visible;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .resource-card::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 1.5rem;
+        background: var(--primary);
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.4s ease;
+      }
+
+      .resource-card:hover::before {
+        opacity: 1;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-color: transparent;
+      }
+
+      .resource-card:nth-child(1):hover::before {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(2):hover::before {
+        background: var(--secondary);
+      }
+      .resource-card:nth-child(3):hover::before {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(4):hover::before {
+        background: #ff0000;
+      }
+
+      .resource-icon-wrapper {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.5rem;
+      }
+
+      .resource-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--bg-surface);
+        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        position: relative;
+        transition: all 0.4s ease;
+        border: 2px solid #e2e8f0;
+      }
+
+      .resource-card:nth-child(1) .resource-icon {
+        background: var(--primary-light);
+        border-color: var(--primary);
+      }
+      .resource-card:nth-child(2) .resource-icon {
+        background: var(--secondary-light);
+        border-color: var(--secondary);
+      }
+      .resource-card:nth-child(3) .resource-icon {
+        background: var(--primary-light);
+        border-color: var(--primary);
+      }
+      .resource-card:nth-child(4) .resource-icon {
+        background: #ffe5e5;
+        border-color: #ff0000;
+      }
+
+      .resource-card:hover .resource-icon {
+        transform: scale(1.15) rotate(-5deg);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .resource-card:nth-child(1) .resource-icon i {
+        color: var(--primary);
+      }
+      .resource-card:nth-child(2) .resource-icon i {
+        color: var(--secondary);
+      }
+      .resource-card:nth-child(3) .resource-icon i {
+        color: var(--primary);
+      }
+      .resource-card:nth-child(4) .resource-icon i {
+        color: #ff0000;
+      }
+
+      .resource-card:hover .resource-icon {
+        background: white;
+        border-color: white;
+      }
+
+      .resource-card:nth-child(1):hover .resource-icon {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(2):hover .resource-icon {
+        background: var(--secondary);
+      }
+      .resource-card:nth-child(3):hover .resource-icon {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(4):hover .resource-icon {
+        background: #ff0000;
+      }
+
+      .resource-card:hover .resource-icon i {
+        color: white;
+      }
+
+      .resource-icon::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 1.5rem;
+        border: 2px solid transparent;
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+
+      .resource-card:nth-child(1):hover .resource-icon::before {
+        border-color: var(--primary);
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+      .resource-card:nth-child(2):hover .resource-icon::before {
+        border-color: var(--secondary);
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+      .resource-card:nth-child(3):hover .resource-icon::before {
+        border-color: var(--primary);
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+      .resource-card:nth-child(4):hover .resource-icon::before {
+        border-color: #ff0000;
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+
+      @keyframes icon-ring {
+        0% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 0.15;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+      }
+
+      .resource-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      .resource-card:hover h3 {
+        color: white;
+      }
+
+      .resource-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .resource-card:hover p {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .resource-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-main);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        padding: 0.6rem 1.2rem;
+        background: var(--bg-surface);
+        border-radius: 0.5rem;
+        border: 2px solid #e2e8f0;
+      }
+
+      .resource-card:nth-child(1) .resource-link {
+        color: var(--primary);
+        border-color: var(--primary);
+        background: var(--primary-light);
+      }
+      .resource-card:nth-child(2) .resource-link {
+        color: var(--secondary);
+        border-color: var(--secondary);
+        background: var(--secondary-light);
+      }
+      .resource-card:nth-child(3) .resource-link {
+        color: var(--primary);
+        border-color: var(--primary);
+        background: var(--primary-light);
+      }
+      .resource-card:nth-child(4) .resource-link {
+        color: #ff0000;
+        border-color: #ff0000;
+        background: #ffe5e5;
+      }
+
+      .resource-card:hover .resource-link {
+        background: white;
+        border-color: white;
+        transform: translateX(5px);
+      }
+
+      .resource-link i {
+        transition: transform 0.3s ease;
+        font-size: 0.85rem;
+      }
+
+      .resource-link:hover i {
+        transform: translateX(4px);
+      }
+
+      /* Number badge */
+      .resource-card::after {
+        content: attr(data-resource);
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-surface);
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: 2px solid #e2e8f0;
+      }
+
+      .resource-card:hover::after {
+        background: white;
+        color: var(--text-main);
+        border-color: white;
+        transform: scale(1.15);
+      }
+
+      /* Connection Canvas */
+      .connection-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-light);
+        color: var(--primary);
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+      }
+
+      .feature-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      /* =========================================
+           COURSES SHOWCASE
+           ========================================= */
+      .courses {
+        padding: 6rem 0;
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+      }
+
+      .course-card {
+        background: white;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .course-card:hover {
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-5px);
+      }
+
+      .course-image {
+        height: 200px;
+        background: var(--bg-surface);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .course-card:hover .course-image img {
+        transform: scale(1.05);
+      }
+
+      .course-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-main);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .course-content {
+        padding: 1.5rem;
+      }
+
+      .course-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+
+      .course-meta i {
+        color: var(--primary);
+        margin-right: 0.25rem;
+      }
+
+      .course-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+        line-height: 1.4;
+      }
+
+      .course-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .instructor {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .instructor img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+
+      .instructor span {
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .price {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 1.125rem;
+      }
+
+      /* =========================================
+           INTERACTIVE DEMO SECTION
+           ========================================= */
+      .interactive-demo {
+        padding: 6rem 0;
+        background: var(--secondary);
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Subtle pattern overlay */
+      .interactive-demo::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: none;
+        background-size: 30px 30px;
+        opacity: 0.1;
+      }
+
+      .demo-container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .demo-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .demo-container p {
+        font-size: 1.125rem;
+        opacity: 0.9;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cube-playground {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 3rem;
+        perspective: 800px;
+      }
+
+      .playground-cube {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: spinCube 10s infinite linear;
+      }
+
+      .playground-face {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        backdrop-filter: blur(5px);
+      }
+
+      .pf-front {
+        transform: rotateY(0deg) translateZ(100px);
+      }
+      .pf-back {
+        transform: rotateY(180deg) translateZ(100px);
+      }
+      .pf-right {
+        transform: rotateY(90deg) translateZ(100px);
+      }
+      .pf-left {
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+      .pf-top {
+        transform: rotateX(90deg) translateZ(100px);
+      }
+      .pf-bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+      }
+
+      @keyframes spinCube {
+        0% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+
+      /* =========================================
+           FOOTER
+           ========================================= */
+      footer {
+        background: var(--bg-surface);
+        padding: 4rem 0 2rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-brand p {
+        margin-top: 1rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .footer-col h4 {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-main);
+      }
+
+      .footer-col ul li {
+        margin-bottom: 0.75rem;
+      }
+      .footer-col a {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+      .footer-col a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
+      /* =========================================
+           TOAST NOTIFICATION
+           ========================================= */
+      .toast-container {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .toast {
+        background: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: var(--shadow-xl);
+        border-left: 4px solid var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-width: 300px;
+        animation: slideIn 0.3s ease;
+      }
+
+      .toast i {
+        color: var(--primary);
+        font-size: 1.25rem;
+      }
+      .toast-content h5 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.1rem;
+      }
+      .toast-content p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* =========================================
+           RESPONSIVE
+           ========================================= */
+      @media (max-width: 992px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-content p {
+          margin: 0 auto 2.5rem;
+        }
+        .hero-stats {
+          justify-content: center;
+        }
+        .hero-visual {
+          height: 400px;
+          margin-top: 3rem;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links,
+        .nav-actions {
+          display: none;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Mobile Menu Active State */
+        .navbar.mobile-active .nav-links {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 2rem;
+          box-shadow: var(--shadow-lg);
+          border-bottom: 1px solid var(--border);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Canvas for Sky Blue Particle Effect -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container navbar-container">
+        <a href="#" class="brand">
+          <img
+            src="Online Kaksha (Website Logo).png"
+            alt="Online kaksha Logo"
+            style="height: 50px; width: auto"
+          />
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#chanakya" class="nav-link">Chanakya</a></li>
+          <li><a href="#updates" class="nav-link">Updates</a></li>
+          <li><a href="#success" class="nav-link">Success Stories</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a
+            href="https://youtube.com/@chanakya"
+            target="_blank"
+            class="btn btn-outline"
+            style="background: #ff0000; color: white; border: none"
+          >
+            <i class="fa-brands fa-youtube"></i> Chanakya's Channel
+          </a>
+          <a href="#premium" class="btn btn-primary">Premium Access</a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <!-- Text Content -->
+        <div class="hero-content">
+          <span class="badge">Free Resources + Premium Courses</span>
+          <h1>Your Complete <br /><span>Learning Platform</span></h1>
+          <p>
+            Access free PYQs, daily quizzes, and study notes. Upgrade to premium
+            for comprehensive test series, video lectures, and exclusive
+            content.
+          </p>
+
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              flex-wrap: wrap;
+              justify-content: inherit;
+            "
+          >
+            <a href="#free-resources" class="btn btn-primary">
+              Explore Free Resources <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#premium" class="btn btn-outline">
+              <i class="fa-solid fa-crown"></i> Go Premium
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>50k+</strong>
+              <span>Students</span>
+            </div>
+            <div class="stat-item">
+              <strong>1000+</strong>
+              <span>Free Resources</span>
+            </div>
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span>Success Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Visual -->
+        <div class="hero-visual" id="heroVisual">
+          <!-- Background orbs for depth -->
+          <div class="floating-orb orb-1"></div>
+          <div class="floating-orb orb-2"></div>
+
+          <!-- The 3D Scene Object -->
+          <div class="scene-3d" id="sceneObject">
+            <!-- Layer 1: Bottom (Abstract Data) -->
+            <div class="layer layer-1">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <!-- Layer 2: Middle (Main Interface Card) -->
+            <div class="layer layer-2">
+              <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <h3>Competitive Exams</h3>
+              <p>Complete Preparation Package</p>
+              <div class="stats">
+                <div class="stat-badge">
+                  <i class="fa-solid fa-users"></i>
+                  <span>50k+</span>
+                </div>
+                <div class="stat-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span>4.9</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Layer 3: Top (Floating Badge) -->
+            <div class="layer layer-3">
+              <div class="logo-container">
+                <img
+                  src="Online Kaksha (Social Media Logo).png"
+                  alt="Online kaksha"
+                  style="
+                    max-width: 100px;
+                    height: auto;
+                    object-fit: contain;
+                    filter: brightness(0) invert(1);
+                  "
+                />
+              </div>
+              <div class="badge-text">
+                <i
+                  class="fa-solid fa-crown"
+                  style="color: gold; font-size: 1rem"
+                ></i>
+                <span>Premium Learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="features" id="about" style="background: var(--bg-surface)">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Who We Are</span>
+          <h2 class="section-title">About Online kaksha</h2>
+          <p class="section-subtitle">
+            Your trusted partner in competitive exam preparation and career
+            success.
+          </p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto">
+          <div
+            style="
+              background: white;
+              padding: 3rem;
+              border-radius: 1.5rem;
+              box-shadow: var(--shadow-md);
+              text-align: center;
+            "
+          >
+            <div class="feature-icon" style="margin: 0 auto 2rem">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <p
+              style="
+                font-size: 1.125rem;
+                line-height: 1.8;
+                color: var(--text-main);
+                margin-bottom: 2rem;
+              "
+            >
+              <strong>Online kaksha</strong> is dedicated to democratizing
+              quality education for competitive exam aspirants across India. We
+              provide a perfect blend of <strong>free resources</strong> for
+              everyone and <strong>premium content</strong> for those who want
+              comprehensive preparation.
+            </p>
+            <p
+              style="
+                font-size: 1rem;
+                line-height: 1.8;
+                color: var(--text-muted);
+                margin-bottom: 2rem;
+              "
+            >
+              Founded by <strong>Chanakya</strong>, an experienced educator with
+              a passion for helping students succeed, we've helped thousands of
+              students achieve their career goals through UPSC, SSC, Banking,
+              and other competitive exams. Our mission is to make quality
+              education accessible and affordable for all.
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  50k+
+                </div>
+                <div style="color: var(--text-muted)">Active Students</div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  5000+
+                </div>
+                <div style="color: var(--text-muted)">Success Stories</div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  100+
+                </div>
+                <div style="color: var(--text-muted)">Premium Courses</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Free Resources Section -->
+    <section class="features resources-connected" id="free-resources">
+      <canvas class="connection-canvas" id="resourceConnections"></canvas>
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">100% Free</span>
+          <h2 class="section-title">Free Learning Resources</h2>
+          <p class="section-subtitle">
+            Access our extensive collection of free study materials, practice
+            tests, and daily quizzes.
+          </p>
+        </div>
+
+        <div class="resources-grid" id="resourcesGrid">
+          <div class="resource-card" data-resource="1">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-solid fa-file-lines"></i>
+              </div>
+            </div>
+            <h3>Free PYQs</h3>
+            <p>
+              Previous Year Questions from top exams. Practice with authentic
+              question papers and boost your preparation.
+            </p>
+            <a href="#pyqs" class="resource-link">
+              Access PYQs <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="resource-card" data-resource="2">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-solid fa-clipboard-question"></i>
+              </div>
+            </div>
+            <h3>Daily Quizzes</h3>
+            <p>
+              Fresh quizzes every day across all subjects. Test your knowledge
+              and track your progress daily.
+            </p>
+            <a href="#quizzes" class="resource-link">
+              Take Quiz <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="resource-card" data-resource="3">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-solid fa-book"></i>
+              </div>
+            </div>
+            <h3>Study Notes</h3>
+            <p>
+              Comprehensive notes covering all topics. Well-organized, easy to
+              understand, and completely free.
+            </p>
+            <a href="#notes" class="resource-link">
+              Download Notes <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="resource-card" data-resource="4">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+            </div>
+            <h3>Video Lectures</h3>
+            <p>
+              Free video content on our YouTube channel. Subscribe to Chanakya's
+              channel for regular updates.
+            </p>
+            <a
+              href="https://youtube.com/@chanakya"
+              target="_blank"
+              class="resource-link"
+            >
+              Watch Now <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Premium Courses Section -->
+    <section class="courses" id="premium">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" style="background: gold; color: #000"
+            ><i class="fa-solid fa-crown"></i> Premium Content</span
+          >
+          <h2 class="section-title">Premium Courses & Test Series</h2>
+          <p class="section-subtitle">
+            Unlock complete access to premium video courses, eBooks,
+            assignments, and comprehensive test series.
+          </p>
+        </div>
+
+        <div class="course-grid">
+          <!-- Premium Course 1 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/kaksha1/400/250.jpg"
+                alt="Course Image"
+              />
+              <span class="course-tag" style="background: gold; color: #000"
+                ><i class="fa-solid fa-crown"></i> Premium</span
+              >
+            </div>
+            <div class="course-content">
+              <div class="course-meta">
+                <span><i class="fa-solid fa-video"></i> 150+ Videos</span>
+                <span><i class="fa-solid fa-book"></i> eBooks</span>
+              </div>
+              <h3 class="course-title">
+                Complete Course Package with Test Series
+              </h3>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user1/50/50.jpg"
+                    alt="Instructor"
+                  />
+                  <span>Expert Faculty</span>
+                </div>
+                <div class="price">₹2,999</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Premium Test Series -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/kaksha2/400/250.jpg"
+                alt="Course Image"
+              />
+              <span class="course-tag" style="background: gold; color: #000"
+                ><i class="fa-solid fa-crown"></i> Premium</span
+              >
+            </div>
+            <div class="course-content">
+              <div class="course-meta">
+                <span
+                  ><i class="fa-solid fa-clipboard-check"></i> 50+ Tests</span
+                >
+                <span><i class="fa-solid fa-chart-line"></i> Analytics</span>
+              </div>
+              <h3 class="course-title">Premium Test Series (All Exams)</h3>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user2/50/50.jpg"
+                    alt="Instructor"
+                  />
+                  <span>Test Team</span>
+                </div>
+                <div class="price">₹1,499</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Premium eBooks + Assignments -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/kaksha3/400/250.jpg"
+                alt="Course Image"
+              />
+              <span class="course-tag" style="background: gold; color: #000"
+                ><i class="fa-solid fa-crown"></i> Premium</span
+              >
+            </div>
+            <div class="course-content">
+              <div class="course-meta">
+                <span><i class="fa-solid fa-book-open"></i> eBooks</span>
+                <span
+                  ><i class="fa-solid fa-pen-to-square"></i> Assignments</span
+                >
+              </div>
+              <h3 class="course-title">Premium Study Material + Practice</h3>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user3/50/50.jpg"
+                    alt="Instructor"
+                  />
+                  <span>Content Team</span>
+                </div>
+                <div class="price">₹999</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem">
+          <a
+            href="#"
+            class="btn btn-primary"
+            style="
+              background: gold;
+              color: #000;
+              box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+            "
+          >
+            <i class="fa-solid fa-crown"></i> Get Premium Access
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="features" id="testimonials" style="background: white">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Student Reviews</span>
+          <h2 class="section-title">What Our Students Say</h2>
+          <p class="section-subtitle">
+            Real experiences from students who transformed their preparation
+            with Online kaksha.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+            </div>
+            <p style="font-style: italic; margin-bottom: 1rem">
+              "The free PYQs and daily quizzes helped me understand the exam
+              pattern. Premium test series was the best investment!"
+            </p>
+            <div style="display: flex; align-items: center; gap: 0.75rem">
+              <img
+                src="https://picsum.photos/seed/student1/50/50.jpg"
+                alt="Student"
+                style="width: 40px; height: 40px; border-radius: 50%"
+              />
+              <div>
+                <strong>Rahul Sharma</strong>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--text-muted);
+                    font-size: 0.875rem;
+                  "
+                >
+                  UPSC Aspirant
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+            </div>
+            <p style="font-style: italic; margin-bottom: 1rem">
+              "Chanakya's video lectures are exceptional. The study notes are so
+              well organized. Highly recommend the premium package!"
+            </p>
+            <div style="display: flex; align-items: center; gap: 0.75rem">
+              <img
+                src="https://picsum.photos/seed/student2/50/50.jpg"
+                alt="Student"
+                style="width: 40px; height: 40px; border-radius: 50%"
+              />
+              <div>
+                <strong>Priya Singh</strong>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--text-muted);
+                    font-size: 0.875rem;
+                  "
+                >
+                  SSC Qualifier
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+            </div>
+            <p style="font-style: italic; margin-bottom: 1rem">
+              "Best platform for exam preparation. Free resources are great for
+              practice, premium content is worth every rupee!"
+            </p>
+            <div style="display: flex; align-items: center; gap: 0.75rem">
+              <img
+                src="https://picsum.photos/seed/student3/50/50.jpg"
+                alt="Student"
+                style="width: 40px; height: 40px; border-radius: 50%"
+              />
+              <div>
+                <strong>Amit Kumar</strong>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--text-muted);
+                    font-size: 0.875rem;
+                  "
+                >
+                  Banking Exam Cleared
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Chanakya Section -->
+    <section
+      class="features"
+      id="chanakya"
+      style="background: var(--bg-surface)"
+    >
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">SelfKaksha</span>
+          <h2 class="section-title">About Chanakya</h2>
+          <p class="section-subtitle">
+            Learn from Chanakya, an experienced educator dedicated to making
+            quality education accessible to all.
+          </p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto; text-align: center">
+          <div
+            style="
+              background: white;
+              padding: 3rem;
+              border-radius: 1.5rem;
+              box-shadow: var(--shadow-lg);
+            "
+          >
+            <div
+              style="
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 2rem;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 4px solid var(--primary);
+              "
+            >
+              <img
+                src="https://picsum.photos/seed/chanakya/150/150.jpg"
+                alt="Chanakya"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <h3 style="font-size: 2rem; margin-bottom: 1rem">Chanakya</h3>
+            <p
+              style="
+                color: var(--text-muted);
+                margin-bottom: 2rem;
+                line-height: 1.8;
+              "
+            >
+              With years of teaching experience and thousands of successful
+              students, Chanakya brings expert knowledge and practical insights
+              to help you succeed in competitive exams. Subscribe to the YouTube
+              channel for regular free content and updates.
+            </p>
+            <a
+              href="https://youtube.com/@chanakya"
+              target="_blank"
+              class="btn btn-primary"
+              style="
+                background: #ff0000;
+                box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+              "
+            >
+              <i class="fa-brands fa-youtube"></i> Subscribe to Channel
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="interactive-demo" id="updates">
+      <div class="container demo-container">
+        <h2>Latest Updates & Announcements</h2>
+        <p>
+          Stay updated with the latest courses, test series releases, and
+          important exam notifications.
+        </p>
+
+        <div class="cube-playground">
+          <div class="playground-cube">
+            <div class="playground-face pf-front">
+              <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="playground-face pf-back">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <div class="playground-face pf-right">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <div class="playground-face pf-left">
+              <i class="fa-solid fa-calendar"></i>
+            </div>
+            <div class="playground-face pf-top">
+              <i class="fa-solid fa-rss"></i>
+            </div>
+            <div class="playground-face pf-bottom">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" style="background: white; color: var(--primary)">
+          View All Updates
+        </button>
+      </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="courses" id="success" style="background: var(--bg-surface)">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" style="background: var(--success); color: white"
+            >Success Stories</span
+          >
+          <h2 class="section-title">Our Students' Achievements</h2>
+          <p class="section-subtitle">
+            Inspiring success stories from students who achieved their dreams
+            with Online kaksha.
+          </p>
+        </div>
+
+        <div class="course-grid">
+          <!-- Success Story 1 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/success1/400/250.jpg"
+                alt="Success Story"
+              />
+              <span
+                class="course-tag"
+                style="background: var(--success); color: white"
+                >AIR 15</span
+              >
+            </div>
+            <div class="course-content">
+              <h3 class="course-title">Cracked UPSC in First Attempt</h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                "The premium test series and study notes were game-changers.
+                Thank you Online kaksha!"
+              </p>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/topper1/50/50.jpg"
+                    alt="Student"
+                  />
+                  <span>Ankit Verma</span>
+                </div>
+                <div style="color: var(--success); font-weight: 600">
+                  <i class="fa-solid fa-trophy"></i> UPSC
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success Story 2 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/success2/400/250.jpg"
+                alt="Success Story"
+              />
+              <span
+                class="course-tag"
+                style="background: var(--success); color: white"
+                >Selected</span
+              >
+            </div>
+            <div class="course-content">
+              <h3 class="course-title">SSC CGL Success in 6 Months</h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                "Daily quizzes kept me consistent. Premium courses gave me the
+                edge I needed."
+              </p>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/topper2/50/50.jpg"
+                    alt="Student"
+                  />
+                  <span>Sneha Gupta</span>
+                </div>
+                <div style="color: var(--success); font-weight: 600">
+                  <i class="fa-solid fa-trophy"></i> SSC CGL
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success Story 3 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/success3/400/250.jpg"
+                alt="Success Story"
+              />
+              <span
+                class="course-tag"
+                style="background: var(--success); color: white"
+                >Rank 3</span
+              >
+            </div>
+            <div class="course-content">
+              <h3 class="course-title">Banking Exam - Top Rank</h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                "From free PYQs to premium packages, everything was perfect.
+                Highly recommended!"
+              </p>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/topper3/50/50.jpg"
+                    alt="Student"
+                  />
+                  <span>Rajesh Patel</span>
+                </div>
+                <div style="color: var(--success); font-weight: 600">
+                  <i class="fa-solid fa-trophy"></i> IBPS PO
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem">
+          <a href="#" class="btn btn-outline">Read More Success Stories</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="brand">
+              <img
+                src="Online Kaksha (Website Logo).png"
+                alt="Online kaksha"
+                style="height: 40px; width: auto"
+              />
+            </a>
+            <p>
+              Empowering students with free resources and premium courses for
+              competitive exam success.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Free Resources</h4>
+            <ul>
+              <li><a href="#pyqs">PYQs</a></li>
+              <li><a href="#quizzes">Daily Quizzes</a></li>
+              <li><a href="#notes">Study Notes</a></li>
+              <li>
+                <a href="https://youtube.com/@chanakya" target="_blank"
+                  >YouTube Channel</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Premium</h4>
+            <ul>
+              <li><a href="#premium">Video Courses</a></li>
+              <li><a href="#premium">Test Series</a></li>
+              <li><a href="#premium">eBooks</a></li>
+              <li><a href="#premium">Assignments</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#chanakya">Chanakya</a></li>
+              <li><a href="#success">Success Stories</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          &copy; 2024 Online kaksha. All rights reserved. Designed & Developed
+          by InnovistaLabs
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+      /* =========================================
+     IMPROVED 1. CANVAS BACKGROUND ANIMATION
+     Features: Retina support, Smooth pulsing, Optimized rendering
+     ========================================= */
+      const canvas = document.getElementById("bg-canvas");
+      const ctx = canvas.getContext("2d");
+
+      // Configuration
+      const config = {
+        particleCount: 100, // Number of nodes
+        connectionDistance: 180, // Max distance to draw lines
+        mouseInteractionRadius: 200, // Distance to react to mouse
+        baseSpeed: 0.4, // Floating speed
+        colors: {
+          primary: "14, 165, 233", // Sky Blue (RGB)
+          secondary: "7, 89, 133", // Darker Blue (RGB)
+          alpha: 0.15, // Line opacity
+        },
+      };
+
+      let width, height;
+      let particles = [];
+      let time = 0;
+      let mouse = { x: null, y: null };
+
+      // Handle High DPI (Retina) Displays for sharp rendering
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        const dpr = window.devicePixelRatio || 1;
+
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+
+        // Scale context to ensure correct drawing size
+        ctx.scale(dpr, dpr);
+
+        // Adjust CSS size
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+
+        initParticles();
+      }
+
+      // Enhanced Node Class
+      class Node {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+
+          // Random velocity
+          this.vx = (Math.random() - 0.5) * config.baseSpeed;
+          this.vy = (Math.random() - 0.5) * config.baseSpeed;
+
+          this.radius = Math.random() * 2 + 1.5;
+
+          // Pulse animation properties
+          this.pulseSpeed = Math.random() * 0.02 + 0.01;
+          this.pulsePhase = Math.random() * Math.PI * 2;
+
+          // Random offset for line animation
+          this.flowOffset = Math.random() * 100;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Mouse repulsion effect (Interactive Background)
+          if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < config.mouseInteractionRadius) {
+              const forceDirectionX = dx / distance;
+              const forceDirectionY = dy / distance;
+              const force =
+                (config.mouseInteractionRadius - distance) /
+                config.mouseInteractionRadius;
+              const directionX = forceDirectionX * force * 2; // Push strength
+              const directionY = forceDirectionY * force * 2;
+
+              this.x -= directionX;
+              this.y -= directionY;
+            }
+          }
+
+          // Bounce off edges
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+
+        draw() {
+          // Calculate Pulse
+          const pulse =
+            Math.sin(time * this.pulseSpeed + this.pulsePhase) * 0.3 + 0.7;
+          const glowSize = this.radius * (1.2 + pulse * 0.4);
+
+          // 1. Draw Glow
+          const gradient = ctx.createRadialGradient(
+            this.x,
+            this.y,
+            0,
+            this.x,
+            this.y,
+            glowSize * 3,
+          );
+          gradient.addColorStop(
+            0,
+            `rgba(${config.colors.primary}, ${0.4 * pulse})`,
+          );
+          gradient.addColorStop(1, `rgba(${config.colors.primary}, 0)`);
+
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, glowSize * 3, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.fill();
+
+          // 2. Draw Core
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${config.colors.primary}, ${0.8 * pulse})`;
+          ctx.fill();
+
+          // 3. Inner Highlight (Pseudo-3D effect)
+          ctx.beginPath();
+          ctx.arc(
+            this.x - this.radius * 0.3,
+            this.y - this.radius * 0.3,
+            this.radius * 0.4,
+            0,
+            Math.PI * 2,
+          );
+          ctx.fillStyle = `rgba(255, 255, 255, ${0.5 * pulse})`;
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        // Calculate responsive count
+        const count = Math.min(Math.floor(width / 80), config.particleCount);
+        for (let i = 0; i < count; i++) {
+          particles.push(new Node());
+        }
+      }
+
+      function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p1 = particles[i];
+            const p2 = particles[j];
+
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const distSq = dx * dx + dy * dy; // Use squared distance for performance
+            const maxDistSq =
+              config.connectionDistance * config.connectionDistance;
+
+            if (distSq < maxDistSq) {
+              const dist = Math.sqrt(distSq);
+              const opacity =
+                (1 - dist / config.connectionDistance) * config.colors.alpha;
+
+              // Draw Static Line
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(${config.colors.secondary}, ${opacity})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+
+              // Draw "Data Packet" (Moving highlight)
+              // Using a continuous flow based on time and node indices
+              const flowSpeed = 0.02;
+              const flowPos =
+                ((time * 20 + p1.flowOffset + p2.flowOffset) % 100) / 100;
+
+              const packetX = p1.x + (p2.x - p1.x) * flowPos;
+              const packetY = p1.y + (p2.y - p1.y) * flowPos;
+
+              ctx.beginPath();
+              ctx.arc(packetX, packetY, 2, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(${config.colors.primary}, ${opacity * 3})`; // Brighter than line
+              ctx.fill();
+            }
+          }
+        }
+      }
+
+      function animateCanvas() {
+        ctx.clearRect(0, 0, width, height);
+
+        drawConnections();
+
+        for (let particle of particles) {
+          particle.update();
+          particle.draw();
+        }
+
+        time++;
+        requestAnimationFrame(animateCanvas);
+      }
+
+      // Mouse listeners for background interaction
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+      });
+
+      window.addEventListener("mouseleave", () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      // Debounce resize
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resize, 100);
+      });
+
+      // Init
+      resize();
+      animateCanvas();
+
+      /* =========================================
+     IMPROVED 2. 3D MOUSE INTERACTION (HERO)
+     Features: Lerp smoothing for premium feel
+     ========================================= */
+      const heroSection = document.getElementById("hero");
+      const sceneObject = document.getElementById("sceneObject");
+      const layers = document.querySelectorAll(".layer");
+
+      // State for smooth animation
+      let targetRotateX = -15;
+      let targetRotateY = -15;
+      let currentRotateX = -15;
+      let currentRotateY = -15;
+
+      // Linear Interpolation function
+      const lerp = (start, end, factor) => start + (end - start) * factor;
+
+      if (heroSection && sceneObject) {
+        heroSection.addEventListener("mousemove", (e) => {
+          // Calculate target rotation based on mouse position relative to center
+          const xPct = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+          const yPct = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+
+          targetRotateY = xPct * 25; // Max 25 deg rotation
+          targetRotateX = -yPct * 25;
+        });
+
+        heroSection.addEventListener("mouseleave", () => {
+          // Reset to default angle
+          targetRotateX = -15;
+          targetRotateY = -15;
+        });
+
+        // Separate animation loop for 3D rotation (decoupled from mousemove)
+        function animate3D() {
+          // Smoothly interpolate current values towards target values
+          // 0.1 is the smoothing factor (lower = slower/smoother)
+          currentRotateX = lerp(currentRotateX, targetRotateX, 0.08);
+          currentRotateY = lerp(currentRotateY, targetRotateY, 0.08);
+
+          // Apply transform
+          sceneObject.style.transform = `rotateY(${currentRotateY}deg) rotateX(${currentRotateX}deg)`;
+
+          requestAnimationFrame(animate3D);
+        }
+
+        // Start the 3D loop
+        animate3D();
+      }
+
+      /* =========================================
+     RESOURCE CONNECTIONS ANIMATION
+     Features: Animated connecting threads between resource cards
+     ========================================= */
+      const resourceCanvas = document.getElementById("resourceConnections");
+      const resourcesGrid = document.getElementById("resourcesGrid");
+
+      if (resourceCanvas && resourcesGrid) {
+        const rCtx = resourceCanvas.getContext("2d");
+        let rWidth, rHeight;
+        let cardCenters = [];
+        let animationProgress = 0;
+
+        function resizeResourceCanvas() {
+          const section = resourceCanvas.parentElement;
+          rWidth = resourceCanvas.width = section.offsetWidth;
+          rHeight = resourceCanvas.height = section.offsetHeight;
+          updateCardCenters();
+        }
+
+        function updateCardCenters() {
+          const cards = resourcesGrid.querySelectorAll(".resource-card");
+          cardCenters = [];
+
+          cards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const sectionRect = resourceCanvas.getBoundingClientRect();
+
+            cardCenters.push({
+              x: rect.left - sectionRect.left + rect.width / 2,
+              y: rect.top - sectionRect.top + rect.height / 2,
+              element: card,
+            });
+          });
+        }
+
+        function drawConnections() {
+          rCtx.clearRect(0, 0, rWidth, rHeight);
+
+          // Draw connections between cards
+          for (let i = 0; i < cardCenters.length; i++) {
+            for (let j = i + 1; j < cardCenters.length; j++) {
+              const c1 = cardCenters[i];
+              const c2 = cardCenters[j];
+
+              // Calculate distance
+              const dx = c2.x - c1.x;
+              const dy = c2.y - c1.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              // Only draw if cards are close enough
+              if (distance < 800) {
+                const opacity = Math.max(0, 1 - distance / 800) * 0.15;
+
+                // Draw main line
+                rCtx.beginPath();
+                rCtx.moveTo(c1.x, c1.y);
+                rCtx.lineTo(c2.x, c2.y);
+                rCtx.strokeStyle = `rgba(220, 95, 0, ${opacity})`;
+                rCtx.lineWidth = 2;
+                rCtx.stroke();
+
+                // Draw animated dot traveling along the line
+                const progress = (animationProgress % 200) / 200;
+                const dotX = c1.x + dx * progress;
+                const dotY = c1.y + dy * progress;
+
+                // Outer glow circle (solid color)
+                rCtx.beginPath();
+                rCtx.arc(dotX, dotY, 10, 0, Math.PI * 2);
+                rCtx.fillStyle = `rgba(7, 89, 133, ${opacity * 1.5})`;
+                rCtx.fill();
+
+                // Middle circle
+                rCtx.beginPath();
+                rCtx.arc(dotX, dotY, 6, 0, Math.PI * 2);
+                rCtx.fillStyle = `rgba(7, 89, 133, ${opacity * 2.5})`;
+                rCtx.fill();
+
+                // Core dot (solid)
+                rCtx.beginPath();
+                rCtx.arc(dotX, dotY, 3, 0, Math.PI * 2);
+                rCtx.fillStyle = `rgba(7, 89, 133, ${Math.min(opacity * 4, 0.8)})`;
+                rCtx.fill();
+              }
+            }
+          }
+
+          animationProgress++;
+          requestAnimationFrame(drawConnections);
+        }
+
+        // Initialize
+        resizeResourceCanvas();
+        drawConnections();
+
+        // Update on resize and scroll
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            resizeResourceCanvas();
+          }, 100);
+        });
+
+        window.addEventListener("scroll", updateCardCenters);
+
+        // Update when cards are hovered
+        const cards = resourcesGrid.querySelectorAll(".resource-card");
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", updateCardCenters);
+          card.addEventListener("mouseleave", updateCardCenters);
+        });
+      }
+
+      /* =========================================
+     IMPROVED 3. UI LOGIC
+     Features: Debounce, Enhanced Toast, cleaner Event Listeners
+     ========================================= */
+
+      // --- Mobile Menu Toggle ---
+      const menuToggle = document.getElementById("menuToggle");
+      const navbar = document.getElementById("navbar");
+
+      menuToggle.addEventListener("click", () => {
+        navbar.classList.toggle("mobile-active");
+        const icon = menuToggle.querySelector("i");
+        if (navbar.classList.contains("mobile-active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      });
+
+      // --- Navbar Scroll Effect (Throttled) ---
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > 50) {
+          navbar.style.boxShadow = "0 4px 6px -1px rgb(0 0 0 / 0.05)";
+          navbar.style.background = "rgba(255, 255, 255, 0.98)"; // Slightly more opaque on scroll
+        } else {
+          navbar.style.boxShadow = "none";
+          navbar.style.background = "rgba(255, 255, 255, 0.9)"; // Back to glass
+        }
+
+        lastScrollY = currentScrollY;
+      });
+
+      // --- Toast Notification System ---
+      function showToast(title, message) {
+        const container = document.getElementById("toastContainer");
+        if (!container) return;
+
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `
+      <i class="fa-solid fa-circle-check"></i>
+      <div class="toast-content">
+        <h5>${title}</h5>
+        <p>${message}</p>
+      </div>
+      <button class="toast-close" style="margin-left:auto; color:#94a3b8; background:none; cursor:pointer;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    `;
+
+        container.appendChild(toast);
+
+        // Close button logic
+        const closeBtn = toast.querySelector(".toast-close");
+        closeBtn.addEventListener("click", () => removeToast(toast));
+
+        // Auto remove
+        setTimeout(() => {
+          removeToast(toast);
+        }, 4000);
+      }
+
+      function removeToast(toast) {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+        // Wait for transition to finish before removing from DOM
+        setTimeout(() => {
+          if (toast.parentElement) toast.remove();
+        }, 300);
+      }
+
+      // --- Interactive Button Triggers ---
+      document.querySelectorAll('a[href="#premium"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          // Allow default scroll behavior, just show toast
+          showToast(
+            "Welcome to Online kaksha",
+            "Explore our premium content...",
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
