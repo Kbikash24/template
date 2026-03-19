@@ -323,227 +323,48 @@
         font-size: 0.875rem;
       }
 
-      /* 3D SCENE CONTAINER */
+      /* PROFILE IMAGE CONTAINER */
       .hero-visual {
         height: 500px;
         position: relative;
-        perspective: var(--scene-perspective);
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
-      .scene-3d {
+      .profile-container {
         position: relative;
-        width: var(--cube-size);
-        height: var(--cube-size);
-        transform-style: preserve-3d;
-        transform: rotateX(-15deg) rotateY(-15deg);
-        transition: transform 0.1s ease-out; /* Smooth mouse follow */
+        width: 600px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      /* 3D Floating Layers (The "Kaksha" Metaphor - Stacked Knowledge) */
-      .layer {
-        position: absolute;
-        top: 0;
-        left: 0;
+      .profile-image {
         width: 100%;
         height: 100%;
-        border-radius: 1.5rem;
-        transform-style: preserve-3d;
-        background: white;
-        box-shadow:
-          0 20px 40px -5px rgba(0, 0, 0, 0.1),
-          0 0 0 1px var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 4rem;
-        color: var(--primary-light);
-        backface-visibility: hidden; /* Performance */
+        object-fit: cover;
+        /* border-radius: 50%; */
+        /* border: 8px solid var(--primary); */
+        /* box-shadow:
+          0 20px 60px rgba(220, 95, 0, 0.3),
+          0 0 0 20px rgba(220, 95, 0, 0.1); */
+        animation: float-profile 6s ease-in-out infinite;
+        transition: transform 0.3s ease;
       }
 
-      /* Layer 1 - Base */
-      .layer-1 {
-        transform: translateZ(-40px) rotateX(5deg);
-        border: 2px solid var(--secondary-light);
-        background: linear-gradient(
-          135deg,
-          rgba(7, 89, 133, 0.05) 0%,
-          rgba(7, 89, 133, 0.1) 100%
-        );
-        font-size: 3.5rem;
-        color: var(--secondary);
-        opacity: 0.8;
+      .profile-image:hover {
+        transform: scale(1.05);
       }
 
-      /* Layer 2 - Middle */
-      .layer-2 {
-        transform: translateZ(0px);
-        background: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
-      }
-
-      .layer-2 .icon {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        border-radius: 1.25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.25rem;
-        box-shadow: 0 8px 20px rgba(220, 95, 0, 0.3);
-      }
-      .layer-2 .icon i {
-        font-size: 2rem;
-        color: white;
-      }
-      .layer-2 h3 {
-        color: var(--text-main);
-        font-size: 1.35rem;
-        margin-bottom: 0.5rem;
-        font-weight: 700;
-      }
-      .layer-2 p {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-      }
-      .layer-2 .stats {
-        display: flex;
-        gap: 1.5rem;
-        margin-top: 1rem;
-      }
-      .layer-2 .stat-badge {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.8rem;
-        background: var(--primary-light);
-        border-radius: 0.5rem;
-        font-size: 0.8rem;
-        color: var(--primary-dark);
-        font-weight: 600;
-      }
-      .layer-2 .stat-badge i {
-        font-size: 0.9rem;
-      }
-
-      /* Layer 3 - Top (Floating) */
-      .layer-3 {
-        transform: translateZ(40px) rotateX(-5deg);
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        color: white;
-        animation: float 6s ease-in-out infinite;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        padding: 1.5rem;
-        box-shadow: 0 15px 40px rgba(220, 95, 0, 0.4);
-      }
-
-      .layer-3 .logo-container {
-        background: rgba(255, 255, 255, 0.15);
-        padding: 0.75rem 1.5rem;
-        border-radius: 1rem;
-        backdrop-filter: blur(10px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .layer-3 .badge-text {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      /* Floating Decorative Elements */
-      .floating-orb {
-        position: absolute;
-        border-radius: 50%;
-        opacity: 0.3;
-        filter: blur(40px);
-        z-index: -1;
-      }
-
-      .orb-1 {
-        width: 200px;
-        height: 200px;
-        top: -30px;
-        right: -30px;
-        background: rgba(220, 95, 0, 0.5);
-        animation:
-          pulse 8s infinite,
-          float-orb 15s infinite ease-in-out;
-      }
-      .orb-2 {
-        width: 140px;
-        height: 140px;
-        bottom: 40px;
-        left: -40px;
-        background: rgba(7, 89, 133, 0.5);
-        animation:
-          pulse 6s infinite reverse,
-          float-orb 20s infinite ease-in-out reverse;
-      }
-
-      @keyframes float-orb {
+      @keyframes float-profile {
         0%,
         100% {
-          transform: translate(0, 0);
-        }
-        25% {
-          transform: translate(10px, -10px);
+          transform: translateY(0);
         }
         50% {
-          transform: translate(-5px, 5px);
-        }
-        75% {
-          transform: translate(5px, 10px);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateZ(40px) translateY(0) rotateX(-5deg);
-        }
-        50% {
-          transform: translateZ(40px) translateY(-15px) rotateX(0deg);
-        }
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.6;
-        }
-        50% {
-          transform: scale(1.1);
-          opacity: 0.3;
+          transform: translateY(-20px);
         }
       }
 
@@ -1250,6 +1071,10 @@
           height: 400px;
           margin-top: 3rem;
         }
+        .profile-container {
+          width: 350px;
+          height: 350px;
+        }
         .footer-grid {
           grid-template-columns: 1fr 1fr;
         }
@@ -1265,6 +1090,10 @@
         }
         .hero-content h1 {
           font-size: 2.5rem;
+        }
+        .profile-container {
+          width: 280px;
+          height: 280px;
         }
         .footer-grid {
           grid-template-columns: 1fr;
@@ -1372,58 +1201,10 @@
           </div>
         </div>
 
-        <!-- 3D Interactive Visual -->
+        <!-- Profile Image Visual -->
         <div class="hero-visual" id="heroVisual">
-          <!-- Background orbs for depth -->
-          <div class="floating-orb orb-1"></div>
-          <div class="floating-orb orb-2"></div>
-
-          <!-- The 3D Scene Object -->
-          <div class="scene-3d" id="sceneObject">
-            <!-- Layer 1: Bottom (Abstract Data) -->
-            <div class="layer layer-1">
-              <i class="fa-solid fa-book-open"></i>
-            </div>
-
-            <!-- Layer 2: Middle (Main Interface Card) -->
-            <div class="layer layer-2">
-              <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
-              <h3>Competitive Exams</h3>
-              <p>Complete Preparation Package</p>
-              <div class="stats">
-                <div class="stat-badge">
-                  <i class="fa-solid fa-users"></i>
-                  <span>50k+</span>
-                </div>
-                <div class="stat-badge">
-                  <i class="fa-solid fa-star"></i>
-                  <span>4.9</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Layer 3: Top (Floating Badge) -->
-            <div class="layer layer-3">
-              <div class="logo-container">
-                <img
-                  src="Online Kaksha (Social Media Logo).png"
-                  alt="Online kaksha"
-                  style="
-                    max-width: 100px;
-                    height: auto;
-                    object-fit: contain;
-                    filter: brightness(0) invert(1);
-                  "
-                />
-              </div>
-              <div class="badge-text">
-                <i
-                  class="fa-solid fa-crown"
-                  style="color: gold; font-size: 1rem"
-                ></i>
-                <span>Premium Learning</span>
-              </div>
-            </div>
+          <div class="profile-container">
+            <img src="profile.jpg" alt="Profile" class="profile-image" />
           </div>
         </div>
       </div>
@@ -2405,53 +2186,27 @@
       animateCanvas();
 
       /* =========================================
-     IMPROVED 2. 3D MOUSE INTERACTION (HERO)
-     Features: Lerp smoothing for premium feel
+     MOUSE INTERACTION FOR PROFILE IMAGE
+     Features: Subtle parallax effect on profile image
      ========================================= */
       const heroSection = document.getElementById("hero");
-      const sceneObject = document.getElementById("sceneObject");
-      const layers = document.querySelectorAll(".layer");
+      const profileImage = document.querySelector(".profile-image");
 
-      // State for smooth animation
-      let targetRotateX = -15;
-      let targetRotateY = -15;
-      let currentRotateX = -15;
-      let currentRotateY = -15;
-
-      // Linear Interpolation function
-      const lerp = (start, end, factor) => start + (end - start) * factor;
-
-      if (heroSection && sceneObject) {
+      if (heroSection && profileImage) {
         heroSection.addEventListener("mousemove", (e) => {
-          // Calculate target rotation based on mouse position relative to center
-          const xPct = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
-          const yPct = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+          const xPct = (e.clientX / window.innerWidth - 0.5) * 2;
+          const yPct = (e.clientY / window.innerHeight - 0.5) * 2;
 
-          targetRotateY = xPct * 25; // Max 25 deg rotation
-          targetRotateX = -yPct * 25;
+          // Subtle parallax effect
+          const moveX = xPct * 20;
+          const moveY = yPct * 20;
+
+          profileImage.style.transform = `translate(${moveX}px, ${moveY}px) scale(1)`;
         });
 
         heroSection.addEventListener("mouseleave", () => {
-          // Reset to default angle
-          targetRotateX = -15;
-          targetRotateY = -15;
+          profileImage.style.transform = "translate(0, 0) scale(1)";
         });
-
-        // Separate animation loop for 3D rotation (decoupled from mousemove)
-        function animate3D() {
-          // Smoothly interpolate current values towards target values
-          // 0.1 is the smoothing factor (lower = slower/smoother)
-          currentRotateX = lerp(currentRotateX, targetRotateX, 0.08);
-          currentRotateY = lerp(currentRotateY, targetRotateY, 0.08);
-
-          // Apply transform
-          sceneObject.style.transform = `rotateY(${currentRotateY}deg) rotateX(${currentRotateX}deg)`;
-
-          requestAnimationFrame(animate3D);
-        }
-
-        // Start the 3D loop
-        animate3D();
       }
 
       /* =========================================
