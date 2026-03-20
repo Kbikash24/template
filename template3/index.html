@@ -1,1444 +1,2591 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrepLab | Master Competitive Exams</title>
-    
-    <!-- Fonts: Rethink Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-    
-    <!-- Icons: FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrepLab | Modern EdTech For Competitive Exams</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
-        /* -----------------------------------------------------------
-           VARIABLES & RESET
-        ----------------------------------------------------------- */
-        :root {
-            --primary: #4f46e5; /* Indigo */
-            --primary-dark: #4338ca;
-            --accent: #0ea5e9; /* Sky Blue */
-            --dark: #0f172a;
-            --text-main: #334155;
-            --text-light: #64748b;
-            --bg-body: #f8fafc;
-            --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            --radius-md: 12px;
-            --radius-lg: 24px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      :root {
+        --primary: #123e8a;
+        --primary-dark: #0c2d67;
+        --primary-soft: #edf4ff;
+        --accent: #ffd54a;
+        --accent-dark: #efbc11;
+        --teal: #17b8a6;
+        --teal-soft: #e9fffb;
+        --coral: #ff7b65;
+        --coral-soft: #fff0ec;
+        --sky: #69a8ff;
+        --dark: #0f1728;
+        --text-main: #344054;
+        --text-light: #667085;
+        --bg-body: #ffffff;
+        --surface: #ffffff;
+        --surface-soft: #f7faff;
+        --line: #e4e7ec;
+        --success: #12b76a;
+        --shadow-sm: 0 12px 30px -24px rgba(15, 23, 40, 0.18);
+        --shadow-md: 0 20px 44px -28px rgba(15, 23, 40, 0.18);
+        --shadow-lg: 0 30px 60px -34px rgba(15, 23, 40, 0.2);
+        --shadow-yellow: 0 22px 46px -28px rgba(255, 213, 74, 0.5);
+        --shadow-coral: 0 22px 46px -28px rgba(255, 123, 101, 0.4);
+        --radius-md: 18px;
+        --radius-lg: 30px;
+        --transition: all 0.25s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Rethink Sans", sans-serif;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(105, 168, 255, 0.12),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f9fbff 36%, #ffffff 100%);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      select,
+      input {
+        font: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      .container {
+        width: min(1440px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .section-kicker {
+        display: inline-block;
+        margin-bottom: 14px;
+        color: var(--primary-dark);
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 44px;
+      }
+
+      .section-header h2 {
+        color: var(--dark);
+        font-size: clamp(2.2rem, 3vw, 3.5rem);
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+        margin-bottom: 14px;
+      }
+
+      .section-header p {
+        color: var(--text-light);
+        font-size: 1.03rem;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 24px;
+        font-size: 0.98rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent) 0%, #ffc15b 100%);
+        color: var(--dark);
+        box-shadow: var(--shadow-yellow);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(
+          135deg,
+          #ffcb3c 0%,
+          var(--accent-dark) 100%
+        );
+      }
+
+      .btn-secondary {
+        background: var(--surface);
+        color: var(--primary);
+        border: 1px solid var(--line);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--primary);
+        background: var(--primary-soft);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .promo-bar {
+        background: linear-gradient(
+          90deg,
+          rgba(18, 62, 138, 0.08),
+          rgba(23, 184, 166, 0.12),
+          rgba(255, 213, 74, 0.16)
+        );
+        border-bottom: 1px solid var(--line);
+        color: var(--primary);
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.96);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 82px;
+        gap: 24px;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--dark);
+        font-size: 1.6rem;
+        font-weight: 800;
+      }
+
+      .logo-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: var(--primary);
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo span {
+        color: var(--accent-dark);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-link,
+      .nav-dropdown-toggle {
+        color: var(--text-main);
+        font-size: 0.98rem;
+        font-weight: 700;
+        background: transparent;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-link:hover,
+      .nav-dropdown-toggle:hover {
+        color: var(--primary);
+      }
+
+      .nav-dropdown {
+        position: relative;
+      }
+
+      .nav-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 0;
+        width: 250px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: #ffffff;
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: var(--transition);
+      }
+
+      .nav-dropdown.open .nav-dropdown-menu,
+      .nav-dropdown:hover .nav-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 12px 14px;
+        border: none;
+        background: transparent;
+        border-radius: 14px;
+        text-align: left;
+        color: var(--dark);
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .dropdown-item:hover {
+        background: var(--primary-soft);
+        color: var(--primary);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #ffffff;
+        color: var(--dark);
+      }
+
+      .mobile-nav {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(340px, 100%);
+        padding: 28px 20px;
+        background: #ffffff;
+        border-right: 1px solid var(--line);
+        box-shadow: var(--shadow-lg);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1002;
+        overflow-y: auto;
+      }
+
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .mobile-nav-links {
+        display: grid;
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .mobile-nav-links .nav-link {
+        padding: 12px 0;
+      }
+
+      .hero {
+        position: relative;
+        padding: 60px 0 88px;
+        overflow: hidden;
+        background: #f4f8ff;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+        filter: blur(10px);
+      }
+
+      .hero::before {
+        top: -120px;
+        left: -110px;
+        width: 360px;
+        height: 360px;
+        background: rgba(18, 62, 138, 0.08);
+        animation: floatShape 11s ease-in-out infinite;
+      }
+
+      .hero::after {
+        right: -90px;
+        bottom: -140px;
+        width: 340px;
+        height: 340px;
+        background: rgba(255, 213, 74, 0.14);
+        animation: floatShape 14s ease-in-out infinite reverse;
+      }
+
+      .hero-bg-elements {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .hero-glow,
+      .hero-grid-lines,
+      .hero-ribbon {
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .hero-glow {
+        top: 18%;
+        right: 12%;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: rgba(23, 184, 166, 0.12);
+        filter: blur(10px);
+        animation: pulseGlow 8s ease-in-out infinite;
+      }
+
+      .hero-grid-lines {
+        top: 32px;
+        right: 3%;
+        width: min(520px, 44vw);
+        height: 78%;
+        border-radius: 40px;
+        opacity: 0.5;
+        background-image:
+          linear-gradient(rgba(18, 62, 138, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(18, 62, 138, 0.08) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.86), transparent);
+      }
+
+      .hero-ribbon {
+        left: 6%;
+        bottom: 10%;
+        width: 260px;
+        height: 260px;
+        border-radius: 40px;
+        border: 1px solid rgba(255, 123, 101, 0.2);
+        background: rgba(255, 123, 101, 0.08);
+        transform: rotate(-18deg);
+      }
+
+      .hero-wave {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        line-height: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .hero-wave svg {
+        display: block;
+        width: 100%;
+        height: 88px;
+      }
+
+      @keyframes floatShape {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+        50% {
+          transform: translate3d(0, 18px, 0);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.72;
         }
 
-        body {
-            font-family: 'Rethink Sans', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+        50% {
+          transform: scale(1.08);
+          opacity: 1;
+        }
+      }
+
+      @keyframes driftBadge {
+        0%,
+        100% {
+          transform: translateY(0);
         }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-        button { cursor: pointer; border: none; font-family: inherit; }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
 
-        /* -----------------------------------------------------------
-           UTILITIES & ANIMATIONS
-        ----------------------------------------------------------- */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
+      @keyframes sheenSweep {
+        0% {
+          transform: translateX(-140%) skewX(-22deg);
         }
 
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
+        100% {
+          transform: translateX(240%) skewX(-22deg);
+        }
+      }
+
+      .hero-shell {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
+        gap: 42px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 640px;
+      }
+
+      .hero-copy .section-kicker {
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .hero-copy h1 {
+        color: var(--dark);
+        font-size: clamp(3.1rem, 6vw, 5.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.08em;
+        margin-bottom: 20px;
+      }
+
+      .hero-copy p {
+        font-size: 1.08rem;
+        color: var(--text-light);
+        margin-bottom: 28px;
+        max-width: 60ch;
+      }
+
+      .hero-proof {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+        margin: 0 0 24px;
+        padding: 14px 18px;
+        border: 1px solid rgba(18, 62, 138, 0.1);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .proof-stack {
+        display: flex;
+        align-items: center;
+      }
+
+      .proof-avatar {
+        width: 42px;
+        height: 42px;
+        margin-left: -10px;
+        border: 3px solid #ffffff;
+        border-radius: 50%;
+        background: #dbe8ff;
+        color: var(--primary-dark);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.84rem;
+        font-weight: 800;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .proof-avatar:first-child {
+        margin-left: 0;
+      }
+
+      .proof-copy strong {
+        display: block;
+        color: var(--dark);
+        font-size: 0.98rem;
+        line-height: 1.2;
+      }
+
+      .proof-copy span {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      .hero-highlights {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, max-content));
+        gap: 10px 12px;
+        margin-bottom: 26px;
+      }
+
+      .hero-highlight {
+        padding: 11px 14px;
+        border: 1px solid rgba(18, 62, 138, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.84);
+        color: var(--primary-dark);
+        font-size: 0.88rem;
+        font-weight: 700;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .hero-highlight:nth-child(2) {
+        background: var(--teal-soft);
+      }
+
+      .hero-highlight:nth-child(3) {
+        background: var(--coral-soft);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .hero-stat {
+        padding: 18px 16px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: #ffffff;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-stat::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--primary);
+      }
+
+      .hero-stat strong {
+        display: block;
+        color: var(--dark);
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+      }
+
+      .hero-stat span {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      .hero-journey {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .hero-journey-item {
+        position: relative;
+        padding: 18px 16px 16px;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid rgba(18, 62, 138, 0.08);
+        box-shadow: var(--shadow-sm);
+        background: #ffffff;
+      }
+
+      .hero-journey-item::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.95;
+        background: rgba(18, 62, 138, 0.06);
+      }
+
+      .hero-journey-item:nth-child(2)::before {
+        background: rgba(23, 184, 166, 0.1);
+      }
+
+      .hero-journey-item:nth-child(3)::before {
+        background: rgba(255, 123, 101, 0.1);
+      }
+
+      .hero-journey-step,
+      .hero-journey-item strong,
+      .hero-journey-item span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-journey-step {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 12px;
+        border-radius: 12px;
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      .hero-journey-item:nth-child(2) .hero-journey-step {
+        background: var(--teal-soft);
+        color: #0a7166;
+      }
+
+      .hero-journey-item:nth-child(3) .hero-journey-step {
+        background: var(--coral-soft);
+        color: #c14d3a;
+      }
+
+      .hero-journey-item strong {
+        display: block;
+        color: var(--dark);
+        font-size: 0.98rem;
+        margin-bottom: 6px;
+      }
+
+      .hero-journey-item span {
+        display: block;
+        color: var(--text-light);
+        font-size: 0.88rem;
+      }
+
+      .hero-visual {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 18px;
+        align-items: start;
+        z-index: 1;
+      }
+
+      .hero-visual::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+        left: -30px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(105, 168, 255, 0.18);
+        filter: blur(6px);
+        z-index: 0;
+      }
+      .teacher-card {
+        width: 500px;
+      }
+
+      .teacher-card img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 6%;
+        transform: scale(1.34);
+        transform-origin: center top;
+      }
+
+      .live-sidebar {
+        display: grid;
+        gap: 16px;
+      }
+
+      .live-sidebar-card,
+      .trust-card {
+        padding: 22px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-md);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .live-sidebar-card::before,
+      .trust-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--primary);
+      }
+
+      .live-sidebar-card::after,
+      .trust-card::after {
+        content: "";
+        position: absolute;
+        top: -46px;
+        right: -34px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(105, 168, 255, 0.12);
+      }
+
+      .live-sidebar-card h3,
+      .trust-card h3 {
+        color: var(--dark);
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .live-sidebar-card p,
+      .trust-card p {
+        color: var(--text-light);
+        font-size: 0.93rem;
+        margin-bottom: 18px;
+      }
+
+      .live-pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .live-pill {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: #fff1b5;
+        color: #8a6500;
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+
+      .live-class-list {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .live-class-item {
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: #f7faff;
+        border: 1px solid #dce5ff;
+        transition: var(--transition);
+      }
+
+      .live-class-item:hover {
+        transform: translateY(-2px);
+        border-color: #c5d6ff;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .live-time {
+        display: inline-block;
+        margin-bottom: 6px;
+        color: var(--primary-dark);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .live-class-item strong {
+        display: block;
+        color: var(--dark);
+      }
+
+      .live-class-item span {
+        color: var(--text-light);
+        font-size: 0.88rem;
+      }
+
+      .trust-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .trust-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .trust-item i {
+        color: var(--success);
+        margin-top: 4px;
+      }
+
+      .overview {
+        padding: 0 0 90px;
+        position: relative;
+      }
+
+      .overview::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0),
+          rgba(237, 244, 255, 0.65)
+        );
+        pointer-events: none;
+      }
+
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .overview-card {
+        padding: 26px;
+        border-radius: 24px;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .overview-card:hover,
+      .resource-card:hover,
+      .topper-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .overview-card i {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 16px;
+        border-radius: 18px;
+        background: var(--primary-soft);
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+      }
+
+      .overview-card:nth-child(2) i,
+      .resource-card:nth-child(2) i {
+        background: var(--teal-soft);
+        color: #0a7166;
+      }
+
+      .overview-card:nth-child(3) i,
+      .resource-card:nth-child(3) i {
+        background: var(--coral-soft);
+        color: #c14d3a;
+      }
+
+      .overview-card:nth-child(4) i,
+      .resource-card:nth-child(4) i {
+        background: #fff8dc;
+        color: #8a6500;
+      }
+
+      .overview-card strong {
+        display: block;
+        color: var(--dark);
+        font-size: 2rem;
+        margin-bottom: 6px;
+      }
+
+      .overview-card span {
+        color: var(--text-light);
+      }
+
+      .courses-section,
+      .toppers-section,
+      .resources-section,
+      .faq-section {
+        padding: 90px 0;
+      }
+
+      .resources-section {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 240, 236, 0.38),
+          rgba(255, 255, 255, 0)
+        );
+      }
+
+      .toppers-section {
+        background: linear-gradient(
+          180deg,
+          rgba(233, 255, 251, 0.44),
+          rgba(255, 255, 255, 0)
+        );
+      }
+
+      .batches-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .course-card {
+        position: relative;
+        border-radius: 26px;
+        border: 1px solid var(--line);
+        background: #ffffff;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        padding: 20px;
+      }
+
+      .course-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--primary);
+      }
+
+      .course-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .course-card:nth-child(1) {
+        background: #f7faff;
+        border-color: #d8e5ff;
+      }
+
+      .course-card:nth-child(2) {
+        background: #f4fbf9;
+        border-color: #d4ede5;
+      }
+
+      .course-card:nth-child(3) {
+        background: #fff7ef;
+        border-color: #f6dfc1;
+      }
+
+      .course-card:nth-child(4) {
+        background: #fff2f2;
+        border-color: #f1d1d1;
+      }
+
+      .course-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .course-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: var(--primary-dark);
+        background: var(--primary-soft);
+        flex-shrink: 0;
+      }
+
+      .course-card:nth-child(2) .course-icon {
+        background: var(--teal-soft);
+        color: #0a7166;
+      }
+
+      .course-card:nth-child(3) .course-icon {
+        background: #fff1d9;
+        color: #b46d00;
+      }
+
+      .course-card:nth-child(4) .course-icon {
+        background: var(--coral-soft);
+        color: #c14d3a;
+      }
+
+      .course-badge {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--primary-dark);
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+
+      .course-body {
+        padding: 0;
+      }
+
+      .course-cat {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: var(--primary);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .course-title {
+        color: var(--dark);
+        font-size: 1.24rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+
+      .course-desc {
+        color: var(--text-light);
+        font-size: 0.92rem;
+        margin-bottom: 14px;
+      }
+
+      .course-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 14px;
+      }
+
+      .course-points {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .course-point {
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(18, 62, 138, 0.1);
+        background: rgba(255, 255, 255, 0.68);
+        color: var(--dark);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .rating {
+        color: #f5b301;
+        font-weight: 800;
+      }
+
+      .course-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .course-footer .btn {
+        min-height: 44px;
+        padding: 0 18px;
+      }
+
+      .price-tag {
+        color: var(--primary-dark);
+        font-size: 1.18rem;
+        font-weight: 800;
+      }
+
+      .price-tag span {
+        display: block;
+        color: var(--text-light);
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .batch-sidebar {
+        position: sticky;
+        top: 104px;
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .resource-card {
+        padding: 24px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+      }
+
+      .resource-card i {
+        width: 54px;
+        height: 54px;
+        margin-bottom: 16px;
+        border-radius: 18px;
+        background: var(--primary-soft);
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+      }
+
+      .resource-card h3 {
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+
+      .resource-card p {
+        color: var(--text-light);
+        font-size: 0.94rem;
+      }
+
+      .toppers-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .topper-card {
+        padding: 24px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+        box-shadow: var(--shadow-sm);
+        text-align: left;
+        transition: var(--transition);
+      }
+
+      .topper-rank {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 82px;
+        height: 36px;
+        border-radius: 999px;
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        font-size: 0.82rem;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .topper-card p {
+        color: var(--text-main);
+        margin-bottom: 20px;
+      }
+
+      .topper-profile {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .topper-profile img {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        object-fit: cover;
+      }
+
+      .topper-profile strong {
+        color: var(--dark);
+      }
+
+      .topper-profile span {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      .faq-grid {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .faq-question {
+        width: 100%;
+        padding: 24px 0;
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--dark);
+        font-size: 1.08rem;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        color: var(--text-light);
+        transition: max-height 0.25s ease;
+      }
+
+      .faq-answer p {
+        padding-bottom: 20px;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 160px;
+      }
+
+      footer {
+        padding: 80px 0 32px;
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 36px;
+        margin-bottom: 44px;
+      }
+
+      .footer-brand h2,
+      .footer-col h4 {
+        color: var(--dark);
+        margin-bottom: 16px;
+      }
+
+      .footer-brand p,
+      .footer-col a,
+      .footer-bottom {
+        color: var(--text-light);
+      }
+
+      .footer-col li {
+        margin-bottom: 10px;
+      }
+
+      .footer-brand .socials {
+        display: flex;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .footer-bottom {
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+        text-align: center;
+        font-size: 0.92rem;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(10, 18, 36, 0.45);
+        z-index: 1003;
+      }
+
+      .modal-card {
+        width: min(520px, 100%);
+        padding: 30px;
+        border-radius: 28px;
+        background: #ffffff;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: #ffffff;
+      }
+
+      .modal-card h3 {
+        color: var(--dark);
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+
+      .modal-card p {
+        color: var(--text-light);
+        margin-bottom: 22px;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--dark);
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .form-control {
+        width: 100%;
+        min-height: 50px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        outline: none;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+      }
+
+      @media (max-width: 1180px) {
+        .hero-shell,
+        .batches-layout {
+          grid-template-columns: 1fr;
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
+        .hero-grid-lines {
+          width: 86%;
+          right: 7%;
         }
 
-        .btn {
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
+        .hero-visual,
+        .resources-grid,
+        .toppers-grid,
+        .overview-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        .batch-sidebar {
+          position: static;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+        .footer-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+      }
 
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Scroll Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Floating Elements */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        .floating { animation: float 6s ease-in-out infinite; }
-        .floating-delay { animation: float 7s ease-in-out infinite 1s; }
-
-        /* -----------------------------------------------------------
-           HEADER & NAV
-        ----------------------------------------------------------- */
-        .promo-banner {
-            background: linear-gradient(90deg, #4f46e5, #9333ea);
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            position: relative;
-            z-index: 1001;
-        }
-
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 16px 0;
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled {
-            padding: 12px 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span { color: var(--primary); }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--text-main);
-            transition: color 0.2s;
-            position: relative;
-        }
-
-        .nav-link:hover { color: var(--primary); }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover::after { width: 100%; }
-
+      @media (max-width: 920px) {
+        .nav-links,
         .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .lang-switch {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
-            cursor: pointer;
+          display: none;
         }
 
         .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            color: var(--dark);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        /* -----------------------------------------------------------
-           HERO SECTION
-        ----------------------------------------------------------- */
+        .course-grid,
+        .resources-grid,
+        .toppers-grid,
+        .overview-grid,
+        .hero-visual,
+        .hero-stats,
+        .hero-journey {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-highlights {
+          grid-template-columns: 1fr;
+        }
+
+        .teacher-card {
+          min-height: 520px;
+        }
+
+        .teacher-card img {
+          object-position: center 8%;
+          transform: scale(1.4);
+        }
+
+        .teacher-card-stats {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 28px, 1440px);
+        }
+
         .hero {
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
+          padding: 42px 0 72px;
         }
 
-        /* Background Blobs */
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-        }
-        .blob-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; right: -100px; }
-        .blob-2 { width: 300px; height: 300px; background: var(--accent); bottom: 50px; left: -50px; }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 60px;
+        .hero-grid-lines,
+        .hero-ribbon {
+          display: none;
         }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 800;
-            margin-bottom: 24px;
-            color: var(--dark);
+        .hero-wave svg {
+          height: 62px;
         }
 
-        .hero-text p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 32px;
-            max-width: 500px;
+        .hero-copy h1 {
+          font-size: 2.9rem;
         }
 
-        .hero-btns {
-            display: flex;
-            gap: 16px;
+        .hero-proof {
+          align-items: flex-start;
         }
 
-        .hero-visual {
-            position: relative;
+        .proof-avatar {
+          width: 38px;
+          height: 38px;
+          font-size: 0.76rem;
         }
 
-        .dashboard-mockup {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255,255,255,0.8);
-            position: relative;
-            z-index: 2;
-        }
-
-        /* CSS-only dashboard representation */
-        .mock-header {
-            display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;
-        }
-        .mock-chart {
-            height: 150px; background: linear-gradient(180deg, rgba(79,70,229,0.1) 0%, rgba(255,255,255,0) 100%);
-            border-radius: 8px; position: relative; margin-bottom: 20px;
-            border: 1px dashed var(--primary);
-        }
-        .mock-bar {
-            position: absolute; bottom: 0; width: 12%; background: var(--primary); border-radius: 4px 4px 0 0;
-        }
-        .mock-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .stat-box { background: #f1f5f9; padding: 15px; border-radius: 12px; text-align: center; }
-        .stat-num { font-weight: 800; color: var(--primary); display: block; }
-
-        .float-card {
-            position: absolute;
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-lg);
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .fc-1 { top: -20px; left: -20px; }
-        .fc-2 { bottom: -30px; right: -20px; }
-        .icon-box {
-            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;
-        }
-
-        /* -----------------------------------------------------------
-           ANALYTICS SHOWCASE
-        ----------------------------------------------------------- */
-        .analytics-section {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 16px; color: var(--dark); }
-        .section-header p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .stat-card {
-            padding: 30px;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            transition: var(--transition);
-        }
-        .stat-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
-
-        .stat-icon {
-            width: 60px; height: 60px;
-            margin: 0 auto 20px;
-            background: rgba(79, 70, 229, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .counter { font-size: 2.5rem; font-weight: 800; color: var(--dark); display: block; }
-        .stat-label { color: var(--text-light); font-weight: 500; }
-
-        .dashboard-preview {
-            background: var(--dark);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .dash-ui {
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 40px;
-            color: white;
-        }
-        
-        .dash-sidebar div {
-            padding: 15px; margin-bottom: 10px; border-radius: 8px; background: rgba(255,255,255,0.1); cursor: pointer;
-        }
-        .dash-sidebar div.active { background: var(--primary); }
-        
-        .dash-main h3 { margin-bottom: 20px; }
-        .progress-wrapper { margin-bottom: 30px; }
-        .progress-bar-bg { background: rgba(255,255,255,0.2); height: 10px; border-radius: 5px; margin-top: 8px; }
-        .progress-fill { background: var(--accent); height: 100%; border-radius: 5px; width: 0; transition: width 1.5s ease-out; }
-
-        /* -----------------------------------------------------------
-           COURSES & PRICING
-        ----------------------------------------------------------- */
-        .courses-section { padding: 100px 0; position: relative; }
-
-        .filter-bar {
-            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 40px;
-        }
-        .filter-btn {
-            padding: 8px 20px; border-radius: 30px; background: white; border: 1px solid #e2e8f0; color: var(--text-light); font-weight: 600; transition: var(--transition);
-        }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
-
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .course-card {
-            background: white;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 1px solid #f1f5f9;
-            display: flex; flex-direction: column;
-        }
-
-        .course-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-
-        .course-thumb {
-            height: 200px;
-            background-color: #ddd;
-            position: relative;
-        }
-        .course-thumb img { width: 100%; height: 100%; object-fit: cover; }
-        .badge {
-            position: absolute; top: 15px; left: 15px;
-            padding: 5px 12px; border-radius: 6px;
-            font-size: 0.8rem; font-weight: 700; color: white;
-            background: var(--primary);
-        }
-
-        .course-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-        .course-cat { color: var(--accent); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
-        .course-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
-        .course-meta { display: flex; align-items: center; gap: 15px; color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px; }
-        .rating { color: #f59e0b; }
-        
+        .hero-actions,
         .course-footer {
-            margin-top: auto;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 20px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .price { font-size: 1.25rem; font-weight: 800; color: var(--dark); }
-
-        /* Pricing Table */
-        .pricing-section { padding: 80px 0; background: white; }
-        .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;
-        }
-        .price-card {
-            padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; text-align: center; transition: var(--transition);
-        }
-        .price-card.popular { border: 2px solid var(--primary); background: #f8fafc; position: relative; }
-        .popular-tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
-        .plan-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
-        .plan-amount { font-size: 3rem; font-weight: 800; color: var(--dark); margin-bottom: 30px; }
-        .plan-amount span { font-size: 1rem; color: var(--text-light); font-weight: 400; }
-        .features-list { margin-bottom: 30px; text-align: left; }
-        .features-list li { margin-bottom: 12px; color: var(--text-light); }
-        .features-list i { color: var(--primary); margin-right: 10px; }
-
-        /* -----------------------------------------------------------
-           RESOURCES & VIDEO
-        ----------------------------------------------------------- */
-        .resources-section { padding: 100px 0; }
-        .resource-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;
-        }
-        .res-card {
-            background: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; text-align: center;
-        }
-        .res-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
-        
-        /* Video Section */
-        .video-section { padding: 80px 0; background: var(--dark); color: white; }
-        .video-container {
-            max-width: 800px; margin: 50px auto 0;
-            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; background: #000;
-        }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        /* -----------------------------------------------------------
-           QUIZ & CERTIFICATION
-        ----------------------------------------------------------- */
-        .quiz-section { padding: 80px 0; background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%); }
-        .quiz-ui {
-            background: white; border-radius: 20px; padding: 40px; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow-lg);
-        }
-        .quiz-timer {
-            display: inline-block; background: #fee2e2; color: #ef4444; padding: 5px 15px; border-radius: 8px; font-weight: 700; margin-bottom: 20px;
-        }
-        .question-box h3 { font-size: 1.4rem; margin-bottom: 25px; }
-        .options-grid { display: grid; gap: 15px; }
-        .option {
-            padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 15px;
-        }
-        .option:hover { border-color: var(--primary); background: #f0f9ff; }
-        .option.selected { border-color: var(--primary); background: #eff6ff; color: var(--primary); font-weight: 600; }
-        
-        .cert-preview {
-            margin-top: 40px; border: 5px double var(--primary); padding: 20px; text-align: center; display: none; /* Hidden by default */
-        }
-        .cert-preview.show { display: block; animation: fadeUp 0.5s; }
-
-        /* -----------------------------------------------------------
-           BLOG, UPDATES & COMMUNITY
-        ----------------------------------------------------------- */
-        .info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 80px 0; }
-        .blog-card { display: flex; gap: 20px; background: white; padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
-        .blog-img { width: 150px; height: 100px; border-radius: 10px; object-fit: cover; }
-        .blog-content h4 { font-size: 1.1rem; margin-bottom: 8px; }
-        
-        .updates-list { background: white; padding: 30px; border-radius: 16px; box-shadow: var(--shadow-sm); }
-        .update-item { padding-bottom: 15px; border-bottom: 1px solid #eee; margin-bottom: 15px; }
-        .update-item:last-child { border: none; margin: 0; padding: 0; }
-        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; margin-right: 8px; text-transform: uppercase; font-weight: 700; }
-        .tag.gate { background: #e0e7ff; color: var(--primary); }
-        .tag.upsc { background: #fee2e2; color: #ef4444; }
-
-        /* -----------------------------------------------------------
-           FAQ & TESTIMONIALS
-        ----------------------------------------------------------- */
-        .faq-section { padding: 80px 0; background: white; }
-        .accordion { max-width: 800px; margin: 0 auto; }
-        .acc-item { border-bottom: 1px solid #e2e8f0; }
-        .acc-header {
-            padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem;
-        }
-        .acc-body {
-            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: var(--text-light);
-        }
-        .acc-body p { padding-bottom: 20px; }
-        .acc-item.active .acc-body { max-height: 200px; }
-        .acc-item.active .fa-chevron-down { transform: rotate(180deg); }
-
-        .testimonials { padding: 80px 0; background: var(--dark); color: white; text-align: center; }
-        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .testi-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 16px; text-align: left; }
-        .student-profile { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
-        .student-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-
-        /* -----------------------------------------------------------
-           FOOTER
-        ----------------------------------------------------------- */
-        footer { background: #0f172a; color: #94a3b8; padding: 80px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-        .footer-brand h2 { color: white; margin-bottom: 20px; font-size: 1.8rem; }
-        .footer-col h4 { color: white; margin-bottom: 20px; font-weight: 700; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a:hover { color: white; }
-        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 30px; text-align: center; font-size: 0.9rem; }
-
-        /* -----------------------------------------------------------
-           INTERACTIVE COMPONENTS (Chat, Modal)
-        ----------------------------------------------------------- */
-        .chatbot-btn {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 10px 30px rgba(79,70,229,0.4); z-index: 999; transition: transform 0.3s;
-        }
-        .chatbot-btn:hover { transform: scale(1.1); }
-
-        .chat-window {
-            position: fixed; bottom: 100px; right: 30px; width: 350px; height: 450px; background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 998; display: none; flex-direction: column; overflow: hidden;
-        }
-        .chat-header { background: var(--primary); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; }
-        .chat-input { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 10px; }
-        .chat-input input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
-        
-        .msg { margin-bottom: 10px; padding: 10px 15px; border-radius: 15px; font-size: 0.9rem; max-width: 80%; }
-        .msg.bot { background: white; align-self: flex-start; border: 1px solid #eee; }
-        .msg.user { background: var(--primary); color: white; align-self: flex-end; margin-left: auto; }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(5px); z-index: 2000; display: none; align-items: center; justify-content: center;
-        }
-        .modal-box {
-            background: white; width: 100%; max-width: 500px; padding: 40px; border-radius: 24px; position: relative; animation: float 0.5s ease-out;
-        }
-        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-light); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
-        .form-control { width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; outline: none; font-family: inherit; transition: 0.2s; }
-        .form-control:focus { border-color: var(--primary); }
-
-        /* -----------------------------------------------------------
-           RESPONSIVE
-        ----------------------------------------------------------- */
-        @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-btns { justify-content: center; }
-            .hero-visual { display: none; /* Simplify for mobile */ }
-            .info-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .dash-ui { grid-template-columns: 1fr; }
-            .dash-sidebar { display: none; }
+          flex-direction: column;
+          align-items: stretch;
         }
 
-        @media (max-width: 768px) {
-            .nav-links, .nav-actions { display: none; }
-            .mobile-menu-btn { display: block; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 2.5rem; }
+        .teacher-caption {
+          position: static;
+          margin: 14px;
         }
-        
-        /* Mobile Menu Active State */
-        .mobile-nav {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: white; z-index: 1000; padding: 80px 20px; transform: translateX(-100%); transition: transform 0.3s; display: flex; flex-direction: column; gap: 20px;
+
+        .teacher-card {
+          min-height: 560px;
         }
-        .mobile-nav.active { transform: translateX(0); }
+
+        .teacher-card img {
+          object-position: center 4%;
+          transform: scale(1.5);
+        }
+
+        .teacher-caption-top,
+        .teacher-card-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .teacher-caption-top {
+          display: grid;
+        }
+
+        .btn,
+        .hero-actions .btn {
+          width: 100%;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
-</head>
-<body>
-
-    <!-- Promo Banner -->
-    <div class="promo-banner">
-        🔥 Limited Offer – Get 30% off on GATE preparation courses. Use code: PREP30
+  </head>
+  <body>
+    <div class="promo-bar">
+      New academic year batches are live now. Start with a free class and study
+      with India’s top educators.
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar glass" id="navbar">
-        <div class="container nav-content">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-atom fa-spin-pulse" style="--fa-animation-duration: 3s;"></i>
-                PrepLab<span>.</span>
-            </a>
+    <nav class="navbar" id="navbar">
+      <div class="container nav-inner">
+        <a href="#" class="logo">
+          <span class="logo-mark"><i class="fa-solid fa-bolt"></i></span>
+          PrepLab<span>.</span>
+        </a>
 
-            <ul class="nav-links">
-                <li><a href="#courses" class="nav-link">Courses</a></li>
-                <li><a href="#resources" class="nav-link">Resources</a></li>
-                <li><a href="#analytics" class="nav-link">PYQs</a></li>
-                <li><a href="#community" class="nav-link">Community</a></li>
-                <li><a href="#blog" class="nav-link">Blog</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <div class="lang-switch">
-                    <i class="fa-solid fa-globe"></i>
-                    <select id="langSelect" style="border:none; bg:transparent; font-family:inherit; font-weight:600; color:var(--text-main);">
-                        <option value="en">EN</option>
-                        <option value="hi">HI</option>
-                        <option value="or">OR</option>
-                    </select>
-                </div>
-                <button class="btn btn-outline" onclick="openModal('Login')">Login</button>
-                <button class="btn btn-primary" onclick="openModal('Join Course')">Join Course</button>
-            </div>
-
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <i class="fa-solid fa-bars"></i>
+        <div class="nav-links">
+          <div class="nav-dropdown" id="programsDropdown">
+            <button class="nav-dropdown-toggle" type="button">
+              Programs <i class="fa-solid fa-chevron-down"></i>
             </button>
+            <div class="nav-dropdown-menu">
+              <button
+                class="dropdown-item"
+                type="button"
+                data-exam-target="all"
+              >
+                All Programs
+              </button>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-exam-target="gate"
+              >
+                GATE & PSU
+              </button>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-exam-target="upsc"
+              >
+                UPSC CSE
+              </button>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-exam-target="ssc"
+              >
+                SSC Exams
+              </button>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-exam-target="banking"
+              >
+                Banking Exams
+              </button>
+            </div>
+          </div>
+          <a href="#overview" class="nav-link">Why Us</a>
+          <a href="#courses" class="nav-link">Popular Batches</a>
+          <a href="#toppers" class="nav-link">Toppers Wall</a>
+          <a href="#resources" class="nav-link">Resources</a>
         </div>
+
+        <div class="nav-actions">
+          <button
+            class="btn btn-secondary"
+            onclick="openModal('Book a Demo Class')"
+          >
+            Book Demo
+          </button>
+          <button class="btn btn-primary" onclick="openModal('Join for Free')">
+            Join for Free
+          </button>
+        </div>
+
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </nav>
 
-    <!-- Mobile Menu -->
     <div class="mobile-nav" id="mobileNav">
-        <a href="#" class="logo" style="margin-bottom: 30px;">PrepLab<span>.</span></a>
-        <a href="#courses" class="nav-link" onclick="toggleMenu()">Courses</a>
-        <a href="#resources" class="nav-link" onclick="toggleMenu()">Resources</a>
-        <a href="#analytics" class="nav-link" class="nav-link" onclick="toggleMenu()">PYQs</a>
-        <a href="#community" class="nav-link" onclick="toggleMenu()">Community</a>
-        <a href="#blog" class="nav-link" onclick="toggleMenu()">Blog</a>
-        <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="openModal('Join Course'); toggleMenu();">Join Course</button>
+      <a href="#" class="logo">
+        <span class="logo-mark"><i class="fa-solid fa-bolt"></i></span>
+        PrepLab<span>.</span>
+      </a>
+      <div class="mobile-nav-links">
+        <a
+          href="#courses"
+          class="nav-link"
+          onclick="
+            filterCourses('all');
+            toggleMenu();
+          "
+          >All Programs</a
+        >
+        <a
+          href="#courses"
+          class="nav-link"
+          onclick="
+            filterCourses('gate');
+            toggleMenu();
+          "
+          >GATE & PSU</a
+        >
+        <a
+          href="#courses"
+          class="nav-link"
+          onclick="
+            filterCourses('upsc');
+            toggleMenu();
+          "
+          >UPSC CSE</a
+        >
+        <a
+          href="#courses"
+          class="nav-link"
+          onclick="
+            filterCourses('ssc');
+            toggleMenu();
+          "
+          >SSC Exams</a
+        >
+        <a
+          href="#courses"
+          class="nav-link"
+          onclick="
+            filterCourses('banking');
+            toggleMenu();
+          "
+          >Banking Exams</a
+        >
+        <a href="#overview" class="nav-link" onclick="toggleMenu()">Why Us</a>
+        <a href="#toppers" class="nav-link" onclick="toggleMenu()"
+          >Toppers Wall</a
+        >
+        <a href="#resources" class="nav-link" onclick="toggleMenu()"
+          >Resources</a
+        >
+        <button
+          class="btn btn-primary"
+          onclick="
+            openModal('Join for Free');
+            toggleMenu();
+          "
+        >
+          Join for Free
+        </button>
+      </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="container hero-grid">
-            <div class="hero-text reveal">
-                <h1>Master Competitive Exams with <span class="gradient-text">Expert Guidance</span></h1>
-                <p>Courses, PYQs, quizzes, certifications and career mentorship in one AI-powered platform. Your future starts here.</p>
-                <div class="hero-btns">
-                    <button class="btn btn-primary" onclick="scrollToSection('courses')">Start Learning <i class="fa-solid fa-arrow-right"></i></button>
-                    <button class="btn btn-outline" onclick="scrollToSection('analytics')">Explore Analytics</button>
-                </div>
-            </div>
-
-            <div class="hero-visual floating reveal">
-                <div class="dashboard-mockup">
-                    <div class="mock-header">
-                        <div style="width: 20px; height: 20px; background: #ff5f56; border-radius: 50%;"></div>
-                        <div style="width: 20px; height: 20px; background: #ffbd2e; border-radius: 50%;"></div>
-                        <div style="width: 20px; height: 20px; background: #27c93f; border-radius: 50%;"></div>
-                    </div>
-                    <div class="mock-chart">
-                        <div class="mock-bar" style="left: 10%; height: 40%; animation: grow 2s infinite;"></div>
-                        <div class="mock-bar" style="left: 30%; height: 70%; animation: grow 2s infinite 0.2s;"></div>
-                        <div class="mock-bar" style="left: 50%; height: 50%; animation: grow 2s infinite 0.4s;"></div>
-                        <div class="mock-bar" style="left: 70%; height: 90%; animation: grow 2s infinite 0.6s;"></div>
-                        <div class="mock-bar" style="left: 90%; height: 60%; animation: grow 2s infinite 0.8s;"></div>
-                    </div>
-                    <div class="mock-stats">
-                        <div class="stat-box">
-                            <span class="stat-num">92%</span>
-                            <small>Accuracy</small>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-num">Top 100</span>
-                            <small>Rank</small>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Floating Elements -->
-                <div class="float-card fc-1 floating-delay">
-                    <div class="icon-box" style="background: #10b981;"><i class="fa-solid fa-check"></i></div>
-                    <div>
-                        <strong style="display:block; font-size: 0.9rem;">Test Completed</strong>
-                        <small style="color:#64748b;">Fluid Mechanics</small>
-                    </div>
-                </div>
-                
-                <div class="float-card fc-2 floating">
-                    <div class="icon-box" style="background: #f59e0b;"><i class="fa-solid fa-trophy"></i></div>
-                    <div>
-                        <strong style="display:block; font-size: 0.9rem;">New Badge</strong>
-                        <small style="color:#64748b;">7 Day Streak</small>
-                    </div>
-                </div>
-            </div>
+    <main>
+      <section class="hero">
+        <div class="hero-bg-elements" aria-hidden="true">
+          <span class="hero-glow"></span>
+          <span class="hero-grid-lines"></span>
+          <span class="hero-ribbon"></span>
         </div>
-    </section>
-
-    <!-- Analytics / Platform Showcase -->
-    <section class="analytics-section" id="analytics">
         <div class="container">
-            <div class="section-header reveal">
-                <h2>PrepLab Student Platform</h2>
-                <p>Data-driven preparation. Track your progress, predict your rank, and identify weak areas instantly.</p>
+          <div class="hero-shell">
+            <div class="hero-copy reveal">
+              <span class="section-kicker"
+                >High-impact online learning for aspirants</span
+              >
+              <h1>Learn from the best. Crack the toughest exams.</h1>
+              <p>
+                A modern EdTech platform for competitive-exam preparation with
+                live classes, teacher-led strategy, structured notes, test
+                series, and an experience designed to feel fast, trustworthy,
+                and motivating on every screen.
+              </p>
+              <div class="hero-proof">
+                <div class="proof-stack" aria-hidden="true">
+                  <span class="proof-avatar">AK</span>
+                  <span class="proof-avatar">RV</span>
+                  <span class="proof-avatar">NS</span>
+                </div>
+                <div class="proof-copy">
+                  <strong
+                    >50,000+ learners joined in the last exam cycle</strong
+                  >
+                  <span
+                    >Daily live attendance with mentor-led revision and doubt
+                    support</span
+                  >
+                </div>
+              </div>
+              <div class="hero-highlights">
+                <span class="hero-highlight">Live classes every day</span>
+                <span class="hero-highlight">Weekly mock tests</span>
+                <span class="hero-highlight">Structured notes and replay</span>
+              </div>
+              <div class="hero-actions">
+                <button
+                  class="btn btn-primary"
+                  onclick="openModal('Join for Free')"
+                >
+                  Join for Free
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  onclick="scrollToSection('courses')"
+                >
+                  Explore Popular Batches
+                </button>
+              </div>
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <strong>15M+</strong>
+                  <span>learners on live and recorded classes</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>250+</strong>
+                  <span>trusted faculty members and mentors</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>4.8/5</strong>
+                  <span>student rating across major batches</span>
+                </div>
+              </div>
+              <div class="hero-journey reveal">
+                <div class="hero-journey-item">
+                  <span class="hero-journey-step">01</span>
+                  <strong>Pick your exam path</strong>
+                  <span
+                    >Choose JEE, NEET, UPSC, GATE, SSC, or banking in one guided
+                    flow.</span
+                  >
+                </div>
+                <div class="hero-journey-item">
+                  <span class="hero-journey-step">02</span>
+                  <strong>Study with live momentum</strong>
+                  <span
+                    >Daily classes, mock tests, and mentor nudges keep your
+                    preparation active.</span
+                  >
+                </div>
+                <div class="hero-journey-item">
+                  <span class="hero-journey-step">03</span>
+                  <strong>Track scores and improve</strong>
+                  <span
+                    >Get replay, analytics, and revision plans that close weak
+                    chapters faster.</span
+                  >
+                </div>
+              </div>
             </div>
 
-            <div class="stats-grid reveal">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <span class="counter" data-target="15000">0</span>+
-                    <span class="stat-label">Active Students</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-book-open"></i></div>
-                    <span class="counter" data-target="500">0</span>+
-                    <span class="stat-label">Mock Tests</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <span class="counter" data-target="98">0</span>%
-                    <span class="stat-label">Selection Rate</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-video"></i></div>
-                    <span class="counter" data-target="1200">0</span>+
-                    <span class="stat-label">Video Lessons</span>
-                </div>
-            </div>
+            <div class="hero-visual reveal">
+              <div class="teacher-card">
+                <img src="./profile.png" alt="Lead teacher" />
+                <!-- <div class="teacher-caption">
+                  <div class="teacher-caption-top">
+                    <div class="teacher-caption-copy">
+                      <strong>Prof. Arjun Mehra</strong>
+                      <span
+                        >Physics mentor for JEE, NEET, and Olympiad
+                        foundations</span
+                      >
+                    </div>
+                    <div class="teacher-caption-badge">
+                      12+ yrs
+                      <small>teaching</small>
+                    </div>
+                  </div>
+                  <div class="teacher-card-stats">
+                    <div class="teacher-card-stat">
+                      <strong>120k+</strong>
+                      <span>learners taught</span>
+                    </div>
+                    <div class="teacher-card-stat">
+                      <strong>4.9/5</strong>
+                      <span>student rating</span>
+                    </div>
+                    <div class="teacher-card-stat">
+                      <strong>92%</strong>
+                      <span>score uplift</span>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
 
-            <div class="dashboard-preview reveal">
-                <div class="dash-ui">
-                    <div class="dash-sidebar">
-                        <div class="active"><i class="fa-solid fa-gauge"></i> Dashboard</div>
-                        <div><i class="fa-solid fa-pen-to-square"></i> Mock Tests</div>
-                        <div><i class="fa-solid fa-book"></i> Courses</div>
-                        <div><i class="fa-solid fa-users"></i> Community</div>
+              <div class="live-sidebar">
+                <aside class="live-sidebar-card">
+                  <h3>Live Classes</h3>
+                  <p>
+                    High-energy sessions with polls, doubts, and teacher
+                    interaction built for daily momentum.
+                  </p>
+                  <div class="live-pill-row">
+                    <span class="live-pill">Today 7:00 PM</span>
+                    <span class="live-pill">Hindi + English</span>
+                  </div>
+                  <div class="live-class-list">
+                    <div class="live-class-item">
+                      <span class="live-time">6:00 PM</span>
+                      <strong>Electrostatics Sprint</strong>
+                      <span>With Arjun Mehra</span>
                     </div>
-                    <div class="dash-main">
-                        <h3>Performance Analytics</h3>
-                        <div class="progress-wrapper">
-                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                                <span>General Aptitude</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="progress-bar-bg"><div class="progress-fill" style="width: 85%;"></div></div>
-                        </div>
-                        <div class="progress-wrapper">
-                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                                <span>Technical Engineering</span>
-                                <span>72%</span>
-                            </div>
-                            <div class="progress-bar-bg"><div class="progress-fill" style="width: 72%;"></div></div>
-                        </div>
-                        <div class="progress-wrapper">
-                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                                <span>Mathematics</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="progress-bar-bg"><div class="progress-fill" style="width: 90%;"></div></div>
-                        </div>
-                        
-                        <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
-                                <h4 style="color:var(--accent);">Predicted Rank</h4>
-                                <div style="font-size: 2rem; font-weight: 800;">450 - 600</div>
-                            </div>
-                            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px;">
-                                <h4 style="color: #f59e0b;">Study Streak</h4>
-                                <div style="font-size: 2rem; font-weight: 800;">12 Days 🔥</div>
-                            </div>
-                        </div>
+                    <div class="live-class-item">
+                      <span class="live-time">7:30 PM</span>
+                      <strong>Current Affairs Booster</strong>
+                      <span>UPSC GS with Riya Khanna</span>
                     </div>
+                    <div class="live-class-item">
+                      <span class="live-time">9:00 PM</span>
+                      <strong>Speed Math Drill</strong>
+                      <span>Bank PO with Neha Mehta</span>
+                    </div>
+                  </div>
+                  <button
+                    class="btn btn-primary"
+                    onclick="openModal('Join Live Classes')"
+                  >
+                    Join Live Classes
+                  </button>
+                </aside>
+
+                <div class="trust-card">
+                  <h3>Built for trust</h3>
+                  <p>
+                    Professional, focused, and optimized for serious learners
+                    from mobile to 4K desktop screens.
+                  </p>
+                  <div class="trust-list">
+                    <div class="trust-item">
+                      <i class="fa-solid fa-circle-check"></i
+                      ><span>Daily schedule and recorded backup</span>
+                    </div>
+                    <div class="trust-item">
+                      <i class="fa-solid fa-circle-check"></i
+                      ><span>Exam-level mock tests and rankings</span>
+                    </div>
+                    <div class="trust-item">
+                      <i class="fa-solid fa-circle-check"></i
+                      ><span>Teacher support and doubt solving</span>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+        <div class="hero-wave" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+            role="presentation"
+          >
+            <path
+              fill="#eaf1ff"
+              d="M0,72L60,68C120,64,240,56,360,54.7C480,53,600,59,720,66.7C840,75,960,85,1080,80C1200,75,1320,53,1380,42.7L1440,32L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
+              opacity="0.9"
+            ></path>
+            <path
+              fill="#ffffff"
+              d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,58.7C840,64,960,64,1080,56C1200,48,1320,32,1380,24L1440,16L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
+            ></path>
+            <path
+              fill="none"
+              stroke="rgba(18, 62, 138, 0.08)"
+              stroke-width="2"
+              d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,58.7C840,64,960,64,1080,56C1200,48,1320,32,1380,24L1440,16"
+            ></path>
+          </svg>
+        </div>
+      </section>
 
-    <!-- Courses & Pricing -->
-    <section class="courses-section" id="courses">
-        <div class="blob blob-1" style="top: 50%; left: -100px; width: 300px;"></div>
+      <section class="overview" id="overview">
         <div class="container">
-            <div class="section-header reveal">
-                <h2>Explore Courses</h2>
-                <p>Comprehensive curriculum designed by experts from IITs and IIMs.</p>
+          <div class="section-header reveal">
+            <span class="section-kicker">Why students choose us</span>
+            <h2>Everything needed to turn effort into rank</h2>
+            <p>
+              From daily classes to test analytics and revision resources, the
+              full learning flow is built to keep aspirants consistent.
+            </p>
+          </div>
+          <div class="overview-grid">
+            <div class="overview-card reveal">
+              <i class="fa-solid fa-video"></i>
+              <strong>1200+</strong>
+              <span>high-resolution video lectures</span>
             </div>
-
-            <div class="filter-bar reveal">
-                <button class="filter-btn active">All</button>
-                <button class="filter-btn">GATE</button>
-                <button class="filter-btn">UPSC</button>
-                <button class="filter-btn">SSC</button>
-                <button class="filter-btn">CAT</button>
+            <div class="overview-card reveal">
+              <i class="fa-solid fa-file-circle-check"></i>
+              <strong>500+</strong>
+              <span>practice sheets, tests, and DPPs</span>
             </div>
+            <div class="overview-card reveal">
+              <i class="fa-solid fa-users-gear"></i>
+              <strong>250+</strong>
+              <span>faculty and mentor sessions weekly</span>
+            </div>
+            <div class="overview-card reveal">
+              <i class="fa-solid fa-trophy"></i>
+              <strong>10k+</strong>
+              <span>top rank improvements across exams</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section class="courses-section" id="courses">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-kicker">Popular Batches</span>
+            <h2>Choose the batch built for your exam goal</h2>
+            <p>
+              Popular teacher-led batches with pricing, ratings, notes, and
+              recorded backup included.
+            </p>
+          </div>
+
+          <div class="batches-layout">
             <div class="course-grid">
-                <!-- Course 1 -->
-                <div class="course-card reveal">
-                    <div class="course-thumb">
-                        <span class="badge">Bestseller</span>
-                        <img src="https://picsum.photos/seed/gate1/400/300" alt="GATE Course">
-                    </div>
-                    <div class="course-body">
-                        <span class="course-cat">GATE & PSU</span>
-                        <h3 class="course-title">GATE 2025 Complete Mastery</h3>
-                        <div class="course-meta">
-                            <span><i class="fa-solid fa-chalkboard-user"></i> Dr. A. Sharma</span>
-                            <span class="rating"><i class="fa-solid fa-star"></i> 4.8 (1.2k)</span>
-                        </div>
-                        <div class="course-footer">
-                            <div class="price">₹4,999</div>
-                            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="openModal('Enroll: GATE Mastery')">Join</button>
-                        </div>
-                    </div>
+              <article class="course-card reveal" data-exam="gate">
+                <div class="course-top">
+                  <span class="course-icon"
+                    ><i class="fa-solid fa-atom"></i
+                  ></span>
+                  <span class="course-badge">Best Seller</span>
                 </div>
+                <div class="course-body">
+                  <span class="course-cat">GATE & PSU</span>
+                  <h3 class="course-title">
+                    Ultimate GATE Physics Wall Batch 2026
+                  </h3>
+                  <p class="course-desc">
+                    Compact revision system with concept drills, PYQs, and
+                    weekly score tracking.
+                  </p>
+                  <div class="course-meta">
+                    <span
+                      ><i class="fa-solid fa-chalkboard-user"></i> Arjun
+                      Mehra</span
+                    >
+                    <span><i class="fa-regular fa-clock"></i> 6 months</span>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.9</span
+                    >
+                  </div>
+                  <div class="course-points">
+                    <span class="course-point">Live problem solving</span>
+                    <span class="course-point">Test analytics</span>
+                    <span class="course-point">Notes included</span>
+                  </div>
+                  <div class="course-footer">
+                    <div class="price-tag">
+                      ₹2,999 <span>includes notes + tests</span>
+                    </div>
+                    <button
+                      class="btn btn-primary"
+                      onclick="openModal('Enroll in GATE Batch')"
+                    >
+                      Join Now
+                    </button>
+                  </div>
+                </div>
+              </article>
 
-                <!-- Course 2 -->
-                <div class="course-card reveal">
-                    <div class="course-thumb">
-                        <img src="https://picsum.photos/seed/upsc/400/300" alt="UPSC Course">
-                    </div>
-                    <div class="course-body">
-                        <span class="course-cat">UPSC CSE</span>
-                        <h3 class="course-title">GS Foundation Course 2025</h3>
-                        <div class="course-meta">
-                            <span><i class="fa-solid fa-chalkboard-user"></i> P. Kumar</span>
-                            <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (3.5k)</span>
-                        </div>
-                        <div class="course-footer">
-                            <div class="price">₹8,499</div>
-                            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="openModal('Enroll: GS Foundation')">Join</button>
-                        </div>
-                    </div>
+              <article class="course-card reveal" data-exam="upsc">
+                <div class="course-top">
+                  <span class="course-icon"
+                    ><i class="fa-solid fa-landmark"></i
+                  ></span>
+                  <span class="course-badge">Trending</span>
                 </div>
+                <div class="course-body">
+                  <span class="course-cat">UPSC CSE</span>
+                  <h3 class="course-title">Lakshya GS Foundation 2026</h3>
+                  <p class="course-desc">
+                    Daily current affairs, answer writing, and mentor feedback
+                    in one tighter prep flow.
+                  </p>
+                  <div class="course-meta">
+                    <span
+                      ><i class="fa-solid fa-chalkboard-user"></i> Riya
+                      Khanna</span
+                    >
+                    <span><i class="fa-regular fa-clock"></i> 10 months</span>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.8</span
+                    >
+                  </div>
+                  <div class="course-points">
+                    <span class="course-point">Answer review</span>
+                    <span class="course-point">GS current affairs</span>
+                    <span class="course-point">Mains strategy</span>
+                  </div>
+                  <div class="course-footer">
+                    <div class="price-tag">
+                      ₹4,499 <span>live + answer writing</span>
+                    </div>
+                    <button
+                      class="btn btn-primary"
+                      onclick="openModal('Enroll in UPSC Batch')"
+                    >
+                      Join Now
+                    </button>
+                  </div>
+                </div>
+              </article>
 
-                <!-- Course 3 -->
-                <div class="course-card reveal">
-                    <div class="course-thumb">
-                        <img src="https://picsum.photos/seed/cat/400/300" alt="CAT Course">
-                    </div>
-                    <div class="course-body">
-                        <span class="course-cat">MBA & CAT</span>
-                        <h3 class="course-title">CAT 2024 Quant & DILR</h3>
-                        <div class="course-meta">
-                            <span><i class="fa-solid fa-chalkboard-user"></i> S. Rao</span>
-                            <span class="rating"><i class="fa-solid fa-star"></i> 4.7 (900)</span>
-                        </div>
-                        <div class="course-footer">
-                            <div class="price">₹3,999</div>
-                            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;" onclick="openModal('Enroll: CAT Quant')">Join</button>
-                        </div>
-                    </div>
+              <article class="course-card reveal" data-exam="ssc">
+                <div class="course-top">
+                  <span class="course-icon"
+                    ><i class="fa-solid fa-list-check"></i
+                  ></span>
+                  <span class="course-badge">Fast Track</span>
                 </div>
+                <div class="course-body">
+                  <span class="course-cat">SSC CGL / CHSL</span>
+                  <h3 class="course-title">Agniveer SSC Master Batch</h3>
+                  <p class="course-desc">
+                    Shorter sprint batch focused on quant, reasoning, and daily
+                    exam-level practice.
+                  </p>
+                  <div class="course-meta">
+                    <span
+                      ><i class="fa-solid fa-chalkboard-user"></i> Ravi
+                      Sirohi</span
+                    >
+                    <span><i class="fa-regular fa-clock"></i> 4 months</span>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <div class="course-points">
+                    <span class="course-point">Daily quizzes</span>
+                    <span class="course-point">Reasoning drills</span>
+                    <span class="course-point">Mock ladder</span>
+                  </div>
+                  <div class="course-footer">
+                    <div class="price-tag">
+                      ₹1,999 <span>daily quizzes + mock tests</span>
+                    </div>
+                    <button
+                      class="btn btn-primary"
+                      onclick="openModal('Enroll in SSC Batch')"
+                    >
+                      Join Now
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="course-card reveal" data-exam="banking">
+                <div class="course-top">
+                  <span class="course-icon"
+                    ><i class="fa-solid fa-building-columns"></i
+                  ></span>
+                  <span class="course-badge">Interview Ready</span>
+                </div>
+                <div class="course-body">
+                  <span class="course-cat">Banking Exams</span>
+                  <h3 class="course-title">Champion Bank PO Live Batch</h3>
+                  <p class="course-desc">
+                    Score-building batch for quant, GA, mock interviews, and
+                    high-speed revision.
+                  </p>
+                  <div class="course-meta">
+                    <span
+                      ><i class="fa-solid fa-chalkboard-user"></i> Neha
+                      Mehta</span
+                    >
+                    <span><i class="fa-regular fa-clock"></i> 5 months</span>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.8</span
+                    >
+                  </div>
+                  <div class="course-points">
+                    <span class="course-point">GA capsules</span>
+                    <span class="course-point">Speed math</span>
+                    <span class="course-point">Interview prep</span>
+                  </div>
+                  <div class="course-footer">
+                    <div class="price-tag">
+                      ₹2,499 <span>GA + quant + interview</span>
+                    </div>
+                    <button
+                      class="btn btn-primary"
+                      onclick="openModal('Enroll in Banking Batch')"
+                    >
+                      Join Now
+                    </button>
+                  </div>
+                </div>
+              </article>
             </div>
-        </div>
-    </section>
 
-    <!-- Pricing / Subscription -->
-    <section class="pricing-section">
+            <aside class="batch-sidebar reveal">
+              <div class="live-sidebar-card">
+                <h3>Live Classes</h3>
+                <p>
+                  Join the next sessions streaming today with full interaction,
+                  polls, and instant doubt solving.
+                </p>
+                <div class="live-pill-row">
+                  <span class="live-pill">Today 7:00 PM</span>
+                  <span class="live-pill">Free entry</span>
+                </div>
+                <div class="live-class-list">
+                  <div class="live-class-item">
+                    <span class="live-time">6:00 PM</span>
+                    <strong>Electrostatics Revision Sprint</strong>
+                    <span>Physics with Arjun Mehra</span>
+                  </div>
+                  <div class="live-class-item">
+                    <span class="live-time">7:30 PM</span>
+                    <strong>UPSC Current Affairs Clinic</strong>
+                    <span>GS with Riya Khanna</span>
+                  </div>
+                  <div class="live-class-item">
+                    <span class="live-time">9:00 PM</span>
+                    <strong>Speed Math Drill</strong>
+                    <span>Bank PO with Neha Mehta</span>
+                  </div>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openModal('Join Live Classes')"
+                >
+                  Join Live Classes
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="toppers-section" id="toppers">
         <div class="container">
-            <div class="section-header reveal">
-                <h2>Flexible Plans</h2>
-                <p>Choose the plan that fits your preparation needs.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-card reveal">
-                    <h3 class="plan-name">Starter</h3>
-                    <div class="plan-amount">₹999<span>/mo</span></div>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> Access to Free Mocks</li>
-                        <li><i class="fa-solid fa-check"></i> Community Access</li>
-                        <li><i class="fa-solid fa-check"></i> Basic Analytics</li>
-                    </ul>
-                    <button class="btn btn-outline" onclick="openModal('Choose Starter')">Choose Plan</button>
-                </div>
-                <div class="price-card popular reveal">
-                    <div class="popular-tag">MOST POPULAR</div>
-                    <h3 class="plan-name">Pro</h3>
-                    <div class="plan-amount">₹2,499<span>/mo</span></div>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> All Premium Courses</li>
-                        <li><i class="fa-solid fa-check"></i> 10+ Full Length Tests</li>
-                        <li><i class="fa-solid fa-check"></i> Detailed Solutions</li>
-                        <li><i class="fa-solid fa-check"></i> Mentorship Calls</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="openModal('Choose Pro')">Choose Plan</button>
-                </div>
-                <div class="price-card reveal">
-                    <h3 class="plan-name">Elite</h3>
-                    <div class="plan-amount">₹4,999<span>/mo</span></div>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> Everything in Pro</li>
-                        <li><i class="fa-solid fa-check"></i> 1-on-1 Doubt Solving</li>
-                        <li><i class="fa-solid fa-check"></i> Personal Study Plan</li>
-                        <li><i class="fa-solid fa-check"></i> Interview Guidance</li>
-                    </ul>
-                    <button class="btn btn-outline" onclick="openModal('Choose Elite')">Choose Plan</button>
-                </div>
-            </div>
-        </div>
-    </section>
+          <div class="section-header reveal">
+            <span class="section-kicker">Toppers Wall</span>
+            <h2>Students who turned effort into rank</h2>
+            <p>
+              Meet aspirants who used live classes, teacher strategy, and
+              consistent testing to reach top scores and ranks.
+            </p>
+          </div>
 
-    <!-- Resources & Video -->
-    <section class="resources-section" id="resources">
+          <div class="toppers-grid">
+            <article class="topper-card reveal">
+              <span class="topper-rank">AIR 12</span>
+              <p>
+                "The class explanations were crisp and the problem sheets felt
+                exactly aligned with the real exam level."
+              </p>
+              <div class="topper-profile">
+                <img
+                  src="https://picsum.photos/seed/topper1/220/220"
+                  alt="Topper"
+                />
+                <div>
+                  <strong>Anjali Verma</strong><br />
+                  <span>GATE 2026 • Score 79.3</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="topper-card reveal">
+              <span class="topper-rank">AIR 38</span>
+              <p>
+                "Daily answer writing and sharp mentor feedback gave my UPSC
+                prep a structure I never had before."
+              </p>
+              <div class="topper-profile">
+                <img
+                  src="https://picsum.photos/seed/topper2/220/220"
+                  alt="Topper"
+                />
+                <div>
+                  <strong>Vikram Singh</strong><br />
+                  <span>UPSC CSE • 1041 marks</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="topper-card reveal">
+              <span class="topper-rank">AIR 07</span>
+              <p>
+                "Short revision sessions and daily quizzes helped me keep my
+                speed high and accuracy even higher."
+              </p>
+              <div class="topper-profile">
+                <img
+                  src="https://picsum.photos/seed/topper3/220/220"
+                  alt="Topper"
+                />
+                <div>
+                  <strong>Priya Das</strong><br />
+                  <span>SBI PO • Final selection</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="topper-card reveal">
+              <span class="topper-rank">99.3 %ile</span>
+              <p>
+                "The LRDI practice sets and sectional analysis in the batch made
+                all the difference during CAT preparation."
+              </p>
+              <div class="topper-profile">
+                <img
+                  src="https://picsum.photos/seed/topper4/220/220"
+                  alt="Topper"
+                />
+                <div>
+                  <strong>Harsh Kapoor</strong><br />
+                  <span>CAT 2025 • 99.3 percentile</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="resources-section" id="resources">
         <div class="container">
-            <div class="section-header reveal">
-                <h2>Free Resources</h2>
-            </div>
-            <div class="resource-grid reveal">
-                <div class="res-card">
-                    <i class="fa-solid fa-file-pdf res-icon"></i>
-                    <h3>Previous Year Qs</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin:10px 0;">Download solved papers for last 15 years.</p>
-                    <button class="btn btn-outline" style="font-size:0.8rem;">Download</button>
-                </div>
-                <div class="res-card">
-                    <i class="fa-solid fa-book res-icon" style="color:#f59e0b"></i>
-                    <h3>Notes</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin:10px 0;">Concise revision notes for all subjects.</p>
-                    <button class="btn btn-outline" style="font-size:0.8rem;">View</button>
-                </div>
-                <div class="res-card">
-                    <i class="fa-solid fa-calculator res-icon" style="color:#10b981"></i>
-                    <h3>Formula Sheets</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem; margin:10px 0;">Quick revision formulas for Engineering.</p>
-                    <button class="btn btn-outline" style="font-size:0.8rem;">Download</button>
-                </div>
-            </div>
-        </div>
-    </section>
+          <div class="section-header reveal">
+            <span class="section-kicker">Student Resources</span>
+            <h2>Everything beyond the class to keep you ahead</h2>
+            <p>
+              Download notes, solve tests, revise quickly, and stay updated with
+              a professional exam-prep experience.
+            </p>
+          </div>
 
-    <!-- Video Lessons -->
-    <section class="video-section">
-        <div class="container" style="text-align: center;">
-            <h2>Interactive Video Lessons</h2>
-            <p style="color: #cbd5e1; margin-top: 10px;">Learn from the best instructors with HD quality content.</p>
-            <div class="video-container">
-                <!-- Placeholder iframe -->
-                <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4?controls=0" title="PrepLab Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="course-playlist" style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <button class="btn btn-primary" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">Lecture 1: Intro</button>
-                <button class="btn btn-primary" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">Lecture 2: Mechanics</button>
-                <button class="btn btn-primary" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">Lecture 3: Calculus</button>
-            </div>
+          <div class="resources-grid">
+            <article class="resource-card reveal">
+              <i class="fa-solid fa-file-pdf"></i>
+              <h3>PDF Notes</h3>
+              <p>
+                Sharp class notes, formulas, and revision summaries for every
+                important chapter.
+              </p>
+            </article>
+            <article class="resource-card reveal">
+              <i class="fa-solid fa-list-check"></i>
+              <h3>Mock Tests</h3>
+              <p>
+                Topic tests and full-length exams with detailed performance
+                analysis and rank insights.
+              </p>
+            </article>
+            <article class="resource-card reveal">
+              <i class="fa-solid fa-bell"></i>
+              <h3>Exam Alerts</h3>
+              <p>
+                Stay updated with notifications, application dates, answer keys,
+                and admission updates.
+              </p>
+            </article>
+            <article class="resource-card reveal">
+              <i class="fa-solid fa-comments"></i>
+              <h3>Doubt Support</h3>
+              <p>
+                Ask questions after class, get faculty help, and keep your
+                momentum strong every day.
+              </p>
+            </article>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Quiz / Mock Test -->
-    <section class="quiz-section" id="quiz">
+      <section class="faq-section">
         <div class="container">
-            <div class="quiz-ui reveal">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                    <h2><i class="fa-solid fa-pen-ruler"></i> Quick Mock Test</h2>
-                    <span class="quiz-timer">09:45</span>
-                </div>
-                
-                <div class="question-box">
-                    <p style="color:var(--text-light); margin-bottom:10px;">Question 1 of 5</p>
-                    <h3>What is the unit of Thermal Conductivity?</h3>
-                    
-                    <div class="options-grid">
-                        <div class="option" onclick="selectOption(this)">
-                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> W/mK
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> J/kgK
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> N/m²
-                        </div>
-                        <div class="option" onclick="selectOption(this)">
-                            <div style="width:20px; height:20px; border:2px solid #ccc; border-radius:50%;"></div> W/m²
-                        </div>
-                    </div>
-                </div>
+          <div class="section-header reveal">
+            <span class="section-kicker">FAQs</span>
+            <h2>Answers before you start learning</h2>
+            <p>
+              Common questions about live classes, free access, support, and how
+              the learning journey works.
+            </p>
+          </div>
 
-                <div style="text-align: right; margin-top: 20px;">
-                    <button class="btn btn-primary" onclick="submitQuiz()">Submit & Get Certificate</button>
-                </div>
-
-                <!-- Certificate Result (Hidden initially) -->
-                <div class="cert-preview" id="certResult">
-                    <div style="border: 4px solid #f59e0b; padding: 30px; position: relative;">
-                        <i class="fa-solid fa-medal" style="font-size: 3rem; color: #f59e0b; margin-bottom: 10px;"></i>
-                        <h2>Certificate of Completion</h2>
-                        <p>This certifies that you have successfully completed the Quick Mock Test.</p>
-                        <h4 style="margin-top: 20px;">PrepLab Education</h4>
-                        <button class="btn btn-primary" style="margin-top: 20px;"><i class="fa-solid fa-download"></i> Download PDF</button>
-                    </div>
-                </div>
+          <div class="faq-grid reveal">
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                Can I join a free live class before purchasing a batch?
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. You can start with free live sessions, explore the
+                  teaching style, and then enroll in the full batch that fits
+                  your exam goal.
+                </p>
+              </div>
             </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                Do I get recorded lectures with the batch?
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. Recorded backup is available so you can revise at your
+                  own pace and catch up on any missed class.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                Are tests and notes included in the pricing shown?
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. The popular batch pricing shown includes classroom
+                  access, notes, assignments, and scheduled test practice.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Info Grid: Blogs & Updates -->
-    <section class="container" id="blog">
-        <div class="info-grid">
-            <div class="blogs-column reveal">
-                <h2 style="margin-bottom: 25px;">Latest Blogs & Tips</h2>
-                
-                <div class="blog-card">
-                    <img src="https://picsum.photos/seed/blog1/150/100" class="blog-img" alt="Blog">
-                    <div class="blog-content">
-                        <span style="font-size:0.8rem; color:var(--primary); font-weight:700;">STRATEGY</span>
-                        <h4>How to crack GATE in 3 months?</h4>
-                        <a href="#" style="font-size:0.9rem; color:var(--accent);">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <img src="https://picsum.photos/seed/blog2/150/100" class="blog-img" alt="Blog">
-                    <div class="blog-content">
-                        <span style="font-size:0.8rem; color:var(--primary); font-weight:700;">PRODUCTIVITY</span>
-                        <h4>Pomodoro Technique for Studying</h4>
-                        <a href="#" style="font-size:0.9rem; color:var(--accent);">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="updates-column reveal">
-                <h2 style="margin-bottom: 25px;">Exam Updates</h2>
-                <div class="updates-list">
-                    <div class="update-item">
-                        <span class="tag gate">GATE</span>
-                        <small style="color:var(--text-light);">Oct 12, 2023</small>
-                        <h5 style="margin-top: 5px;">GATE 2026 Exam Schedule Released</h5>
-                    </div>
-                    <div class="update-item">
-                        <span class="tag upsc">UPSC</span>
-                        <small style="color:var(--text-light);">Sep 28, 2023</small>
-                        <h5 style="margin-top: 5px;">Mains Result Declaration Date</h5>
-                    </div>
-                    <div class="update-item">
-                        <span class="tag gate">PSU</span>
-                        <small style="color:var(--text-light);">Sep 15, 2023</small>
-                        <h5 style="margin-top: 5px;">ONGC Recruitment Notification 2024</h5>
-                    </div>
-                </div>
-                
-                <h2 style="margin: 30px 0 15px;" id="community">Community</h2>
-                <div style="background: white; padding: 20px; border-radius: 16px; box-shadow: var(--shadow-sm);">
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;"><strong>@Rahul_S:</strong> Can someone explain the Second Law of Thermodynamics simply?</p>
-                    <div style="display: flex; gap: 10px;">
-                        <button class="btn btn-outline" style="padding: 5px 10px; font-size: 0.8rem;"><i class="fa-solid fa-arrow-up"></i> 12</button>
-                        <button class="btn btn-outline" style="padding: 5px 10px; font-size: 0.8rem;">Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 style="font-size: 2.5rem;">Student Success Stories</h2>
-            <div class="testi-grid">
-                <div class="testi-card reveal">
-                    <p>"PrepLab's analytics helped me identify my weak topics in Calculus. I improved my GATE score by 30 marks!"</p>
-                    <div class="student-profile">
-                        <img src="https://picsum.photos/seed/student1/50/50" class="student-img" alt="Student">
-                        <div>
-                            <strong>Anjali Verma</strong><br>
-                            <small>AIR 45 - GATE 2023</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="testi-card reveal">
-                    <p>"The mentorship calls were a game changer. The study plan was personalized and very effective."</p>
-                    <div class="student-profile">
-                        <img src="https://picsum.photos/seed/student2/50/50" class="student-img" alt="Student">
-                        <div>
-                            <strong>Vikram Singh</strong><br>
-                            <small>Selected in PSU</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="testi-card reveal">
-                    <p>"Affordable, high quality content. The mobile app is fantastic for learning on the go."</p>
-                    <div class="student-profile">
-                        <img src="https://picsum.photos/seed/student3/50/50" class="student-img" alt="Student">
-                        <div>
-                            <strong>Priya Das</strong><br>
-                            <small>CAT 99%ile</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Awards / Logos -->
-            <div style="margin-top: 60px; opacity: 0.6;">
-                <p style="margin-bottom: 20px; font-size: 0.9rem;">TRUSTED BY CANDIDATES FROM</p>
-                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-size: 1.5rem; font-weight: 700;">
-                    <span>IIT</span>
-                    <span>IIM</span>
-                    <span>NIT</span>
-                    <span>AIIMS</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Frequently Asked Questions</h2>
-            </div>
-            <div class="accordion reveal">
-                <div class="acc-item">
-                    <div class="acc-header">How do I access the courses after purchase? <i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="acc-body"><p>Immediately after payment, courses are added to your dashboard. You can access them via the "My Courses" section.</p></div>
-                </div>
-                <div class="acc-item">
-                    <div class="acc-header">Do you provide a refund? <i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="acc-body"><p>Yes, we offer a 7-day no-questions-asked refund policy if you are not satisfied with the content.</p></div>
-                </div>
-                <div class="acc-item">
-                    <div class="acc-header">Are the mock tests similar to the actual exam? <i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="acc-body"><p>Our tests are designed by experts to match the exact difficulty level and pattern of the actual competitive exams.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>PrepLab.</h2>
-                    <p>Empowering students to achieve their dreams through technology and quality education.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Study Materials</a></li>
-                        <li><a href="#">Cheatsheets</a></li>
-                        <li><a href="#">Community</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h2>PrepLab.</h2>
+            <p>
+              A trustworthy modern EdTech platform for competitive exams with
+              teacher-led classes, energetic design, and a sharp learning flow.
+            </p>
+            <div class="socials">
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-telegram"></i></a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 PrepLab Education Pvt Ltd. All rights reserved.</p>
-            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Programs</h4>
+            <ul>
+              <li><a href="#courses">GATE & PSU</a></li>
+              <li><a href="#courses">UPSC</a></li>
+              <li><a href="#courses">SSC</a></li>
+              <li><a href="#courses">Banking</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#resources">Notes</a></li>
+              <li><a href="#resources">Mock Tests</a></li>
+              <li><a href="#toppers">Toppers Wall</a></li>
+              <li><a href="#overview">Why Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 PrepLab Education Pvt Ltd. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <!-- Interactive Components -->
-
-    <!-- Chatbot -->
-    <button class="chatbot-btn" onclick="toggleChat()">
-        <i class="fa-solid fa-message"></i>
-    </button>
-    <div class="chat-window" id="chatWindow">
-        <div class="chat-header">
-            <span>PrepBot 🤖</span>
-            <i class="fa-solid fa-xmark" style="cursor: pointer;" onclick="toggleChat()"></i>
-        </div>
-        <div class="chat-body" id="chatBody">
-            <div class="msg bot">Hello! I am PrepBot. How can I help you with your exam preparation today?</div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleChat(event)">
-            <button class="btn btn-primary" style="padding: 8px 12px; border-radius: 50%;" onclick="sendChat()"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-    <!-- Generic Modal -->
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <i class="fa-solid fa-xmark close-modal" onclick="closeModal()"></i>
-            <h2 id="modalTitle" style="margin-bottom: 20px;">Join PrepLab</h2>
-            <p style="margin-bottom: 20px; color: var(--text-light);">Enter your details to proceed.</p>
-            <form onsubmit="handleForm(event)">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Preparing For</label>
-                    <select class="form-control">
-                        <option>GATE</option>
-                        <option>UPSC</option>
-                        <option>SSC</option>
-                        <option>CAT</option>
-                    </select>
-                </div>
-                
-                <!-- Simulated Payment Methods if modal is for Join -->
-                <div id="paymentSection" style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 20px;">
-                    <p style="font-size: 0.9rem; font-weight: 700; margin-bottom: 10px;">Payment Method</p>
-                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 1.2rem; cursor: pointer;"><i class="fa-brands fa-cc-stripe"></i></div>
-                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 1.2rem; cursor: pointer;"><i class="fa-solid fa-credit-card"></i></div>
-                        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 1.2rem; cursor: pointer;">UPI</div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Proceed to Pay</button>
-            </form>
-        </div>
+      <div class="modal-card">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h3 id="modalTitle">Join for Free</h3>
+        <p>
+          Enter your details and our team will help you start with the right
+          batch, live class, or free learning option.
+        </p>
+        <form onsubmit="handleForm(event)">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" class="form-control" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="emailAddress">Email Address</label>
+            <input
+              id="emailAddress"
+              class="form-control"
+              type="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input id="phoneNumber" class="form-control" type="tel" required />
+          </div>
+          <div class="form-group">
+            <label for="examTarget">Preparing For</label>
+            <select id="examTarget" class="form-control">
+              <option>GATE</option>
+              <option>UPSC</option>
+              <option>SSC</option>
+              <option>Banking</option>
+              <option>JEE</option>
+              <option>NEET</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit" style="width: 100%">
+            Request Access
+          </button>
+        </form>
+      </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
-        // 1. Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
             }
+          });
+        },
+        { threshold: 0.12 },
+      );
+
+      revealElements.forEach((element) => revealObserver.observe(element));
+
+      const mobileNav = document.getElementById("mobileNav");
+      function toggleMenu() {
+        mobileNav.classList.toggle("active");
+      }
+
+      const programsDropdown = document.getElementById("programsDropdown");
+      const dropdownItems = document.querySelectorAll(
+        ".dropdown-item[data-exam-target]",
+      );
+      const courseCards = document.querySelectorAll(".course-card[data-exam]");
+
+      function filterCourses(selectedExam = "all") {
+        courseCards.forEach((card) => {
+          const matches =
+            selectedExam === "all" || card.dataset.exam === selectedExam;
+          card.hidden = !matches;
         });
 
-        // 2. Scroll Reveal Animation (Intersection Observer)
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // Trigger counters if inside a revealed element
-                    const counters = entry.target.querySelectorAll('.counter');
-                    counters.forEach(counter => startCounter(counter));
-                }
-            });
-        }, { threshold: 0.1 });
+        document
+          .getElementById("courses")
+          .scrollIntoView({ behavior: "smooth" });
+        programsDropdown.classList.remove("open");
+      }
 
-        revealElements.forEach(el => revealObserver.observe(el));
+      dropdownItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          filterCourses(item.dataset.examTarget);
+        });
+      });
 
-        // 3. Animated Counters
-        function startCounter(el) {
-            const target = +el.getAttribute('data-target');
-            const duration = 2000; // ms
-            const increment = target / (duration / 16); // 60fps
-            
-            let current = 0;
-            const updateCount = () => {
-                current += increment;
-                if (current < target) {
-                    el.innerText = Math.ceil(current);
-                    requestAnimationFrame(updateCount);
-                } else {
-                    el.innerText = target;
-                }
-            };
-            updateCount();
-        }
-
-        // 4. Mobile Menu Toggle
-        function toggleMenu() {
-            const mobileNav = document.getElementById('mobileNav');
-            mobileNav.classList.toggle('active');
-        }
-
-        // 5. Quiz Interaction
-        function selectOption(el) {
-            // Remove selected from others
-            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-            el.classList.add('selected');
-        }
-
-        function submitQuiz() {
-            // Hide question, show certificate
-            document.querySelector('.question-box').style.display = 'none';
-            document.querySelector('.quiz-timer').style.display = 'none';
-            document.querySelector('.quiz-ui h2').innerText = "Test Completed!";
-            document.getElementById('certResult').classList.add('show');
-        }
-
-        // 6. FAQ Accordion
-        document.querySelectorAll('.acc-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                item.classList.toggle('active');
-            });
+      programsDropdown
+        .querySelector(".nav-dropdown-toggle")
+        .addEventListener("click", () => {
+          programsDropdown.classList.toggle("open");
         });
 
-        // 7. Modal Logic
-        const modal = document.getElementById('modalOverlay');
-        const modalTitle = document.getElementById('modalTitle');
-        const paymentSection = document.getElementById('paymentSection');
-
-        function openModal(type) {
-            modal.style.display = 'flex';
-            if(type === 'Login') {
-                modalTitle.innerText = "Welcome Back";
-                paymentSection.style.display = 'none';
-            } else {
-                modalTitle.innerText = type;
-                paymentSection.style.display = 'block';
-            }
+      document.addEventListener("click", (event) => {
+        if (!programsDropdown.contains(event.target)) {
+          programsDropdown.classList.remove("open");
         }
+      });
 
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        // Close modal if clicked outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
+      const faqItems = document.querySelectorAll(".faq-item");
+      faqItems.forEach((item) => {
+        item.querySelector(".faq-question").addEventListener("click", () => {
+          item.classList.toggle("active");
         });
+      });
 
-        function handleForm(e) {
-            e.preventDefault();
-            // Simulate processing
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = "Processing...";
-            
-            setTimeout(() => {
-                btn.innerText = "Success! 🎉";
-                setTimeout(() => {
-                    closeModal();
-                    btn.innerText = originalText;
-                    e.target.reset();
-                }, 1500);
-            }, 1000);
+      const modal = document.getElementById("modalOverlay");
+      const modalTitle = document.getElementById("modalTitle");
+
+      function openModal(title) {
+        modalTitle.innerText = title;
+        modal.style.display = "flex";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
         }
+      });
 
-        // 8. Chatbot Logic
-        const chatWindow = document.getElementById('chatWindow');
-        const chatBody = document.getElementById('chatBody');
-        const chatInput = document.getElementById('chatInput');
+      function handleForm(event) {
+        event.preventDefault();
+        const submitButton = event.target.querySelector(
+          "button[type='submit']",
+        );
+        const originalText = submitButton.innerText;
+        submitButton.innerText = "Processing...";
 
-        function toggleChat() {
-            if (chatWindow.style.display === 'flex') {
-                chatWindow.style.display = 'none';
-            } else {
-                chatWindow.style.display = 'flex';
-            }
-        }
+        setTimeout(() => {
+          submitButton.innerText = "Request Sent";
+          setTimeout(() => {
+            submitButton.innerText = originalText;
+            event.target.reset();
+            closeModal();
+          }, 1200);
+        }, 900);
+      }
 
-        function sendChat() {
-            const text = chatInput.value;
-            if (!text) return;
-
-            // User Message
-            const userMsg = document.createElement('div');
-            userMsg.className = 'msg user';
-            userMsg.innerText = text;
-            chatBody.appendChild(userMsg);
-            chatInput.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-            // Bot Response (Simulated)
-            setTimeout(() => {
-                const botMsg = document.createElement('div');
-                botMsg.className = 'msg bot';
-                
-                // Simple keyword matching
-                const lowerText = text.toLowerCase();
-                if(lowerText.includes('price') || lowerText.includes('cost')) {
-                    botMsg.innerText = "Our courses start from ₹999. You can check the Pricing section for more details!";
-                } else if (lowerText.includes('gate')) {
-                    botMsg.innerText = "We have excellent GATE courses with full syllabus coverage and mock tests.";
-                } else if (lowerText.includes('hello') || lowerText.includes('hi')) {
-                    botMsg.innerText = "Hi there! Ask me about courses, exams, or study tips.";
-                } else {
-                    botMsg.innerText = "I'm not sure about that, but our expert mentors can help! Join the community forum.";
-                }
-                
-                chatBody.appendChild(botMsg);
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
-        }
-
-        function handleChat(e) {
-            if (e.key === 'Enter') sendChat();
-        }
-
-        // 9. Smooth Scroll Helper
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
+      function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      }
     </script>
-</body>
+  </body>
 </html>
