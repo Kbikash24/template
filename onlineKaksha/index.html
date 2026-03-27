@@ -5,46 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Online Kaksha is a modern EdTech platform for competitive exam preparation with live classes, top educators, and high-impact batch programs."
+      content="Online kaksha - Modern Online Learning Platform with 3D Interactive Experience."
     />
-    <title>Online Kaksha | Modern EdTech for Competitive Exams</title>
+    <title>Online kaksha | The Future of Digital Learning</title>
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <style>
+      /* =========================================
+           VARIABLES & RESET
+           ========================================= */
       :root {
-        --primary: #133f8f;
-        --primary-dark: #0c2d68;
-        --primary-soft: #edf4ff;
-        --accent: #ffd54a;
-        --accent-dark: #f0bd10;
-        --dark: #101828;
-        --text-main: #344054;
-        --text-light: #667085;
+        /* Dark Orange and Dark Sky Blue Palette */
+        --primary: #dc5f00; /* Dark Orange */
+        --primary-dark: #b84e00; /* Darker Orange */
+        --primary-light: #fff4e6; /* Light Orange */
+        --secondary: #075985; /* Dark Sky Blue */
+        --secondary-dark: #044e6b; /* Darker Sky Blue */
+        --secondary-light: #e0f2fe; /* Light Sky Blue */
+
+        /* Neutrals */
         --bg-body: #ffffff;
-        --surface: #ffffff;
-        --surface-soft: #f8fbff;
-        --line: #e4e7ec;
-        --success: #12b76a;
-        --shadow-sm: 0 12px 30px -24px rgba(16, 24, 40, 0.18);
-        --shadow-md: 0 20px 44px -28px rgba(16, 24, 40, 0.18);
-        --shadow-lg: 0 30px 60px -34px rgba(16, 24, 40, 0.2);
-        --shadow-accent: 0 22px 46px -28px rgba(255, 213, 74, 0.52);
-        --radius-md: 18px;
-        --radius-lg: 30px;
-        --transition: all 0.25s ease;
+        --bg-surface: #f8fafc; /* Slate 50 */
+        --text-main: #0f172a; /* Slate 900 */
+        --text-muted: #64748b; /* Slate 500 */
+        --border: #e2e8f0; /* Slate 200 */
+
+        /* Functional */
+        --success: #10b981;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg:
+          0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --shadow-xl:
+          0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+        /* 3D Variables */
+        --scene-perspective: 1200px;
+        --cube-size: 240px;
       }
 
-      * {
+      *,
+      *::before,
+      *::after {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -55,1887 +71,2345 @@
       }
 
       body {
-        font-family: "Rethink Sans", sans-serif;
-        background: var(--bg-body);
+        font-family: "Outfit", sans-serif;
+        background-color: var(--bg-body);
         color: var(--text-main);
-        line-height: 1.6;
         overflow-x: hidden;
+        line-height: 1.6;
       }
 
       a {
-        color: inherit;
         text-decoration: none;
+        color: inherit;
+        transition: color 0.2s;
       }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
       ul {
         list-style: none;
       }
-
-      button,
-      input,
-      select {
-        font: inherit;
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
       }
 
-      [hidden] {
-        display: none !important;
-      }
-
+      /* =========================================
+           UTILITIES & COMPONENTS
+           ========================================= */
       .container {
-        width: min(1440px, calc(100% - 40px));
+        max-width: 1280px;
         margin: 0 auto;
+        padding: 0 1.5rem;
       }
 
-      .section-kicker {
-        display: inline-block;
-        margin-bottom: 14px;
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+        box-shadow: 0 4px 12px rgba(220, 95, 0, 0.3);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(220, 95, 0, 0.4);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--border);
+        color: var(--text-main);
+      }
+
+      .btn-outline:hover {
+        border-color: var(--primary);
         color: var(--primary);
-        font-size: 0.84rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
+        background-color: var(--primary-light);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background-color: var(--primary-light);
+        color: var(--primary-dark);
         text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
 
       .section-header {
         text-align: center;
-        max-width: 760px;
-        margin: 0 auto 44px;
+        margin-bottom: 4rem;
       }
 
-      .section-header h2 {
-        color: var(--dark);
-        font-size: clamp(2.2rem, 3vw, 3.5rem);
-        line-height: 1.02;
-        letter-spacing: -0.05em;
-        margin-bottom: 14px;
-      }
-
-      .section-header p {
-        color: var(--text-light);
-        font-size: 1.03rem;
-      }
-
-      .btn {
-        border: none;
-        border-radius: 999px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        min-height: 52px;
-        padding: 0 24px;
-        font-size: 0.98rem;
+      .section-title {
+        font-size: 2.5rem;
         font-weight: 800;
-        cursor: pointer;
-        transition: var(--transition);
+        margin-bottom: 1rem;
+        color: var(--text-main);
       }
 
-      .btn-primary {
-        background: var(--accent);
-        color: var(--dark);
-        box-shadow: var(--shadow-accent);
+      .section-subtitle {
+        color: var(--text-muted);
+        font-size: 1.125rem;
+        max-width: 600px;
+        margin: 0 auto;
       }
 
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        background: var(--accent-dark);
-      }
-
-      .btn-secondary {
-        background: var(--surface);
-        color: var(--primary);
-        border: 1px solid var(--line);
-      }
-
-      .btn-secondary:hover {
-        border-color: var(--primary);
-        background: var(--primary-soft);
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition:
-          opacity 0.45s ease,
-          transform 0.45s ease;
-      }
-
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .promo-bar {
-        background: #f8fbff;
-        border-bottom: 1px solid var(--line);
-        color: var(--primary);
-        text-align: center;
-        padding: 10px 16px;
-        font-size: 0.92rem;
-        font-weight: 700;
-      }
-
+      /* =========================================
+           NAVBAR
+           ========================================= */
       .navbar {
-        position: sticky;
+        position: fixed;
         top: 0;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.96);
-        border-bottom: 1px solid var(--line);
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--border);
+        transition: transform 0.3s ease;
       }
 
-      .nav-inner {
+      .navbar-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 82px;
-        gap: 24px;
+        height: 100%;
       }
 
-      .logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--dark);
-        font-size: 1.6rem;
+      .brand {
+        font-size: 1.5rem;
         font-weight: 800;
-      }
-
-      .logo-mark {
-        width: 42px;
-        height: 42px;
-        border-radius: 14px;
-        background: var(--primary);
-        color: #ffffff;
-        display: inline-flex;
+        color: var(--text-main);
+        display: flex;
         align-items: center;
-        justify-content: center;
+        gap: 0.5rem;
       }
 
-      .logo span {
-        color: var(--accent-dark);
+      .brand i {
+        color: var(--primary);
       }
 
       .nav-links {
         display: flex;
-        align-items: center;
-        gap: 28px;
+        gap: 2rem;
       }
 
-      .nav-link,
-      .nav-dropdown-toggle {
-        color: var(--text-main);
-        font-size: 0.98rem;
-        font-weight: 700;
-        background: transparent;
-        border: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .nav-link:hover,
-      .nav-dropdown-toggle:hover {
-        color: var(--primary);
-      }
-
-      .nav-dropdown {
+      .nav-link {
+        font-weight: 500;
+        color: var(--text-muted);
         position: relative;
       }
 
-      .nav-dropdown-menu {
-        position: absolute;
-        top: calc(100% + 16px);
-        left: 0;
-        width: 250px;
-        padding: 12px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: #ffffff;
-        box-shadow: var(--shadow-lg);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-        transition: var(--transition);
-      }
-
-      .nav-dropdown.open .nav-dropdown-menu,
-      .nav-dropdown:hover .nav-dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .dropdown-item {
-        display: block;
-        width: 100%;
-        padding: 12px 14px;
-        border: none;
-        background: transparent;
-        border-radius: 14px;
-        text-align: left;
-        color: var(--dark);
-        font-weight: 700;
-        cursor: pointer;
-      }
-
-      .dropdown-item:hover {
-        background: var(--primary-soft);
+      .nav-link:hover,
+      .nav-link.active {
         color: var(--primary);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
       }
 
       .nav-actions {
         display: flex;
+        gap: 1rem;
         align-items: center;
-        gap: 14px;
       }
 
-      .mobile-menu-btn {
+      .menu-toggle {
         display: none;
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
-        border: 1px solid var(--line);
-        background: #ffffff;
-        color: var(--dark);
+        font-size: 1.5rem;
+        color: var(--text-main);
       }
 
-      .mobile-nav {
+      /* =========================================
+           BACKGROUND CANVAS
+           ========================================= */
+      #bg-canvas {
         position: fixed;
-        inset: 0 auto 0 0;
-        width: min(340px, 100%);
-        padding: 28px 20px;
-        background: #ffffff;
-        border-right: 1px solid var(--line);
-        box-shadow: var(--shadow-lg);
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 1002;
-        overflow-y: auto;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
       }
 
-      .mobile-nav.active {
-        transform: translateX(0);
-      }
-
-      .mobile-nav-links {
-        display: grid;
-        gap: 14px;
-        margin-top: 24px;
-      }
-
-      .mobile-nav-links .nav-link {
-        padding: 12px 0;
-      }
-
+      /* =========================================
+           HERO SECTION (3D ANIMATION)
+           ========================================= */
       .hero {
-        padding: 60px 0 88px;
+        position: relative;
+        padding-top: 140px;
+        padding-bottom: 100px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
       }
 
-      .hero-shell {
+      .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
-        gap: 36px;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
         align-items: center;
       }
 
-      .hero-copy {
-        max-width: 620px;
+      .hero-content h1 {
+        font-size: 4rem;
+        line-height: 1.1;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
       }
 
-      .hero-copy .section-kicker {
-        padding: 10px 14px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: #f8fbff;
+      .hero-content h1 span {
+        color: var(--primary);
       }
 
-      .hero-copy h1 {
-        color: var(--dark);
-        font-size: clamp(3.1rem, 6vw, 5.5rem);
-        line-height: 0.95;
-        letter-spacing: -0.08em;
-        margin-bottom: 20px;
-      }
-
-      .hero-copy p {
-        font-size: 1.08rem;
-        color: var(--text-light);
-        margin-bottom: 28px;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-bottom: 28px;
+      .hero-content p {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        max-width: 500px;
       }
 
       .hero-stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
+        display: flex;
+        gap: 3rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
       }
 
-      .hero-stat {
-        padding: 18px 16px;
-        border-radius: 20px;
-        border: 1px solid var(--line);
-        background: var(--surface);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .hero-stat strong {
+      .stat-item strong {
         display: block;
-        color: var(--dark);
-        font-size: 1.2rem;
-        margin-bottom: 4px;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--text-main);
       }
 
-      .hero-stat span {
-        color: var(--text-light);
-        font-size: 0.9rem;
+      .stat-item span {
+        color: var(--text-muted);
+        font-size: 0.875rem;
       }
 
+      /* PROFILE IMAGE CONTAINER */
       .hero-visual {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 240px;
-        gap: 18px;
-        align-items: start;
-      }
-
-      .teacher-card {
+        height: 500px;
         position: relative;
-        overflow: hidden;
-        border-radius: var(--radius-lg);
-        background: linear-gradient(180deg, #f4f8ff 0%, #e7efff 100%);
-        border: 1px solid #d8e2f2;
-        box-shadow: var(--shadow-lg);
-        min-height: 640px;
-      }
-
-      .teacher-card::after {
-        content: "";
-        position: absolute;
-        inset: auto 0 0 0;
-        height: 45%;
-        background: linear-gradient(
-          180deg,
-          rgba(19, 63, 143, 0) 0%,
-          rgba(19, 63, 143, 0.18) 100%
-        );
-      }
-
-      .teacher-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-      }
-
-      .teacher-badge {
-        position: absolute;
-        top: 22px;
-        left: 22px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.96);
-        color: var(--primary-dark);
-        font-size: 0.84rem;
-        font-weight: 800;
-        z-index: 1;
-      }
-
-      .teacher-caption {
-        position: absolute;
-        right: 22px;
-        left: 22px;
-        bottom: 22px;
-        padding: 18px 20px;
-        border-radius: 24px;
-        background: rgba(12, 45, 103, 0.92);
-        color: #ffffff;
         display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        z-index: 1;
-      }
-
-      .teacher-caption span {
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 0.9rem;
-      }
-
-      .live-sidebar {
-        display: grid;
-        gap: 16px;
-      }
-
-      .live-sidebar-card,
-      .trust-card {
-        padding: 22px;
-        border-radius: 24px;
-        background: #ffffff;
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow-md);
-      }
-
-      .live-sidebar-card h3,
-      .trust-card h3 {
-        color: var(--dark);
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-      }
-
-      .live-sidebar-card p,
-      .trust-card p {
-        color: var(--text-light);
-        font-size: 0.93rem;
-        margin-bottom: 18px;
-      }
-
-      .live-pill-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 18px;
-      }
-
-      .live-pill {
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: #fff8dc;
-        color: #8a6500;
-        font-size: 0.8rem;
-        font-weight: 800;
-      }
-
-      .live-class-list {
-        display: grid;
-        gap: 12px;
-        margin-bottom: 18px;
-      }
-
-      .live-class-item {
-        padding: 14px 16px;
-        border-radius: 18px;
-        background: var(--surface-soft);
-        border: 1px solid #dce5ff;
-      }
-
-      .live-time {
-        display: inline-block;
-        margin-bottom: 6px;
-        color: var(--primary-dark);
-        font-size: 0.82rem;
-        font-weight: 800;
-      }
-
-      .live-class-item strong {
-        display: block;
-        color: var(--dark);
-      }
-
-      .live-class-item span {
-        color: var(--text-light);
-        font-size: 0.88rem;
-      }
-
-      .trust-list {
-        display: grid;
-        gap: 12px;
-      }
-
-      .trust-item {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-      }
-
-      .trust-item i {
-        color: var(--success);
-        margin-top: 4px;
-      }
-
-      .overview {
-        padding: 0 0 90px;
-      }
-
-      .overview-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .overview-card {
-        padding: 26px;
-        border-radius: 24px;
-        background: #ffffff;
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow-sm);
-        text-align: center;
-      }
-
-      .overview-card i {
-        width: 56px;
-        height: 56px;
-        margin: 0 auto 16px;
-        border-radius: 18px;
-        background: var(--primary-soft);
-        color: var(--primary);
-        display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.3rem;
       }
 
-      .overview-card strong {
-        display: block;
-        color: var(--dark);
-        font-size: 2rem;
-        margin-bottom: 6px;
-      }
-
-      .overview-card span {
-        color: var(--text-light);
-      }
-
-      .courses-section,
-      .toppers-section,
-      .resources-section,
-      .faq-section {
-        padding: 90px 0;
-      }
-
-      .batches-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 320px;
-        gap: 28px;
-        align-items: start;
-      }
-
-      .course-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .course-card {
-        overflow: hidden;
-        border-radius: 26px;
-        border: 1px solid var(--line);
-        background: #ffffff;
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition);
-      }
-
-      .course-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .course-thumb {
+      .profile-container {
         position: relative;
-        height: 220px;
-        background: #dce8ff;
+        width: 600px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .course-thumb img {
+      .profile-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        /* border-radius: 50%; */
+        /* border: 8px solid var(--primary); */
+        /* box-shadow:
+          0 20px 60px rgba(220, 95, 0, 0.3),
+          0 0 0 20px rgba(220, 95, 0, 0.1); */
+        animation: float-profile 6s ease-in-out infinite;
+        transition: transform 0.3s ease;
       }
 
-      .course-badge {
+      .profile-image:hover {
+        transform: scale(1.05);
+      }
+
+      @keyframes float-profile {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* =========================================
+           FEATURES SECTION
+           ========================================= */
+      .features {
+        padding: 6rem 0;
+        background: var(--bg-surface);
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      /* Connected Resources Section */
+      .resources-connected {
+        position: relative;
+        background: #ffffff;
+        overflow: hidden;
+      }
+
+      .resources-connected::before {
+        content: "";
         position: absolute;
-        top: 18px;
-        left: 18px;
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.96);
-        color: var(--primary-dark);
-        font-size: 0.8rem;
-        font-weight: 800;
-      }
-
-      .course-body {
-        padding: 22px;
-      }
-
-      .course-cat {
-        display: inline-block;
-        margin-bottom: 10px;
-        color: var(--primary);
-        font-size: 0.82rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .course-title {
-        color: var(--dark);
-        font-size: 1.24rem;
-        line-height: 1.2;
-        margin-bottom: 14px;
-      }
-
-      .course-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        color: var(--text-light);
-        font-size: 0.9rem;
-        margin-bottom: 18px;
-      }
-
-      .rating {
-        color: #f5b301;
-        font-weight: 800;
-      }
-
-      .course-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 14px;
-        padding-top: 16px;
-        border-top: 1px solid var(--line);
-      }
-
-      .price-tag {
-        color: var(--primary-dark);
-        font-size: 1.18rem;
-        font-weight: 800;
-      }
-
-      .price-tag span {
-        display: block;
-        color: var(--text-light);
-        font-size: 0.82rem;
-        font-weight: 600;
-      }
-
-      .batch-sidebar {
-        position: sticky;
-        top: 104px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(220, 95, 0, 0.04) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 85% 80%,
+            rgba(7, 89, 133, 0.04) 0%,
+            transparent 40%
+          );
+        pointer-events: none;
       }
 
       .resources-grid {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+        position: relative;
+        z-index: 2;
       }
 
       .resource-card {
-        padding: 24px;
-        border-radius: 24px;
-        border: 1px solid var(--line);
         background: #ffffff;
-        box-shadow: var(--shadow-sm);
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        border: 2px solid #e2e8f0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: visible;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
 
-      .resource-card i {
-        width: 54px;
-        height: 54px;
-        margin-bottom: 16px;
-        border-radius: 18px;
-        background: var(--primary-soft);
-        color: var(--primary);
-        display: inline-flex;
+      .resource-card::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 1.5rem;
+        background: var(--primary);
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.4s ease;
+      }
+
+      .resource-card:hover::before {
+        opacity: 1;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-color: transparent;
+      }
+
+      .resource-card:nth-child(1):hover::before {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(2):hover::before {
+        background: var(--secondary);
+      }
+      .resource-card:nth-child(3):hover::before {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(4):hover::before {
+        background: #ff0000;
+      }
+
+      .resource-icon-wrapper {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.5rem;
+      }
+
+      .resource-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--bg-surface);
+        border-radius: 1.25rem;
+        display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.25rem;
+        font-size: 2rem;
+        position: relative;
+        transition: all 0.4s ease;
+        border: 2px solid #e2e8f0;
+      }
+
+      .resource-card:nth-child(1) .resource-icon {
+        background: var(--primary-light);
+        border-color: var(--primary);
+      }
+      .resource-card:nth-child(2) .resource-icon {
+        background: var(--secondary-light);
+        border-color: var(--secondary);
+      }
+      .resource-card:nth-child(3) .resource-icon {
+        background: var(--primary-light);
+        border-color: var(--primary);
+      }
+      .resource-card:nth-child(4) .resource-icon {
+        background: #ffe5e5;
+        border-color: #ff0000;
+      }
+
+      .resource-card:hover .resource-icon {
+        transform: scale(1.15) rotate(-5deg);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .resource-card:nth-child(1) .resource-icon i {
+        color: var(--primary);
+      }
+      .resource-card:nth-child(2) .resource-icon i {
+        color: var(--secondary);
+      }
+      .resource-card:nth-child(3) .resource-icon i {
+        color: var(--primary);
+      }
+      .resource-card:nth-child(4) .resource-icon i {
+        color: #ff0000;
+      }
+
+      .resource-card:hover .resource-icon {
+        background: white;
+        border-color: white;
+      }
+
+      .resource-card:nth-child(1):hover .resource-icon {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(2):hover .resource-icon {
+        background: var(--secondary);
+      }
+      .resource-card:nth-child(3):hover .resource-icon {
+        background: var(--primary);
+      }
+      .resource-card:nth-child(4):hover .resource-icon {
+        background: #ff0000;
+      }
+
+      .resource-card:hover .resource-icon i {
+        color: white;
+      }
+
+      .resource-icon::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 1.5rem;
+        border: 2px solid transparent;
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+
+      .resource-card:nth-child(1):hover .resource-icon::before {
+        border-color: var(--primary);
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+      .resource-card:nth-child(2):hover .resource-icon::before {
+        border-color: var(--secondary);
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+      .resource-card:nth-child(3):hover .resource-icon::before {
+        border-color: var(--primary);
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+      .resource-card:nth-child(4):hover .resource-icon::before {
+        border-color: #ff0000;
+        opacity: 0.3;
+        animation: icon-ring 2s infinite;
+      }
+
+      @keyframes icon-ring {
+        0% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 0.15;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
       }
 
       .resource-card h3 {
-        color: var(--dark);
-        margin-bottom: 8px;
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      .resource-card:hover h3 {
+        color: white;
       }
 
       .resource-card p {
-        color: var(--text-light);
-        font-size: 0.94rem;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        transition: color 0.3s ease;
       }
 
-      .toppers-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 22px;
+      .resource-card:hover p {
+        color: rgba(255, 255, 255, 0.9);
       }
 
-      .topper-card {
-        padding: 24px;
-        border-radius: 24px;
-        border: 1px solid var(--line);
-        background: #ffffff;
-        box-shadow: var(--shadow-sm);
-        text-align: left;
-      }
-
-      .topper-rank {
+      .resource-link {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        min-width: 82px;
-        height: 36px;
-        border-radius: 999px;
-        background: var(--primary-soft);
-        color: var(--primary-dark);
-        font-size: 0.82rem;
-        font-weight: 800;
-        margin-bottom: 16px;
-      }
-
-      .topper-card p {
+        gap: 0.5rem;
         color: var(--text-main);
-        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        padding: 0.6rem 1.2rem;
+        background: var(--bg-surface);
+        border-radius: 0.5rem;
+        border: 2px solid #e2e8f0;
       }
 
-      .topper-profile {
+      .resource-card:nth-child(1) .resource-link {
+        color: var(--primary);
+        border-color: var(--primary);
+        background: var(--primary-light);
+      }
+      .resource-card:nth-child(2) .resource-link {
+        color: var(--secondary);
+        border-color: var(--secondary);
+        background: var(--secondary-light);
+      }
+      .resource-card:nth-child(3) .resource-link {
+        color: var(--primary);
+        border-color: var(--primary);
+        background: var(--primary-light);
+      }
+      .resource-card:nth-child(4) .resource-link {
+        color: #ff0000;
+        border-color: #ff0000;
+        background: #ffe5e5;
+      }
+
+      .resource-card:hover .resource-link {
+        background: white;
+        border-color: white;
+        transform: translateX(5px);
+      }
+
+      .resource-link i {
+        transition: transform 0.3s ease;
+        font-size: 0.85rem;
+      }
+
+      .resource-link:hover i {
+        transform: translateX(4px);
+      }
+
+      /* Number badge */
+      .resource-card::after {
+        content: attr(data-resource);
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--bg-surface);
+        color: var(--text-muted);
         display: flex;
-        gap: 14px;
         align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: 2px solid #e2e8f0;
       }
 
-      .topper-profile img {
-        width: 72px;
-        height: 72px;
-        border-radius: 20px;
-        object-fit: cover;
+      .resource-card:hover::after {
+        background: white;
+        color: var(--text-main);
+        border-color: white;
+        transform: scale(1.15);
       }
 
-      .topper-profile strong {
-        color: var(--dark);
-      }
-
-      .topper-profile span {
-        color: var(--text-light);
-        font-size: 0.9rem;
-      }
-
-      .faq-grid {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .faq-item {
-        border-bottom: 1px solid var(--line);
-      }
-
-      .faq-question {
+      /* Connection Canvas */
+      .connection-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        padding: 24px 0;
-        background: transparent;
-        border: none;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-light);
+        color: var(--primary);
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+      }
+
+      .feature-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      /* =========================================
+           COURSES SHOWCASE
+           ========================================= */
+      .courses {
+        padding: 6rem 0;
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+      }
+
+      .course-card {
+        background: white;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .course-card:hover {
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-5px);
+      }
+
+      .course-image {
+        height: 200px;
+        background: var(--bg-surface);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .course-card:hover .course-image img {
+        transform: scale(1.05);
+      }
+
+      .course-tag {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-main);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .course-content {
+        padding: 1.5rem;
+      }
+
+      .course-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+
+      .course-meta i {
+        color: var(--primary);
+        margin-right: 0.25rem;
+      }
+
+      .course-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+        line-height: 1.4;
+      }
+
+      .course-footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: var(--dark);
-        font-size: 1.08rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .instructor {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .instructor img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+
+      .instructor span {
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .price {
         font-weight: 700;
-        text-align: left;
+        color: var(--primary);
+        font-size: 1.125rem;
       }
 
-      .faq-answer {
-        max-height: 0;
+      /* =========================================
+           INTERACTIVE DEMO SECTION
+           ========================================= */
+      .interactive-demo {
+        padding: 6rem 0;
+        background: var(--secondary);
+        color: white;
+        text-align: center;
         overflow: hidden;
-        color: var(--text-light);
-        transition: max-height 0.25s ease;
+        position: relative;
       }
 
-      .faq-answer p {
-        padding-bottom: 20px;
+      /* Subtle pattern overlay */
+      .interactive-demo::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: none;
+        background-size: 30px 30px;
+        opacity: 0.1;
       }
 
-      .faq-item.active .faq-answer {
-        max-height: 160px;
+      .demo-container {
+        position: relative;
+        z-index: 1;
       }
 
+      .demo-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .demo-container p {
+        font-size: 1.125rem;
+        opacity: 0.9;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cube-playground {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 3rem;
+        perspective: 800px;
+      }
+
+      .playground-cube {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: spinCube 10s infinite linear;
+      }
+
+      .playground-face {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        backdrop-filter: blur(5px);
+      }
+
+      .pf-front {
+        transform: rotateY(0deg) translateZ(100px);
+      }
+      .pf-back {
+        transform: rotateY(180deg) translateZ(100px);
+      }
+      .pf-right {
+        transform: rotateY(90deg) translateZ(100px);
+      }
+      .pf-left {
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+      .pf-top {
+        transform: rotateX(90deg) translateZ(100px);
+      }
+      .pf-bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+      }
+
+      @keyframes spinCube {
+        0% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+
+      /* =========================================
+           FOOTER
+           ========================================= */
       footer {
-        padding: 80px 0 32px;
-        border-top: 1px solid var(--line);
-        background: #ffffff;
+        background: var(--bg-surface);
+        padding: 4rem 0 2rem;
+        border-top: 1px solid var(--border);
       }
 
       .footer-grid {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 36px;
-        margin-bottom: 44px;
+        gap: 3rem;
+        margin-bottom: 3rem;
       }
 
-      .footer-brand h2,
+      .footer-brand p {
+        margin-top: 1rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
       .footer-col h4 {
-        color: var(--dark);
-        margin-bottom: 16px;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-main);
       }
 
-      .footer-brand p,
-      .footer-col a,
-      .footer-bottom {
-        color: var(--text-light);
+      .footer-col ul li {
+        margin-bottom: 0.75rem;
       }
-
-      .footer-col li {
-        margin-bottom: 10px;
+      .footer-col a {
+        color: var(--text-muted);
+        font-size: 0.9rem;
       }
-
-      .footer-brand .socials {
-        display: flex;
-        gap: 14px;
-        margin-top: 18px;
+      .footer-col a:hover {
+        color: var(--primary);
       }
 
       .footer-bottom {
-        padding-top: 26px;
-        border-top: 1px solid var(--line);
         text-align: center;
-        font-size: 0.92rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.875rem;
       }
 
-      .modal-overlay {
+      /* =========================================
+           TOAST NOTIFICATION
+           ========================================= */
+      .toast-container {
         position: fixed;
-        inset: 0;
-        display: none;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .toast {
+        background: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: var(--shadow-xl);
+        border-left: 4px solid var(--primary);
+        display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 20px;
-        background: rgba(10, 18, 36, 0.45);
-        z-index: 1003;
+        gap: 1rem;
+        min-width: 300px;
+        animation: slideIn 0.3s ease;
       }
 
-      .modal-card {
-        width: min(520px, 100%);
-        padding: 30px;
-        border-radius: 28px;
-        background: #ffffff;
-        box-shadow: var(--shadow-lg);
-        position: relative;
+      .toast i {
+        color: var(--primary);
+        font-size: 1.25rem;
+      }
+      .toast-content h5 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.1rem;
+      }
+      .toast-content p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
       }
 
-      .modal-close {
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        border: 1px solid var(--line);
-        background: #ffffff;
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
 
-      .modal-card h3 {
-        color: var(--dark);
-        font-size: 1.8rem;
-        margin-bottom: 10px;
-      }
-
-      .modal-card p {
-        color: var(--text-light);
-        margin-bottom: 22px;
-      }
-
-      .form-group {
-        margin-bottom: 16px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--dark);
-        font-size: 0.92rem;
-        font-weight: 700;
-      }
-
-      .form-control {
-        width: 100%;
-        min-height: 50px;
-        padding: 0 14px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        outline: none;
-      }
-
-      .form-control:focus {
-        border-color: var(--primary);
-      }
-
-      @media (max-width: 1180px) {
-        .hero-shell,
-        .batches-layout {
+      /* =========================================
+           RESPONSIVE
+           ========================================= */
+      @media (max-width: 992px) {
+        .hero-grid {
           grid-template-columns: 1fr;
+          text-align: center;
         }
-
-        .hero-visual,
-        .resources-grid,
-        .toppers-grid,
-        .overview-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+        .hero-content p {
+          margin: 0 auto 2.5rem;
         }
-
-        .batch-sidebar {
-          position: static;
+        .hero-stats {
+          justify-content: center;
         }
-
+        .hero-visual {
+          height: 400px;
+          margin-top: 3rem;
+        }
+        .profile-container {
+          width: 350px;
+          height: 350px;
+        }
         .footer-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: 1fr 1fr;
         }
       }
 
-      @media (max-width: 920px) {
+      @media (max-width: 768px) {
         .nav-links,
         .nav-actions {
           display: none;
         }
-
-        .mobile-menu-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
+        .menu-toggle {
+          display: block;
         }
-
-        .course-grid,
-        .resources-grid,
-        .toppers-grid,
-        .overview-grid,
-        .hero-visual,
-        .hero-stats {
-          grid-template-columns: 1fr;
+        .hero-content h1 {
+          font-size: 2.5rem;
         }
-
-        .teacher-card {
-          min-height: 460px;
+        .profile-container {
+          width: 280px;
+          height: 280px;
         }
-      }
-
-      @media (max-width: 640px) {
-        .container {
-          width: min(100% - 28px, 1440px);
-        }
-
-        .hero {
-          padding: 42px 0 72px;
-        }
-
-        .hero-copy h1 {
-          font-size: 2.9rem;
-        }
-
-        .hero-actions,
-        .course-footer {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .btn,
-        .hero-actions .btn {
-          width: 100%;
-        }
-
         .footer-grid {
           grid-template-columns: 1fr;
+        }
+
+        /* Mobile Menu Active State */
+        .navbar.mobile-active .nav-links {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 2rem;
+          box-shadow: var(--shadow-lg);
+          border-bottom: 1px solid var(--border);
         }
       }
     </style>
   </head>
   <body>
-    <div class="promo-bar">
-      New batches are now live for UPSC, GATE, SSC, and Banking. Start with a
-      free class today.
-    </div>
+    <!-- Background Canvas for Sky Blue Particle Effect -->
+    <canvas id="bg-canvas"></canvas>
 
+    <!-- Navigation -->
     <nav class="navbar" id="navbar">
-      <div class="container nav-inner">
-        <a href="#" class="logo">
-          <span class="logo-mark"><i class="fa-solid fa-bolt"></i></span>
-          Online Kaksha<span>.</span>
+      <div class="container navbar-container">
+        <a href="#" class="brand">
+          <img
+            src="Online Kaksha (Website Logo).png"
+            alt="Online kaksha Logo"
+            style="height: 50px; width: auto"
+          />
         </a>
 
-        <div class="nav-links">
-          <div class="nav-dropdown" id="programsDropdown">
-            <button class="nav-dropdown-toggle" type="button">
-              Programs <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="nav-dropdown-menu">
-              <button
-                class="dropdown-item"
-                type="button"
-                data-exam-target="all"
-              >
-                All Programs
-              </button>
-              <button
-                class="dropdown-item"
-                type="button"
-                data-exam-target="gate"
-              >
-                GATE & PSU
-              </button>
-              <button
-                class="dropdown-item"
-                type="button"
-                data-exam-target="upsc"
-              >
-                UPSC CSE
-              </button>
-              <button
-                class="dropdown-item"
-                type="button"
-                data-exam-target="ssc"
-              >
-                SSC Exams
-              </button>
-              <button
-                class="dropdown-item"
-                type="button"
-                data-exam-target="banking"
-              >
-                Banking Exams
-              </button>
-            </div>
-          </div>
-          <a href="#overview" class="nav-link">Why Us</a>
-          <a href="#courses" class="nav-link">Popular Batches</a>
-          <a href="#toppers" class="nav-link">Toppers Wall</a>
-          <a href="#resources" class="nav-link">Resources</a>
-        </div>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#chanakya" class="nav-link">Chanakya</a></li>
+          <li><a href="#updates" class="nav-link">Updates</a></li>
+          <li><a href="#success" class="nav-link">Success Stories</a></li>
+        </ul>
 
         <div class="nav-actions">
-          <button
-            class="btn btn-secondary"
-            onclick="openModal('Book a Demo Class')"
+          <a
+            href="https://youtube.com/@chanakya"
+            target="_blank"
+            class="btn btn-outline"
+            style="background: #ff0000; color: white; border: none"
           >
-            Book Demo
-          </button>
-          <button class="btn btn-primary" onclick="openModal('Join for Free')">
-            Join for Free
-          </button>
+            <i class="fa-brands fa-youtube"></i> Chanakya's Channel
+          </a>
+          <a href="#premium" class="btn btn-primary">Premium Access</a>
         </div>
 
-        <button class="mobile-menu-btn" onclick="toggleMenu()">
+        <button class="menu-toggle" id="menuToggle">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </nav>
 
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#" class="logo">
-        <span class="logo-mark"><i class="fa-solid fa-bolt"></i></span>
-        Online Kaksha<span>.</span>
-      </a>
-      <div class="mobile-nav-links">
-        <a
-          href="#courses"
-          class="nav-link"
-          onclick="
-            filterCourses('all');
-            toggleMenu();
-          "
-          >All Programs</a
-        >
-        <a
-          href="#courses"
-          class="nav-link"
-          onclick="
-            filterCourses('gate');
-            toggleMenu();
-          "
-          >GATE & PSU</a
-        >
-        <a
-          href="#courses"
-          class="nav-link"
-          onclick="
-            filterCourses('upsc');
-            toggleMenu();
-          "
-          >UPSC CSE</a
-        >
-        <a
-          href="#courses"
-          class="nav-link"
-          onclick="
-            filterCourses('ssc');
-            toggleMenu();
-          "
-          >SSC Exams</a
-        >
-        <a
-          href="#courses"
-          class="nav-link"
-          onclick="
-            filterCourses('banking');
-            toggleMenu();
-          "
-          >Banking Exams</a
-        >
-        <a href="#overview" class="nav-link" onclick="toggleMenu()">Why Us</a>
-        <a href="#toppers" class="nav-link" onclick="toggleMenu()"
-          >Toppers Wall</a
-        >
-        <a href="#resources" class="nav-link" onclick="toggleMenu()"
-          >Resources</a
-        >
-        <button
-          class="btn btn-primary"
-          onclick="
-            openModal('Join for Free');
-            toggleMenu();
-          "
-        >
-          Join for Free
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <!-- Text Content -->
+        <div class="hero-content">
+          <span class="badge">Free Resources + Premium Courses</span>
+          <h1>Your Complete <br /><span>Learning Platform</span></h1>
+          <p>
+            Access free PYQs, daily quizzes, and study notes. Upgrade to premium
+            for comprehensive test series, video lectures, and exclusive
+            content.
+          </p>
+
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              flex-wrap: wrap;
+              justify-content: inherit;
+            "
+          >
+            <a href="#free-resources" class="btn btn-primary">
+              Explore Free Resources <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#premium" class="btn btn-outline">
+              <i class="fa-solid fa-crown"></i> Go Premium
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>50k+</strong>
+              <span>Students</span>
+            </div>
+            <div class="stat-item">
+              <strong>1000+</strong>
+              <span>Free Resources</span>
+            </div>
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span>Success Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Image Visual -->
+        <div class="hero-visual" id="heroVisual">
+          <div class="profile-container">
+            <img src="profile.png" alt="Profile" class="profile-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="features" id="about" style="background: var(--bg-surface)">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Who We Are</span>
+          <h2 class="section-title">About Online kaksha</h2>
+          <p class="section-subtitle">
+            Your trusted partner in competitive exam preparation and career
+            success.
+          </p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto">
+          <div
+            style="
+              background: white;
+              padding: 3rem;
+              border-radius: 1.5rem;
+              box-shadow: var(--shadow-md);
+              text-align: center;
+            "
+          >
+            <div class="feature-icon" style="margin: 0 auto 2rem">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <p
+              style="
+                font-size: 1.125rem;
+                line-height: 1.8;
+                color: var(--text-main);
+                margin-bottom: 2rem;
+              "
+            >
+              <strong>Online kaksha</strong> is dedicated to democratizing
+              quality education for competitive exam aspirants across India. We
+              provide a perfect blend of <strong>free resources</strong> for
+              everyone and <strong>premium content</strong> for those who want
+              comprehensive preparation.
+            </p>
+            <p
+              style="
+                font-size: 1rem;
+                line-height: 1.8;
+                color: var(--text-muted);
+                margin-bottom: 2rem;
+              "
+            >
+              Founded by <strong>Chanakya</strong>, an experienced educator with
+              a passion for helping students succeed, we've helped thousands of
+              students achieve their career goals through UPSC, SSC, Banking,
+              and other competitive exams. Our mission is to make quality
+              education accessible and affordable for all.
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  50k+
+                </div>
+                <div style="color: var(--text-muted)">Active Students</div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  5000+
+                </div>
+                <div style="color: var(--text-muted)">Success Stories</div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: var(--primary);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  100+
+                </div>
+                <div style="color: var(--text-muted)">Premium Courses</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Free Resources Section -->
+    <section class="features resources-connected" id="free-resources">
+      <canvas class="connection-canvas" id="resourceConnections"></canvas>
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">100% Free</span>
+          <h2 class="section-title">Free Learning Resources</h2>
+          <p class="section-subtitle">
+            Access our extensive collection of free study materials, practice
+            tests, and daily quizzes.
+          </p>
+        </div>
+
+        <div class="resources-grid" id="resourcesGrid">
+          <div class="resource-card" data-resource="1">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-solid fa-file-lines"></i>
+              </div>
+            </div>
+            <h3>Free PYQs</h3>
+            <p>
+              Previous Year Questions from top exams. Practice with authentic
+              question papers and boost your preparation.
+            </p>
+            <a href="#pyqs" class="resource-link">
+              Access PYQs <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="resource-card" data-resource="2">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-solid fa-clipboard-question"></i>
+              </div>
+            </div>
+            <h3>Daily Quizzes</h3>
+            <p>
+              Fresh quizzes every day across all subjects. Test your knowledge
+              and track your progress daily.
+            </p>
+            <a href="#quizzes" class="resource-link">
+              Take Quiz <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="resource-card" data-resource="3">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-solid fa-book"></i>
+              </div>
+            </div>
+            <h3>Study Notes</h3>
+            <p>
+              Comprehensive notes covering all topics. Well-organized, easy to
+              understand, and completely free.
+            </p>
+            <a href="#notes" class="resource-link">
+              Download Notes <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="resource-card" data-resource="4">
+            <div class="resource-icon-wrapper">
+              <div class="resource-icon">
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+            </div>
+            <h3>Video Lectures</h3>
+            <p>
+              Free video content on our YouTube channel. Subscribe to Chanakya's
+              channel for regular updates.
+            </p>
+            <a
+              href="https://youtube.com/@chanakya"
+              target="_blank"
+              class="resource-link"
+            >
+              Watch Now <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Premium Courses Section -->
+    <section class="courses" id="premium">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" style="background: gold; color: #000"
+            ><i class="fa-solid fa-crown"></i> Premium Content</span
+          >
+          <h2 class="section-title">Premium Courses & Test Series</h2>
+          <p class="section-subtitle">
+            Unlock complete access to premium video courses, eBooks,
+            assignments, and comprehensive test series.
+          </p>
+        </div>
+
+        <div class="course-grid">
+          <!-- Premium Course 1 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/kaksha1/400/250.jpg"
+                alt="Course Image"
+              />
+              <span class="course-tag" style="background: gold; color: #000"
+                ><i class="fa-solid fa-crown"></i> Premium</span
+              >
+            </div>
+            <div class="course-content">
+              <div class="course-meta">
+                <span><i class="fa-solid fa-video"></i> 150+ Videos</span>
+                <span><i class="fa-solid fa-book"></i> eBooks</span>
+              </div>
+              <h3 class="course-title">
+                Complete Course Package with Test Series
+              </h3>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user1/50/50.jpg"
+                    alt="Instructor"
+                  />
+                  <span>Expert Faculty</span>
+                </div>
+                <div class="price">₹2,999</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Premium Test Series -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/kaksha2/400/250.jpg"
+                alt="Course Image"
+              />
+              <span class="course-tag" style="background: gold; color: #000"
+                ><i class="fa-solid fa-crown"></i> Premium</span
+              >
+            </div>
+            <div class="course-content">
+              <div class="course-meta">
+                <span
+                  ><i class="fa-solid fa-clipboard-check"></i> 50+ Tests</span
+                >
+                <span><i class="fa-solid fa-chart-line"></i> Analytics</span>
+              </div>
+              <h3 class="course-title">Premium Test Series (All Exams)</h3>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user2/50/50.jpg"
+                    alt="Instructor"
+                  />
+                  <span>Test Team</span>
+                </div>
+                <div class="price">₹1,499</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Premium eBooks + Assignments -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/kaksha3/400/250.jpg"
+                alt="Course Image"
+              />
+              <span class="course-tag" style="background: gold; color: #000"
+                ><i class="fa-solid fa-crown"></i> Premium</span
+              >
+            </div>
+            <div class="course-content">
+              <div class="course-meta">
+                <span><i class="fa-solid fa-book-open"></i> eBooks</span>
+                <span
+                  ><i class="fa-solid fa-pen-to-square"></i> Assignments</span
+                >
+              </div>
+              <h3 class="course-title">Premium Study Material + Practice</h3>
+              <div class="course-footer">
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user3/50/50.jpg"
+                    alt="Instructor"
+                  />
+                  <span>Content Team</span>
+                </div>
+                <div class="price">₹999</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem">
+          <a
+            href="#"
+            class="btn btn-primary"
+            style="
+              background: gold;
+              color: #000;
+              box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+            "
+          >
+            <i class="fa-solid fa-crown"></i> Get Premium Access
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="features" id="testimonials" style="background: white">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Student Reviews</span>
+          <h2 class="section-title">What Our Students Say</h2>
+          <p class="section-subtitle">
+            Real experiences from students who transformed their preparation
+            with Online kaksha.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+            </div>
+            <p style="font-style: italic; margin-bottom: 1rem">
+              "The free PYQs and daily quizzes helped me understand the exam
+              pattern. Premium test series was the best investment!"
+            </p>
+            <div style="display: flex; align-items: center; gap: 0.75rem">
+              <img
+                src="https://picsum.photos/seed/student1/50/50.jpg"
+                alt="Student"
+                style="width: 40px; height: 40px; border-radius: 50%"
+              />
+              <div>
+                <strong>Rahul Sharma</strong>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--text-muted);
+                    font-size: 0.875rem;
+                  "
+                >
+                  UPSC Aspirant
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+            </div>
+            <p style="font-style: italic; margin-bottom: 1rem">
+              "Chanakya's video lectures are exceptional. The study notes are so
+              well organized. Highly recommend the premium package!"
+            </p>
+            <div style="display: flex; align-items: center; gap: 0.75rem">
+              <img
+                src="https://picsum.photos/seed/student2/50/50.jpg"
+                alt="Student"
+                style="width: 40px; height: 40px; border-radius: 50%"
+              />
+              <div>
+                <strong>Priya Singh</strong>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--text-muted);
+                    font-size: 0.875rem;
+                  "
+                >
+                  SSC Qualifier
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+              <i class="fa-solid fa-star" style="color: gold"></i>
+            </div>
+            <p style="font-style: italic; margin-bottom: 1rem">
+              "Best platform for exam preparation. Free resources are great for
+              practice, premium content is worth every rupee!"
+            </p>
+            <div style="display: flex; align-items: center; gap: 0.75rem">
+              <img
+                src="https://picsum.photos/seed/student3/50/50.jpg"
+                alt="Student"
+                style="width: 40px; height: 40px; border-radius: 50%"
+              />
+              <div>
+                <strong>Amit Kumar</strong>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--text-muted);
+                    font-size: 0.875rem;
+                  "
+                >
+                  Banking Exam Cleared
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Chanakya Section -->
+    <section
+      class="features"
+      id="chanakya"
+      style="background: var(--bg-surface)"
+    >
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">SelfKaksha</span>
+          <h2 class="section-title">About Chanakya</h2>
+          <p class="section-subtitle">
+            Learn from Chanakya, an experienced educator dedicated to making
+            quality education accessible to all.
+          </p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto; text-align: center">
+          <div
+            style="
+              background: white;
+              padding: 3rem;
+              border-radius: 1.5rem;
+              box-shadow: var(--shadow-lg);
+            "
+          >
+            <div
+              style="
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 2rem;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 4px solid var(--primary);
+              "
+            >
+              <img
+                src="https://picsum.photos/seed/chanakya/150/150.jpg"
+                alt="Chanakya"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <h3 style="font-size: 2rem; margin-bottom: 1rem">Chanakya</h3>
+            <p
+              style="
+                color: var(--text-muted);
+                margin-bottom: 2rem;
+                line-height: 1.8;
+              "
+            >
+              With years of teaching experience and thousands of successful
+              students, Chanakya brings expert knowledge and practical insights
+              to help you succeed in competitive exams. Subscribe to the YouTube
+              channel for regular free content and updates.
+            </p>
+            <a
+              href="https://youtube.com/@chanakya"
+              target="_blank"
+              class="btn btn-primary"
+              style="
+                background: #ff0000;
+                box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+              "
+            >
+              <i class="fa-brands fa-youtube"></i> Subscribe to Channel
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="interactive-demo" id="updates">
+      <div class="container demo-container">
+        <h2>Latest Updates & Announcements</h2>
+        <p>
+          Stay updated with the latest courses, test series releases, and
+          important exam notifications.
+        </p>
+
+        <div class="cube-playground">
+          <div class="playground-cube">
+            <div class="playground-face pf-front">
+              <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="playground-face pf-back">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <div class="playground-face pf-right">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <div class="playground-face pf-left">
+              <i class="fa-solid fa-calendar"></i>
+            </div>
+            <div class="playground-face pf-top">
+              <i class="fa-solid fa-rss"></i>
+            </div>
+            <div class="playground-face pf-bottom">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" style="background: white; color: var(--primary)">
+          View All Updates
         </button>
       </div>
-    </div>
+    </section>
 
-    <main>
-      <section class="hero">
-        <div class="container">
-          <div class="hero-shell">
-            <div class="hero-copy reveal">
-              <span class="section-kicker"
-                >India-focused exam preparation platform</span
+    <!-- Success Stories Section -->
+    <section class="courses" id="success" style="background: var(--bg-surface)">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" style="background: var(--success); color: white"
+            >Success Stories</span
+          >
+          <h2 class="section-title">Our Students' Achievements</h2>
+          <p class="section-subtitle">
+            Inspiring success stories from students who achieved their dreams
+            with Online kaksha.
+          </p>
+        </div>
+
+        <div class="course-grid">
+          <!-- Success Story 1 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/success1/400/250.jpg"
+                alt="Success Story"
+              />
+              <span
+                class="course-tag"
+                style="background: var(--success); color: white"
+                >AIR 15</span
               >
-              <h1>
-                Learn from strong mentors. Prepare with rank-level clarity.
-              </h1>
-              <p>
-                Online Kaksha brings live classes, structured batches, tests,
-                notes, and guided revision into one clean learning experience
-                for serious aspirants across major competitive exams.
+            </div>
+            <div class="course-content">
+              <h3 class="course-title">Cracked UPSC in First Attempt</h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                "The premium test series and study notes were game-changers.
+                Thank you Online kaksha!"
               </p>
-              <div class="hero-actions">
-                <button
-                  class="btn btn-primary"
-                  onclick="openModal('Join for Free')"
-                >
-                  Join for Free
-                </button>
-                <button
-                  class="btn btn-secondary"
-                  onclick="scrollToSection('courses')"
-                >
-                  Explore Popular Batches
-                </button>
-              </div>
-              <div class="hero-stats">
-                <div class="hero-stat">
-                  <strong>12M+</strong>
-                  <span>students reached through online learning</span>
-                </div>
-                <div class="hero-stat">
-                  <strong>180+</strong>
-                  <span>educators and mentor support sessions</span>
-                </div>
-                <div class="hero-stat">
-                  <strong>4.8/5</strong>
-                  <span>average learner satisfaction across batches</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="hero-visual reveal">
-              <div class="teacher-card">
-                <span class="teacher-badge">Top Faculty • Live Today</span>
-                <img src="../profile.JPG" alt="Lead educator" />
-                <div class="teacher-caption">
-                  <div>
-                    <strong>Lead Mentor</strong><br />
-                    <span
-                      >Strategy-driven online teaching for exam preparation and
-                      score improvement</span
-                    >
-                  </div>
-                  <strong>10+ yrs</strong>
-                </div>
-              </div>
-
-              <div class="live-sidebar">
-                <aside class="live-sidebar-card">
-                  <h3>Live Classes</h3>
-                  <p>
-                    Join fast-moving sessions with teacher interaction, concept
-                    clearing, and daily study momentum.
-                  </p>
-                  <div class="live-pill-row">
-                    <span class="live-pill">Today 7:00 PM</span>
-                    <span class="live-pill">Free access</span>
-                  </div>
-                  <div class="live-class-list">
-                    <div class="live-class-item">
-                      <span class="live-time">6:00 PM</span>
-                      <strong>Electrostatics Revision Sprint</strong>
-                      <span>GATE Physics</span>
-                    </div>
-                    <div class="live-class-item">
-                      <span class="live-time">7:30 PM</span>
-                      <strong>Polity Quick Revision</strong>
-                      <span>UPSC GS Foundation</span>
-                    </div>
-                    <div class="live-class-item">
-                      <span class="live-time">9:00 PM</span>
-                      <strong>Speed Math Drill</strong>
-                      <span>Bank PO and SSC</span>
-                    </div>
-                  </div>
-                  <button
-                    class="btn btn-primary"
-                    onclick="openModal('Join Live Classes')"
-                  >
-                    Join Live Classes
-                  </button>
-                </aside>
-
-                <div class="trust-card">
-                  <h3>Built for trust</h3>
-                  <p>
-                    Clean UI, focused content flow, and serious exam-prep
-                    support across desktop and mobile screens.
-                  </p>
-                  <div class="trust-list">
-                    <div class="trust-item">
-                      <i class="fa-solid fa-circle-check"></i
-                      ><span>Recorded backup for every session</span>
-                    </div>
-                    <div class="trust-item">
-                      <i class="fa-solid fa-circle-check"></i
-                      ><span>Mock tests and performance tracking</span>
-                    </div>
-                    <div class="trust-item">
-                      <i class="fa-solid fa-circle-check"></i
-                      ><span>Doubt-solving and mentor guidance</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="overview" id="overview">
-        <div class="container">
-          <div class="section-header reveal">
-            <span class="section-kicker">Why Online Kaksha</span>
-            <h2>A sharper learning system for competitive exams</h2>
-            <p>
-              From structured teaching and notes to tests and mentor follow-up,
-              the platform is designed to make preparation more consistent.
-            </p>
-          </div>
-          <div class="overview-grid">
-            <div class="overview-card reveal">
-              <i class="fa-solid fa-video"></i>
-              <strong>900+</strong>
-              <span>high-quality recorded and live sessions</span>
-            </div>
-            <div class="overview-card reveal">
-              <i class="fa-solid fa-file-circle-check"></i>
-              <strong>450+</strong>
-              <span>practice sheets, notes, and topic tests</span>
-            </div>
-            <div class="overview-card reveal">
-              <i class="fa-solid fa-users-gear"></i>
-              <strong>180+</strong>
-              <span>weekly faculty and mentor interactions</span>
-            </div>
-            <div class="overview-card reveal">
-              <i class="fa-solid fa-trophy"></i>
-              <strong>8k+</strong>
-              <span>student success stories and score jumps</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="courses-section" id="courses">
-        <div class="container">
-          <div class="section-header reveal">
-            <span class="section-kicker">Popular Batches</span>
-            <h2>Pick a batch aligned to your target exam</h2>
-            <p>
-              Popular online programs with ratings, pricing, tests, notes, and
-              class support included.
-            </p>
-          </div>
-
-          <div class="batches-layout">
-            <div class="course-grid">
-              <article class="course-card reveal" data-exam="gate">
-                <div class="course-thumb">
-                  <span class="course-badge">Best Seller</span>
+              <div class="course-footer">
+                <div class="instructor">
                   <img
-                    src="https://picsum.photos/seed/onk-gate/900/620"
-                    alt="GATE batch"
+                    src="https://picsum.photos/seed/topper1/50/50.jpg"
+                    alt="Student"
                   />
+                  <span>Ankit Verma</span>
                 </div>
-                <div class="course-body">
-                  <span class="course-cat">GATE & PSU</span>
-                  <h3 class="course-title">
-                    GATE Physics Rank Booster Batch 2026
-                  </h3>
-                  <div class="course-meta">
-                    <span
-                      ><i class="fa-solid fa-chalkboard-user"></i> Live faculty
-                      support</span
-                    >
-                    <span><i class="fa-regular fa-clock"></i> 6 months</span>
-                    <span class="rating"
-                      ><i class="fa-solid fa-star"></i> 4.9</span
-                    >
-                  </div>
-                  <div class="course-footer">
-                    <div class="price-tag">
-                      ₹2,999 <span>includes tests + notes</span>
-                    </div>
-                    <button
-                      class="btn btn-primary"
-                      onclick="openModal('Enroll in GATE Batch')"
-                    >
-                      Join Now
-                    </button>
-                  </div>
+                <div style="color: var(--success); font-weight: 600">
+                  <i class="fa-solid fa-trophy"></i> UPSC
                 </div>
-              </article>
+              </div>
+            </div>
+          </div>
 
-              <article class="course-card reveal" data-exam="upsc">
-                <div class="course-thumb">
-                  <span class="course-badge">Trending</span>
+          <!-- Success Story 2 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/success2/400/250.jpg"
+                alt="Success Story"
+              />
+              <span
+                class="course-tag"
+                style="background: var(--success); color: white"
+                >Selected</span
+              >
+            </div>
+            <div class="course-content">
+              <h3 class="course-title">SSC CGL Success in 6 Months</h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                "Daily quizzes kept me consistent. Premium courses gave me the
+                edge I needed."
+              </p>
+              <div class="course-footer">
+                <div class="instructor">
                   <img
-                    src="https://picsum.photos/seed/onk-upsc/900/620"
-                    alt="UPSC batch"
+                    src="https://picsum.photos/seed/topper2/50/50.jpg"
+                    alt="Student"
                   />
+                  <span>Sneha Gupta</span>
                 </div>
-                <div class="course-body">
-                  <span class="course-cat">UPSC CSE</span>
-                  <h3 class="course-title">Lakshya GS Foundation Batch 2026</h3>
-                  <div class="course-meta">
-                    <span
-                      ><i class="fa-solid fa-chalkboard-user"></i> Daily answer
-                      writing</span
-                    >
-                    <span><i class="fa-regular fa-clock"></i> 10 months</span>
-                    <span class="rating"
-                      ><i class="fa-solid fa-star"></i> 4.8</span
-                    >
-                  </div>
-                  <div class="course-footer">
-                    <div class="price-tag">
-                      ₹4,499 <span>GS + current affairs</span>
-                    </div>
-                    <button
-                      class="btn btn-primary"
-                      onclick="openModal('Enroll in UPSC Batch')"
-                    >
-                      Join Now
-                    </button>
-                  </div>
+                <div style="color: var(--success); font-weight: 600">
+                  <i class="fa-solid fa-trophy"></i> SSC CGL
                 </div>
-              </article>
+              </div>
+            </div>
+          </div>
 
-              <article class="course-card reveal" data-exam="ssc">
-                <div class="course-thumb">
+          <!-- Success Story 3 -->
+          <div class="course-card">
+            <div class="course-image">
+              <img
+                src="https://picsum.photos/seed/success3/400/250.jpg"
+                alt="Success Story"
+              />
+              <span
+                class="course-tag"
+                style="background: var(--success); color: white"
+                >Rank 3</span
+              >
+            </div>
+            <div class="course-content">
+              <h3 class="course-title">Banking Exam - Top Rank</h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                "From free PYQs to premium packages, everything was perfect.
+                Highly recommended!"
+              </p>
+              <div class="course-footer">
+                <div class="instructor">
                   <img
-                    src="https://picsum.photos/seed/onk-ssc/900/620"
-                    alt="SSC batch"
+                    src="https://picsum.photos/seed/topper3/50/50.jpg"
+                    alt="Student"
                   />
+                  <span>Rajesh Patel</span>
                 </div>
-                <div class="course-body">
-                  <span class="course-cat">SSC CGL / CHSL</span>
-                  <h3 class="course-title">SSC Selection Master Batch</h3>
-                  <div class="course-meta">
-                    <span
-                      ><i class="fa-solid fa-chalkboard-user"></i> Daily quiz
-                      practice</span
-                    >
-                    <span><i class="fa-regular fa-clock"></i> 4 months</span>
-                    <span class="rating"
-                      ><i class="fa-solid fa-star"></i> 4.7</span
-                    >
-                  </div>
-                  <div class="course-footer">
-                    <div class="price-tag">
-                      ₹1,999 <span>topic tests + PDFs</span>
-                    </div>
-                    <button
-                      class="btn btn-primary"
-                      onclick="openModal('Enroll in SSC Batch')"
-                    >
-                      Join Now
-                    </button>
-                  </div>
+                <div style="color: var(--success); font-weight: 600">
+                  <i class="fa-solid fa-trophy"></i> IBPS PO
                 </div>
-              </article>
-
-              <article class="course-card reveal" data-exam="banking">
-                <div class="course-thumb">
-                  <img
-                    src="https://picsum.photos/seed/onk-banking/900/620"
-                    alt="Banking batch"
-                  />
-                </div>
-                <div class="course-body">
-                  <span class="course-cat">Banking Exams</span>
-                  <h3 class="course-title">Champion Bank PO Live Batch</h3>
-                  <div class="course-meta">
-                    <span
-                      ><i class="fa-solid fa-chalkboard-user"></i> Quant +
-                      reasoning focus</span
-                    >
-                    <span><i class="fa-regular fa-clock"></i> 5 months</span>
-                    <span class="rating"
-                      ><i class="fa-solid fa-star"></i> 4.8</span
-                    >
-                  </div>
-                  <div class="course-footer">
-                    <div class="price-tag">
-                      ₹2,499 <span>GA + interview support</span>
-                    </div>
-                    <button
-                      class="btn btn-primary"
-                      onclick="openModal('Enroll in Banking Batch')"
-                    >
-                      Join Now
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <aside class="batch-sidebar reveal">
-              <div class="live-sidebar-card">
-                <h3>Live Classes</h3>
-                <p>
-                  Join the upcoming sessions with teacher interaction, revision
-                  sprints, and doubt solving.
-                </p>
-                <div class="live-pill-row">
-                  <span class="live-pill">Today 7:00 PM</span>
-                  <span class="live-pill">Open session</span>
-                </div>
-                <div class="live-class-list">
-                  <div class="live-class-item">
-                    <span class="live-time">6:00 PM</span>
-                    <strong>Modern Physics Rapid Revision</strong>
-                    <span>For GATE and technical exams</span>
-                  </div>
-                  <div class="live-class-item">
-                    <span class="live-time">7:30 PM</span>
-                    <strong>UPSC Current Affairs Clinic</strong>
-                    <span>GS mentoring session</span>
-                  </div>
-                  <div class="live-class-item">
-                    <span class="live-time">9:00 PM</span>
-                    <strong>Arithmetic Speed Drill</strong>
-                    <span>SSC and Banking aspirants</span>
-                  </div>
-                </div>
-                <button
-                  class="btn btn-primary"
-                  onclick="openModal('Join Live Classes')"
-                >
-                  Join Live Classes
-                </button>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section class="toppers-section" id="toppers">
-        <div class="container">
-          <div class="section-header reveal">
-            <span class="section-kicker">Toppers Wall</span>
-            <h2>Student outcomes backed by consistency</h2>
-            <p>
-              Top results from learners who used structured classes, tests, and
-              mentor-led revision to improve rank and confidence.
-            </p>
-          </div>
-
-          <div class="toppers-grid">
-            <article class="topper-card reveal">
-              <span class="topper-rank">AIR 12</span>
-              <p>
-                "The concept clarity and problem practice helped me convert weak
-                areas into scoring topics within a few months."
-              </p>
-              <div class="topper-profile">
-                <img
-                  src="https://picsum.photos/seed/onk-topper1/220/220"
-                  alt="Topper"
-                />
-                <div>
-                  <strong>Anjali Verma</strong><br />
-                  <span>GATE 2026 • Score 79.3</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="topper-card reveal">
-              <span class="topper-rank">AIR 38</span>
-              <p>
-                "Daily writing tasks and mentor review created the discipline I
-                needed for UPSC preparation."
-              </p>
-              <div class="topper-profile">
-                <img
-                  src="https://picsum.photos/seed/onk-topper2/220/220"
-                  alt="Topper"
-                />
-                <div>
-                  <strong>Vikram Singh</strong><br />
-                  <span>UPSC CSE • 1041 marks</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="topper-card reveal">
-              <span class="topper-rank">AIR 07</span>
-              <p>
-                "Short quizzes, fast revision classes, and careful test review
-                improved both speed and accuracy."
-              </p>
-              <div class="topper-profile">
-                <img
-                  src="https://picsum.photos/seed/onk-topper3/220/220"
-                  alt="Topper"
-                />
-                <div>
-                  <strong>Priya Das</strong><br />
-                  <span>SBI PO • Final selection</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="topper-card reveal">
-              <span class="topper-rank">Top 1%</span>
-              <p>
-                "The mock environment felt realistic and helped me become calm,
-                fast, and exam-ready on the final day."
-              </p>
-              <div class="topper-profile">
-                <img
-                  src="https://picsum.photos/seed/onk-topper4/220/220"
-                  alt="Topper"
-                />
-                <div>
-                  <strong>Rahul Jha</strong><br />
-                  <span>SSC CGL • Final shortlist</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="resources-section" id="resources">
-        <div class="container">
-          <div class="section-header reveal">
-            <span class="section-kicker">Study Resources</span>
-            <h2>Beyond class videos, everything needed to prepare better</h2>
-            <p>
-              Notes, tests, alerts, and support resources are organized to keep
-              the learning journey serious and efficient.
-            </p>
-          </div>
-
-          <div class="resources-grid">
-            <article class="resource-card reveal">
-              <i class="fa-solid fa-file-pdf"></i>
-              <h3>PDF Notes</h3>
-              <p>
-                Clean class notes, formulas, short revision pages, and printable
-                summaries for daily use.
-              </p>
-            </article>
-            <article class="resource-card reveal">
-              <i class="fa-solid fa-list-check"></i>
-              <h3>Mock Tests</h3>
-              <p>
-                Topic-wise and full-length tests with performance review and
-                improvement suggestions.
-              </p>
-            </article>
-            <article class="resource-card reveal">
-              <i class="fa-solid fa-bell"></i>
-              <h3>Exam Alerts</h3>
-              <p>
-                Get updates for forms, results, answer keys, interviews, and
-                admission-related notices.
-              </p>
-            </article>
-            <article class="resource-card reveal">
-              <i class="fa-solid fa-comments"></i>
-              <h3>Doubt Support</h3>
-              <p>
-                Raise questions after class, get support from mentors, and avoid
-                gaps in understanding.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="faq-section">
-        <div class="container">
-          <div class="section-header reveal">
-            <span class="section-kicker">FAQs</span>
-            <h2>Key answers before you join</h2>
-            <p>
-              Common questions about free access, live classes, batch support,
-              and recorded learning.
-            </p>
-          </div>
-
-          <div class="faq-grid reveal">
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                Can I attend a class before enrolling in a batch?
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes. You can start with free live sessions and then choose a
-                  batch after reviewing the teaching style and schedule.
-                </p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                Are recordings and notes included in the batch?
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes. Recordings, class notes, assignments, and test support
-                  are included in the batch learning flow.
-                </p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question" type="button">
-                Does Online Kaksha support multiple competitive exams?
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes. The platform is positioned for major competitive exams
-                  including GATE, UPSC, SSC, and Banking programs.
-                </p>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </main>
 
+        <div style="text-align: center; margin-top: 3rem">
+          <a href="#" class="btn btn-outline">Read More Success Stories</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <h2>Online Kaksha.</h2>
+            <a href="#" class="brand">
+              <img
+                src="Online Kaksha (Website Logo).png"
+                alt="Online kaksha"
+                style="height: 40px; width: auto"
+              />
+            </a>
             <p>
-              A modern EdTech landing experience for competitive exam
-              preparation with live faculty, clean design, and focused batch
-              journeys.
+              Empowering students with free resources and premium courses for
+              competitive exam success.
             </p>
-            <div class="socials">
-              <a href="#"><i class="fa-brands fa-youtube"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="#"><i class="fa-brands fa-telegram"></i></a>
-            </div>
           </div>
+
           <div class="footer-col">
-            <h4>Programs</h4>
+            <h4>Free Resources</h4>
             <ul>
-              <li><a href="#courses">GATE & PSU</a></li>
-              <li><a href="#courses">UPSC</a></li>
-              <li><a href="#courses">SSC</a></li>
-              <li><a href="#courses">Banking</a></li>
+              <li><a href="#pyqs">PYQs</a></li>
+              <li><a href="#quizzes">Daily Quizzes</a></li>
+              <li><a href="#notes">Study Notes</a></li>
+              <li>
+                <a href="https://youtube.com/@chanakya" target="_blank"
+                  >YouTube Channel</a
+                >
+              </li>
             </ul>
           </div>
+
           <div class="footer-col">
-            <h4>Resources</h4>
+            <h4>Premium</h4>
             <ul>
-              <li><a href="#resources">Notes</a></li>
-              <li><a href="#resources">Mock Tests</a></li>
-              <li><a href="#toppers">Toppers Wall</a></li>
-              <li><a href="#overview">Why Us</a></li>
+              <li><a href="#premium">Video Courses</a></li>
+              <li><a href="#premium">Test Series</a></li>
+              <li><a href="#premium">eBooks</a></li>
+              <li><a href="#premium">Assignments</a></li>
             </ul>
           </div>
+
           <div class="footer-col">
-            <h4>Support</h4>
+            <h4>Company</h4>
             <ul>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#chanakya">Chanakya</a></li>
+              <li><a href="#success">Success Stories</a></li>
+              <li><a href="#">Contact</a></li>
             </ul>
           </div>
         </div>
+
         <div class="footer-bottom">
-          <p>&copy; 2026 Online Kaksha. All rights reserved.</p>
+          &copy; 2024 Online kaksha. All rights reserved. Designed & Developed
+          by InnovistaLabs
         </div>
       </div>
     </footer>
 
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal-card">
-        <button class="modal-close" onclick="closeModal()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <h3 id="modalTitle">Join for Free</h3>
-        <p>
-          Enter your details and our team will help you choose the right free
-          class, demo, or full batch.
-        </p>
-        <form onsubmit="handleForm(event)">
-          <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input id="fullName" class="form-control" type="text" required />
-          </div>
-          <div class="form-group">
-            <label for="emailAddress">Email Address</label>
-            <input
-              id="emailAddress"
-              class="form-control"
-              type="email"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input id="phoneNumber" class="form-control" type="tel" required />
-          </div>
-          <div class="form-group">
-            <label for="examTarget">Preparing For</label>
-            <select id="examTarget" class="form-control">
-              <option>GATE</option>
-              <option>UPSC</option>
-              <option>SSC</option>
-              <option>Banking</option>
-              <option>JEE</option>
-              <option>NEET</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" type="submit" style="width: 100%">
-            Request Access
-          </button>
-        </form>
-      </div>
-    </div>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
 
     <script>
-      const revealElements = document.querySelectorAll(".reveal");
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-            }
-          });
+      /* =========================================
+     IMPROVED 1. CANVAS BACKGROUND ANIMATION
+     Features: Retina support, Smooth pulsing, Optimized rendering
+     ========================================= */
+      const canvas = document.getElementById("bg-canvas");
+      const ctx = canvas.getContext("2d");
+
+      // Configuration
+      const config = {
+        particleCount: 100, // Number of nodes
+        connectionDistance: 180, // Max distance to draw lines
+        mouseInteractionRadius: 200, // Distance to react to mouse
+        baseSpeed: 0.4, // Floating speed
+        colors: {
+          primary: "14, 165, 233", // Sky Blue (RGB)
+          secondary: "7, 89, 133", // Darker Blue (RGB)
+          alpha: 0.15, // Line opacity
         },
-        { threshold: 0.12 },
-      );
+      };
 
-      revealElements.forEach((element) => revealObserver.observe(element));
+      let width, height;
+      let particles = [];
+      let time = 0;
+      let mouse = { x: null, y: null };
 
-      const mobileNav = document.getElementById("mobileNav");
+      // Handle High DPI (Retina) Displays for sharp rendering
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        const dpr = window.devicePixelRatio || 1;
 
-      function toggleMenu() {
-        mobileNav.classList.toggle("active");
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+
+        // Scale context to ensure correct drawing size
+        ctx.scale(dpr, dpr);
+
+        // Adjust CSS size
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+
+        initParticles();
       }
 
-      const programsDropdown = document.getElementById("programsDropdown");
-      const dropdownItems = document.querySelectorAll(
-        ".dropdown-item[data-exam-target]",
-      );
-      const courseCards = document.querySelectorAll(".course-card[data-exam]");
+      // Enhanced Node Class
+      class Node {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
 
-      function filterCourses(selectedExam = "all") {
-        courseCards.forEach((card) => {
-          const matches =
-            selectedExam === "all" || card.dataset.exam === selectedExam;
-          card.hidden = !matches;
-        });
+          // Random velocity
+          this.vx = (Math.random() - 0.5) * config.baseSpeed;
+          this.vy = (Math.random() - 0.5) * config.baseSpeed;
 
-        document
-          .getElementById("courses")
-          .scrollIntoView({ behavior: "smooth" });
-        programsDropdown.classList.remove("open");
+          this.radius = Math.random() * 2 + 1.5;
+
+          // Pulse animation properties
+          this.pulseSpeed = Math.random() * 0.02 + 0.01;
+          this.pulsePhase = Math.random() * Math.PI * 2;
+
+          // Random offset for line animation
+          this.flowOffset = Math.random() * 100;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Mouse repulsion effect (Interactive Background)
+          if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < config.mouseInteractionRadius) {
+              const forceDirectionX = dx / distance;
+              const forceDirectionY = dy / distance;
+              const force =
+                (config.mouseInteractionRadius - distance) /
+                config.mouseInteractionRadius;
+              const directionX = forceDirectionX * force * 2; // Push strength
+              const directionY = forceDirectionY * force * 2;
+
+              this.x -= directionX;
+              this.y -= directionY;
+            }
+          }
+
+          // Bounce off edges
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+
+        draw() {
+          // Calculate Pulse
+          const pulse =
+            Math.sin(time * this.pulseSpeed + this.pulsePhase) * 0.3 + 0.7;
+          const glowSize = this.radius * (1.2 + pulse * 0.4);
+
+          // 1. Draw Glow
+          const gradient = ctx.createRadialGradient(
+            this.x,
+            this.y,
+            0,
+            this.x,
+            this.y,
+            glowSize * 3,
+          );
+          gradient.addColorStop(
+            0,
+            `rgba(${config.colors.primary}, ${0.4 * pulse})`,
+          );
+          gradient.addColorStop(1, `rgba(${config.colors.primary}, 0)`);
+
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, glowSize * 3, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.fill();
+
+          // 2. Draw Core
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${config.colors.primary}, ${0.8 * pulse})`;
+          ctx.fill();
+
+          // 3. Inner Highlight (Pseudo-3D effect)
+          ctx.beginPath();
+          ctx.arc(
+            this.x - this.radius * 0.3,
+            this.y - this.radius * 0.3,
+            this.radius * 0.4,
+            0,
+            Math.PI * 2,
+          );
+          ctx.fillStyle = `rgba(255, 255, 255, ${0.5 * pulse})`;
+          ctx.fill();
+        }
       }
 
-      dropdownItems.forEach((item) => {
-        item.addEventListener("click", () => {
-          filterCourses(item.dataset.examTarget);
-        });
+      function initParticles() {
+        particles = [];
+        // Calculate responsive count
+        const count = Math.min(Math.floor(width / 80), config.particleCount);
+        for (let i = 0; i < count; i++) {
+          particles.push(new Node());
+        }
+      }
+
+      function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p1 = particles[i];
+            const p2 = particles[j];
+
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const distSq = dx * dx + dy * dy; // Use squared distance for performance
+            const maxDistSq =
+              config.connectionDistance * config.connectionDistance;
+
+            if (distSq < maxDistSq) {
+              const dist = Math.sqrt(distSq);
+              const opacity =
+                (1 - dist / config.connectionDistance) * config.colors.alpha;
+
+              // Draw Static Line
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(${config.colors.secondary}, ${opacity})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+
+              // Draw "Data Packet" (Moving highlight)
+              // Using a continuous flow based on time and node indices
+              const flowSpeed = 0.02;
+              const flowPos =
+                ((time * 20 + p1.flowOffset + p2.flowOffset) % 100) / 100;
+
+              const packetX = p1.x + (p2.x - p1.x) * flowPos;
+              const packetY = p1.y + (p2.y - p1.y) * flowPos;
+
+              ctx.beginPath();
+              ctx.arc(packetX, packetY, 2, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(${config.colors.primary}, ${opacity * 3})`; // Brighter than line
+              ctx.fill();
+            }
+          }
+        }
+      }
+
+      function animateCanvas() {
+        ctx.clearRect(0, 0, width, height);
+
+        drawConnections();
+
+        for (let particle of particles) {
+          particle.update();
+          particle.draw();
+        }
+
+        time++;
+        requestAnimationFrame(animateCanvas);
+      }
+
+      // Mouse listeners for background interaction
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
       });
 
-      programsDropdown
-        .querySelector(".nav-dropdown-toggle")
-        .addEventListener("click", () => {
-          programsDropdown.classList.toggle("open");
+      window.addEventListener("mouseleave", () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      // Debounce resize
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resize, 100);
+      });
+
+      // Init
+      resize();
+      animateCanvas();
+
+      /* =========================================
+     MOUSE INTERACTION FOR PROFILE IMAGE
+     Features: Subtle parallax effect on profile image
+     ========================================= */
+      const heroSection = document.getElementById("hero");
+      const profileImage = document.querySelector(".profile-image");
+
+      if (heroSection && profileImage) {
+        heroSection.addEventListener("mousemove", (e) => {
+          const xPct = (e.clientX / window.innerWidth - 0.5) * 2;
+          const yPct = (e.clientY / window.innerHeight - 0.5) * 2;
+
+          // Subtle parallax effect
+          const moveX = xPct * 20;
+          const moveY = yPct * 20;
+
+          profileImage.style.transform = `translate(${moveX}px, ${moveY}px) scale(1)`;
         });
 
-      document.addEventListener("click", (event) => {
-        if (!programsDropdown.contains(event.target)) {
-          programsDropdown.classList.remove("open");
+        heroSection.addEventListener("mouseleave", () => {
+          profileImage.style.transform = "translate(0, 0) scale(1)";
+        });
+      }
+
+      /* =========================================
+     RESOURCE CONNECTIONS ANIMATION
+     Features: Animated connecting threads between resource cards
+     ========================================= */
+      const resourceCanvas = document.getElementById("resourceConnections");
+      const resourcesGrid = document.getElementById("resourcesGrid");
+
+      if (resourceCanvas && resourcesGrid) {
+        const rCtx = resourceCanvas.getContext("2d");
+        let rWidth, rHeight;
+        let cardCenters = [];
+        let animationProgress = 0;
+
+        function resizeResourceCanvas() {
+          const section = resourceCanvas.parentElement;
+          rWidth = resourceCanvas.width = section.offsetWidth;
+          rHeight = resourceCanvas.height = section.offsetHeight;
+          updateCardCenters();
+        }
+
+        function updateCardCenters() {
+          const cards = resourcesGrid.querySelectorAll(".resource-card");
+          cardCenters = [];
+
+          cards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const sectionRect = resourceCanvas.getBoundingClientRect();
+
+            cardCenters.push({
+              x: rect.left - sectionRect.left + rect.width / 2,
+              y: rect.top - sectionRect.top + rect.height / 2,
+              element: card,
+            });
+          });
+        }
+
+        function drawConnections() {
+          rCtx.clearRect(0, 0, rWidth, rHeight);
+
+          // Draw connections between cards
+          for (let i = 0; i < cardCenters.length; i++) {
+            for (let j = i + 1; j < cardCenters.length; j++) {
+              const c1 = cardCenters[i];
+              const c2 = cardCenters[j];
+
+              // Calculate distance
+              const dx = c2.x - c1.x;
+              const dy = c2.y - c1.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              // Only draw if cards are close enough
+              if (distance < 800) {
+                const opacity = Math.max(0, 1 - distance / 800) * 0.15;
+
+                // Draw main line
+                rCtx.beginPath();
+                rCtx.moveTo(c1.x, c1.y);
+                rCtx.lineTo(c2.x, c2.y);
+                rCtx.strokeStyle = `rgba(220, 95, 0, ${opacity})`;
+                rCtx.lineWidth = 2;
+                rCtx.stroke();
+
+                // Draw animated dot traveling along the line
+                const progress = (animationProgress % 200) / 200;
+                const dotX = c1.x + dx * progress;
+                const dotY = c1.y + dy * progress;
+
+                // Outer glow circle (solid color)
+                rCtx.beginPath();
+                rCtx.arc(dotX, dotY, 10, 0, Math.PI * 2);
+                rCtx.fillStyle = `rgba(7, 89, 133, ${opacity * 1.5})`;
+                rCtx.fill();
+
+                // Middle circle
+                rCtx.beginPath();
+                rCtx.arc(dotX, dotY, 6, 0, Math.PI * 2);
+                rCtx.fillStyle = `rgba(7, 89, 133, ${opacity * 2.5})`;
+                rCtx.fill();
+
+                // Core dot (solid)
+                rCtx.beginPath();
+                rCtx.arc(dotX, dotY, 3, 0, Math.PI * 2);
+                rCtx.fillStyle = `rgba(7, 89, 133, ${Math.min(opacity * 4, 0.8)})`;
+                rCtx.fill();
+              }
+            }
+          }
+
+          animationProgress++;
+          requestAnimationFrame(drawConnections);
+        }
+
+        // Initialize
+        resizeResourceCanvas();
+        drawConnections();
+
+        // Update on resize and scroll
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            resizeResourceCanvas();
+          }, 100);
+        });
+
+        window.addEventListener("scroll", updateCardCenters);
+
+        // Update when cards are hovered
+        const cards = resourcesGrid.querySelectorAll(".resource-card");
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", updateCardCenters);
+          card.addEventListener("mouseleave", updateCardCenters);
+        });
+      }
+
+      /* =========================================
+     IMPROVED 3. UI LOGIC
+     Features: Debounce, Enhanced Toast, cleaner Event Listeners
+     ========================================= */
+
+      // --- Mobile Menu Toggle ---
+      const menuToggle = document.getElementById("menuToggle");
+      const navbar = document.getElementById("navbar");
+
+      menuToggle.addEventListener("click", () => {
+        navbar.classList.toggle("mobile-active");
+        const icon = menuToggle.querySelector("i");
+        if (navbar.classList.contains("mobile-active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
         }
       });
 
-      const faqItems = document.querySelectorAll(".faq-item");
-      faqItems.forEach((item) => {
-        item.querySelector(".faq-question").addEventListener("click", () => {
-          item.classList.toggle("active");
-        });
-      });
+      // --- Navbar Scroll Effect (Throttled) ---
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
 
-      const modal = document.getElementById("modalOverlay");
-      const modalTitle = document.getElementById("modalTitle");
-
-      function openModal(title) {
-        modalTitle.innerText = title;
-        modal.style.display = "flex";
-      }
-
-      function closeModal() {
-        modal.style.display = "none";
-      }
-
-      modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-          closeModal();
+        if (currentScrollY > 50) {
+          navbar.style.boxShadow = "0 4px 6px -1px rgb(0 0 0 / 0.05)";
+          navbar.style.background = "rgba(255, 255, 255, 0.98)"; // Slightly more opaque on scroll
+        } else {
+          navbar.style.boxShadow = "none";
+          navbar.style.background = "rgba(255, 255, 255, 0.9)"; // Back to glass
         }
+
+        lastScrollY = currentScrollY;
       });
 
-      function handleForm(event) {
-        event.preventDefault();
-        const submitButton = event.target.querySelector(
-          "button[type='submit']",
-        );
-        const originalText = submitButton.innerText;
-        submitButton.innerText = "Processing...";
+      // --- Toast Notification System ---
+      function showToast(title, message) {
+        const container = document.getElementById("toastContainer");
+        if (!container) return;
 
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `
+      <i class="fa-solid fa-circle-check"></i>
+      <div class="toast-content">
+        <h5>${title}</h5>
+        <p>${message}</p>
+      </div>
+      <button class="toast-close" style="margin-left:auto; color:#94a3b8; background:none; cursor:pointer;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    `;
+
+        container.appendChild(toast);
+
+        // Close button logic
+        const closeBtn = toast.querySelector(".toast-close");
+        closeBtn.addEventListener("click", () => removeToast(toast));
+
+        // Auto remove
         setTimeout(() => {
-          submitButton.innerText = "Request Sent";
-          setTimeout(() => {
-            submitButton.innerText = originalText;
-            event.target.reset();
-            closeModal();
-          }, 1200);
-        }, 900);
+          removeToast(toast);
+        }, 4000);
       }
 
-      function scrollToSection(id) {
-        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      function removeToast(toast) {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+        // Wait for transition to finish before removing from DOM
+        setTimeout(() => {
+          if (toast.parentElement) toast.remove();
+        }, 300);
       }
+
+      // --- Interactive Button Triggers ---
+      document.querySelectorAll('a[href="#premium"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          // Allow default scroll behavior, just show toast
+          showToast(
+            "Welcome to Online kaksha",
+            "Explore our premium content...",
+          );
+        });
+      });
     </script>
   </body>
 </html>

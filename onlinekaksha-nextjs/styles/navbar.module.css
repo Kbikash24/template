@@ -1,0 +1,166 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dark);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.logo span:last-child {
+  color: var(--accent-dark);
+}
+
+.logoMark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navLink,
+.navDropdownToggle {
+  color: var(--text-main);
+  font-size: 0.98rem;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.navLink:hover,
+.navDropdownToggle:hover {
+  color: var(--primary);
+}
+
+.navDropdown {
+  position: relative;
+}
+
+.navDropdownMenu {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 0;
+  width: 250px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: var(--transition);
+  z-index: 1001;
+}
+
+.navDropdownMenu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navDropdown:hover .navDropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
+  text-align: left;
+  color: var(--dark);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dropdownItem:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mobileMenuBtn {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--dark);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileNav {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: min(340px, 100%);
+  padding: 28px 20px;
+  background: #ffffff;
+  border-right: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1002;
+  overflow-y: auto;
+}
+
+.mobileNav.active {
+  transform: translateX(0);
+}
+
+.mobileNavLinks {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.mobileNavLinks .navLink {
+  padding: 12px 0;
+}
+
+@media (max-width: 920px) {
+  .navLinks,
+  .navActions {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: inline-flex;
+  }
+}

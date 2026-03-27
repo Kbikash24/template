@@ -1,0 +1,5881 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pepperazy - AI Ads that win.</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --purple: #6c47ff;
+        --dark: #0d0d14;
+        --white: #ffffff;
+        --gray: rgba(255, 255, 255, 0.55);
+      }
+
+      body {
+        font-family: "Google Sans", sans-serif;
+        background: var(--dark);
+        color: var(--white);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* ─── HERO BACKGROUND ─── */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      /* gradient mesh */
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 20% 110%,
+            #e8735a88 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 70% 70% at 80% 100%,
+            #c45fbb66 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse 90% 80% at 50% 30%,
+            #4a2adb 0%,
+            #1e0f7a 40%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 100% 100% at 50% 50%,
+            #0d0d14 60%,
+            transparent 100%
+          );
+        animation: bgShift 8s ease-in-out infinite alternate;
+      }
+
+      /* grain overlay */
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        background-size: 200px 200px;
+        opacity: 0.35;
+        pointer-events: none;
+      }
+
+      @keyframes bgShift {
+        0% {
+          filter: hue-rotate(0deg) brightness(1);
+        }
+        100% {
+          filter: hue-rotate(10deg) brightness(1.06);
+        }
+      }
+
+      /* ─── NAV ─── */
+      nav {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 22px 40px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 16px;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-icon svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .nav-pill {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 8px;
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-pill a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 7px 18px;
+        border-radius: 30px;
+        transition: background 0.2s;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .nav-pill a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-pill a .chevron {
+        font-size: 10px;
+        opacity: 0.7;
+      }
+      .nav-pill a .star {
+        font-size: 11px;
+      }
+
+      .nav-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .btn-book {
+        background: transparent;
+        border: none;
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: "Google Sans", sans-serif;
+      }
+      .btn-book:hover {
+        opacity: 0.7;
+      }
+
+      .btn-create-nav {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--dark);
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: border-color 0.2s;
+      }
+      .btn-create-nav:hover {
+        border-color: var(--purple);
+      }
+
+      .btn-create-nav .icon-box {
+        background: var(--purple);
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-create-nav .icon-box svg {
+        width: 16px;
+        height: 16px;
+        color: #fff;
+      }
+
+      .btn-create-nav .label {
+        padding: 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--white);
+        font-family: "Google Sans", sans-serif;
+      }
+
+      /* ─── HERO CONTENT ─── */
+      .hero-content {
+        position: relative;
+        z-index: 5;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 60px 40px 100px;
+      }
+
+      h1 {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(64px, 10vw, 130px);
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        color: var(--white);
+        margin-bottom: 28px;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .subtitle {
+        font-size: clamp(16px, 2vw, 20px);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 560px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        animation: fadeUp 0.9s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .subtext {
+        font-size: clamp(15px, 1.8vw, 18px);
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 44px;
+        font-style: italic;
+        animation: fadeUp 0.9s 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .btn-cta {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: #0d0d14;
+        border: 1.5px solid rgba(255, 255, 255, 0.18);
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        animation: fadeUp 0.9s 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(108, 71, 255, 0.35);
+      }
+
+      .btn-cta .icon-box {
+        background: var(--purple);
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .btn-cta .icon-box svg {
+        width: 18px;
+        height: 18px;
+        color: #fff;
+      }
+
+      .btn-cta .label {
+        padding: 0 28px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--white);
+        font-family: "Google Sans", sans-serif;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ─── VIDEO CARDS SECTION ─── */
+      .cards-section {
+        position: relative;
+        background: #f5f4f2;
+        padding: 0 0 60px;
+        overflow: hidden;
+      }
+
+      /* gradient blob at top matching the image */
+      .cards-section::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        height: 200px;
+        background: radial-gradient(
+          ellipse 80% 100% at 50% 0%,
+          #e8a09a 0%,
+          #d472b0 35%,
+          #7b52e8 65%,
+          transparent 100%
+        );
+        filter: blur(40px);
+        opacity: 0.75;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .cards-track-wrapper {
+        position: relative;
+        z-index: 1;
+        padding: 48px 0 12px;
+      }
+
+      .cards-track {
+        display: flex;
+        gap: 14px;
+        padding: 0 40px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .cards-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .video-card {
+        flex-shrink: 0;
+        width: 210px;
+        height: 370px;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        scroll-snap-align: start;
+        background: #1a1a2e;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+        cursor: pointer;
+      }
+      .video-card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      }
+
+      /* placeholder image fills */
+      .video-card .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* colour-coded placeholder gradients for mock images */
+      .card-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+      }
+      .card-bg-1 {
+        background: linear-gradient(160deg, #b8cdd4 0%, #8fa8b5 100%);
+      }
+      .card-bg-2 {
+        background: linear-gradient(160deg, #c8b9a0 0%, #a08870 100%);
+      }
+      .card-bg-3 {
+        background: linear-gradient(160deg, #2a2a3a 0%, #1a1a28 100%);
+      }
+      .card-bg-4 {
+        background: linear-gradient(160deg, #2e2222 0%, #1a1010 100%);
+      }
+      .card-bg-5 {
+        background: linear-gradient(160deg, #d4cfc8 0%, #b8b2a8 100%);
+      }
+      .card-bg-6 {
+        background: linear-gradient(160deg, #1a1a3a 0%, #0e0e2a 100%);
+      }
+
+      /* mock person silhouettes via CSS */
+      .card-person {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 75%;
+        height: 85%;
+      }
+
+      .card-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: var(--purple);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-family: "Google Sans", sans-serif;
+        z-index: 5;
+      }
+
+      .card-caption {
+        position: absolute;
+        z-index: 5;
+        background: rgba(108, 71, 255, 0.85);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-family: "Google Sans", sans-serif;
+        max-width: 70%;
+        line-height: 1.35;
+      }
+
+      .card-caption.top-right {
+        top: 12px;
+        right: 12px;
+        left: auto;
+        text-align: right;
+      }
+      .card-caption.mid-center {
+        top: 38%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+      .card-caption.mid-left {
+        top: 42%;
+        left: 12px;
+      }
+      .card-caption.bot-center {
+        bottom: 18%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .card-mute {
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        width: 32px;
+        height: 32px;
+        background: rgba(0, 0, 0, 0.45);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        backdrop-filter: blur(4px);
+      }
+      .card-mute svg {
+        width: 14px;
+        height: 14px;
+        fill: rgba(255, 255, 255, 0.85);
+      }
+
+      /* scroll arrow button */
+      .scroll-arrow {
+        position: absolute;
+        right: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 42px;
+        height: 42px;
+        background: #fff;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .scroll-arrow:hover {
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+        transform: translateY(-50%) scale(1.06);
+      }
+      .scroll-arrow svg {
+        width: 16px;
+        height: 16px;
+        stroke: #333;
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 768px) {
+        nav {
+          padding: 16px 20px;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        .nav-pill {
+          display: none;
+        }
+        .hero-content {
+          padding: 40px 24px 80px;
+        }
+        .cards-track {
+          padding: 0 20px;
+        }
+        .video-card {
+          width: 175px;
+          height: 310px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-bg"></div>
+
+      <!-- NAV -->
+      <nav>
+        <div class="logo">
+          <div class="logo-icon">
+            <svg
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 14L10 8M10 8L16 14M10 8V22"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M14 6L20 12M20 12L26 6"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="nav-pill">
+          <a href="#">Platform <span class="chevron">▾</span></a>
+          <a href="#">API</a>
+          <a href="#">Scale <span class="star">✦</span></a>
+          <a href="#">Resources <span class="chevron">▾</span></a>
+          <a href="#">Pricing</a>
+        </div>
+
+        <div class="nav-right">
+          <button class="btn-book">BOOK DEMO</button>
+          <button class="btn-create-nav">
+            <div class="icon-box">
+              <svg
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 3L11 8L6 13"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <span class="label">Create</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- HERO COPY -->
+      <div class="hero-content">
+        <h1>AI Ads that win.</h1>
+        <p class="subtitle">
+          Paste a product URL. Get 10 video ads. Test what
+          converts—automatically.
+        </p>
+        <p class="subtext">(yes, it's really that simple)</p>
+
+        <a href="#" class="btn-cta">
+          <div class="icon-box">
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 3L11 8L5 13"
+                stroke="white"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <span class="label">Create your first ad free</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ─── VIDEO CARDS SECTION ─── -->
+    <section class="cards-section">
+      <div class="cards-track-wrapper">
+        <div class="cards-track" id="cardsTrack">
+          <!-- Card 1 – woman with curly hair -->
+          <div class="video-card">
+            <div class="card-bg card-bg-1"></div>
+            <!-- silhouette via SVG -->
+            <svg
+              class="card-person"
+              viewBox="0 0 160 300"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMax meet"
+            >
+              <ellipse
+                cx="80"
+                cy="70"
+                rx="38"
+                ry="44"
+                fill="#6b4e3a"
+                opacity="0.9"
+              />
+              <!-- curly hair -->
+              <ellipse
+                cx="80"
+                cy="48"
+                rx="42"
+                ry="36"
+                fill="#2a1a0e"
+                opacity="0.95"
+              />
+              <ellipse
+                cx="44"
+                cy="68"
+                rx="16"
+                ry="24"
+                fill="#2a1a0e"
+                opacity="0.9"
+              />
+              <ellipse
+                cx="116"
+                cy="68"
+                rx="16"
+                ry="24"
+                fill="#2a1a0e"
+                opacity="0.9"
+              />
+              <!-- body hoodie -->
+              <rect
+                x="30"
+                y="108"
+                width="100"
+                height="130"
+                rx="14"
+                fill="#1a1a1a"
+                opacity="0.9"
+              />
+              <!-- neck -->
+              <rect
+                x="65"
+                y="104"
+                width="30"
+                height="20"
+                rx="6"
+                fill="#6b4e3a"
+                opacity="0.9"
+              />
+              <!-- face details -->
+              <ellipse
+                cx="66"
+                cy="74"
+                rx="5"
+                ry="4"
+                fill="#1a0e08"
+                opacity="0.8"
+              />
+              <ellipse
+                cx="94"
+                cy="74"
+                rx="5"
+                ry="4"
+                fill="#1a0e08"
+                opacity="0.8"
+              />
+              <path
+                d="M70 90 Q80 97 90 90"
+                stroke="#1a0e08"
+                stroke-width="2.5"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div class="card-badge">AI GENERATED</div>
+            <div class="card-mute">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 2 – hair clip close-up -->
+          <div class="video-card">
+            <div class="card-bg card-bg-2"></div>
+            <svg
+              class="card-person"
+              viewBox="0 0 160 300"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMax meet"
+            >
+              <!-- side profile head -->
+              <ellipse
+                cx="90"
+                cy="100"
+                rx="50"
+                ry="58"
+                fill="#c8a882"
+                opacity="0.9"
+              />
+              <ellipse
+                cx="110"
+                cy="72"
+                rx="48"
+                ry="42"
+                fill="#1a0e08"
+                opacity="0.95"
+              />
+              <!-- hair clip -->
+              <rect
+                x="55"
+                y="88"
+                width="58"
+                height="8"
+                rx="4"
+                fill="#d4a090"
+                opacity="1"
+              />
+              <rect
+                x="68"
+                y="84"
+                width="6"
+                height="16"
+                rx="2"
+                fill="#c8887a"
+                opacity="0.9"
+              />
+              <!-- body -->
+              <rect
+                x="30"
+                y="152"
+                width="100"
+                height="120"
+                rx="10"
+                fill="#f0ece6"
+                opacity="0.85"
+              />
+              <!-- neck -->
+              <rect
+                x="68"
+                y="148"
+                width="28"
+                height="18"
+                rx="6"
+                fill="#c8a882"
+                opacity="0.9"
+              />
+            </svg>
+            <div class="card-badge">AI GENERATED</div>
+            <div class="card-caption mid-center">And free up both</div>
+            <div class="card-mute">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 3 – dark desk scene -->
+          <div class="video-card">
+            <div class="card-bg card-bg-3"></div>
+            <svg
+              viewBox="0 0 210 370"
+              xmlns="http://www.w3.org/2000/svg"
+              style="position: absolute; inset: 0; width: 100%; height: 100%"
+            >
+              <!-- desk -->
+              <rect
+                x="0"
+                y="230"
+                width="210"
+                height="8"
+                fill="#4a3820"
+                opacity="0.9"
+              />
+              <!-- monitor -->
+              <rect
+                x="55"
+                y="140"
+                width="100"
+                height="76"
+                rx="5"
+                fill="#1a1a2e"
+                opacity="0.95"
+              />
+              <rect
+                x="95"
+                y="216"
+                width="20"
+                height="14"
+                fill="#2a2a3a"
+                opacity="0.9"
+              />
+              <rect
+                x="80"
+                y="228"
+                width="50"
+                height="5"
+                rx="2"
+                fill="#333"
+                opacity="0.9"
+              />
+              <!-- books/items on desk -->
+              <rect
+                x="10"
+                y="198"
+                width="35"
+                height="32"
+                rx="3"
+                fill="#8B4513"
+                opacity="0.8"
+              />
+              <rect
+                x="16"
+                y="192"
+                width="25"
+                height="38"
+                rx="2"
+                fill="#a0522d"
+                opacity="0.85"
+              />
+              <!-- coffee cup -->
+              <rect
+                x="155"
+                y="210"
+                width="24"
+                height="20"
+                rx="4"
+                fill="#5c3317"
+                opacity="0.9"
+              />
+              <ellipse
+                cx="167"
+                cy="210"
+                rx="12"
+                ry="4"
+                fill="#3a2010"
+                opacity="0.9"
+              />
+              <!-- sticky notes -->
+              <rect
+                x="60"
+                y="156"
+                width="18"
+                height="18"
+                rx="2"
+                fill="#f9e44a"
+                opacity="0.85"
+              />
+              <rect
+                x="82"
+                y="152"
+                width="16"
+                height="16"
+                rx="2"
+                fill="#f97f4a"
+                opacity="0.8"
+              />
+              <!-- glow from monitor -->
+              <ellipse
+                cx="105"
+                cy="180"
+                rx="55"
+                ry="40"
+                fill="#4466ff"
+                opacity="0.06"
+              />
+            </svg>
+            <div class="card-badge">AI GENERATED</div>
+            <div class="card-caption bot-center">
+              For others, it was SparkNotes.
+            </div>
+            <div class="card-mute">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 4 – woman with sunglasses -->
+          <div class="video-card">
+            <div class="card-bg card-bg-4"></div>
+            <svg
+              class="card-person"
+              viewBox="0 0 160 300"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMax meet"
+            >
+              <ellipse
+                cx="80"
+                cy="72"
+                rx="40"
+                ry="46"
+                fill="#7a4a2e"
+                opacity="0.9"
+              />
+              <!-- long dark hair -->
+              <ellipse
+                cx="80"
+                cy="50"
+                rx="44"
+                ry="38"
+                fill="#100808"
+                opacity="0.95"
+              />
+              <rect
+                x="36"
+                y="60"
+                width="20"
+                height="120"
+                rx="10"
+                fill="#100808"
+                opacity="0.9"
+              />
+              <rect
+                x="104"
+                y="60"
+                width="20"
+                height="120"
+                rx="10"
+                fill="#100808"
+                opacity="0.9"
+              />
+              <!-- glasses frames -->
+              <rect
+                x="44"
+                y="68"
+                rx="8"
+                ry="8"
+                width="30"
+                height="22"
+                fill="#111"
+                opacity="0.95"
+              />
+              <rect
+                x="82"
+                y="68"
+                rx="8"
+                ry="8"
+                width="30"
+                height="22"
+                fill="#111"
+                opacity="0.95"
+              />
+              <line
+                x1="74"
+                y1="78"
+                x2="82"
+                y2="78"
+                stroke="#444"
+                stroke-width="2.5"
+              />
+              <line
+                x1="44"
+                y1="78"
+                x2="38"
+                y2="76"
+                stroke="#444"
+                stroke-width="2.5"
+              />
+              <line
+                x1="112"
+                y1="78"
+                x2="118"
+                y2="76"
+                stroke="#444"
+                stroke-width="2.5"
+              />
+              <!-- lens reflection -->
+              <ellipse
+                cx="55"
+                cy="74"
+                rx="6"
+                ry="4"
+                fill="rgba(255,255,255,0.12)"
+              />
+              <ellipse
+                cx="93"
+                cy="74"
+                rx="6"
+                ry="4"
+                fill="rgba(255,255,255,0.12)"
+              />
+              <!-- body -->
+              <rect
+                x="25"
+                y="114"
+                width="110"
+                height="140"
+                rx="12"
+                fill="#e8e0d5"
+                opacity="0.8"
+              />
+              <rect
+                x="62"
+                y="110"
+                width="36"
+                height="18"
+                rx="6"
+                fill="#7a4a2e"
+                opacity="0.9"
+              />
+              <!-- hand near face -->
+              <ellipse
+                cx="58"
+                cy="100"
+                rx="14"
+                ry="10"
+                fill="#7a4a2e"
+                opacity="0.85"
+              />
+            </svg>
+            <div class="card-badge">AI GENERATED</div>
+            <div class="card-caption mid-left">and they feel.</div>
+            <div class="card-mute">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 5 – girl in floral dress mirror selfie -->
+          <div class="video-card">
+            <div class="card-bg card-bg-5"></div>
+            <svg
+              class="card-person"
+              viewBox="0 0 160 300"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMax meet"
+            >
+              <ellipse
+                cx="80"
+                cy="68"
+                rx="34"
+                ry="40"
+                fill="#d4a882"
+                opacity="0.9"
+              />
+              <!-- wavy hair -->
+              <ellipse
+                cx="80"
+                cy="46"
+                rx="38"
+                ry="32"
+                fill="#2a1808"
+                opacity="0.95"
+              />
+              <path
+                d="M42 70 Q34 100 38 130"
+                stroke="#2a1808"
+                stroke-width="18"
+                fill="none"
+                stroke-linecap="round"
+                opacity="0.9"
+              />
+              <path
+                d="M118 70 Q126 100 122 130"
+                stroke="#2a1808"
+                stroke-width="18"
+                fill="none"
+                stroke-linecap="round"
+                opacity="0.9"
+              />
+              <!-- dress – floral -->
+              <path
+                d="M44 116 Q30 170 28 240 L132 240 Q130 170 116 116 Q98 108 80 108 Q62 108 44 116Z"
+                fill="#f0e8f5"
+                opacity="0.9"
+              />
+              <!-- floral pattern dots -->
+              <circle cx="60" cy="145" r="4" fill="#e8a0c8" opacity="0.8" />
+              <circle cx="75" cy="160" r="3" fill="#c8d870" opacity="0.8" />
+              <circle cx="95" cy="148" r="4" fill="#f0b0c0" opacity="0.8" />
+              <circle cx="85" cy="175" r="3" fill="#a0c8e8" opacity="0.8" />
+              <circle cx="65" cy="178" r="3.5" fill="#e8c870" opacity="0.8" />
+              <circle cx="100" cy="170" r="3" fill="#e8a0c8" opacity="0.75" />
+              <!-- neck & shoulders -->
+              <rect
+                x="66"
+                y="104"
+                width="28"
+                height="18"
+                rx="6"
+                fill="#d4a882"
+                opacity="0.9"
+              />
+              <!-- phone held up -->
+              <rect
+                x="96"
+                y="72"
+                width="18"
+                height="30"
+                rx="4"
+                fill="#333"
+                opacity="0.9"
+              />
+              <rect
+                x="98"
+                y="74"
+                width="14"
+                height="26"
+                rx="3"
+                fill="#555"
+                opacity="0.8"
+              />
+              <!-- smile -->
+              <path
+                d="M68 80 Q80 90 92 80"
+                stroke="#1a0e08"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <!-- eyes -->
+              <ellipse
+                cx="68"
+                cy="68"
+                rx="4"
+                ry="3"
+                fill="#1a0e08"
+                opacity="0.85"
+              />
+              <ellipse
+                cx="92"
+                cy="68"
+                rx="4"
+                ry="3"
+                fill="#1a0e08"
+                opacity="0.85"
+              />
+            </svg>
+            <div class="card-badge">AI GENERATED</div>
+            <div
+              class="card-caption top-right"
+              style="font-size: 10px; line-height: 1.4"
+            >
+              stunning floral<br />pattern<br />sleeveless<br />camisole
+            </div>
+            <div class="card-mute" style="opacity: 0.6">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 6 – dark sci-fi / astronaut -->
+          <div class="video-card">
+            <div class="card-bg card-bg-6"></div>
+            <svg
+              viewBox="0 0 210 370"
+              xmlns="http://www.w3.org/2000/svg"
+              style="position: absolute; inset: 0; width: 100%; height: 100%"
+            >
+              <!-- helmet -->
+              <ellipse
+                cx="105"
+                cy="140"
+                rx="68"
+                ry="72"
+                fill="#1a2a4a"
+                opacity="0.95"
+              />
+              <ellipse
+                cx="105"
+                cy="140"
+                rx="55"
+                ry="58"
+                fill="#0d1a30"
+                opacity="0.9"
+              />
+              <!-- visor reflection -->
+              <ellipse
+                cx="95"
+                cy="125"
+                rx="35"
+                ry="28"
+                fill="#2255aa"
+                opacity="0.3"
+              />
+              <ellipse
+                cx="88"
+                cy="118"
+                rx="15"
+                ry="10"
+                fill="rgba(255,255,255,0.08)"
+              />
+              <!-- suit body -->
+              <path
+                d="M30 210 Q25 280 25 370 L185 370 Q185 280 180 210 Q155 195 105 193 Q55 195 30 210Z"
+                fill="#1e2a40"
+                opacity="0.95"
+              />
+              <!-- suit details -->
+              <rect
+                x="88"
+                y="220"
+                width="34"
+                height="20"
+                rx="4"
+                fill="#2a3a58"
+                opacity="0.9"
+              />
+              <circle cx="105" cy="250" r="8" fill="#3a4a68" opacity="0.85" />
+              <!-- reflective strips -->
+              <rect
+                x="40"
+                y="230"
+                width="14"
+                height="4"
+                rx="2"
+                fill="#4488ff"
+                opacity="0.7"
+              />
+              <rect
+                x="156"
+                y="230"
+                width="14"
+                height="4"
+                rx="2"
+                fill="#4488ff"
+                opacity="0.7"
+              />
+              <!-- visor glow -->
+              <ellipse
+                cx="105"
+                cy="140"
+                rx="50"
+                ry="54"
+                fill="none"
+                stroke="#3366cc"
+                stroke-width="2"
+                opacity="0.4"
+              />
+            </svg>
+            <div class="card-badge">AI GENERATED</div>
+            <div
+              style="
+                position: absolute;
+                top: 14px;
+                right: 14px;
+                z-index: 5;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 800;
+                font-size: 36px;
+                color: #fff;
+                line-height: 1;
+                letter-spacing: -1px;
+                opacity: 0.95;
+              "
+            >
+              NEW
+            </div>
+            <div
+              style="
+                position: absolute;
+                top: 58px;
+                right: 14px;
+                z-index: 5;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 18px;
+                color: #ff4433;
+                letter-spacing: 0.04em;
+              "
+            >
+              ONLY
+            </div>
+            <div class="card-mute">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- /cards-track -->
+
+        <!-- scroll arrow -->
+        <button
+          class="scroll-arrow"
+          onclick="
+            document
+              .getElementById('cardsTrack')
+              .scrollBy({ left: 240, behavior: 'smooth' })
+          "
+        >
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 3L11 8L5 13" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- extra section styles -->
+    <style>
+      .brands-section {
+        background: #f5f4f2;
+        padding: 60px 60px 0;
+        text-align: center;
+      }
+      .brands-section .tagline {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 44px;
+        font-family: "Google Sans", sans-serif;
+      }
+      .logos-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        row-gap: 28px;
+        column-gap: 10px;
+        max-width: 960px;
+        margin: 0 auto 60px;
+        align-items: center;
+      }
+      .logo-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+      }
+      .logo-item span {
+        font-size: clamp(13px, 1.6vw, 20px);
+        color: #111;
+        font-family: "Google Sans", sans-serif;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+      .logo-item .serif {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: clamp(15px, 1.8vw, 22px);
+      }
+      .logo-item .bold {
+        font-weight: 800;
+        letter-spacing: 0.06em;
+      }
+      .logo-item .wide {
+        letter-spacing: 0.18em;
+        font-weight: 500;
+        font-size: clamp(11px, 1.3vw, 15px);
+      }
+      .logo-item .script {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: clamp(15px, 1.8vw, 22px);
+      }
+      .logo-item .kit {
+        font-family: Georgia, serif;
+        letter-spacing: 0.04em;
+        font-size: clamp(15px, 1.8vw, 22px);
+      }
+      /* bee icon for bombas */
+      .bombas-bee {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+      }
+      .bombas-bee svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .stats-card {
+        background: #eceae7;
+        border-radius: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        overflow: hidden;
+      }
+      .stat-item {
+        padding: 52px 40px;
+        text-align: left;
+        position: relative;
+      }
+      .stat-item + .stat-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 20%;
+        bottom: 20%;
+        width: 1px;
+        background: rgba(0, 0, 0, 0.12);
+      }
+      .stat-num {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(36px, 5vw, 60px);
+        color: #111;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .stat-label {
+        font-size: 16px;
+        color: #555;
+        font-family: "Google Sans", sans-serif;
+      }
+
+      .platform-section {
+        background: #f5f4f2;
+        padding: 90px 60px 80px;
+        text-align: center;
+      }
+      .platform-section h2 {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(32px, 5vw, 64px);
+        color: #111;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 18px;
+      }
+      .platform-sub {
+        font-size: clamp(14px, 1.6vw, 18px);
+        color: #666;
+        max-width: 640px;
+        margin: 0 auto 60px;
+        line-height: 1.6;
+        font-family: "Google Sans", sans-serif;
+      }
+      .platform-layout {
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+      }
+      .ad-grid-mock {
+        flex: 1.1;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        min-width: 0;
+      }
+      .ad-mock-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.09);
+        display: flex;
+        flex-direction: column;
+      }
+      .ad-mock-thumb {
+        width: 100%;
+        aspect-ratio: 9/14;
+        position: relative;
+        overflow: hidden;
+      }
+      .ad-mock-thumb.t1 {
+        background: linear-gradient(160deg, #e8c9a0, #c4a060);
+      }
+      .ad-mock-thumb.t2 {
+        background: linear-gradient(160deg, #2a1a0e, #1a0e08);
+      }
+      .ad-mock-thumb.t3 {
+        background: linear-gradient(160deg, #4a8a7a, #2a5a4a);
+      }
+      .ad-mock-thumb.t4 {
+        background: linear-gradient(160deg, #1a1a2e, #0d0d1a);
+      }
+      .ad-mock-thumb.t5 {
+        background: linear-gradient(160deg, #e8d4c0, #c8a888);
+      }
+      .ad-mock-thumb.t6 {
+        background: linear-gradient(160deg, #2a3a5a, #1a2a4a);
+      }
+      .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 28px;
+        height: 28px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .play-btn svg {
+        width: 10px;
+        height: 10px;
+        fill: #fff;
+      }
+      .brand-tag {
+        position: absolute;
+        bottom: 6px;
+        left: 6px;
+        background: rgba(0, 0, 0, 0.55);
+        color: #fff;
+        font-size: 8px;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: "Google Sans", sans-serif;
+      }
+      .new-badge {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: var(--purple);
+        color: #fff;
+        font-size: 7px;
+        font-weight: 700;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: "Google Sans", sans-serif;
+      }
+      .ad-mock-body {
+        padding: 8px;
+        background: #fff;
+      }
+      .ad-mock-body p {
+        font-size: 8px;
+        color: #444;
+        line-height: 1.4;
+        font-family: "Google Sans", sans-serif;
+        margin-bottom: 6px;
+      }
+      .ad-mock-btn {
+        display: block;
+        width: 100%;
+        background: var(--purple);
+        color: #fff;
+        font-size: 8px;
+        font-weight: 700;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 4px;
+        font-family: "Google Sans", sans-serif;
+        letter-spacing: 0.06em;
+        margin-bottom: 4px;
+        cursor: pointer;
+        border: none;
+      }
+      .ad-mock-btn.outline {
+        background: transparent;
+        border: 1px solid #ccc;
+        color: #555;
+      }
+      .platform-info {
+        flex: 0.9;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        padding-top: 10px;
+      }
+      .platform-tag {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .platform-tag .tag-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--purple);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .platform-tag .tag-icon svg {
+        width: 22px;
+        height: 22px;
+        fill: #fff;
+      }
+      .platform-tag .tag-label {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--purple);
+        font-family: "Google Sans", sans-serif;
+      }
+      .platform-info h3 {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(22px, 3vw, 36px);
+        color: #111;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+      .platform-bullets {
+        list-style: disc;
+        padding-left: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .platform-bullets li {
+        font-size: 15px;
+        color: #444;
+        font-family: "Google Sans", sans-serif;
+        line-height: 1.5;
+      }
+      .btn-browse {
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+        background: #111;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        width: fit-content;
+      }
+      .btn-browse:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      }
+      .btn-browse .icon-box {
+        background: var(--purple);
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-browse .icon-box svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+      .btn-browse .lbl {
+        padding: 0 28px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #fff;
+        font-family: "Google Sans", sans-serif;
+      }
+    </style>
+
+    <!-- ─── BRANDS + STATS SECTION ─── -->
+    <section class="brands-section">
+      <p class="tagline">Supporting 15000+ Brands and Agencies</p>
+      <div class="logos-grid">
+        <div class="logo-item"><span class="kit">/kit·sch/</span></div>
+        <div class="logo-item">
+          <span
+            style="
+              font-weight: 400;
+              font-size: clamp(15px, 1.9vw, 24px);
+              letter-spacing: 0.01em;
+            "
+            >drift</span
+          >
+        </div>
+        <div class="logo-item">
+          <span class="wide"
+            >SCENTBIRD<br /><span
+              style="
+                font-size: 0.65em;
+                display: block;
+                letter-spacing: 0.22em;
+                margin-top: -2px;
+              "
+              >NEW YORK</span
+            ></span
+          >
+        </div>
+        <div class="logo-item">
+          <div class="bombas-bee" style="align-items: center">
+            <svg
+              viewBox="0 0 24 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 22px; height: 16px"
+            >
+              <ellipse cx="12" cy="10" rx="9" ry="7" fill="#111" />
+              <rect x="3" y="6" width="18" height="2" rx="1" fill="#f5f4f2" />
+              <rect x="3" y="10" width="18" height="2" rx="1" fill="#f5f4f2" />
+              <ellipse
+                cx="8"
+                cy="3"
+                rx="3"
+                ry="4"
+                fill="#111"
+                transform="rotate(-20 8 3)"
+              />
+              <ellipse
+                cx="16"
+                cy="3"
+                rx="3"
+                ry="4"
+                fill="#111"
+                transform="rotate(20 16 3)"
+              />
+            </svg>
+            <span class="bold" style="font-size: clamp(14px, 1.6vw, 19px)"
+              >BOMBAS</span
+            >
+          </div>
+        </div>
+        <div class="logo-item">
+          <span class="serif" style="font-size: clamp(13px, 1.6vw, 19px)"
+            >Mary'Ruth's<sup style="font-size: 0.5em">®</sup></span
+          >
+        </div>
+
+        <div class="logo-item">
+          <span
+            style="letter-spacing: 0.12em; font-size: clamp(12px, 1.4vw, 17px)"
+            >BIOMA<sup style="font-size: 0.55em">®</sup></span
+          >
+        </div>
+        <div class="logo-item">
+          <span class="script" style="font-size: clamp(16px, 2vw, 26px)"
+            >Weee!</span
+          >
+        </div>
+        <div class="logo-item">
+          <span class="wide" style="font-size: clamp(12px, 1.5vw, 18px)"
+            >COMCAST</span
+          >
+        </div>
+        <div class="logo-item">
+          <span
+            style="
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              font-size: clamp(12px, 1.5vw, 17px);
+              letter-spacing: 0.08em;
+            "
+          >
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 18px; height: 18px"
+            >
+              <polygon
+                points="10,2 12,8 18,8 13,12 15,18 10,14 5,18 7,12 2,8 8,8"
+                fill="#111"
+              />
+            </svg>
+            APP<strong>LOVIN</strong>
+          </span>
+        </div>
+        <div class="logo-item">
+          <span
+            style="
+              font-family: Georgia, serif;
+              font-style: italic;
+              font-size: clamp(14px, 1.7vw, 21px);
+              display: flex;
+              align-items: center;
+              gap: 4px;
+            "
+          >
+            <svg
+              viewBox="0 0 28 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 24px; height: 18px"
+            >
+              <path
+                d="M4 11 Q8 2 14 5 Q20 8 16 14 Q12 20 6 16 Q2 13 4 11Z"
+                fill="#e0372a"
+              />
+              <path
+                d="M8 14 Q12 6 18 8 Q24 10 22 16"
+                stroke="#e0372a"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+            Alibaba.com
+          </span>
+        </div>
+      </div>
+
+      <!-- Stats card -->
+      <div class="stats-card">
+        <div class="stat-item">
+          <div class="stat-num">20M+</div>
+          <div class="stat-label">Ads analyzed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10M+</div>
+          <div class="stat-label">Ads created</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">$650M+</div>
+          <div class="stat-label">Ad spend</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PLATFORM SECTION ─── -->
+    <section class="platform-section">
+      <h2>The #1 AI Ad Platform<br />Built for Performance</h2>
+      <p class="platform-sub">
+        Turn any product page into a winning video ad—created, tested, and
+        optimized in minutes.
+      </p>
+
+      <div class="platform-layout">
+        <!-- Left: mock ad grid -->
+        <div class="ad-grid-mock">
+          <!-- col 1 -->
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div class="ad-mock-card">
+              <div class="ad-mock-thumb t1">
+                <div class="brand-tag">SALT & STONE</div>
+                <div class="new-badge">NEW</div>
+              </div>
+              <div class="ad-mock-body">
+                <p>Sound never looked this good. Save up to 30%.</p>
+                <button class="ad-mock-btn">View insights</button>
+                <button class="ad-mock-btn outline">Clone this video ad</button>
+              </div>
+            </div>
+            <div class="ad-mock-card">
+              <div class="ad-mock-thumb t5" style="position: relative">
+                <div class="play-btn">
+                  <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z" /></svg>
+                </div>
+                <div
+                  style="
+                    position: absolute;
+                    top: 8px;
+                    left: 8px;
+                    background: rgba(255, 255, 255, 0.85);
+                    color: #333;
+                    font-size: 8px;
+                    font-weight: 600;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    font-family: &quot;Google Sans&quot;, sans-serif;
+                  "
+                >
+                  watch my husband freak out →
+                </div>
+              </div>
+              <div class="ad-mock-body">
+                <p>30% Off everything at saltsandstone.com</p>
+                <button class="ad-mock-btn">View insights</button>
+                <button class="ad-mock-btn outline">Clone this video ad</button>
+              </div>
+            </div>
+          </div>
+          <!-- col 2 -->
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div class="ad-mock-card">
+              <div class="ad-mock-thumb t2" style="aspect-ratio: 9/11">
+                <div class="play-btn">
+                  <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z" /></svg>
+                </div>
+                <div class="new-badge">NEW</div>
+              </div>
+              <div class="ad-mock-body">
+                <p>Fa/ Holiday 2025</p>
+                <button class="ad-mock-btn">View insights</button>
+                <button class="ad-mock-btn outline">Clone this video ad</button>
+              </div>
+            </div>
+            <div class="ad-mock-card">
+              <div class="ad-mock-thumb t3" style="aspect-ratio: 9/11">
+                <div class="play-btn">
+                  <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z" /></svg>
+                </div>
+                <div
+                  class="brand-tag"
+                  style="display: flex; align-items: center; gap: 3px"
+                >
+                  <svg
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    style="width: 10px; height: 10px"
+                  >
+                    <circle cx="7" cy="7" r="6" fill="#00c897" />
+                  </svg>
+                  Gymshark
+                </div>
+                <div class="new-badge">NEW</div>
+              </div>
+              <div class="ad-mock-body">
+                <p>
+                  New to Gymshark? Get up to 60% off EVERYTHING this Black
+                  Friday 🔥
+                </p>
+                <button class="ad-mock-btn">View insights</button>
+                <button class="ad-mock-btn outline">Clone this video ad</button>
+              </div>
+            </div>
+          </div>
+          <!-- col 3 -->
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div class="ad-mock-card">
+              <div class="ad-mock-thumb t4" style="aspect-ratio: 9/12">
+                <div class="play-btn">
+                  <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z" /></svg>
+                </div>
+                <div
+                  class="brand-tag"
+                  style="display: flex; align-items: center; gap: 3px"
+                >
+                  <svg
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    style="width: 10px; height: 10px"
+                  >
+                    <circle cx="7" cy="7" r="6" fill="#56c4ff" />
+                  </svg>
+                  NIVEA
+                </div>
+                <div class="new-badge">NEW</div>
+              </div>
+              <div class="ad-mock-body">
+                <p>
+                  True or false? Our experts have the answer.
+                  @dranjaliistweet...
+                </p>
+                <button class="ad-mock-btn">View insights</button>
+                <button class="ad-mock-btn outline">Clone this video ad</button>
+              </div>
+            </div>
+            <div class="ad-mock-card">
+              <div class="ad-mock-thumb t6" style="aspect-ratio: 9/11">
+                <div class="play-btn">
+                  <svg viewBox="0 0 10 12"><path d="M1 1l8 5-8 5z" /></svg>
+                </div>
+                <div
+                  class="brand-tag"
+                  style="display: flex; align-items: center; gap: 3px"
+                >
+                  <svg
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    style="width: 10px; height: 10px"
+                  >
+                    <circle cx="7" cy="7" r="6" fill="#00e9a3" />
+                  </svg>
+                  Linktree
+                </div>
+                <div class="new-badge">NEW</div>
+              </div>
+              <div class="ad-mock-body">
+                <p>
+                  Level up your Linktree with 40% off. Enjoy less fees,
+                  unlimited...
+                </p>
+                <button class="ad-mock-btn">View insights</button>
+                <button class="ad-mock-btn outline">Clone this video ad</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: info panel -->
+        <div class="platform-info">
+          <div class="platform-tag">
+            <div class="tag-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="2"
+                  y="3"
+                  width="20"
+                  height="14"
+                  rx="2"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                />
+                <path
+                  d="M8 21h8M12 17v4"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <span class="tag-label">Discover</span>
+          </div>
+          <h3>See exactly what's converting in your industry right now</h3>
+          <ul class="platform-bullets">
+            <li>Browse winning ad templates by industry &amp; platform</li>
+            <li>Analyze competitor's actual creative strategy</li>
+            <li>Remix proven concepts in seconds</li>
+          </ul>
+          <a href="#" class="btn-browse">
+            <div class="icon-box">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 3l6 5-6 5z" />
+              </svg>
+            </div>
+            <span class="lbl">Browse Ads</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <style>
+      .feat-row-wrap {
+        background: #f5f4f2;
+        padding: 70px 80px;
+      }
+      .feat-row {
+        display: flex;
+        align-items: center;
+        gap: 72px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .feat-row.rev {
+        flex-direction: row-reverse;
+      }
+      .feat-text {
+        flex: 0 0 360px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+      .feat-visual {
+        flex: 1;
+        min-width: 0;
+      }
+      .ftag {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .ftag .fi2 {
+        width: 44px;
+        height: 44px;
+        background: var(--purple);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .ftag .fi2 svg {
+        width: 22px;
+        height: 22px;
+      }
+      .ftag .fl2 {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--purple);
+        font-family: "Google Sans", sans-serif;
+      }
+      .feat-text h3 {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(24px, 3vw, 38px);
+        color: #111;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+      .fbullets {
+        list-style: disc;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .fbullets li {
+        font-size: 15px;
+        color: #444;
+        font-family: "Google Sans", sans-serif;
+        line-height: 1.5;
+      }
+      .fbtn {
+        display: inline-flex;
+        align-items: center;
+        background: #111;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        width: fit-content;
+      }
+      .fbtn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+      }
+      .fbtn .fbi2 {
+        background: var(--purple);
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .fbtn .fbi2 svg {
+        width: 14px;
+        height: 14px;
+        fill: #fff;
+      }
+      .fbtn .fbl2 {
+        padding: 0 26px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #fff;
+        font-family: "Google Sans", sans-serif;
+      }
+      /* visual containers */
+      .vis-box {
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        min-height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .vis-gradient-warm {
+        background:
+          radial-gradient(
+            ellipse 120% 80% at 50% 0%,
+            #e8a09a 0%,
+            #d472b0 40%,
+            #7b52e8 70%,
+            transparent 100%
+          ),
+          #f0ece6;
+      }
+      .vis-gradient-purple {
+        background: radial-gradient(
+          ellipse 120% 100% at 50% 0%,
+          #7b52e8 0%,
+          #d472b0 50%,
+          #e8a09a 100%
+        );
+      }
+
+      /* toolkit */
+      .toolkit-sec {
+        background: #f5f4f2;
+        padding: 80px 0 0;
+        text-align: center;
+      }
+      .toolkit-sec h2 {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(30px, 5vw, 58px);
+        color: #111;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 56px;
+        padding: 0 40px;
+      }
+      .tk-strip {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        padding: 0 40px 60px;
+        scrollbar-width: none;
+      }
+      .tk-strip::-webkit-scrollbar {
+        display: none;
+      }
+      .tk-c {
+        flex-shrink: 0;
+        width: 270px;
+        height: 390px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        border: 2px solid rgba(108, 71, 255, 0.45);
+      }
+
+      /* real results */
+      .res-sec {
+        background: #f5f4f2;
+        padding: 60px 80px;
+      }
+      .res-card {
+        background: #eceae7;
+        border-radius: 24px;
+        display: flex;
+        overflow: hidden;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .res-left {
+        flex: 0 0 40%;
+        padding: 52px 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .res-left h2 {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(28px, 3.5vw, 44px);
+        color: #111;
+        line-height: 1.1;
+      }
+      .res-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .res-row {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 28px 48px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .res-row:last-child {
+        border-bottom: none;
+      }
+      .res-num {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(36px, 5vw, 58px);
+        color: #111;
+        line-height: 1;
+        min-width: 150px;
+      }
+      .res-desc {
+        font-size: 15px;
+        color: #555;
+        font-family: "Google Sans", sans-serif;
+        line-height: 1.5;
+      }
+
+      /* teams */
+      .teams-sec {
+        background: #0d0d14;
+        padding: 80px 80px 100px;
+        position: relative;
+        overflow: hidden;
+      }
+      .teams-sec::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 20% 100%,
+            #e8735a44 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 70% 70% at 80% 100%,
+            #c45fbb33 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse 90% 80% at 50% 30%,
+            #4a2adb66 0%,
+            transparent 70%
+          );
+        pointer-events: none;
+      }
+      .teams-hdr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 48px;
+        position: relative;
+        z-index: 1;
+      }
+      .teams-hdr h2 {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(28px, 4vw, 52px);
+        color: #fff;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+      .tnav {
+        display: flex;
+        gap: 8px;
+      }
+      .tnav button {
+        width: 44px;
+        height: 44px;
+        background: var(--purple);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s;
+      }
+      .tnav button:hover {
+        opacity: 0.8;
+      }
+      .tnav button svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+      .tcards {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        position: relative;
+        z-index: 1;
+      }
+      .tcards::-webkit-scrollbar {
+        display: none;
+      }
+      .tcard {
+        flex-shrink: 0;
+        width: 310px;
+        background: rgba(255, 255, 255, 0.96);
+        border-radius: 20px;
+        padding: 36px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      }
+      .tc-bdg {
+        display: inline-block;
+        background: var(--purple);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-family: "Google Sans", sans-serif;
+        align-self: flex-start;
+      }
+      .tc-sts {
+        display: flex;
+        gap: 28px;
+      }
+      .tc-sn {
+        font-family: "Google Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(24px, 3vw, 38px);
+        color: #111;
+        line-height: 1;
+      }
+      .tc-sl {
+        font-size: 12px;
+        color: #666;
+        font-family: "Google Sans", sans-serif;
+        margin-top: 4px;
+      }
+      .tc-br {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        font-family: "Google Sans", sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .tc-rd {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--purple);
+        font-family: "Google Sans", sans-serif;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: auto;
+      }
+      .tc-rd:hover {
+        opacity: 0.7;
+      }
+    </style>
+
+    <!-- CREATE SECTION -->
+    <div class="feat-row-wrap">
+      <div class="feat-row">
+        <div class="feat-text">
+          <div class="ftag">
+            <div class="fi2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect x="3" y="3" width="8" height="8" rx="1" fill="#fff" />
+                <rect x="13" y="3" width="8" height="8" rx="1" fill="#fff" />
+                <rect x="3" y="13" width="8" height="8" rx="1" fill="#fff" />
+                <rect x="13" y="13" width="8" height="8" rx="1" fill="#fff" />
+              </svg>
+            </div>
+            <span class="fl2">Create</span>
+          </div>
+          <h3>Every Ad format you need, one platform</h3>
+          <ul class="fbullets">
+            <li>URL-to-video, image-to-video, or start from scratch</li>
+            <li>Pick your style: authentic UGC or polished cinematic</li>
+            <li>Batch create a dozen variations at once</li>
+          </ul>
+          <a href="#" class="fbtn">
+            <div class="fbi2">
+              <svg viewBox="0 0 16 16"><path d="M5 3l6 5-6 5z" /></svg>
+            </div>
+            <span class="fbl2">Start For Free</span>
+          </a>
+        </div>
+        <div class="feat-visual">
+          <div class="vis-box vis-gradient-warm">
+            <div
+              style="
+                position: relative;
+                z-index: 1;
+                padding: 28px;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  background: #fff;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+                "
+              >
+                <div
+                  style="
+                    aspect-ratio: 0.75;
+                    background: linear-gradient(160deg, #f0c060, #e8a030);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                  "
+                >
+                  <div
+                    style="
+                      width: 26px;
+                      height: 26px;
+                      background: rgba(255, 255, 255, 0.3);
+                      border-radius: 50%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <svg
+                      viewBox="0 0 10 12"
+                      style="width: 10px; height: 10px; fill: #fff"
+                    >
+                      <path d="M1 1l8 5-8 5z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  background: #fff;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+                  grid-row: 1/3;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <div
+                  style="
+                    flex: 1;
+                    background: linear-gradient(160deg, #e8b840, #d09020);
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 220px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 26px;
+                      height: 26px;
+                      background: rgba(255, 255, 255, 0.3);
+                      border-radius: 50%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      position: absolute;
+                    "
+                  >
+                    <svg
+                      viewBox="0 0 10 12"
+                      style="width: 10px; height: 10px; fill: #fff"
+                    >
+                      <path d="M1 1l8 5-8 5z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  background: #fff;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+                "
+              >
+                <div
+                  style="
+                    aspect-ratio: 0.75;
+                    background: linear-gradient(160deg, #f8d070, #e0a840);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <svg viewBox="0 0 50 50" style="width: 60%; height: 60%">
+                    <ellipse
+                      cx="25"
+                      cy="25"
+                      rx="20"
+                      ry="18"
+                      fill="#e8c030"
+                      opacity=".9"
+                    />
+                    <ellipse
+                      cx="16"
+                      cy="32"
+                      rx="11"
+                      ry="9"
+                      fill="#f0c840"
+                      opacity=".85"
+                    />
+                    <ellipse
+                      cx="35"
+                      cy="30"
+                      rx="9"
+                      ry="8"
+                      fill="#e0b828"
+                      opacity=".85"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                style="
+                  background: #fff;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+                  padding: 10px;
+                "
+              >
+                <div
+                  style="
+                    background: #f8e840;
+                    border-radius: 8px;
+                    padding: 10px 8px;
+                    text-align: center;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 40 50"
+                    style="
+                      width: 40px;
+                      height: 50px;
+                      display: block;
+                      margin: 0 auto;
+                    "
+                  >
+                    <ellipse cx="20" cy="28" rx="15" ry="21" fill="#f0c030" />
+                    <rect
+                      x="13"
+                      y="7"
+                      width="14"
+                      height="7"
+                      rx="3"
+                      fill="#d4a020"
+                    />
+                    <ellipse
+                      cx="20"
+                      cy="28"
+                      rx="9"
+                      ry="13"
+                      fill="#f8d848"
+                      opacity=".5"
+                    />
+                  </svg>
+                  <div
+                    style="
+                      font-size: 7px;
+                      font-weight: 700;
+                      color: #d4a020;
+                      font-family: &quot;Google Sans&quot;, sans-serif;
+                      margin-top: 3px;
+                    "
+                  >
+                    Energy Without Ju...
+                  </div>
+                  <div
+                    style="
+                      font-size: 6px;
+                      color: #888;
+                      font-family: &quot;Google Sans&quot;, sans-serif;
+                    "
+                  >
+                    No sugars, only pure health
+                  </div>
+                  <div
+                    style="
+                      background: #f0a020;
+                      color: #fff;
+                      font-size: 7px;
+                      font-weight: 700;
+                      border-radius: 3px;
+                      padding: 2px 5px;
+                      margin-top: 5px;
+                      font-family: &quot;Google Sans&quot;, sans-serif;
+                    "
+                  >
+                    Learn More
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  background: #fff;
+                  border-radius: 10px;
+                  overflow: hidden;
+                  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+                "
+              >
+                <div
+                  style="
+                    aspect-ratio: 0.75;
+                    background: linear-gradient(160deg, #e0c848, #c8a028);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <div
+                    style="
+                      width: 26px;
+                      height: 26px;
+                      background: rgba(255, 255, 255, 0.3);
+                      border-radius: 50%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <svg
+                      viewBox="0 0 10 12"
+                      style="width: 10px; height: 10px; fill: #fff"
+                    >
+                      <path d="M1 1l8 5-8 5z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAUNCH SECTION -->
+    <div class="feat-row-wrap">
+      <div class="feat-row rev">
+        <div class="feat-text">
+          <div class="ftag">
+            <div class="fi2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 2L4 12h5v9l6-1v-8h5L12 2z" fill="#fff" />
+              </svg>
+            </div>
+            <span class="fl2">Launch</span>
+          </div>
+          <h3>Push live to social channels instantly</h3>
+          <ul class="fbullets">
+            <li>Connect your ad accounts once, launch forever</li>
+            <li>Auto-optimized for each platform&#39;s specs</li>
+            <li>Built-in A/B testing across campaigns</li>
+          </ul>
+          <a href="#" class="fbtn">
+            <div class="fbi2">
+              <svg viewBox="0 0 16 16"><path d="M5 3l6 5-6 5z" /></svg>
+            </div>
+            <span class="fbl2">Connect &amp; Launch</span>
+          </a>
+        </div>
+        <div class="feat-visual">
+          <div class="vis-box vis-gradient-warm" style="min-height: 380px">
+            <div
+              style="
+                position: relative;
+                z-index: 1;
+                width: 100%;
+                padding: 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+              "
+            >
+              <div
+                style="
+                  background: #111;
+                  border-radius: 24px;
+                  padding: 8px;
+                  width: 55%;
+                  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+                "
+              >
+                <div
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #7b52e8,
+                      #d472b0,
+                      #e8a09a
+                    );
+                    border-radius: 18px;
+                    padding: 16px;
+                    display: flex;
+                    align-items: stretch;
+                    gap: 8px;
+                    min-height: 170px;
+                  "
+                >
+                  <div
+                    style="
+                      flex: 1;
+                      border-radius: 8px;
+                      background: linear-gradient(160deg, #c8a882, #9a7852);
+                    "
+                  ></div>
+                  <div
+                    style="
+                      flex: 1;
+                      border-radius: 8px;
+                      background: linear-gradient(160deg, #f0e0d0, #d0b8a0);
+                    "
+                  ></div>
+                  <div
+                    style="
+                      flex: 1;
+                      border-radius: 8px;
+                      background: linear-gradient(160deg, #3a5a4a, #2a3a2a);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 12px;
+                  align-items: center;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                "
+              >
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    background: #1877f2;
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    style="width: 24px; height: 24px; fill: #fff"
+                  >
+                    <path
+                      d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  style="
+                    background: #e8e8e8;
+                    border-radius: 28px;
+                    padding: 10px 18px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #333;
+                    font-family: &quot;Google Sans&quot;, sans-serif;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    style="width: 14px; height: 14px; fill: #555"
+                  >
+                    <path d="M12 2L4 12h5v9l6-1v-8h5L12 2z" />
+                  </svg>
+                  Launch
+                </div>
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    background: #010101;
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    style="width: 22px; height: 22px; fill: #fff"
+                  >
+                    <path
+                      d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.75a4.85 4.85 0 0 1-1.02-.06z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    background: linear-gradient(
+                      135deg,
+                      #f09433,
+                      #e6683c,
+                      #dc2743,
+                      #cc2366
+                    );
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+                  "
+                >
+                  <svg viewBox="0 0 24 24" style="width: 22px; height: 22px">
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="5"
+                      fill="none"
+                      stroke="#fff"
+                      stroke-width="2"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="5"
+                      fill="none"
+                      stroke="#fff"
+                      stroke-width="2"
+                    />
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="#fff" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTIMIZE SECTION -->
+    <div class="feat-row-wrap">
+      <div class="feat-row">
+        <div class="feat-text">
+          <div class="ftag">
+            <div class="fi2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="22 12 18 12 15 21 9 3 6 12 2 12"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <span class="fl2">Optimize</span>
+          </div>
+          <h3>Track What Works, Kill What Doesn&#39;t</h3>
+          <ul class="fbullets">
+            <li>See spend, ROAS, and CTR for every creative</li>
+            <li>Compare performance across all your variants</li>
+            <li>Know exactly which hooks and angles convert</li>
+          </ul>
+          <a href="#" class="fbtn">
+            <div class="fbi2">
+              <svg viewBox="0 0 16 16"><path d="M5 3l6 5-6 5z" /></svg>
+            </div>
+            <span class="fbl2">View Analytics</span>
+          </a>
+        </div>
+        <div class="feat-visual">
+          <div class="vis-box vis-gradient-purple" style="min-height: 380px">
+            <div
+              style="
+                position: relative;
+                z-index: 1;
+                width: 68%;
+                aspect-ratio: 1;
+                border: 2px solid rgba(255, 255, 255, 0.45);
+                border-radius: 50%;
+                margin: 40px auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <div
+                style="
+                  position: absolute;
+                  top: -30px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  background: #fff;
+                  border-radius: 12px;
+                  padding: 12px 18px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: #222;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                  white-space: nowrap;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                "
+              >
+                <svg viewBox="0 0 20 20" style="width: 18px; height: 18px">
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="8"
+                    fill="none"
+                    stroke="#ddd"
+                    stroke-width="2"
+                  />
+                  <path d="M10 10L10 3" stroke="#e44" stroke-width="2" />
+                  <path d="M10 10L15 13" stroke="#4a4" stroke-width="2" />
+                  <path d="M10 10L5 13" stroke="#44e" stroke-width="2" />
+                </svg>
+                Research
+              </div>
+              <div
+                style="
+                  position: absolute;
+                  right: -52px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background: #fff;
+                  border-radius: 12px;
+                  padding: 12px 14px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: #222;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                  white-space: nowrap;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                "
+              >
+                <div
+                  style="
+                    width: 28px;
+                    height: 36px;
+                    background: linear-gradient(160deg, #a0c8f0, #60a0e0);
+                    border-radius: 6px;
+                    flex-shrink: 0;
+                  "
+                ></div>
+                Creative
+              </div>
+              <div
+                style="
+                  position: absolute;
+                  left: -62px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background: #fff;
+                  border-radius: 12px;
+                  padding: 12px 14px;
+                  font-size: 12px;
+                  font-weight: 600;
+                  color: #222;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                  white-space: nowrap;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                "
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                  style="width: 16px; height: 16px; flex-shrink: 0"
+                >
+                  <polyline
+                    points="2,15 5,9 9,12 13,5 17,8"
+                    fill="none"
+                    stroke="#4a9"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  /></svg
+                >Performance<br />Data
+              </div>
+              <span
+                style="
+                  position: absolute;
+                  top: 10%;
+                  right: 18%;
+                  color: rgba(255, 255, 255, 0.8);
+                  font-size: 20px;
+                  transform: rotate(40deg);
+                "
+                >&#8250;</span
+              >
+              <span
+                style="
+                  position: absolute;
+                  bottom: 10%;
+                  right: 18%;
+                  color: rgba(255, 255, 255, 0.8);
+                  font-size: 20px;
+                  transform: rotate(140deg);
+                "
+                >&#8250;</span
+              >
+              <span
+                style="
+                  position: absolute;
+                  bottom: 10%;
+                  left: 18%;
+                  color: rgba(255, 255, 255, 0.8);
+                  font-size: 20px;
+                  transform: rotate(220deg);
+                "
+                >&#8250;</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLKIT SECTION -->
+    <section class="toolkit-sec">
+      <h2>The complete toolkit for<br />modern advertisers</h2>
+      <div class="tk-strip">
+        <div
+          class="tk-c"
+          style="background: linear-gradient(160deg, #e8e0d0, #c8b898)"
+        >
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+            "
+          >
+            <div
+              style="
+                background: #1a1a1a;
+                border-radius: 10px;
+                width: 100%;
+                overflow: hidden;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+              "
+            >
+              <div
+                style="
+                  background: #fff;
+                  border-radius: 7px 7px 0 0;
+                  margin: 5px 5px 0;
+                  padding: 10px;
+                  font-size: 8px;
+                  color: #333;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  line-height: 1.6;
+                "
+              >
+                <div
+                  style="font-weight: 700; margin-bottom: 6px; font-size: 9px"
+                >
+                  Share your product link to generate a video
+                </div>
+                <div
+                  style="
+                    background: #f0f0f0;
+                    border-radius: 3px;
+                    padding: 4px 8px;
+                    margin-bottom: 6px;
+                    font-size: 7px;
+                  "
+                >
+                  https://yourproduct.com
+                </div>
+                <div
+                  style="
+                    background: var(--purple);
+                    color: #fff;
+                    border-radius: 3px;
+                    padding: 4px 8px;
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 8px;
+                  "
+                >
+                  Generate Video ›
+                </div>
+              </div>
+              <div
+                style="
+                  background: #2a2a2a;
+                  height: 12px;
+                  border-radius: 0 0 10px 10px;
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tk-c"
+          style="background: linear-gradient(160deg, #e8d8f0, #c0a8d8)"
+        >
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-wrap: wrap;
+              gap: 14px;
+              padding: 30px;
+            "
+          >
+            <div
+              style="
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(
+                  135deg,
+                  #f09433,
+                  #e6683c,
+                  #dc2743,
+                  #cc2366
+                );
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 28px">
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="5"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="5"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="#fff" />
+              </svg>
+            </div>
+            <div
+              style="
+                width: 60px;
+                height: 60px;
+                background: #1877f2;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 26px; fill: #fff">
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                width: 68px;
+                height: 68px;
+                background: rgba(255, 255, 255, 0.25);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+                backdrop-filter: blur(4px);
+                font-size: 24px;
+              "
+            >
+              👾
+            </div>
+            <div
+              style="
+                width: 60px;
+                height: 60px;
+                background: #010101;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 22px; fill: #fff">
+                <path
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.75a4.85 4.85 0 0 1-1.02-.06z"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 60px; height: 60px">
+                <rect width="24" height="24" fill="#4285f4" />
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4"
+                />
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853"
+                />
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                  fill="#FBBC05"
+                />
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#EA4335"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tk-c"
+          style="background: linear-gradient(160deg, #d8e8f0, #a8c8d8)"
+        >
+          <div style="position: absolute; inset: 0; overflow: hidden">
+            <svg
+              viewBox="0 0 200 350"
+              style="width: 100%; height: 100%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <ellipse cx="100" cy="125" rx="48" ry="55" fill="#d4a070" />
+              <ellipse cx="100" cy="100" rx="54" ry="48" fill="#f0a8b8" />
+              <path
+                d="M46 115 Q34 165 38 200"
+                stroke="#f0a8b8"
+                stroke-width="22"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                d="M154 115 Q166 165 162 200"
+                stroke="#f0a8b8"
+                stroke-width="22"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <rect
+                x="50"
+                y="178"
+                width="100"
+                height="172"
+                rx="14"
+                fill="#1a1a1a"
+              />
+              <rect
+                x="68"
+                y="174"
+                width="64"
+                height="18"
+                rx="6"
+                fill="#d4a070"
+              />
+              <ellipse
+                cx="84"
+                cy="130"
+                rx="6"
+                ry="5"
+                fill="#1a0e08"
+                opacity=".9"
+              />
+              <ellipse
+                cx="116"
+                cy="130"
+                rx="6"
+                ry="5"
+                fill="#1a0e08"
+                opacity=".9"
+              />
+              <path
+                d="M86 150 Q100 160 114 150"
+                stroke="#1a0e08"
+                stroke-width="2.5"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="tk-c"
+          style="background: linear-gradient(160deg, #e8d0f0, #c0a0d8)"
+        >
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+            "
+          >
+            <svg
+              viewBox="0 0 120 180"
+              style="width: 78%; max-height: 82%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="35"
+                y="40"
+                width="50"
+                height="130"
+                rx="16"
+                fill="rgba(255,255,255,.88)"
+              />
+              <rect
+                x="42"
+                y="20"
+                width="36"
+                height="24"
+                rx="8"
+                fill="#2a3a4a"
+              />
+              <ellipse cx="60" cy="40" rx="25" ry="6" fill="#3a4a5a" />
+              <text
+                x="60"
+                y="95"
+                text-anchor="middle"
+                font-family="'Google Sans',sans-serif"
+                font-weight="800"
+                font-size="11"
+                fill="#3a3a5a"
+              >
+                Pepperazy
+              </text>
+              <text
+                x="60"
+                y="108"
+                text-anchor="middle"
+                font-family="'Google Sans',sans-serif"
+                font-size="7"
+                fill="#666"
+              >
+                Design Tools
+              </text>
+              <text
+                x="60"
+                y="118"
+                text-anchor="middle"
+                font-family="'Google Sans',sans-serif"
+                font-size="7"
+                fill="#666"
+              >
+                Creative Suite
+              </text>
+              <text
+                x="60"
+                y="128"
+                text-anchor="middle"
+                font-family="'Google Sans',sans-serif"
+                font-size="7"
+                fill="#666"
+              >
+                Unlimited &#10003;
+              </text>
+              <ellipse
+                cx="48"
+                cy="148"
+                rx="5"
+                ry="8"
+                fill="#3a3a8a"
+                opacity=".7"
+              />
+              <ellipse
+                cx="60"
+                cy="152"
+                rx="5"
+                ry="8"
+                fill="#4a4a9a"
+                opacity=".7"
+              />
+              <ellipse
+                cx="72"
+                cy="147"
+                rx="5"
+                ry="8"
+                fill="#3a3a8a"
+                opacity=".7"
+              />
+              <circle cx="20" cy="60" r="10" fill="#2a2a6a" opacity=".7" />
+              <circle cx="100" cy="40" r="8" fill="#3a3a8a" opacity=".65" />
+              <circle cx="108" cy="120" r="10" fill="#2a2a7a" opacity=".7" />
+              <circle cx="15" cy="140" r="8" fill="#3a3a8a" opacity=".6" />
+              <ellipse
+                cx="95"
+                cy="62"
+                rx="7"
+                ry="12"
+                fill="#3a8a3a"
+                opacity=".7"
+                transform="rotate(-30 95 62)"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="tk-c"
+          style="background: linear-gradient(160deg, #e0d8e8, #b8a8c8)"
+        >
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+            "
+          >
+            <svg
+              viewBox="0 0 120 160"
+              style="width: 82%; height: 82%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="30"
+                y="80"
+                width="60"
+                height="80"
+                rx="10"
+                fill="#c8a070"
+              />
+              <rect x="44" y="60" width="8" height="40" rx="4" fill="#c8a070" />
+              <rect x="56" y="50" width="8" height="50" rx="4" fill="#c8a070" />
+              <rect x="68" y="58" width="8" height="42" rx="4" fill="#c8a070" />
+              <rect x="80" y="65" width="8" height="36" rx="4" fill="#c8a070" />
+              <rect
+                x="38"
+                y="30"
+                width="44"
+                height="56"
+                rx="8"
+                fill="rgba(255,255,255,.9)"
+              />
+              <rect
+                x="44"
+                y="38"
+                width="32"
+                height="20"
+                rx="4"
+                fill="#d0c0f0"
+              />
+              <rect x="44" y="62" width="22" height="4" rx="2" fill="#ddd" />
+              <rect x="44" y="70" width="28" height="4" rx="2" fill="#ddd" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL RESULTS SECTION -->
+    <section class="res-sec">
+      <div class="res-card">
+        <div class="res-left">
+          <h2>Real Results</h2>
+          <svg
+            viewBox="0 0 180 140"
+            xmlns="http://www.w3.org/2000/svg"
+            style="width: 200px; height: auto"
+          >
+            <rect
+              x="10"
+              y="122"
+              width="160"
+              height="5"
+              rx="2"
+              fill="#c0b8e8"
+              opacity=".4"
+            />
+            <rect
+              x="20"
+              y="60"
+              width="22"
+              height="62"
+              fill="#6c47ff"
+              opacity=".9"
+            />
+            <polygon
+              points="20,60 28,52 50,52 42,60"
+              fill="#8866ff"
+              opacity=".9"
+            />
+            <polygon
+              points="42,60 50,52 50,122 42,127"
+              fill="#4a2adb"
+              opacity=".9"
+            />
+            <rect
+              x="52"
+              y="75"
+              width="22"
+              height="47"
+              fill="#6c47ff"
+              opacity=".85"
+            />
+            <polygon
+              points="52,75 60,67 82,67 74,75"
+              fill="#8866ff"
+              opacity=".85"
+            />
+            <polygon
+              points="74,75 82,67 82,122 74,127"
+              fill="#4a2adb"
+              opacity=".85"
+            />
+            <rect
+              x="84"
+              y="88"
+              width="22"
+              height="34"
+              fill="#6c47ff"
+              opacity=".8"
+            />
+            <polygon
+              points="84,88 92,80 114,80 106,88"
+              fill="#8866ff"
+              opacity=".8"
+            />
+            <polygon
+              points="106,88 114,80 114,122 106,127"
+              fill="#4a2adb"
+              opacity=".8"
+            />
+            <rect
+              x="116"
+              y="50"
+              width="22"
+              height="72"
+              fill="#6c47ff"
+              opacity=".95"
+            />
+            <polygon
+              points="116,50 124,42 146,42 138,50"
+              fill="#8866ff"
+              opacity=".95"
+            />
+            <polygon
+              points="138,50 146,42 146,122 138,127"
+              fill="#4a2adb"
+              opacity=".95"
+            />
+            <rect
+              x="148"
+              y="92"
+              width="16"
+              height="30"
+              fill="#6c47ff"
+              opacity=".75"
+            />
+            <polygon
+              points="148,92 154,86 164,86 158,92"
+              fill="#8866ff"
+              opacity=".75"
+            />
+            <polygon
+              points="158,92 164,86 164,122 158,127"
+              fill="#4a2adb"
+              opacity=".75"
+            />
+          </svg>
+          <div
+            style="
+              font-size: 12px;
+              color: #999;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              margin-top: auto;
+            "
+          >
+            *Sources: Meta, Wistia, HubSpot, Pepperazy benchmarks
+          </div>
+        </div>
+        <div class="res-right">
+          <div class="res-row">
+            <div class="res-num">2.7x</div>
+            <div class="res-desc">More leads vs. static image ads</div>
+          </div>
+          <div class="res-row">
+            <div class="res-num">1.7x</div>
+            <div class="res-desc">Higher ROI*</div>
+          </div>
+          <div class="res-row">
+            <div class="res-num">90%</div>
+            <div class="res-desc">Lower production cost</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW PEPPERAZY HELPS REAL TEAMS -->
+    <section class="teams-sec">
+      <div class="teams-hdr">
+        <h2>How Pepperazy helps real teams</h2>
+        <div class="tnav">
+          <button
+            onclick="
+              document
+                .getElementById('ttrack')
+                .scrollBy({ left: -340, behavior: 'smooth' })
+            "
+          >
+            <svg viewBox="0 0 16 16"><path d="M11 13L5 8l6-5" /></svg>
+          </button>
+          <button
+            onclick="
+              document
+                .getElementById('ttrack')
+                .scrollBy({ left: 340, behavior: 'smooth' })
+            "
+          >
+            <svg viewBox="0 0 16 16"><path d="M5 3l6 5-6 5" /></svg>
+          </button>
+        </div>
+      </div>
+      <div class="tcards" id="ttrack">
+        <div class="tcard">
+          <span class="tc-bdg">Agency</span>
+          <div class="tc-sts">
+            <div>
+              <div class="tc-sn">45%</div>
+              <div class="tc-sl">CPA Reduction</div>
+            </div>
+            <div>
+              <div class="tc-sn">73%</div>
+              <div class="tc-sl">ROAS Improvement</div>
+            </div>
+          </div>
+          <div class="tc-br">
+            <svg
+              viewBox="0 0 24 24"
+              style="width: 20px; height: 20px; fill: #00aaff"
+            >
+              <path d="M5 12L2 9l10-7 10 7-3 3" />
+              <path d="M5 12l7 5 7-5" />
+            </svg>
+            designrr
+          </div>
+          <a href="#" class="tc-rd">READ MORE &#8594;</a>
+        </div>
+        <div class="tcard">
+          <span class="tc-bdg">E-Commerce</span>
+          <div class="tc-sts">
+            <div>
+              <div class="tc-sn">669%</div>
+              <div class="tc-sl">Adoption growth</div>
+            </div>
+            <div>
+              <div class="tc-sn">200k+</div>
+              <div class="tc-sl">Ads generated</div>
+            </div>
+          </div>
+          <div
+            class="tc-br"
+            style="
+              font-family: Georgia, serif;
+              font-style: italic;
+              color: #e0372a;
+              font-size: 17px;
+            "
+          >
+            <svg
+              viewBox="0 0 28 22"
+              fill="none"
+              style="width: 22px; height: 16px"
+            >
+              <path
+                d="M4 11 Q8 2 14 5 Q20 8 16 14 Q12 20 6 16 Q2 13 4 11Z"
+                fill="#e0372a"
+              />
+              <path
+                d="M8 14 Q12 6 18 8 Q24 10 22 16"
+                stroke="#e0372a"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+            Alibaba.com
+          </div>
+          <a href="#" class="tc-rd">READ MORE &#8594;</a>
+        </div>
+        <div class="tcard">
+          <span class="tc-bdg">Agency</span>
+          <div class="tc-sts">
+            <div>
+              <div class="tc-sn">3x</div>
+              <div class="tc-sl">ROI</div>
+            </div>
+            <div>
+              <div class="tc-sn">97%</div>
+              <div class="tc-sl">time saved</div>
+            </div>
+          </div>
+          <div class="tc-br" style="font-size: 18px">
+            Tec<span style="color: #aaa">-</span>Do
+          </div>
+          <a href="#" class="tc-rd">READ MORE &#8594;</a>
+        </div>
+        <div class="tcard">
+          <span class="tc-bdg">API</span>
+          <div class="tc-sts">
+            <div>
+              <div class="tc-sn">300+</div>
+              <div class="tc-sl">videos/month</div>
+            </div>
+          </div>
+          <div class="tc-br" style="color: #3a66dd">
+            <svg viewBox="0 0 24 24" style="width: 22px; height: 22px">
+              <rect x="2" y="6" width="20" height="14" rx="3" fill="#3a66dd" />
+              <path d="M7 10h4v8H7zM13 8h4v10h-4z" fill="#fff" opacity=".7" />
+            </svg>
+            zumper
+          </div>
+          <a href="#" class="tc-rd">READ MORE &#8594;</a>
+        </div>
+        <div class="tcard">
+          <span class="tc-bdg">E-Commerce</span>
+          <div class="tc-sts">
+            <div>
+              <div class="tc-sn">5x</div>
+              <div class="tc-sl">Ad output</div>
+            </div>
+            <div>
+              <div class="tc-sn">82%</div>
+              <div class="tc-sl">Cost reduction</div>
+            </div>
+          </div>
+          <div class="tc-br">
+            <svg
+              viewBox="0 0 24 24"
+              style="width: 20px; height: 20px; fill: #6c47ff"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"
+              />
+            </svg>
+            BrandXY
+          </div>
+          <a href="#" class="tc-rd">READ MORE &#8594;</a>
+        </div>
+      </div>
+    </section>
+    <!-- ═══ READ THE LATEST ═══ -->
+    <section
+      style="background: #f5f4f2; padding: 80px 80px 90px; text-align: center"
+    >
+      <h2
+        style="
+          font-family: &quot;Google Sans&quot;, sans-serif;
+          font-weight: 800;
+          font-size: clamp(32px, 5vw, 60px);
+          color: #111;
+          letter-spacing: -0.02em;
+          margin-bottom: 14px;
+        "
+      >
+        Read the latest
+      </h2>
+      <p
+        style="
+          font-size: 16px;
+          color: #666;
+          font-family: &quot;Google Sans&quot;, sans-serif;
+          margin-bottom: 56px;
+        "
+      >
+        Ideas, insights, and creative tips from the Pepperazy team.
+      </p>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 28px;
+          max-width: 1200px;
+          margin: 0 auto;
+          text-align: left;
+        "
+      >
+        <!-- Blog Card 1 -->
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <div
+            style="
+              border-radius: 16px;
+              overflow: hidden;
+              background: linear-gradient(
+                135deg,
+                #f0a030 0%,
+                #e8702a 40%,
+                #d44820 70%,
+                #c83010 100%
+              );
+              min-height: 240px;
+              position: relative;
+              display: flex;
+              align-items: flex-end;
+              padding: 24px;
+            "
+          >
+            <div
+              style="position: absolute; top: 16px; left: 16px; opacity: 0.9"
+            >
+              <svg
+                viewBox="0 0 28 20"
+                fill="none"
+                style="width: 28px; height: 20px"
+              >
+                <path
+                  d="M2 10L8 4M8 4L14 10M8 4V16"
+                  stroke="white"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 2L17 7M17 7L22 2"
+                  stroke="white"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <div
+                style="
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  font-weight: 800;
+                  font-size: 22px;
+                  color: #fff;
+                  line-height: 1.15;
+                  margin-bottom: 8px;
+                "
+              >
+                Dropshipping<br />in 2026
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.8);
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  line-height: 1.4;
+                "
+              >
+                the one bottleneck<br />that automation still<br />hasn&#39;t
+                touched
+              </div>
+            </div>
+            <!-- Floating 3D box illustration -->
+            <svg
+              viewBox="0 0 90 90"
+              style="
+                position: absolute;
+                right: 16px;
+                bottom: 16px;
+                width: 90px;
+                height: 90px;
+              "
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="45,10 80,28 80,62 45,80 10,62 10,28"
+                fill="#c8720a"
+                opacity=".7"
+              />
+              <polygon
+                points="45,10 80,28 45,46 10,28"
+                fill="#f0a030"
+                opacity=".9"
+              />
+              <polygon
+                points="45,46 80,28 80,62 45,80"
+                fill="#d48018"
+                opacity=".8"
+              />
+              <polygon
+                points="45,46 10,28 10,62 45,80"
+                fill="#b86010"
+                opacity=".75"
+              />
+              <text
+                x="45"
+                y="68"
+                text-anchor="middle"
+                font-family="'Google Sans',sans-serif"
+                font-weight="800"
+                font-size="12"
+                fill="rgba(255,255,255,.7)"
+              >
+                2026
+              </text>
+            </svg>
+          </div>
+          <div
+            style="
+              background: var(--purple);
+              color: #fff;
+              font-size: 11px;
+              font-weight: 700;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+              padding: 5px 12px;
+              border-radius: 20px;
+              display: inline-block;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              align-self: flex-start;
+            "
+          >
+            VIDEO MARKETING
+          </div>
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 18px;
+              color: #111;
+              line-height: 1.25;
+            "
+          >
+            Dropshipping in 2026: The One Thing Automation Misses
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <div
+              style="
+                width: 32px;
+                height: 32px;
+                background: #ddd;
+                border-radius: 50%;
+                flex-shrink: 0;
+              "
+            ></div>
+            <span
+              style="
+                font-size: 13px;
+                color: #888;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+              "
+              >Mar 19, 2026</span
+            >
+          </div>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <div
+            style="
+              border-radius: 16px;
+              overflow: hidden;
+              background: linear-gradient(
+                135deg,
+                #f0a030 0%,
+                #e87030 40%,
+                #c84820 100%
+              );
+              min-height: 240px;
+              position: relative;
+              display: flex;
+              align-items: flex-end;
+              padding: 24px;
+            "
+          >
+            <div
+              style="position: absolute; top: 16px; left: 16px; opacity: 0.9"
+            >
+              <svg
+                viewBox="0 0 28 20"
+                fill="none"
+                style="width: 28px; height: 20px"
+              >
+                <path
+                  d="M2 10L8 4M8 4L14 10M8 4V16"
+                  stroke="white"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 2L17 7M17 7L22 2"
+                  stroke="white"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 800;
+                font-size: 20px;
+                color: #fff;
+                line-height: 1.15;
+                max-width: 55%;
+              "
+            >
+              What is UGC content? Meaning, examples, and tips for marketers
+            </div>
+            <!-- City / phone tower 3D illustration -->
+            <svg
+              viewBox="0 0 80 80"
+              style="
+                position: absolute;
+                right: 12px;
+                bottom: 10px;
+                width: 80px;
+                height: 80px;
+              "
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="30"
+                y="20"
+                width="20"
+                height="55"
+                rx="3"
+                fill="#1a1a2e"
+                opacity=".85"
+              />
+              <rect
+                x="34"
+                y="14"
+                width="12"
+                height="10"
+                rx="2"
+                fill="#2a2a4e"
+                opacity=".9"
+              />
+              <rect
+                x="10"
+                y="35"
+                width="16"
+                height="40"
+                rx="2"
+                fill="#2a2a3e"
+                opacity=".8"
+              />
+              <rect
+                x="54"
+                y="42"
+                width="14"
+                height="33"
+                rx="2"
+                fill="#2a2a3e"
+                opacity=".8"
+              />
+              <rect
+                x="32"
+                y="24"
+                width="4"
+                height="6"
+                rx="1"
+                fill="#4488ff"
+                opacity=".8"
+              />
+              <rect
+                x="39"
+                y="24"
+                width="4"
+                height="6"
+                rx="1"
+                fill="#4488ff"
+                opacity=".8"
+              />
+              <rect
+                x="32"
+                y="34"
+                width="4"
+                height="6"
+                rx="1"
+                fill="#88aaff"
+                opacity=".7"
+              />
+              <rect
+                x="39"
+                y="34"
+                width="4"
+                height="6"
+                rx="1"
+                fill="#88aaff"
+                opacity=".7"
+              />
+            </svg>
+          </div>
+          <div
+            style="
+              background: var(--purple);
+              color: #fff;
+              font-size: 11px;
+              font-weight: 700;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+              padding: 5px 12px;
+              border-radius: 20px;
+              display: inline-block;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              align-self: flex-start;
+            "
+          >
+            VIDEO MARKETING
+          </div>
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 18px;
+              color: #111;
+              line-height: 1.25;
+            "
+          >
+            What is UGC content? Meaning, examples, and tips for marketers
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <div
+              style="
+                width: 32px;
+                height: 32px;
+                background: #ddd;
+                border-radius: 50%;
+                flex-shrink: 0;
+              "
+            ></div>
+            <span
+              style="
+                font-size: 13px;
+                color: #888;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+              "
+              >Mar 17, 2026</span
+            >
+          </div>
+        </div>
+
+        <!-- Blog Card 3 -->
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <div
+            style="
+              border-radius: 16px;
+              overflow: hidden;
+              background: linear-gradient(
+                135deg,
+                #f0a030 0%,
+                #e06090 50%,
+                #c040c0 100%
+              );
+              min-height: 240px;
+              position: relative;
+              display: flex;
+              align-items: flex-end;
+              padding: 24px;
+            "
+          >
+            <div
+              style="position: absolute; top: 16px; left: 16px; opacity: 0.9"
+            >
+              <svg
+                viewBox="0 0 28 20"
+                fill="none"
+                style="width: 28px; height: 20px"
+              >
+                <path
+                  d="M2 10L8 4M8 4L14 10M8 4V16"
+                  stroke="white"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 2L17 7M17 7L22 2"
+                  stroke="white"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 800;
+                font-size: 20px;
+                color: #fff;
+                line-height: 1.15;
+                max-width: 50%;
+              "
+            >
+              10 best ai video generators we tested for 2026
+            </div>
+            <!-- floating mic/star icons -->
+            <svg
+              viewBox="0 0 70 80"
+              style="
+                position: absolute;
+                right: 10px;
+                bottom: 8px;
+                width: 70px;
+                height: 80px;
+              "
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="28"
+                y="20"
+                width="14"
+                height="30"
+                rx="7"
+                fill="rgba(255,255,255,.25)"
+              />
+              <path
+                d="M20 42 Q20 58 35 58 Q50 58 50 42"
+                fill="none"
+                stroke="rgba(255,255,255,.4)"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <line
+                x1="35"
+                y1="58"
+                x2="35"
+                y2="68"
+                stroke="rgba(255,255,255,.4)"
+                stroke-width="3"
+              />
+              <line
+                x1="26"
+                y1="68"
+                x2="44"
+                y2="68"
+                stroke="rgba(255,255,255,.4)"
+                stroke-width="3"
+              />
+              <!-- stars -->
+              <polygon
+                points="10,12 11.5,7 13,12 18,12 14,15 15.5,20 11.5,17 7.5,20 9,15 5,12"
+                fill="rgba(255,255,200,.5)"
+                transform="scale(.7) translate(5,5)"
+              />
+              <circle cx="58" cy="14" r="5" fill="rgba(180,100,255,.5)" />
+              <circle cx="14" cy="60" r="4" fill="rgba(255,200,100,.4)" />
+            </svg>
+          </div>
+          <div
+            style="
+              background: var(--purple);
+              color: #fff;
+              font-size: 11px;
+              font-weight: 700;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+              padding: 5px 12px;
+              border-radius: 20px;
+              display: inline-block;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              align-self: flex-start;
+            "
+          >
+            VIDEO MARKETING
+          </div>
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 18px;
+              color: #111;
+              line-height: 1.25;
+            "
+          >
+            10 best AI video generators we tested for 2026
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <div
+              style="
+                width: 32px;
+                height: 32px;
+                background: #ddd;
+                border-radius: 50%;
+                flex-shrink: 0;
+              "
+            ></div>
+            <span
+              style="
+                font-size: 13px;
+                color: #888;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+              "
+              >Mar 14, 2026</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TRUST AND COMPLIANCE ═══ -->
+    <section
+      style="background: #f5f4f2; padding: 80px 80px 90px; text-align: center"
+    >
+      <h2
+        style="
+          font-family: &quot;Google Sans&quot;, sans-serif;
+          font-weight: 800;
+          font-size: clamp(32px, 5vw, 60px);
+          color: #111;
+          letter-spacing: -0.02em;
+          margin-bottom: 56px;
+        "
+      >
+        Trust and compliance
+      </h2>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 16px;
+          max-width: 1200px;
+          margin: 0 auto 16px;
+          text-align: left;
+        "
+      >
+        <!-- Industry -->
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          "
+        >
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 800;
+              font-size: 24px;
+              color: #111;
+            "
+          >
+            Industry
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              color: #555;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              line-height: 1.6;
+            "
+          >
+            We&#39;ve earned 40+ badges and hold a 4.8/5 rating on G2.
+          </p>
+          <!-- G2 badges row -->
+          <div style="display: flex; gap: 6px; flex-wrap: wrap">
+            <div
+              style="
+                background: linear-gradient(135deg, #ff4820, #ff6a00);
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 8px;
+                font-weight: 700;
+                color: #fff;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                text-align: center;
+                width: 52px;
+              "
+            >
+              <div style="font-size: 6px; opacity: 0.8">BEST SOFTWARE</div>
+              <div style="font-size: 9px; font-weight: 800">Top 50</div>
+              <div style="font-size: 5px; opacity: 0.7">2026</div>
+            </div>
+            <div
+              style="
+                background: linear-gradient(135deg, #ff4820, #ff6a00);
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 8px;
+                font-weight: 700;
+                color: #fff;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                text-align: center;
+                width: 52px;
+              "
+            >
+              <div style="font-size: 6px; opacity: 0.8">BEST SOFTWARE</div>
+              <div style="font-size: 9px; font-weight: 800">Top 50</div>
+              <div style="font-size: 5px; opacity: 0.7">2026</div>
+            </div>
+            <div
+              style="
+                background: linear-gradient(135deg, #ff4820, #ff6a00);
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 8px;
+                font-weight: 700;
+                color: #fff;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                text-align: center;
+                width: 52px;
+              "
+            >
+              <div style="font-size: 6px; opacity: 0.8">BEST SOFTWARE</div>
+              <div style="font-size: 9px; font-weight: 800">Top 50</div>
+              <div style="font-size: 5px; opacity: 0.7">2026</div>
+            </div>
+            <div
+              style="
+                background: linear-gradient(135deg, #ff4820, #ff6a00);
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 8px;
+                font-weight: 700;
+                color: #fff;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                text-align: center;
+                width: 52px;
+              "
+            >
+              <div style="font-size: 6px; opacity: 0.8">BEST SOFTWARE</div>
+              <div style="font-size: 9px; font-weight: 800">Top 50</div>
+              <div style="font-size: 5px; opacity: 0.7">2025</div>
+            </div>
+            <div
+              style="
+                background: linear-gradient(135deg, #5b40ff, #7b60ff);
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 8px;
+                font-weight: 700;
+                color: #fff;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                text-align: center;
+                width: 52px;
+              "
+            >
+              <div style="font-size: 6px; opacity: 0.8">SUMMER 2025</div>
+              <div style="font-size: 9px; font-weight: 800">
+                Best<br />Results
+              </div>
+            </div>
+          </div>
+          <!-- Product Hunt -->
+          <div
+            style="
+              border: 1.5px solid #e8e0ff;
+              border-radius: 12px;
+              padding: 12px 16px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <span style="font-size: 20px">🏅</span>
+            <div>
+              <div
+                style="
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 0.08em;
+                  color: #888;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                "
+              >
+                PRODUCT HUNT
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-weight: 700;
+                  color: #e8600a;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                "
+              >
+                #1 Product of the Day
+              </div>
+            </div>
+          </div>
+          <a
+            href="#"
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              color: var(--purple);
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              margin-top: auto;
+            "
+            >LEARN MORE &#8594;</a
+          >
+        </div>
+
+        <!-- Media -->
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          "
+        >
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 800;
+              font-size: 24px;
+              color: #111;
+            "
+          >
+            Media
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              color: #555;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              line-height: 1.6;
+            "
+          >
+            We&#39;ve been featured and recognized by leading publications like
+            Fast Company, Bloomberg, and TechCrunch.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              align-items: center;
+              flex-wrap: wrap;
+              margin-top: auto;
+            "
+          >
+            <!-- FC badge -->
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: #111;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                font-weight: 900;
+                color: #fff;
+                font-family: Georgia, serif;
+              "
+            >
+              FC
+            </div>
+            <!-- TechCrunch -->
+            <div
+              style="
+                font-size: 18px;
+                font-weight: 800;
+                color: #0aaf3b;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                letter-spacing: -0.01em;
+              "
+            >
+              TC
+            </div>
+            <!-- Bloomberg B -->
+            <div
+              style="
+                width: 52px;
+                height: 52px;
+                background: #111;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                font-weight: 900;
+                color: #fff;
+                font-family: Georgia, serif;
+              "
+            >
+              B
+            </div>
+          </div>
+          <a
+            href="#"
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              color: var(--purple);
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              margin-top: auto;
+            "
+            >LEARN MORE &#8594;</a
+          >
+        </div>
+
+        <!-- Compliance -->
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          "
+        >
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 800;
+              font-size: 24px;
+              color: #111;
+            "
+          >
+            Compliance
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              color: #555;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              line-height: 1.6;
+            "
+          >
+            Enterprise-grade security and compliance — including
+            <strong>SOC 2 Type II</strong>. Your data stays protected and under
+            your control.
+          </p>
+          <!-- SOC 2 badge -->
+          <div
+            style="
+              width: 64px;
+              height: 64px;
+              background: linear-gradient(135deg, #6c47ff, #9c27b0);
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: auto;
+            "
+          >
+            <div style="text-align: center">
+              <div
+                style="
+                  font-size: 9px;
+                  font-weight: 800;
+                  color: #fff;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  line-height: 1.1;
+                "
+              >
+                SOC 2
+              </div>
+              <svg
+                viewBox="0 0 16 16"
+                style="width: 12px; height: 12px; fill: #fff; margin-top: 2px"
+              >
+                <path d="M8 1L10 6H15L11 9L13 14L8 11L3 14L5 9L1 6H6Z" />
+              </svg>
+            </div>
+          </div>
+          <a
+            href="#"
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              color: var(--purple);
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+            "
+            >DOWNLOAD</a
+          >
+        </div>
+      </div>
+
+      <!-- Bottom row: Platforms + Investors -->
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+          max-width: 1200px;
+          margin: 0 auto;
+          text-align: left;
+        "
+      >
+        <!-- Compatible with Platforms -->
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          "
+        >
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 800;
+              font-size: 22px;
+              color: #111;
+            "
+          >
+            Compatible with Platforms
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              color: #555;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              line-height: 1.6;
+            "
+          >
+            Works with Meta, TikTok, Youtube, Snap, Amazon and more.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 14px;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: #1877f2;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 22px; fill: #fff">
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: #010101;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 20px; fill: #fff">
+                <path
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.75a4.85 4.85 0 0 1-1.02-.06z"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: #ff0000;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 22px; fill: #fff">
+                <path
+                  d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: #fffc00;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <svg viewBox="0 0 24 24" style="width: 22px">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
+                  fill="#111"
+                />
+              </svg>
+            </div>
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: #ff9900;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 800;
+                color: #111;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+              "
+            >
+              amzn
+            </div>
+          </div>
+        </div>
+        <!-- Investors -->
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          "
+        >
+          <div
+            style="
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              font-weight: 800;
+              font-size: 22px;
+              color: #111;
+            "
+          >
+            Investors
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              color: #555;
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              line-height: 1.6;
+            "
+          >
+            We&#39;ve raised $24M from the best in the industry such as WndrCo,
+            Kindred Ventures, NFDG, and Comcast Ventures.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 16px;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <div
+              style="
+                font-size: 15px;
+                font-weight: 700;
+                color: #111;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                background: #f0ecff;
+                padding: 8px 14px;
+                border-radius: 8px;
+              "
+            >
+              WndrCo
+            </div>
+            <div
+              style="
+                font-size: 15px;
+                font-weight: 700;
+                color: #111;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                background: #f0ecff;
+                padding: 8px 14px;
+                border-radius: 8px;
+              "
+            >
+              Kindred
+            </div>
+            <div
+              style="
+                font-size: 15px;
+                font-weight: 700;
+                color: #111;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                background: #f0ecff;
+                padding: 8px 14px;
+                border-radius: 8px;
+              "
+            >
+              NFDG
+            </div>
+            <div
+              style="
+                font-size: 15px;
+                font-weight: 700;
+                color: #111;
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                background: #f0ecff;
+                padding: 8px 14px;
+                border-radius: 8px;
+              "
+            >
+              Comcast Ventures
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer style="position: relative; overflow: hidden; background: #0d0d14">
+      <!-- gradient backdrop -->
+      <div
+        style="
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(
+              ellipse 80% 60% at 20% 0%,
+              #e8735a44 0%,
+              transparent 55%
+            ),
+            radial-gradient(
+              ellipse 60% 60% at 80% 0%,
+              #c45fbb33 0%,
+              transparent 50%
+            ),
+            radial-gradient(
+              ellipse 80% 70% at 50% 0%,
+              #4a2adb88 0%,
+              transparent 60%
+            );
+          pointer-events: none;
+        "
+      ></div>
+      <div
+        style="
+          position: relative;
+          z-index: 1;
+          padding: 80px 80px 40px;
+          display: grid;
+          grid-template-columns: 300px 1fr;
+          gap: 80px;
+        "
+      >
+        <!-- Left: brand -->
+        <div style="display: flex; flex-direction: column; gap: 24px">
+          <div style="display: flex; align-items: center; gap: 10px">
+            <svg
+              viewBox="0 0 28 20"
+              fill="none"
+              style="width: 28px; height: 20px"
+            >
+              <path
+                d="M2 10L8 4M8 4L14 10M8 4V16"
+                stroke="white"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 2L17 7M17 7L22 2"
+                stroke="white"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span
+              style="
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 20px;
+                color: #fff;
+                letter-spacing: -0.01em;
+              "
+              >pepperazy</span
+            >
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              color: rgba(255, 255, 255, 0.55);
+              font-family: &quot;Google Sans&quot;, sans-serif;
+              line-height: 1.6;
+            "
+          >
+            Generate engaging video ads for your products from any URL
+          </p>
+          <div style="display: flex; gap: 16px; align-items: center">
+            <!-- LinkedIn -->
+            <a
+              href="#"
+              style="color: rgba(255, 255, 255, 0.6); transition: color 0.2s"
+              onmouseover="this.style.color = '#fff'"
+              onmouseout="this.style.color = 'rgba(255,255,255,.6)'"
+              ><svg
+                viewBox="0 0 24 24"
+                style="width: 20px; height: 20px; fill: currentColor"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" /></svg
+            ></a>
+            <!-- Instagram -->
+            <a
+              href="#"
+              style="color: rgba(255, 255, 255, 0.6); transition: color 0.2s"
+              onmouseover="this.style.color = '#fff'"
+              onmouseout="this.style.color = 'rgba(255,255,255,.6)'"
+              ><svg
+                viewBox="0 0 24 24"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  fill: none;
+                  stroke: currentColor;
+                  stroke-width: 2;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                "
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg
+            ></a>
+            <!-- YouTube -->
+            <a
+              href="#"
+              style="color: rgba(255, 255, 255, 0.6); transition: color 0.2s"
+              onmouseover="this.style.color = '#fff'"
+              onmouseout="this.style.color = 'rgba(255,255,255,.6)'"
+              ><svg
+                viewBox="0 0 24 24"
+                style="width: 20px; height: 20px; fill: currentColor"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"
+                /></svg
+            ></a>
+            <!-- TikTok -->
+            <a
+              href="#"
+              style="color: rgba(255, 255, 255, 0.6); transition: color 0.2s"
+              onmouseover="this.style.color = '#fff'"
+              onmouseout="this.style.color = 'rgba(255,255,255,.6)'"
+              ><svg
+                viewBox="0 0 24 24"
+                style="width: 20px; height: 20px; fill: currentColor"
+              >
+                <path
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.75a4.85 4.85 0 0 1-1.02-.06z"
+                /></svg
+            ></a>
+            <!-- Twitter/X -->
+            <a
+              href="#"
+              style="color: rgba(255, 255, 255, 0.6); transition: color 0.2s"
+              onmouseover="this.style.color = '#fff'"
+              onmouseout="this.style.color = 'rgba(255,255,255,.6)'"
+              ><svg
+                viewBox="0 0 24 24"
+                style="width: 20px; height: 20px; fill: currentColor"
+              >
+                <path
+                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                /></svg
+            ></a>
+          </div>
+        </div>
+
+        <!-- Right: nav columns -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+          "
+        >
+          <!-- Features -->
+          <div>
+            <div
+              style="
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                color: #fff;
+                margin-bottom: 20px;
+                letter-spacing: 0.02em;
+              "
+            >
+              Features
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >All Features</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >All Tools</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >URL to Video</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >AI Avatar</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Asset Generator</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: var(--purple);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                "
+                >Product Video</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Batch Mode</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Text to Speech</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >AI Script Writer</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >API</a
+              >
+            </div>
+          </div>
+          <!-- Use Cases col 1 -->
+          <div>
+            <div
+              style="
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                color: #fff;
+                margin-bottom: 20px;
+                letter-spacing: 0.02em;
+              "
+            >
+              Use Cases
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >eCommerce</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Apps</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Games</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >DTC Brands</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Agencies</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >UGC</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >TikTok</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Real Estate</a
+              >
+            </div>
+          </div>
+          <!-- Use Cases col 2 -->
+          <div>
+            <div
+              style="
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                color: #fff;
+                margin-bottom: 20px;
+                opacity: 0;
+              "
+            >
+              &nbsp;
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Axon</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Instagram</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Facebook</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >YouTube</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Snapchat</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >OTT &amp; CTV</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Lead Generation</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Cinematic</a
+              >
+            </div>
+          </div>
+          <!-- Company -->
+          <div>
+            <div
+              style="
+                font-family: &quot;Google Sans&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                color: #fff;
+                margin-bottom: 20px;
+                letter-spacing: 0.02em;
+              "
+            >
+              Company
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Blog</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Pricing</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Case Studies</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Pepperazy 101</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Become an Affiliate</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Careers</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >AI Ethics</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >About Us</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Contact Us</a
+              >
+              <a
+                href="#"
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.55);
+                  text-decoration: none;
+                  font-family: &quot;Google Sans&quot;, sans-serif;
+                  transition: color 0.2s;
+                "
+                onmouseover="this.style.color = '#fff'"
+                onmouseout="this.style.color = 'rgba(255,255,255,.55)'"
+                >Product Updates</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div
+        style="
+          position: relative;
+          z-index: 1;
+          padding: 24px 80px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+        "
+      >
+        <span
+          style="
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: &quot;Google Sans&quot;, sans-serif;
+          "
+          >Pepperazy Lab &bull; Copyright &copy; 2026</span
+        >
+        <a
+          href="#"
+          style="
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-family: &quot;Google Sans&quot;, sans-serif;
+            transition: color 0.2s;
+          "
+          onmouseover="this.style.color = 'rgba(255,255,255,.8)'"
+          onmouseout="this.style.color = 'rgba(255,255,255,.4)'"
+          >Terms of service</a
+        >
+        <a
+          href="#"
+          style="
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-family: &quot;Google Sans&quot;, sans-serif;
+            transition: color 0.2s;
+          "
+          onmouseover="this.style.color = 'rgba(255,255,255,.8)'"
+          onmouseout="this.style.color = 'rgba(255,255,255,.4)'"
+          >Privacy policy</a
+        >
+        <a
+          href="#"
+          style="
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-family: &quot;Google Sans&quot;, sans-serif;
+            transition: color 0.2s;
+          "
+          onmouseover="this.style.color = 'rgba(255,255,255,.8)'"
+          onmouseout="this.style.color = 'rgba(255,255,255,.4)'"
+          >Moderation policy</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

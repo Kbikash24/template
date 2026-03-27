@@ -1,0 +1,4265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      PrepLab – Accelerate Your Career with Expert-Led Online Courses
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      :root {
+        --teal: #0d6e6e;
+        --teal-dark: #0a4f4f;
+        --teal-light: #e6f4f4;
+        --orange: #f5821f;
+        --orange-light: #fff3e8;
+        --sky: #5bc4d1;
+        --cream: #fdf8f3;
+        --white: #ffffff;
+        --ink: #111827;
+        --mid: #6b7280;
+        --border: #e5e7eb;
+        --radius: 16px;
+        --shadow: 0 4px 24px rgba(13, 110, 110, 0.08);
+        --shadow-lg: 0 16px 48px rgba(13, 110, 110, 0.14);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--white);
+        color: var(--ink);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Fraunces", serif;
+        line-height: 1.15;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .container {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        cursor: pointer;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.22s;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--orange);
+        color: #fff;
+        padding: 13px 28px;
+        font-size: 14px;
+        box-shadow: 0 4px 18px rgba(245, 130, 31, 0.35);
+      }
+      .btn-primary:hover {
+        background: #e0720f;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 28px rgba(245, 130, 31, 0.4);
+      }
+      .btn-teal {
+        background: var(--teal);
+        color: #fff;
+        padding: 12px 24px;
+        font-size: 14px;
+      }
+      .btn-teal:hover {
+        background: var(--teal-dark);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: #fff;
+        padding: 12px 26px;
+        font-size: 14px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .btn-sm {
+        padding: 9px 20px;
+        font-size: 13px;
+      }
+      .btn-play {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--teal);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        border: none;
+        cursor: pointer;
+        transition: 0.2s;
+        flex-shrink: 0;
+      }
+      .btn-play i {
+        font-size: 14px;
+        margin-left: 2px;
+      }
+      .btn-play:hover {
+        background: var(--orange);
+        color: #fff;
+        transform: scale(1.05);
+      }
+
+      /* OFFER BAR */
+      #offer-bar {
+        background: var(--orange);
+        padding: 10px 24px;
+        text-align: center;
+        font-size: 13px;
+        color: #fff;
+        font-weight: 500;
+        position: relative;
+      }
+      #offer-bar strong {
+        font-weight: 700;
+      }
+      .ob-close {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+
+      /* NAV */
+      nav {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-inner {
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .logo {
+        font-family: "Fraunces", serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--teal);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-mark {
+        width: 36px;
+        height: 36px;
+        background: var(--teal);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #fff;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .nav-links a {
+        padding: 8px 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--mid);
+        transition: 0.15s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--teal);
+        background: var(--teal-light);
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-search {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--teal-light);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--teal);
+        font-size: 15px;
+        transition: 0.2s;
+      }
+      .nav-search i {
+        font-size: 14px;
+      }
+      .nav-search:hover {
+        background: var(--teal);
+        color: #fff;
+      }
+      .btn-login {
+        background: transparent;
+        border: 2px solid var(--teal);
+        color: var(--teal);
+        padding: 9px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        transition: 0.2s;
+      }
+      .btn-login:hover {
+        background: var(--teal);
+        color: #fff;
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+      }
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+      }
+
+      /* HERO */
+      #hero {
+        background: var(--teal-dark);
+        overflow: hidden;
+        position: relative;
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .orb1 {
+        width: 500px;
+        height: 500px;
+        background: rgba(91, 196, 209, 0.06);
+        top: -150px;
+        right: -80px;
+      }
+      .orb2 {
+        width: 260px;
+        height: 260px;
+        background: rgba(245, 130, 31, 0.08);
+        bottom: -80px;
+        left: 80px;
+      }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: flex-end;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-text {
+        padding-bottom: 40px;
+        padding-top: 20px;
+        animation: fadeUp 0.7s both;
+      }
+      .hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50px;
+        padding: 6px 16px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+        margin-bottom: 22px;
+      }
+      .kicker-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--sky);
+        animation: pulse 2s infinite;
+      }
+      .hero-h1 {
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 18px;
+        line-height: 1.1;
+      }
+      .h1-orange {
+        color: var(--orange);
+      }
+      .h1-sky {
+        color: var(--sky);
+        font-style: italic;
+      }
+      .hero-sub {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.78;
+        margin-bottom: 32px;
+        max-width: 480px;
+        font-weight: 400;
+      }
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 36px;
+      }
+      .play-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .play-row span {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 500;
+      }
+      .hero-proof {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .proof-avs {
+        display: flex;
+      }
+      .proof-av {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 2px solid var(--teal-dark);
+        background: linear-gradient(135deg, var(--sky), var(--teal));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        margin-left: -8px;
+      }
+      .proof-av:first-child {
+        margin-left: 0;
+      }
+      .proof-copy {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .proof-copy strong {
+        color: #fff;
+        display: block;
+        font-size: 14px;
+      }
+      .proof-stars {
+        color: var(--orange);
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
+
+      /* Hero visual ribbons */
+      .hero-visual {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+        perspective: 1000px;
+        margin-top: -120px;
+      }
+      .ribbon-wrap {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: slideUp 0.8s ease-out both;
+      }
+      .ribbon-wrap:nth-child(1) {
+        animation-delay: 0.1s;
+        margin-top: 20px;
+      }
+      .ribbon-wrap:nth-child(2) {
+        animation-delay: 0.2s;
+        margin-top: 0;
+      }
+      .ribbon-wrap:nth-child(3) {
+        animation-delay: 0.3s;
+        margin-top: 1px;
+      }
+      .ribbon {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        transform: skewX(-2deg);
+        transition: transform 0.3s ease;
+      }
+      .ribbon:hover {
+        transform: skewX(-2deg) translateY(-8px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+      }
+      .ribbon-a {
+        width: 180px;
+        height: 360px;
+        background: linear-gradient(180deg, var(--orange), #ff9a3e);
+      }
+      .ribbon-b {
+        width: 200px;
+        height: 420px;
+        background: linear-gradient(180deg, #f0ece3, #e5dfd0);
+      }
+      .ribbon-c {
+        width: 170px;
+        height: 340px;
+        background: linear-gradient(180deg, var(--sky), #7dd3de);
+      }
+      .ribbon img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        transform: skewX(2deg) scale(1.1);
+        transition: transform 0.3s ease;
+      }
+      .ribbon:hover img {
+        transform: skewX(2deg) scale(1.15);
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .float-card {
+        position: absolute;
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px 14px;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+        white-space: nowrap;
+        z-index: 5;
+      }
+      .fc1 {
+        top: -12px;
+        right: -28px;
+      }
+      .fc2 {
+        bottom: 30px;
+        left: -28px;
+      }
+      .fc-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 1px;
+      }
+      .fc-val {
+        font-size: 10px;
+        color: var(--mid);
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.35;
+        }
+      }
+      @media (max-width: 860px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual {
+          display: none;
+        }
+      }
+
+      /* MARQUEE */
+      .marquee-wrap {
+        background: var(--teal-dark);
+        padding-bottom: 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .marquee-track {
+        display: flex;
+        gap: 56px;
+        animation: marquee 28s linear infinite;
+        white-space: nowrap;
+        padding-top: 18px;
+      }
+      .mi {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.02em;
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* SECTION HELPERS */
+      .section {
+        padding: 88px 0;
+      }
+      .section-cream {
+        background: var(--cream);
+      }
+      .section-teal {
+        background: var(--teal-dark);
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 52px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--orange);
+        margin-bottom: 12px;
+      }
+      .eyebrow::before,
+      .eyebrow::after {
+        content: "";
+        width: 24px;
+        height: 2px;
+        background: var(--orange);
+        border-radius: 2px;
+      }
+      .sec-title {
+        font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+        font-weight: 800;
+        color: var(--ink);
+        margin-bottom: 14px;
+      }
+      .sec-title .hi {
+        color: var(--teal);
+        font-style: italic;
+      }
+      .sec-title .ho {
+        color: var(--orange);
+      }
+      .sec-sub {
+        font-size: 15px;
+        color: var(--mid);
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.75;
+      }
+
+      /* CATEGORIES */
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      @media (max-width: 860px) {
+        .cat-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .cat-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .cat-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 22px;
+        text-align: center;
+        transition: all 0.25s;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .cat-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--teal);
+        opacity: 0;
+        transition: 0.25s;
+        border-radius: var(--radius);
+      }
+      .cat-card:hover::after {
+        opacity: 1;
+      }
+      .cat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+      .cat-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: var(--teal-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        font-size: 28px;
+        position: relative;
+        z-index: 1;
+        transition: 0.25s;
+      }
+      .cat-icon i {
+        font-size: 28px;
+        color: var(--teal);
+      }
+      .cat-name {
+        font-family: "Fraunces", serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 1;
+        transition: 0.2s;
+      }
+      .cat-count {
+        font-size: 13px;
+        color: var(--mid);
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1;
+        transition: 0.2s;
+      }
+      .cat-btn {
+        display: inline-block;
+        padding: 7px 18px;
+        border-radius: 50px;
+        background: var(--teal-light);
+        color: var(--teal);
+        font-size: 12px;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+        transition: 0.2s;
+      }
+      .cat-card:hover .cat-name,
+      .cat-card:hover .cat-count {
+        color: #fff;
+      }
+      .cat-card:hover .cat-icon {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .cat-card:hover .cat-btn {
+        background: #fff;
+        color: var(--teal);
+      }
+
+      /* PARTNERS */
+      .partners-bar {
+        background: var(--teal-dark);
+        padding: 22px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .partners-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .pl {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.38);
+        letter-spacing: 0.02em;
+        transition: 0.2s;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .pl:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      /* COURSES */
+      .cf-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+      .cf-btn {
+        padding: 9px 20px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        border: 2px solid var(--border);
+        background: #fff;
+        color: var(--mid);
+        cursor: pointer;
+        transition: 0.15s;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .cf-btn:hover,
+      .cf-btn.active {
+        background: var(--teal);
+        color: #fff;
+        border-color: var(--teal);
+      }
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+      }
+      @media (max-width: 1024px) {
+        .courses-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .courses-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .cc {
+        background: #fff;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.25s;
+        cursor: pointer;
+      }
+      .cc:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-color: transparent;
+      }
+      .cc-thumb {
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        position: relative;
+      }
+      .ct1 {
+        background: linear-gradient(135deg, #dbeafe, #93c5fd);
+      }
+      .ct2 {
+        background: linear-gradient(135deg, #fce7f3, #f9a8d4);
+      }
+      .ct3 {
+        background: linear-gradient(135deg, #d1fae5, #6ee7b7);
+      }
+      .ct4 {
+        background: linear-gradient(135deg, #fef3c7, #fcd34d);
+      }
+      .cc-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: var(--teal);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 50px;
+      }
+      .cc-badge.hot {
+        background: var(--orange);
+      }
+      .cc-badge.new {
+        background: #7c3aed;
+      }
+      .cc-body {
+        padding: 16px;
+      }
+      .cc-meta {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        color: var(--mid);
+        margin-bottom: 8px;
+      }
+      .cc-meta .dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--border);
+        display: inline-block;
+      }
+      .cc-title {
+        font-family: "Fraunces", serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--ink);
+        line-height: 1.35;
+      }
+      .cc-rating {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        margin-bottom: 12px;
+        color: var(--mid);
+      }
+      .cc-stars {
+        color: var(--orange);
+        font-size: 11px;
+      }
+      .cc-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+      }
+      .cc-price {
+        font-family: "Fraunces", serif;
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--teal);
+      }
+      .cc-price .old {
+        font-size: 11px;
+        color: var(--mid);
+        text-decoration: line-through;
+        margin-right: 4px;
+        font-weight: 400;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .cc-students {
+        font-size: 11px;
+        color: var(--mid);
+      }
+
+      /* PROMO */
+      .promo-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      @media (max-width: 860px) {
+        .promo-split {
+          grid-template-columns: 1fr;
+        }
+      }
+      .promo-vis {
+        position: relative;
+      }
+      .promo-main {
+        border-radius: 24px;
+        background: var(--teal-light);
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 7rem;
+      }
+      .promo-float {
+        position: absolute;
+        background: #fff;
+        border-radius: 14px;
+        padding: 14px 18px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      }
+      .pf1 {
+        top: 20px;
+        right: -20px;
+      }
+      .pf2 {
+        bottom: 28px;
+        left: -20px;
+      }
+      .pf-lbl {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--mid);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 3px;
+      }
+      .pf-val {
+        font-family: "Fraunces", serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--teal);
+      }
+      .promo-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 24px 0 32px;
+      }
+      .pl-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .pl-dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--teal-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 12px;
+        margin-top: 1px;
+        color: var(--teal);
+        font-weight: 700;
+      }
+      .pl-dot i {
+        font-size: 11px;
+      }
+      .pl-text strong {
+        display: block;
+        font-size: 15px;
+        color: var(--ink);
+        margin-bottom: 1px;
+      }
+      .pl-text {
+        font-size: 14px;
+        color: var(--mid);
+        line-height: 1.6;
+      }
+
+      /* ENV */
+      .env-tab-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .et {
+        padding: 9px 20px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        border: 2px solid var(--border);
+        background: #fff;
+        cursor: pointer;
+        transition: 0.15s;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: var(--mid);
+      }
+      .et.active {
+        background: var(--teal);
+        color: #fff;
+        border-color: var(--teal);
+      }
+      .env-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 700px) {
+        .env-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .env-card {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 2px solid var(--border);
+        transition: 0.2s;
+        cursor: pointer;
+      }
+      .env-card:hover {
+        border-color: var(--teal);
+        box-shadow: var(--shadow);
+      }
+      .env-img {
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+      }
+      .ei1 {
+        background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      }
+      .ei2 {
+        background: linear-gradient(135deg, #ffedd5, #fed7aa);
+      }
+      .ei3 {
+        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      }
+      .env-body {
+        background: #fff;
+        padding: 16px;
+      }
+      .env-body h4 {
+        font-family: "Fraunces", serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+        color: var(--ink);
+      }
+      .env-body p {
+        font-size: 12px;
+        color: var(--mid);
+        line-height: 1.6;
+      }
+      .env-link {
+        font-size: 12px;
+        color: var(--teal);
+        font-weight: 700;
+        margin-top: 8px;
+        display: block;
+      }
+
+      /* STATS */
+      .stats-bar {
+        background: var(--teal);
+        padding: 44px 0;
+      }
+      .stats-inner {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .si {
+        text-align: center;
+        padding: 8px 24px;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .si:last-child {
+        border: none;
+      }
+      .si-num {
+        font-family: "Fraunces", serif;
+        font-size: 3rem;
+        font-weight: 900;
+        color: #fff;
+        line-height: 1;
+      }
+      .si-num .plus {
+        color: var(--sky);
+      }
+      .si-lbl {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 6px;
+        font-weight: 500;
+      }
+      @media (max-width: 560px) {
+        .stats-inner {
+          grid-template-columns: 1fr;
+        }
+        .si {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 16px;
+        }
+      }
+
+      /* PRICING */
+      .billing-toggle {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        justify-content: center;
+        margin-bottom: 48px;
+      }
+      .bt-lbl {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--mid);
+      }
+      .bt-lbl.active {
+        color: var(--teal);
+      }
+      .toggle-sw {
+        width: 52px;
+        height: 28px;
+        background: var(--teal);
+        border-radius: 50px;
+        position: relative;
+        cursor: pointer;
+        border: none;
+      }
+      .toggle-knob {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        transition: 0.25s;
+      }
+      .toggle-sw.yr .toggle-knob {
+        left: 28px;
+      }
+      .save-tag {
+        background: var(--orange-light);
+        color: var(--orange);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 50px;
+      }
+      .price-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 860px;
+        margin: 0 auto;
+      }
+      @media (max-width: 760px) {
+        .price-grid {
+          grid-template-columns: 1fr;
+          max-width: 380px;
+        }
+      }
+      .price-card {
+        border-radius: 20px;
+        padding: 32px;
+        border: 2px solid var(--border);
+        background: #fff;
+        position: relative;
+        transition: 0.2s;
+      }
+      .price-card:hover {
+        border-color: var(--teal);
+        box-shadow: var(--shadow-lg);
+      }
+      .price-card.feat {
+        background: var(--teal-dark);
+        border-color: var(--teal-dark);
+      }
+      .pc-pop {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--orange);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 5px 18px;
+        border-radius: 50px;
+        white-space: nowrap;
+      }
+      .pc-plan {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--mid);
+        margin-bottom: 10px;
+      }
+      .feat .pc-plan {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .pc-price {
+        font-family: "Fraunces", serif;
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--ink);
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .feat .pc-price {
+        color: #fff;
+      }
+      .pc-price sup {
+        font-size: 1.2rem;
+        vertical-align: super;
+      }
+      .pc-period {
+        font-size: 13px;
+        color: var(--mid);
+        margin-bottom: 24px;
+      }
+      .feat .pc-period {
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .pc-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        margin-bottom: 28px;
+      }
+      .pc-features li {
+        font-size: 13.5px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--mid);
+      }
+      .feat .pc-features li {
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .ck {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--teal-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        color: var(--teal);
+        flex-shrink: 0;
+        font-weight: 700;
+      }
+      .ck i {
+        font-size: 9px;
+      }
+      .feat .ck {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+      }
+      .pc-features li.no {
+        opacity: 0.4;
+      }
+      .btn-plan {
+        width: 100%;
+        justify-content: center;
+        border-radius: 10px;
+        padding: 14px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        transition: 0.2s;
+      }
+      .feat .btn-plan {
+        background: #fff;
+        color: var(--teal);
+      }
+      .feat .btn-plan:hover {
+        background: var(--orange);
+        color: #fff;
+      }
+
+      /* BLOGS */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      @media (max-width: 860px) {
+        .blog-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .blog-card {
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid var(--border);
+        transition: 0.2s;
+        cursor: pointer;
+      }
+      .blog-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: transparent;
+      }
+      .bc-img {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        position: relative;
+      }
+      .bi1 {
+        background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      }
+      .bi2 {
+        background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+      }
+      .bi3 {
+        background: linear-gradient(135deg, #ecfdf5, #a7f3d0);
+      }
+      .bc-cat {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #fff;
+        color: var(--teal);
+        font-size: 10px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .bc-body {
+        padding: 20px;
+      }
+      .bc-date {
+        font-size: 11px;
+        color: var(--mid);
+        margin-bottom: 8px;
+      }
+      .bc-title {
+        font-family: "Fraunces", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1.4;
+        color: var(--ink);
+      }
+      .bc-excerpt {
+        font-size: 13px;
+        color: var(--mid);
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+      .bc-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+      .bc-author {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .bc-av {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--teal), var(--sky));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .read-link {
+        font-size: 12px;
+        color: var(--teal);
+        font-weight: 700;
+      }
+
+      /* TESTIMONIALS */
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      @media (max-width: 860px) {
+        .testi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .testi-card {
+        background: #fff;
+        border-radius: var(--radius);
+        padding: 26px;
+        border: 1px solid var(--border);
+        transition: 0.2s;
+      }
+      .testi-card:hover {
+        box-shadow: var(--shadow-lg);
+        border-color: transparent;
+      }
+      .testi-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 14px;
+      }
+      .testi-stars {
+        color: var(--orange);
+        font-size: 13px;
+        letter-spacing: 2px;
+      }
+      .quote {
+        font-size: 2.5rem;
+        color: var(--teal-light);
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+      .testi-text {
+        font-size: 14px;
+        color: var(--mid);
+        line-height: 1.75;
+        margin-bottom: 18px;
+        font-style: italic;
+      }
+      .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .ta-av {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--teal), var(--sky));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fraunces", serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .ta-name {
+        font-family: "Fraunces", serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .ta-role {
+        font-size: 12px;
+        color: var(--mid);
+      }
+
+      /* FAQS */
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 60px;
+      }
+      @media (max-width: 760px) {
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--border);
+        padding: 20px 0;
+      }
+      .faq-q {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        gap: 16px;
+      }
+      .faq-q h4 {
+        font-family: "Fraunces", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        flex: 1;
+        color: var(--ink);
+      }
+      .faq-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--teal-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--teal);
+        font-size: 20px;
+        flex-shrink: 0;
+        transition: 0.25s;
+        line-height: 1;
+        border: none;
+        cursor: pointer;
+      }
+      .faq-item.open .faq-icon {
+        background: var(--teal);
+        color: #fff;
+        transform: rotate(45deg);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+      .faq-item.open .faq-answer {
+        max-height: 200px;
+        padding-top: 10px;
+      }
+      .faq-answer p {
+        font-size: 14px;
+        color: var(--mid);
+        line-height: 1.7;
+      }
+
+      /* CERTIFICATE */
+      .cert-section {
+        background: var(--teal-dark);
+        padding: 80px 0;
+      }
+      .cert-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      @media (max-width: 760px) {
+        .cert-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+      .cert-text h2 {
+        color: #fff;
+        font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      }
+      .cert-text p {
+        color: rgba(255, 255, 255, 0.57);
+        font-size: 15px;
+        line-height: 1.75;
+        margin: 16px 0 28px;
+      }
+      .cert-perks {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .cp-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .cp-ico {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(91, 196, 209, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+      .cp-ico i {
+        font-size: 12px;
+        color: var(--sky);
+      }
+      .cert-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 34px;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+      }
+      .cprev-logo {
+        font-family: "Fraunces", serif;
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--teal);
+        margin-bottom: 3px;
+      }
+      .cprev-tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--mid);
+        margin-bottom: 20px;
+      }
+      .cprev-name {
+        font-family: "Fraunces", serif;
+        font-size: 1.9rem;
+        font-weight: 900;
+        color: var(--ink);
+        border-bottom: 2px dashed var(--orange);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+      .cprev-course {
+        font-size: 13px;
+        color: var(--mid);
+        margin-bottom: 18px;
+      }
+      .cprev-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, var(--orange), #f5a100);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .cprev-sigs {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+      }
+      .sig-item {
+        text-align: center;
+      }
+      .sig-line {
+        height: 2px;
+        background: var(--ink);
+        width: 88px;
+        margin: 0 auto 5px;
+      }
+      .sig-lbl {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--mid);
+      }
+
+      /* QUIZ */
+      .quiz-wrap {
+        max-width: 680px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 20px;
+        padding: 36px;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--border);
+      }
+      .quiz-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+      .quiz-prog {
+        flex: 1;
+        height: 6px;
+        background: var(--teal-light);
+        border-radius: 3px;
+        overflow: hidden;
+        margin: 0 20px;
+      }
+      .qp-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--teal), var(--sky));
+        border-radius: 3px;
+        transition: 0.4s;
+        width: 10%;
+      }
+      .quiz-timer {
+        font-family: "Fraunces", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--teal);
+      }
+      .quiz-tag {
+        background: var(--teal-light);
+        color: var(--teal);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .quiz-q-text {
+        font-family: "Fraunces", serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--ink);
+        line-height: 1.4;
+      }
+      .quiz-opts {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .quiz-opt {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.15s;
+        font-weight: 500;
+      }
+      .quiz-opt:hover {
+        border-color: var(--teal);
+        background: var(--teal-light);
+      }
+      .quiz-opt.sel {
+        border-color: var(--teal);
+        background: var(--teal-light);
+        color: var(--teal);
+      }
+      .quiz-opt.correct {
+        border-color: #10b981;
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .quiz-opt.wrong {
+        border-color: #ef4444;
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .opt-letter {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--cream);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+        font-family: "Fraunces", serif;
+        transition: 0.15s;
+      }
+      .quiz-opt.sel .opt-letter {
+        background: var(--teal);
+        color: #fff;
+      }
+      .quiz-opt.correct .opt-letter {
+        background: #10b981;
+        color: #fff;
+      }
+      .quiz-opt.wrong .opt-letter {
+        background: #ef4444;
+        color: #fff;
+      }
+      .quiz-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .quiz-count {
+        font-size: 13px;
+        color: var(--mid);
+        font-weight: 600;
+      }
+
+      /* CONTACT */
+      .contact-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+      @media (max-width: 760px) {
+        .contact-split {
+          grid-template-columns: 1fr;
+        }
+      }
+      .contact-card {
+        background: var(--teal-dark);
+        border-radius: 20px;
+        padding: 40px;
+        color: #fff;
+      }
+      .contact-card h2 {
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 12px;
+      }
+      .contact-card p {
+        color: rgba(255, 255, 255, 0.57);
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+      .ci-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .ci-row {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .ci-ico {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .ci-ico i {
+        font-size: 18px;
+        color: #fff;
+      }
+      .ci-txt h5 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 2px;
+      }
+      .ci-txt p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .form-box {
+        background: #fff;
+        border-radius: 20px;
+        padding: 36px;
+        border: 1px solid var(--border);
+      }
+      .form-box h3 {
+        font-family: "Fraunces", serif;
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+      .form-sub {
+        font-size: 14px;
+        color: var(--mid);
+        margin-bottom: 24px;
+      }
+      .fg {
+        margin-bottom: 16px;
+      }
+      .flbl {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--mid);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .finput {
+        width: 100%;
+        padding: 13px 16px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        font-size: 14px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        outline: none;
+        transition: 0.15s;
+        background: #fff;
+      }
+      .finput:focus {
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(13, 110, 110, 0.08);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 480px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* CHAT */
+      #chat-widget {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 999;
+      }
+      #chat-btn {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: var(--teal);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 22px;
+        box-shadow: 0 8px 24px rgba(13, 110, 110, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+      }
+      #chat-btn i {
+        font-size: 24px;
+      }
+      #chat-btn:hover {
+        background: var(--orange);
+        transform: scale(1.05);
+      }
+      .chat-hint {
+        position: absolute;
+        bottom: 68px;
+        right: 0;
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px 14px;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--ink);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+        animation: popIn 0.4s 0.8s both;
+      }
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: scale(0.85) translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      #chat-win {
+        position: absolute;
+        bottom: 72px;
+        right: 0;
+        width: 340px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      #chat-win.open {
+        display: flex;
+      }
+      .chat-head {
+        background: var(--teal-dark);
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .chat-av {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--teal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .chat-av i {
+        font-size: 20px;
+        color: #fff;
+      }
+      .chat-info h4 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .chat-info span {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.45);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .chat-info span::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--sky);
+        display: inline-block;
+      }
+      .chat-x {
+        margin-left: auto;
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .chat-body {
+        padding: 16px;
+        min-height: 180px;
+        max-height: 260px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .chat-msg {
+        max-width: 80%;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .chat-msg.bot {
+        background: var(--teal-light);
+        color: var(--ink);
+        border-radius: 12px 12px 12px 2px;
+      }
+      .chat-msg.user {
+        background: var(--teal);
+        color: #fff;
+        border-radius: 12px 12px 2px 12px;
+        align-self: flex-end;
+      }
+      .chat-in-row {
+        display: flex;
+        border-top: 1px solid var(--border);
+        padding: 10px 12px;
+        gap: 8px;
+      }
+      .chat-in-row input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 13px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .chat-send {
+        background: var(--teal);
+        color: #fff;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        transition: 0.2s;
+      }
+      .chat-send:hover {
+        background: var(--orange);
+      }
+
+      /* MODALS */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 500;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        backdrop-filter: blur(4px);
+      }
+      .overlay.open {
+        display: flex;
+      }
+      .modal {
+        background: #fff;
+        border-radius: 20px;
+        padding: 36px;
+        max-width: 500px;
+        width: 100%;
+        position: relative;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.24);
+        animation: mIn 0.3s both;
+      }
+      @keyframes mIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95) translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .modal-x {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--cream);
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--mid);
+      }
+      .modal-x:hover {
+        background: var(--border);
+      }
+      .modal h3 {
+        font-family: "Fraunces", serif;
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .modal .msub {
+        font-size: 14px;
+        color: var(--mid);
+        margin-bottom: 22px;
+      }
+      .pay-methods {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .pay-m {
+        flex: 1;
+        padding: 11px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.15s;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .pay-m.active,
+      .pay-m:hover {
+        border-color: var(--teal);
+        background: var(--teal-light);
+        color: var(--teal);
+      }
+      .price-sum {
+        background: var(--cream);
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 18px;
+      }
+      .ps-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-bottom: 6px;
+        color: var(--mid);
+      }
+      .ps-row.tot {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--ink);
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+        margin-top: 6px;
+      }
+      .ps-row .disc {
+        color: var(--teal);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--teal-dark);
+      }
+      .footer-main {
+        padding: 72px 0 40px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2.2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+      @media (max-width: 860px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .footer-brand .logo {
+        color: #fff;
+        margin-bottom: 14px;
+      }
+      .footer-brand p {
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 260px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 20px;
+      }
+      .soc-row {
+        display: flex;
+        gap: 10px;
+      }
+      .soc {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+        color: #fff;
+        border: none;
+      }
+      .soc i {
+        font-size: 16px;
+      }
+      .soc:hover {
+        background: var(--orange);
+      }
+      .fc-head {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.88);
+        margin-bottom: 16px;
+      }
+      .fc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .fc-list a {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.45);
+        transition: 0.15s;
+      }
+      .fc-list a:hover {
+        color: #fff;
+      }
+      .nl-box {
+        background: var(--teal);
+        border-radius: 16px;
+        padding: 28px;
+        margin-top: 32px;
+      }
+      .nl-box h4 {
+        font-family: "Fraunces", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+      .nl-box p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 16px;
+      }
+      .nl-form {
+        display: flex;
+        gap: 8px;
+      }
+      .nl-input {
+        flex: 1;
+        padding: 11px 16px;
+        border: none;
+        border-radius: 8px;
+        font-size: 13px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        outline: none;
+      }
+      .nl-btn {
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        padding: 11px 18px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        transition: 0.2s;
+      }
+      .nl-btn:hover {
+        background: #e0720f;
+      }
+      .footer-bot {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.38);
+      }
+
+      /* SCROLL REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.6s,
+          transform 0.6s;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .r1 {
+        transition-delay: 0.1s;
+      }
+      .r2 {
+        transition-delay: 0.2s;
+      }
+      .r3 {
+        transition-delay: 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- OFFER BAR -->
+    <div id="offer-bar">
+      <i class="fas fa-gift"></i> <strong>Limited Offer:</strong> Get 40% OFF on
+      all courses this week · Use code <strong>PREP40</strong> · Ends Sunday!
+      <button
+        class="ob-close"
+        onclick="this.parentElement.style.display = 'none'"
+      >
+        ×
+      </button>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <div class="container">
+        <div class="nav-inner">
+          <a href="#" class="logo"
+            ><div class="logo-mark"><i class="fas fa-graduation-cap"></i></div>
+            PrepLab</a
+          >
+          <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#courses">Courses</a>
+            <a href="#plans">Plans</a>
+            <a href="#blogs">Blog</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="nav-right">
+            <button class="nav-search" title="Search">
+              <i class="fas fa-search"></i>
+            </button>
+            <button class="btn-login" onclick="openModal('login-modal')">
+              Login
+            </button>
+            <button
+              class="btn btn-primary btn-sm"
+              onclick="openModal('signup-modal')"
+            >
+              Enroll Now
+            </button>
+            <button class="hamburger">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <div class="hero-kicker">
+              <div class="kicker-dot"></div>
+              India's #1 Exam Prep Platform
+            </div>
+            <h1 class="hero-h1">
+              Accelerate Your <span class="h1-orange">Career</span> with<br />
+              <span class="h1-sky">Expert-Led</span> Online
+              <span class="h1-orange">Courses</span>
+            </h1>
+            <p class="hero-sub">
+              Gain in-demand skills from top educators and earn globally
+              recognized certifications to boost your career. Courses designed
+              for real-world exam success.
+            </p>
+            <div class="hero-actions">
+              <button
+                class="btn btn-primary"
+                onclick="
+                  document
+                    .getElementById('courses')
+                    .scrollIntoView({ behavior: 'smooth' })
+                "
+              >
+                Get Started Today
+              </button>
+              <div class="play-row">
+                <button
+                  class="btn-play"
+                  onclick="alert('▶ Playing intro video...')"
+                >
+                  <i class="fas fa-play"></i>
+                </button>
+                <span>See Journey</span>
+              </div>
+            </div>
+            <div class="hero-proof">
+              <div class="proof-avs">
+                <div class="proof-av">RS</div>
+                <div class="proof-av">AM</div>
+                <div class="proof-av">VK</div>
+                <div class="proof-av">+</div>
+              </div>
+              <div class="proof-copy">
+                <strong>2,00,000+ Students</strong>
+                <span class="proof-stars">★★★★★</span>
+                <span style="font-size: 11px"> 4.9 Learner Reviews</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="ribbon-wrap">
+              <div class="float-card fc1">
+                <div class="fc-label">
+                  <i class="fas fa-trophy"></i> Top Ranker
+                </div>
+                <div class="fc-val">AIR 42 · UPSC 2025</div>
+              </div>
+              <div class="ribbon ribbon-a">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop"
+                  alt="Student"
+                />
+              </div>
+            </div>
+            <div class="ribbon-wrap">
+              <div class="ribbon ribbon-b">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
+                  alt="Professional"
+                />
+              </div>
+              <div class="float-card fc2">
+                <div class="fc-label">
+                  <i class="fas fa-chart-line"></i> Study Streak
+                </div>
+                <div class="fc-val">
+                  142 days <i class="fas fa-fire" style="color: #f97316"></i>
+                </div>
+              </div>
+            </div>
+            <div class="ribbon-wrap">
+              <div class="ribbon ribbon-c">
+                <img
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=500&fit=crop"
+                  alt="Professional Woman"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+      <div style="overflow: hidden">
+        <div class="marquee-track">
+          <span class="mi"
+            ><i class="fas fa-landmark"></i> UPSC Civil Services</span
+          ><span class="mi"><i class="fas fa-bolt"></i> SSC CGL / CHSL</span
+          ><span class="mi"
+            ><i class="fas fa-university"></i> IBPS PO / Clerk</span
+          ><span class="mi"><i class="fas fa-train"></i> RRB NTPC</span
+          ><span class="mi"><i class="fas fa-cog"></i> GATE 2026</span
+          ><span class="mi"
+            ><i class="fas fa-stethoscope"></i> NEET UG / PG</span
+          ><span class="mi"
+            ><i class="fas fa-calculator"></i> JEE Main / Advanced</span
+          ><span class="mi"><i class="fas fa-chart-bar"></i> CAT MBA</span
+          ><span class="mi"><i class="fas fa-balance-scale"></i> CLAT</span
+          ><span class="mi"><i class="fas fa-medal"></i> NDA / CDS</span>
+          <span class="mi"
+            ><i class="fas fa-landmark"></i> UPSC Civil Services</span
+          ><span class="mi"><i class="fas fa-bolt"></i> SSC CGL / CHSL</span
+          ><span class="mi"
+            ><i class="fas fa-university"></i> IBPS PO / Clerk</span
+          ><span class="mi"><i class="fas fa-train"></i> RRB NTPC</span
+          ><span class="mi"><i class="fas fa-cog"></i> GATE 2026</span
+          ><span class="mi"
+            ><i class="fas fa-stethoscope"></i> NEET UG / PG</span
+          ><span class="mi"
+            ><i class="fas fa-calculator"></i> JEE Main / Advanced</span
+          ><span class="mi"><i class="fas fa-chart-bar"></i> CAT MBA</span
+          ><span class="mi"><i class="fas fa-balance-scale"></i> CLAT</span
+          ><span class="mi"><i class="fas fa-medal"></i> NDA / CDS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">Explore Topics</div>
+          <h2 class="sec-title">Courses <span class="hi">Category</span></h2>
+          <p class="sec-sub">
+            Choosing the right course is your first step to success. PrepLab
+            brings all the tools needed to run a winning exam strategy.
+          </p>
+        </div>
+        <div class="cat-grid reveal">
+          <div class="cat-card">
+            <div class="cat-icon"><i class="fas fa-landmark"></i></div>
+            <div class="cat-name">Civil Services</div>
+            <div class="cat-count">124 Courses</div>
+            <div class="cat-btn">Explore →</div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon"><i class="fas fa-university"></i></div>
+            <div class="cat-name">Banking & Finance</div>
+            <div class="cat-count">86 Courses</div>
+            <div class="cat-btn">Explore →</div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon"><i class="fas fa-cog"></i></div>
+            <div class="cat-name">Engineering</div>
+            <div class="cat-count">72 Courses</div>
+            <div class="cat-btn">Explore →</div>
+          </div>
+          <div class="cat-card">
+            <div class="cat-icon"><i class="fas fa-stethoscope"></i></div>
+            <div class="cat-name">Medical & Health</div>
+            <div class="cat-count">58 Courses</div>
+            <div class="cat-btn">Explore →</div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 32px">
+          <button class="btn btn-teal reveal">View All →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <div class="partners-bar">
+      <div class="container">
+        <div class="partners-inner">
+          <div class="pl"><i class="fab fa-slack"></i> Slack</div>
+          <div class="pl"><i class="fab fa-google"></i> Google</div>
+          <div class="pl"><i class="fab fa-airbnb"></i> Airbnb</div>
+          <div class="pl"><i class="fas fa-globe"></i> UNICEF</div>
+          <div class="pl"><i class="fab fa-adobe"></i> Adobe</div>
+          <div class="pl"><i class="fab fa-microsoft"></i> Microsoft</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POPULAR COURSES -->
+    <section id="courses" class="section section-cream">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">Featured</div>
+          <h2 class="sec-title">Popular <span class="ho">Courses</span></h2>
+          <p class="sec-sub">
+            Curated, structured, and regularly updated courses from subject
+            experts and top exam rankers.
+          </p>
+        </div>
+        <div class="cf-row reveal">
+          <button class="cf-btn active" onclick="setCF(this, 'all')">
+            All Programmes
+          </button>
+          <button class="cf-btn" onclick="setCF(this, 'upsc')">
+            UPSC / PSC
+          </button>
+          <button class="cf-btn" onclick="setCF(this, 'ssc')">SSC Exams</button>
+          <button class="cf-btn" onclick="setCF(this, 'banking')">
+            Banking
+          </button>
+          <button class="cf-btn" onclick="setCF(this, 'engineering')">
+            Engineering
+          </button>
+        </div>
+        <div class="courses-grid reveal" id="courses-grid">
+          <div
+            class="cc"
+            data-cat="upsc"
+            onclick="openPayment('UPSC CSE Foundation 2025', '₹4,999')"
+          >
+            <div class="cc-thumb ct1">
+              <i
+                class="fas fa-landmark"
+                style="font-size: 3rem; color: #2563eb"
+              ></i
+              ><span class="cc-badge hot">BESTSELLER</span>
+            </div>
+            <div class="cc-body">
+              <div class="cc-meta">
+                12 Months <span class="dot"></span> 600+ Videos
+                <span class="dot"></span> Hindi/English
+              </div>
+              <div class="cc-title">
+                UPSC CSE Foundation 2025 – Complete Batch
+              </div>
+              <div class="cc-rating">
+                <span class="cc-stars">★★★★★</span><strong>4.9</strong
+                ><span>(2,841)</span>
+              </div>
+              <div class="cc-footer">
+                <div class="cc-price">
+                  <span class="old">₹9,999</span>₹4,999
+                </div>
+                <div class="cc-students">
+                  <i class="fas fa-user"></i> 12.4K enrolled
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="cc"
+            data-cat="ssc"
+            onclick="openPayment('SSC CGL Turbo Pack', '₹2,499')"
+          >
+            <div class="cc-thumb ct2">
+              <i class="fas fa-bolt" style="font-size: 3rem; color: #db2777"></i
+              ><span class="cc-badge">NEW BATCH</span>
+            </div>
+            <div class="cc-body">
+              <div class="cc-meta">
+                6 Months <span class="dot"></span> 300+ Videos
+                <span class="dot"></span> Daily MCQs
+              </div>
+              <div class="cc-title">
+                SSC CGL Turbo Pack – Complete Tier I & II
+              </div>
+              <div class="cc-rating">
+                <span class="cc-stars">★★★★★</span><strong>4.8</strong
+                ><span>(1,567)</span>
+              </div>
+              <div class="cc-footer">
+                <div class="cc-price">
+                  <span class="old">₹4,999</span>₹2,499
+                </div>
+                <div class="cc-students">
+                  <i class="fas fa-user"></i> 8.2K enrolled
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="cc"
+            data-cat="banking"
+            onclick="openPayment('IBPS PO Mastery 2025', '₹1,999')"
+          >
+            <div class="cc-thumb ct3">
+              <i
+                class="fas fa-university"
+                style="font-size: 3rem; color: #059669"
+              ></i
+              ><span class="cc-badge new">TRENDING</span>
+            </div>
+            <div class="cc-body">
+              <div class="cc-meta">
+                4 Months <span class="dot"></span> 200+ Videos
+                <span class="dot"></span> AI Interviews
+              </div>
+              <div class="cc-title">IBPS PO Mastery Program 2025</div>
+              <div class="cc-rating">
+                <span class="cc-stars">★★★★★</span><strong>4.9</strong
+                ><span>(3,210)</span>
+              </div>
+              <div class="cc-footer">
+                <div class="cc-price">
+                  <span class="old">₹3,499</span>₹1,999
+                </div>
+                <div class="cc-students">
+                  <i class="fas fa-user"></i> 15.1K enrolled
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="cc"
+            data-cat="engineering"
+            onclick="openPayment('GATE 2026 Programme', '₹3,499')"
+          >
+            <div class="cc-thumb ct4">
+              <i class="fas fa-cog" style="font-size: 3rem; color: #ca8a04"></i
+              ><span class="cc-badge hot">POPULAR</span>
+            </div>
+            <div class="cc-body">
+              <div class="cc-meta">
+                8 Months <span class="dot"></span> 500+ Videos
+                <span class="dot"></span> Assignments
+              </div>
+              <div class="cc-title">
+                GATE 2026 – CSE & ECE Complete Programme
+              </div>
+              <div class="cc-rating">
+                <span class="cc-stars">★★★★☆</span><strong>4.7</strong
+                ><span>(987)</span>
+              </div>
+              <div class="cc-footer">
+                <div class="cc-price">
+                  <span class="old">₹6,999</span>₹3,499
+                </div>
+                <div class="cc-students">
+                  <i class="fas fa-user"></i> 5.6K enrolled
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px">
+          <button
+            class="btn btn-teal reveal"
+            onclick="alert('Showing all 500+ courses...')"
+          >
+            View All Courses →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMO SPLIT -->
+    <section class="section">
+      <div class="container">
+        <div class="promo-split">
+          <div class="promo-vis reveal">
+            <div class="promo-main">
+              <i
+                class="fas fa-mobile-alt"
+                style="font-size: 7rem; color: var(--teal)"
+              ></i>
+            </div>
+            <div class="promo-float pf1">
+              <div class="pf-lbl">Students Placed</div>
+              <div class="pf-val">50,000+</div>
+            </div>
+            <div class="promo-float pf2">
+              <div class="pf-lbl">Pass Rate</div>
+              <div class="pf-val" style="color: var(--orange)">98.4%</div>
+            </div>
+          </div>
+          <div class="reveal r1">
+            <div class="eyebrow" style="margin-bottom: 12px">Why PrepLab</div>
+            <h2 class="sec-title" style="text-align: left; margin-bottom: 0">
+              Empowering Learners with
+              <span class="hi">Industry-Recognized</span> Skills
+            </h2>
+            <div class="promo-list">
+              <div class="pl-item">
+                <div class="pl-dot"><i class="fas fa-check"></i></div>
+                <div class="pl-text">
+                  <strong>Expert Instructors</strong>Top rankers, IAS/IPS
+                  officers, and subject matter experts teach every course.
+                </div>
+              </div>
+              <div class="pl-item">
+                <div class="pl-dot"><i class="fas fa-check"></i></div>
+                <div class="pl-text">
+                  <strong>Industry Certification</strong>Receive verified
+                  certificates accepted by top institutions and employers.
+                </div>
+              </div>
+              <div class="pl-item">
+                <div class="pl-dot"><i class="fas fa-check"></i></div>
+                <div class="pl-text">
+                  <strong>Flexible Learning Anywhere</strong>Learn on any device
+                  — mobile, tablet, desktop — anytime you want.
+                </div>
+              </div>
+            </div>
+            <button
+              class="btn btn-primary"
+              onclick="
+                document
+                  .getElementById('plans')
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+            >
+              Explore Plans →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEARNING ENV -->
+    <section class="section section-cream">
+      <div class="container">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+            gap: 20px;
+          "
+        >
+          <div class="reveal">
+            <div class="eyebrow" style="margin-bottom: 10px">Our Platform</div>
+            <h2 class="sec-title" style="text-align: left">
+              Fostering a <span class="hi">Playful</span> &amp;<br />Engaging
+              Learning Environment
+            </h2>
+          </div>
+          <div class="env-tab-row reveal">
+            <button class="et active" onclick="setET(this)">
+              Interaction Design
+            </button>
+            <button class="et" onclick="setET(this)">UX Design Course</button>
+            <button class="et" onclick="setET(this)">User Interface</button>
+          </div>
+        </div>
+        <div class="env-grid reveal">
+          <div class="env-card">
+            <div class="env-img ei1">
+              <i
+                class="fas fa-chart-line"
+                style="font-size: 3rem; color: #2563eb"
+              ></i>
+            </div>
+            <div class="env-body">
+              <h4>Live Dashboard Analytics</h4>
+              <p>
+                Track progress, accuracy, and rank in real time with AI-powered
+                insights.
+              </p>
+              <span class="env-link">Learn More →</span>
+            </div>
+          </div>
+          <div class="env-card">
+            <div class="env-img ei2">
+              <i
+                class="fas fa-bullseye"
+                style="font-size: 3rem; color: #ea580c"
+              ></i>
+            </div>
+            <div class="env-body">
+              <h4>Adaptive Quiz Engine</h4>
+              <p>
+                Questions adapt to your level, automatically focusing on weak
+                areas.
+              </p>
+              <span class="env-link">Learn More →</span>
+            </div>
+          </div>
+          <div class="env-card">
+            <div class="env-img ei3">
+              <i
+                class="fas fa-trophy"
+                style="font-size: 3rem; color: #059669"
+              ></i>
+            </div>
+            <div class="env-body">
+              <h4>Gamified Leaderboards</h4>
+              <p>
+                Compete with peers, earn badges, and stay motivated with daily
+                streaks.
+              </p>
+              <span class="env-link">Learn More →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-inner">
+          <div class="si">
+            <div class="si-num">50<span class="plus">+</span></div>
+            <div class="si-lbl">Expert Instructors</div>
+          </div>
+          <div class="si">
+            <div class="si-num">2<span class="plus">M</span></div>
+            <div class="si-lbl">Enrolled Students</div>
+          </div>
+          <div class="si">
+            <div class="si-num">85<span class="plus">%</span></div>
+            <div class="si-lbl">Exam Pass Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <section id="plans" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">Plans</div>
+          <h2 class="sec-title">
+            Choose Your <span class="hi">Plan</span>
+            <i
+              class="fas fa-star"
+              style="font-size: 0.6em; color: var(--orange)"
+            ></i>
+          </h2>
+          <p class="sec-sub">
+            To get started, simply sign up and choose a plan that works for you
+            and your goal.
+          </p>
+        </div>
+        <div class="billing-toggle reveal">
+          <span class="bt-lbl active" id="lbl-m">Monthly</span>
+          <button class="toggle-sw" id="tog-sw" onclick="toggleBilling()">
+            <div class="toggle-knob"></div>
+          </button>
+          <span class="bt-lbl" id="lbl-y">Yearly</span>
+          <span class="save-tag">Save 30%</span>
+        </div>
+        <div class="price-grid reveal">
+          <div class="price-card">
+            <div class="pc-plan">Starter</div>
+            <div class="pc-price">
+              <sup>₹</sup><span class="pv" data-m="499" data-y="349">499</span>
+            </div>
+            <div class="pc-period">
+              per month · billed <span class="pb">monthly</span>
+            </div>
+            <ul class="pc-features">
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> 5 Courses
+                Access
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Free Study
+                Materials
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Daily Quiz
+                (10 Questions)
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Community
+                Forum Access
+              </li>
+              <li class="no">
+                <span class="ck"><i class="fas fa-times"></i></span> Live
+                Sessions
+              </li>
+              <li class="no">
+                <span class="ck"><i class="fas fa-times"></i></span> 1-on-1
+                Mentorship
+              </li>
+            </ul>
+            <button
+              class="btn-plan btn-teal"
+              onclick="openPayment('Starter Plan', '₹499/month')"
+            >
+              Get Started →
+            </button>
+          </div>
+          <div class="price-card feat">
+            <div class="pc-pop"><i class="fas fa-star"></i> Most Popular</div>
+            <div class="pc-plan">Pro</div>
+            <div class="pc-price">
+              <sup>₹</sup
+              ><span class="pv" data-m="1299" data-y="909">1,299</span>
+            </div>
+            <div class="pc-period">
+              per month · billed <span class="pb">monthly</span>
+            </div>
+            <ul class="pc-features">
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Unlimited
+                Courses
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> All Study
+                Materials
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Unlimited
+                Mock Tests
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Priority
+                Support
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> 4 Live
+                Sessions/Month
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> 2
+                Mentorship Calls
+              </li>
+            </ul>
+            <button
+              class="btn-plan"
+              style="
+                background: #fff;
+                color: var(--teal);
+                border: none;
+                font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+                font-weight: 700;
+                cursor: pointer;
+                transition: 0.2s;
+                font-size: 14px;
+                border-radius: 10px;
+              "
+              onmouseover="
+                this.style.background = 'var(--orange)';
+                this.style.color = '#fff';
+              "
+              onmouseout="
+                this.style.background = '#fff';
+                this.style.color = 'var(--teal)';
+              "
+              onclick="openPayment('Pro Plan', '₹1,299/month')"
+            >
+              Get Pro →
+            </button>
+          </div>
+          <div class="price-card">
+            <div class="pc-plan">Elite</div>
+            <div class="pc-price">
+              <sup>₹</sup
+              ><span class="pv" data-m="2999" data-y="2099">2,999</span>
+            </div>
+            <div class="pc-period">
+              per month · billed <span class="pb">monthly</span>
+            </div>
+            <ul class="pc-features">
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Everything
+                in Pro
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Unlimited
+                Live Sessions
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Weekly
+                Mentorship Calls
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Mock
+                Interview Sessions
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Dedicated
+                Success Manager
+              </li>
+              <li>
+                <span class="ck"><i class="fas fa-check"></i></span> Early
+                Access to Content
+              </li>
+            </ul>
+            <button
+              class="btn-plan btn-primary"
+              onclick="openPayment('Elite Plan', '₹2,999/month')"
+            >
+              Go Elite →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOGS -->
+    <section id="blogs" class="section section-cream">
+      <div class="container">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            gap: 20px;
+          "
+        >
+          <div class="reveal">
+            <div class="eyebrow" style="margin-bottom: 10px">Knowledge Hub</div>
+            <h2 class="sec-title" style="text-align: left">
+              Explore <span class="ho">Insights</span> &amp;<br />Expert Tips
+            </h2>
+          </div>
+          <button class="btn btn-teal reveal">All Articles →</button>
+        </div>
+        <div class="blog-grid reveal">
+          <div class="blog-card">
+            <div class="bc-img bi1">
+              <i
+                class="fas fa-newspaper"
+                style="font-size: 3.5rem; color: #0284c7"
+              ></i
+              ><span class="bc-cat">Exam Updates</span>
+            </div>
+            <div class="bc-body">
+              <div class="bc-date">
+                <i class="far fa-calendar-alt"></i> March 8, 2026 · 5 min read
+              </div>
+              <div class="bc-title">
+                Learning with Games? Why Gamification is the Future of EdTech
+              </div>
+              <div class="bc-excerpt">
+                How game-based learning boosts retention by 40% and keeps
+                students motivated through long exam prep cycles.
+              </div>
+              <div class="bc-foot">
+                <div class="bc-author">
+                  <div class="bc-av">RS</div>
+                  <span>Ravi Sharma</span>
+                </div>
+                <div class="read-link">Read More →</div>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="bc-img bi2">
+              <i
+                class="fas fa-lightbulb"
+                style="font-size: 3.5rem; color: #db2777"
+              ></i
+              ><span class="bc-cat">Career Guidance</span>
+            </div>
+            <div class="bc-body">
+              <div class="bc-date">
+                <i class="far fa-calendar-alt"></i> March 5, 2026 · 7 min read
+              </div>
+              <div class="bc-title">
+                10 Learning Game Ideas That Actually Work for Competitive Exams
+              </div>
+              <div class="bc-excerpt">
+                Practical study games — from PYQ battles to timed quizzes — that
+                top rankers swear by.
+              </div>
+              <div class="bc-foot">
+                <div class="bc-author">
+                  <div
+                    class="bc-av"
+                    style="
+                      background: linear-gradient(
+                        135deg,
+                        var(--orange),
+                        #f5c842
+                      );
+                    "
+                  >
+                    AM
+                  </div>
+                  <span>Ananya Mehta</span>
+                </div>
+                <div class="read-link">Read More →</div>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="bc-img bi3">
+              <i
+                class="fas fa-laptop-code"
+                style="font-size: 3.5rem; color: #059669"
+              ></i
+              ><span class="bc-cat">Tips & Tricks</span>
+            </div>
+            <div class="bc-body">
+              <div class="bc-date">
+                <i class="far fa-calendar-alt"></i> Feb 28, 2026 · 6 min read
+              </div>
+              <div class="bc-title">
+                Mastering Virtual Classrooms: A Complete Guide for 2026
+              </div>
+              <div class="bc-excerpt">
+                Everything you need to maximize your online learning — from
+                setup to staying fully accountable.
+              </div>
+              <div class="bc-foot">
+                <div class="bc-author">
+                  <div
+                    class="bc-av"
+                    style="
+                      background: linear-gradient(135deg, #7c3aed, var(--sky));
+                    "
+                  >
+                    VK
+                  </div>
+                  <span>Vikram Kumar</span>
+                </div>
+                <div class="read-link">Read More →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">Student Stories</div>
+          <h2 class="sec-title">
+            What Our <span class="hi">Students</span> Say
+          </h2>
+          <p class="sec-sub">
+            Real results from real students. Hear how PrepLab transformed their
+            exam journey.
+          </p>
+        </div>
+        <div class="testi-grid reveal">
+          <div class="testi-card">
+            <div class="testi-top">
+              <div class="testi-stars">★★★★★</div>
+              <div class="quote">"</div>
+            </div>
+            <div class="testi-text">
+              "PrepLab's analytics showed me exactly where I was losing marks.
+              Within 3 months my scores jumped from 87 to 134. I cleared SSC CGL
+              in my very first attempt!"
+            </div>
+            <div class="testi-author">
+              <div class="ta-av">RM</div>
+              <div>
+                <div class="ta-name">Rohit Mehta</div>
+                <div class="ta-role">SSC CGL 2025 — Rank 18</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card" style="border-color: var(--teal)">
+            <div class="testi-top">
+              <div class="testi-stars">★★★★★</div>
+              <div class="quote">"</div>
+            </div>
+            <div class="testi-text">
+              "The structured study plan and daily current affairs digest saved
+              me hours every day. The community forum is gold — top rankers
+              actively help each other here!"
+            </div>
+            <div class="testi-author">
+              <div
+                class="ta-av"
+                style="
+                  background: linear-gradient(135deg, var(--orange), #f5c842);
+                "
+              >
+                AS
+              </div>
+              <div>
+                <div class="ta-name">Ananya Singh</div>
+                <div class="ta-role">UPSC CSE 2025 — AIR 67</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-top">
+              <div class="testi-stars">★★★★★</div>
+              <div class="quote">"</div>
+            </div>
+            <div class="testi-text">
+              "I tried three other platforms before PrepLab. Nothing comes close
+              to the quality of video lectures and the depth of PYQ analysis
+              here. Worth every rupee."
+            </div>
+            <div class="testi-author">
+              <div
+                class="ta-av"
+                style="background: linear-gradient(135deg, #7c3aed, var(--sky))"
+              >
+                VK
+              </div>
+              <div>
+                <div class="ta-name">Vikram Kumar</div>
+                <div class="ta-role">IBPS PO 2025 — Selected</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATE -->
+    <div class="cert-section">
+      <div class="container">
+        <div class="cert-inner">
+          <div class="cert-text reveal">
+            <div class="eyebrow" style="color: var(--sky)">
+              Auto Certification
+            </div>
+            <h2>
+              Complete Courses.<br />Earn Verified
+              <span style="color: var(--sky); font-style: italic"
+                >Certificates.</span
+              >
+            </h2>
+            <p>
+              Digitally signed certificates after every course completion —
+              shareable on LinkedIn and verifiable by any institution globally.
+            </p>
+            <div class="cert-perks">
+              <div class="cp-item">
+                <div class="cp-ico"><i class="fas fa-lock"></i></div>
+                Blockchain-verified, tamper-proof certificates
+              </div>
+              <div class="cp-item">
+                <div class="cp-ico"><i class="fas fa-link"></i></div>
+                Shareable on LinkedIn with a single click
+              </div>
+              <div class="cp-item">
+                <div class="cp-ico"><i class="fas fa-file-pdf"></i></div>
+                PDF download with QR verification code
+              </div>
+              <div class="cp-item">
+                <div class="cp-ico"><i class="fas fa-graduation-cap"></i></div>
+                Recognized by 500+ partner organizations
+              </div>
+            </div>
+            <button
+              class="btn btn-primary"
+              style="margin-top: 28px"
+              onclick="alert('Demo: Sample certificate generated!')"
+            >
+              Generate Sample Certificate
+            </button>
+          </div>
+          <div class="reveal r1">
+            <div class="cert-card">
+              <div class="cprev-logo">
+                <i class="fas fa-landmark"></i> PrepLab
+              </div>
+              <div class="cprev-tag">Certificate of Completion</div>
+              <div
+                style="font-size: 13px; color: var(--mid); margin-bottom: 6px"
+              >
+                This certifies that
+              </div>
+              <div class="cprev-name">Riya Sharma</div>
+              <div class="cprev-course">
+                has successfully completed<br /><strong
+                  >UPSC CSE Foundation 2025 — Complete Batch</strong
+                >
+              </div>
+              <div class="cprev-badge">
+                <i class="fas fa-trophy"></i> Verified · March 2026
+              </div>
+              <div class="cprev-sigs">
+                <div class="sig-item">
+                  <div class="sig-line"></div>
+                  <div class="sig-lbl">Director, PrepLab</div>
+                </div>
+                <div class="sig-item">
+                  <div style="font-size: 2rem; margin-bottom: 6px">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div class="sig-lbl">Digital Seal</div>
+                </div>
+                <div class="sig-item">
+                  <div class="sig-line"></div>
+                  <div class="sig-lbl">Head of Academics</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="section section-cream">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">Test Yourself</div>
+          <h2 class="sec-title">Try a Quick <span class="hi">Quiz</span></h2>
+        </div>
+        <div class="quiz-wrap reveal">
+          <div class="quiz-head">
+            <div class="quiz-tag">General Knowledge</div>
+            <div class="quiz-prog">
+              <div class="qp-fill" id="qp-fill"></div>
+            </div>
+            <div class="quiz-timer" id="quiz-timer">
+              <i class="far fa-clock"></i> 30s
+            </div>
+          </div>
+          <div class="quiz-q-text" id="quiz-q">
+            Q1. Which article of the Indian Constitution guarantees the Right to
+            Equality?
+          </div>
+          <div class="quiz-opts" id="quiz-opts">
+            <div class="quiz-opt" onclick="selAns(this, false)">
+              <div class="opt-letter">A</div>
+              Article 12 – Definition of State
+            </div>
+            <div class="quiz-opt" onclick="selAns(this, true)">
+              <div class="opt-letter">B</div>
+              Article 14 – Equality before Law
+            </div>
+            <div class="quiz-opt" onclick="selAns(this, false)">
+              <div class="opt-letter">C</div>
+              Article 19 – Freedom of Speech
+            </div>
+            <div class="quiz-opt" onclick="selAns(this, false)">
+              <div class="opt-letter">D</div>
+              Article 21 – Right to Life
+            </div>
+          </div>
+          <div class="quiz-foot">
+            <div class="quiz-count">
+              Question <span id="qnum">1</span> of 10
+            </div>
+            <div style="display: flex; gap: 10px">
+              <button
+                class="btn"
+                style="
+                  background: var(--cream);
+                  border: none;
+                  padding: 10px 20px;
+                  border-radius: 50px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  cursor: pointer;
+                  color: var(--mid);
+                "
+              >
+                Skip
+              </button>
+              <button
+                class="btn btn-teal"
+                style="border-radius: 50px; padding: 10px 24px; font-size: 13px"
+                onclick="nextQ()"
+              >
+                Next →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faqs" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="eyebrow">Support</div>
+          <h2 class="sec-title">
+            Frequently Asked <span class="hi">Questions</span>
+          </h2>
+        </div>
+        <div class="faq-grid reveal">
+          <div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFAQ(this)">
+                <h4>What exams does PrepLab cover?</h4>
+                <button class="faq-icon">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  PrepLab covers 80+ competitive exams including UPSC CSE, SSC
+                  CGL, IBPS PO, RRB NTPC, NEET, JEE, GATE, CAT, CLAT, NDA, and
+                  CDS. We continuously add new courses based on student demand.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFAQ(this)">
+                <h4>Are courses self-paced or live?</h4>
+                <button class="faq-icon">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  We offer both! Self-paced recorded courses let you learn at
+                  your own schedule. Live batch programs run in real-time with
+                  interactive doubt sessions, mentorship, and peer
+                  collaboration.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFAQ(this)">
+                <h4>How does the certification work?</h4>
+                <button class="faq-icon">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  After completing all modules and passing the final quiz
+                  (minimum 70%), you receive a digitally signed PrepLab
+                  certificate — downloadable as PDF and shareable on LinkedIn
+                  with a blockchain verification link.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFAQ(this)">
+                <h4>Is there a refund policy?</h4>
+                <button class="faq-icon">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Yes! We offer a 7-day no-questions-asked refund policy for all
+                  paid courses. Contact support within 7 days of purchase and
+                  we'll process your full refund within 3–5 business days.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFAQ(this)">
+                <h4>Is content available in regional languages?</h4>
+                <button class="faq-icon">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Yes! PrepLab supports Hindi, Bengali, Tamil, Telugu, Marathi,
+                  Gujarati, and English. Most courses have bilingual content,
+                  and our AI assistant is fully multilingual.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFAQ(this)">
+                <h4>Can I access courses on mobile?</h4>
+                <button class="faq-icon">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Absolutely. PrepLab works seamlessly on Android, iOS, tablets,
+                  and desktops. Download lessons for offline access anytime,
+                  anywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-cream">
+      <div class="container">
+        <div class="contact-split">
+          <div class="contact-card reveal">
+            <div class="eyebrow" style="color: var(--sky)">Get In Touch</div>
+            <h2>
+              Let's Connect There
+              <i class="fas fa-hand-paper" style="font-size: 0.8em"></i>
+            </h2>
+            <p>
+              Questions about courses, technical help, partnerships, or want to
+              teach on PrepLab — we respond within 2 hours.
+            </p>
+            <div class="ci-list">
+              <div class="ci-row">
+                <div class="ci-ico"><i class="fas fa-envelope"></i></div>
+                <div class="ci-txt">
+                  <h5>Email</h5>
+                  <p>hello@preplab.in · support@preplab.in</p>
+                </div>
+              </div>
+              <div class="ci-row">
+                <div class="ci-ico"><i class="fas fa-phone"></i></div>
+                <div class="ci-txt">
+                  <h5>Call / WhatsApp</h5>
+                  <p>+91 98765 43210 · Mon–Sat, 9AM–7PM</p>
+                </div>
+              </div>
+              <div class="ci-row">
+                <div class="ci-ico"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="ci-txt">
+                  <h5>Office</h5>
+                  <p>42, EdTech Tower, Sector 18, Noida, UP 201301</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-box reveal r1">
+            <h3>Send a Message</h3>
+            <div class="form-sub">We'll get back to you ASAP.</div>
+            <div class="form-row">
+              <div class="fg">
+                <label class="flbl">First Name</label
+                ><input class="finput" type="text" placeholder="Riya" />
+              </div>
+              <div class="fg">
+                <label class="flbl">Last Name</label
+                ><input class="finput" type="text" placeholder="Sharma" />
+              </div>
+            </div>
+            <div class="fg">
+              <label class="flbl">Email</label
+              ><input
+                class="finput"
+                type="email"
+                placeholder="riya@gmail.com"
+              />
+            </div>
+            <div class="fg">
+              <label class="flbl">Topic</label
+              ><select class="finput">
+                <option>Course Enquiry</option>
+                <option>Technical Support</option>
+                <option>Partnership</option>
+                <option>Career at PrepLab</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="flbl">Message</label
+              ><textarea
+                class="finput"
+                rows="4"
+                placeholder="How can we help you?"
+              ></textarea>
+            </div>
+            <button
+              class="btn btn-primary"
+              style="width: 100%; justify-content: center"
+              onclick="alert('✅ Message sent! We reply within 2 hours.')"
+            >
+              Send Message →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-main">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="logo" style="color: #fff; margin-bottom: 14px">
+                <div class="logo-mark">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                PrepLab
+              </div>
+              <p>
+                India's most trusted exam prep platform. 2M+ students, 500+
+                courses, 98% pass rate.
+              </p>
+              <div class="soc-row" style="margin-top: 18px">
+                <button class="soc"><i class="fab fa-facebook-f"></i></button
+                ><button class="soc"><i class="fab fa-twitter"></i></button
+                ><button class="soc"><i class="fab fa-instagram"></i></button
+                ><button class="soc"><i class="fab fa-youtube"></i></button
+                ><button class="soc"><i class="fab fa-linkedin-in"></i></button>
+              </div>
+              <div class="nl-box">
+                <h4>Stay Updated <i class="fas fa-envelope-open-text"></i></h4>
+                <p>Get exam alerts, free resources, and tips in your inbox.</p>
+                <div class="nl-form">
+                  <input
+                    class="nl-input"
+                    type="email"
+                    placeholder="Your email address"
+                  /><button class="nl-btn" onclick="alert('Subscribed!')">
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="fc-head">Navigation</div>
+              <ul class="fc-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#blogs">Blog</a></li>
+                <li><a href="#plans">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="fc-head">Courses</div>
+              <ul class="fc-list">
+                <li><a href="#">UPSC CSE</a></li>
+                <li><a href="#">SSC CGL</a></li>
+                <li><a href="#">IBPS PO</a></li>
+                <li><a href="#">GATE 2026</a></li>
+                <li><a href="#">NEET UG</a></li>
+                <li><a href="#">JEE Main</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="fc-head">Contact</div>
+              <ul class="fc-list">
+                <li><a href="#">hello@preplab.in</a></li>
+                <li><a href="#">+91 98765 43210</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Refund Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bot">
+            <span
+              >© 2026 PrepLab Technologies Pvt. Ltd. · All Rights Reserved</span
+            >
+            <span style="display: flex; gap: 16px"
+              ><span><i class="fas fa-lock"></i> SSL Secured</span
+              ><span><i class="fas fa-credit-card"></i> Safe Payments</span
+              ><span><i class="fas fa-flag"></i> Made in India</span></span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CHAT -->
+    <div id="chat-widget">
+      <div id="chat-win">
+        <div class="chat-head">
+          <div class="chat-av"><i class="fas fa-robot"></i></div>
+          <div class="chat-info">
+            <h4>Personix AI</h4>
+            <span>Online · PrepLab Assistant</span>
+          </div>
+          <button class="chat-x" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+          <div class="chat-msg bot">
+            <i class="fas fa-hand-paper"></i> Hi! I'm Personix, your PrepLab AI
+            assistant!
+          </div>
+          <div class="chat-msg bot">
+            Ask me about courses, exam dates, or study plans
+            <i class="fas fa-bullseye"></i>
+          </div>
+        </div>
+        <div class="chat-in-row">
+          <input
+            type="text"
+            id="chat-in"
+            placeholder="Type a message..."
+            onkeypress="sendChat(event)"
+          /><button class="chat-send" onclick="sendChatMsg()">Send</button>
+        </div>
+      </div>
+      <div class="chat-hint" id="chat-hint">
+        <i class="fas fa-hand-paper"></i> Need help? Ask me!
+      </div>
+      <button id="chat-btn" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+      </button>
+    </div>
+
+    <!-- PAYMENT MODAL -->
+    <div class="overlay" id="pay-modal">
+      <div class="modal">
+        <button class="modal-x" onclick="closeModal('pay-modal')">×</button>
+        <h3>Complete Your Purchase</h3>
+        <div class="msub" id="pay-name">UPSC CSE Foundation 2025</div>
+        <div class="pay-methods">
+          <div class="pay-m active" onclick="setPayM(this)">
+            <i class="fas fa-mobile-alt"></i> UPI
+          </div>
+          <div class="pay-m" onclick="setPayM(this)">
+            <i class="fas fa-credit-card"></i> Card
+          </div>
+          <div class="pay-m" onclick="setPayM(this)">
+            <i class="fas fa-university"></i> Net Banking
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flbl">UPI ID / Phone Number</label
+          ><input
+            class="finput"
+            type="text"
+            placeholder="yourname@upi or 9999999999"
+          />
+        </div>
+        <div class="price-sum">
+          <div class="ps-row">
+            <span>Course Price</span><span id="pay-orig">₹4,999</span>
+          </div>
+          <div class="ps-row">
+            <span>Discount (PREP40)</span><span class="disc">–₹2,000</span>
+          </div>
+          <div class="ps-row"><span>GST (18%)</span><span>₹540</span></div>
+          <div class="ps-row tot">
+            <span>Total Payable</span><span>₹3,539</span>
+          </div>
+        </div>
+        <button
+          class="btn btn-primary"
+          style="width: 100%; justify-content: center; font-size: 15px"
+          onclick="
+            alert('🎉 Payment Successful! Welcome to PrepLab.');
+            closeModal('pay-modal');
+          "
+        >
+          Pay Securely <i class="fas fa-lock"></i> →
+        </button>
+        <div
+          style="
+            text-align: center;
+            font-size: 12px;
+            color: var(--mid);
+            margin-top: 10px;
+          "
+        >
+          256-bit SSL · Razorpay secured
+        </div>
+      </div>
+    </div>
+
+    <!-- SIGNUP MODAL -->
+    <div class="overlay" id="signup-modal">
+      <div class="modal">
+        <button class="modal-x" onclick="closeModal('signup-modal')">×</button>
+        <h3>Create Your Account</h3>
+        <div class="msub">Join 2M+ students on PrepLab — free forever</div>
+        <div class="form-row">
+          <div class="fg">
+            <label class="flbl">First Name</label
+            ><input class="finput" type="text" placeholder="Riya" />
+          </div>
+          <div class="fg">
+            <label class="flbl">Last Name</label
+            ><input class="finput" type="text" placeholder="Sharma" />
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flbl">Email</label
+          ><input class="finput" type="email" placeholder="riya@gmail.com" />
+        </div>
+        <div class="fg">
+          <label class="flbl">Mobile</label
+          ><input class="finput" type="tel" placeholder="+91 99999 99999" />
+        </div>
+        <div class="fg">
+          <label class="flbl">Target Exam</label
+          ><select class="finput">
+            <option>UPSC CSE</option>
+            <option>SSC CGL</option>
+            <option>IBPS PO</option>
+            <option>GATE</option>
+            <option>NEET</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="flbl">Password</label
+          ><input
+            class="finput"
+            type="password"
+            placeholder="Create a strong password"
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+          style="
+            width: 100%;
+            justify-content: center;
+            font-size: 15px;
+            margin-bottom: 12px;
+          "
+          onclick="
+            alert('🎉 Account created! Check your email. Happy learning!');
+            closeModal('signup-modal');
+          "
+        >
+          Create Account →
+        </button>
+        <div style="text-align: center; font-size: 13px; color: var(--mid)">
+          Already have an account?
+          <a
+            href="#"
+            style="color: var(--teal); font-weight: 700"
+            onclick="
+              closeModal('signup-modal');
+              openModal('login-modal');
+              return false;
+            "
+            >Login here</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="overlay" id="login-modal">
+      <div class="modal" style="max-width: 420px">
+        <button class="modal-x" onclick="closeModal('login-modal')">×</button>
+        <h3>
+          Welcome Back
+          <i class="fas fa-hand-paper" style="font-size: 0.8em"></i>
+        </h3>
+        <div class="msub">Login to your PrepLab account</div>
+        <div class="fg">
+          <label class="flbl">Email / Mobile</label
+          ><input class="finput" type="text" placeholder="you@email.com" />
+        </div>
+        <div class="fg">
+          <label class="flbl">Password</label
+          ><input class="finput" type="password" placeholder="••••••••" />
+        </div>
+        <div style="text-align: right; margin-bottom: 16px">
+          <a
+            href="#"
+            style="font-size: 13px; color: var(--teal); font-weight: 600"
+            >Forgot Password?</a
+          >
+        </div>
+        <button
+          class="btn btn-teal"
+          style="
+            width: 100%;
+            justify-content: center;
+            font-size: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            padding: 14px;
+          "
+          onclick="
+            closeModal('login-modal');
+            alert('Welcome back! 🎉');
+          "
+        >
+          Login →
+        </button>
+        <div
+          style="
+            border-top: 1px solid var(--border);
+            margin: 14px 0;
+            text-align: center;
+            font-size: 12px;
+            color: var(--mid);
+          "
+        >
+          or continue with
+        </div>
+        <div style="display: flex; gap: 10px; margin-bottom: 12px">
+          <button
+            class="btn-login"
+            style="
+              flex: 1;
+              text-align: center;
+              padding: 11px;
+              border-radius: 10px;
+            "
+          >
+            <i class="fab fa-google"></i> Google
+          </button>
+          <button
+            class="btn-login"
+            style="
+              flex: 1;
+              text-align: center;
+              padding: 11px;
+              border-radius: 10px;
+            "
+          >
+            <i class="fas fa-mobile-alt"></i> OTP Login
+          </button>
+        </div>
+        <div style="text-align: center; font-size: 13px; color: var(--mid)">
+          Don't have an account?
+          <a
+            href="#"
+            style="color: var(--teal); font-weight: 700"
+            onclick="
+              closeModal('login-modal');
+              openModal('signup-modal');
+              return false;
+            "
+            >Sign up free</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Scroll reveal
+      const obs = new IntersectionObserver(
+        (es) => {
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+
+      // Modals
+      function openModal(id) {
+        document.getElementById(id).classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      document.querySelectorAll(".overlay").forEach((o) =>
+        o.addEventListener("click", (e) => {
+          if (e.target === o) {
+            o.classList.remove("open");
+            document.body.style.overflow = "";
+          }
+        }),
+      );
+
+      // Payment
+      function openPayment(n, p) {
+        document.getElementById("pay-name").textContent = n;
+        document.getElementById("pay-orig").textContent = p;
+        openModal("pay-modal");
+      }
+      function setPayM(el) {
+        document
+          .querySelectorAll(".pay-m")
+          .forEach((m) => m.classList.remove("active"));
+        el.classList.add("active");
+      }
+
+      // Course filter
+      function setCF(btn, cat) {
+        document
+          .querySelectorAll(".cf-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".cc").forEach((c) => {
+          c.style.display =
+            cat === "all" || c.dataset.cat === cat ? "" : "none";
+        });
+      }
+
+      // FAQ
+      function toggleFAQ(el) {
+        el.closest(".faq-item").classList.toggle("open");
+      }
+
+      // Billing
+      let yr = false;
+      function toggleBilling() {
+        yr = !yr;
+        document.getElementById("tog-sw").classList.toggle("yr", yr);
+        document.getElementById("lbl-m").classList.toggle("active", !yr);
+        document.getElementById("lbl-y").classList.toggle("active", yr);
+        document.querySelectorAll(".pv").forEach((el) => {
+          el.textContent = parseInt(
+            yr ? el.dataset.y : el.dataset.m,
+          ).toLocaleString("en-IN");
+        });
+        document
+          .querySelectorAll(".pb")
+          .forEach((el) => (el.textContent = yr ? "yearly" : "monthly"));
+      }
+
+      // Env tabs
+      function setET(btn) {
+        document
+          .querySelectorAll(".et")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      }
+
+      // Chat
+      let chatOpen = false;
+      function toggleChat() {
+        chatOpen = !chatOpen;
+        document.getElementById("chat-win").classList.toggle("open", chatOpen);
+        const h = document.getElementById("chat-hint");
+        if (h) h.style.display = "none";
+      }
+      function sendChat(e) {
+        if (e.key === "Enter") sendChatMsg();
+      }
+      function sendChatMsg() {
+        const inp = document.getElementById("chat-in"),
+          msg = inp.value.trim();
+        if (!msg) return;
+        const body = document.getElementById("chat-body");
+        body.innerHTML += `<div class="chat-msg user">${msg}</div>`;
+        inp.value = "";
+        const r = [
+          "Great question! Let me check our catalog for you 📚",
+          "You can find that in the Resources section — lots of free PDFs!",
+          "I recommend the Pro plan for best value. Want me to share details?",
+          "Our next UPSC batch starts March 15. Enroll now to get early bird access! 🎯",
+        ];
+        setTimeout(() => {
+          body.innerHTML += `<div class="chat-msg bot">${r[Math.floor(Math.random() * r.length)]}</div>`;
+          body.scrollTop = body.scrollHeight;
+        }, 700);
+        body.scrollTop = body.scrollHeight;
+      }
+
+      // Quiz
+      let qN = 1,
+        qDone = false,
+        tSec = 30,
+        tInt;
+      const qs = [
+        {
+          q: "Q1. Which article of the Indian Constitution guarantees the Right to Equality?",
+          opts: [
+            "Article 12 – Definition of State",
+            "Article 14 – Equality before Law",
+            "Article 19 – Freedom of Speech",
+            "Article 21 – Right to Life",
+          ],
+          ans: 1,
+        },
+        {
+          q: "Q2. Who is known as the Father of the Indian Constitution?",
+          opts: [
+            "Jawaharlal Nehru",
+            "Vallabhbhai Patel",
+            "B.R. Ambedkar",
+            "Rajendra Prasad",
+          ],
+          ans: 2,
+        },
+        {
+          q: "Q3. The Directive Principles of State Policy are in which Part of the Constitution?",
+          opts: [
+            "Part III – Fundamental Rights",
+            "Part IV – Directive Principles",
+            "Part V – The Union",
+            "Part VI – The States",
+          ],
+          ans: 1,
+        },
+        {
+          q: "Q4. Which is the highest court in India?",
+          opts: [
+            "High Court",
+            "National Court",
+            "District Court",
+            "Supreme Court",
+          ],
+          ans: 3,
+        },
+      ];
+      function startT() {
+        clearInterval(tInt);
+        tSec = 30;
+        tInt = setInterval(() => {
+          tSec--;
+          const el = document.getElementById("quiz-timer");
+          if (el) el.textContent = "⏱ " + tSec + "s";
+          if (tSec <= 0) clearInterval(tInt);
+        }, 1000);
+      }
+      startT();
+      function selAns(el, correct) {
+        if (qDone) return;
+        qDone = true;
+        clearInterval(tInt);
+        document
+          .querySelectorAll(".quiz-opt")
+          .forEach((o) => (o.style.pointerEvents = "none"));
+        el.classList.add(correct ? "correct" : "wrong");
+        if (!correct) {
+          const q = qs[(qN - 1) % qs.length];
+          document
+            .querySelectorAll(".quiz-opt")
+            [q.ans].classList.add("correct");
+        }
+      }
+      function nextQ() {
+        qDone = false;
+        qN = Math.min(qN + 1, 10);
+        document.getElementById("qnum").textContent = qN;
+        document.getElementById("qp-fill").style.width = qN * 10 + "%";
+        const q = qs[(qN - 1) % qs.length];
+        document.getElementById("quiz-q").textContent = q.q;
+        document.querySelectorAll(".quiz-opt").forEach((o, i) => {
+          o.className = "quiz-opt";
+          o.style.pointerEvents = "";
+          o.innerHTML = `<div class="opt-letter">${String.fromCharCode(65 + i)}</div> ${q.opts[i]}`;
+          o.onclick = function () {
+            selAns(this, i === q.ans);
+          };
+        });
+        startT();
+      }
+    </script>
+  </body>
+</html>

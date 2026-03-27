@@ -1,0 +1,3394 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      ExamCrack | India's #1 Govt & Entrance Exam Preparation Platform
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Brand Colors */
+        --primary: #ff7e47;
+        --primary-hover: #e66a34;
+        --dark: #0f0f0f;
+        --light-gray: #f4f4f5;
+        --border-color: #e4e4e7;
+        --white: #ffffff;
+
+        /* Typography & UI */
+        --text-main: #27272a;
+        --text-muted: #525252;
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+
+        /* Spacing */
+        --container-padding: 6%;
+        --section-padding: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        background-color: var(--white);
+        color: var(--text-main);
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* --- Utilities --- */
+      .container {
+        padding: 0 var(--container-padding);
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        margin-bottom: 20px;
+        line-height: 1.1;
+      }
+
+      .section-subtitle {
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background: var(--dark);
+        color: var(--white);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--dark);
+        color: var(--dark);
+      }
+      .btn-outline:hover {
+        background: var(--dark);
+        color: var(--white);
+      }
+
+      /* --- Navigation --- */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: -1px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--dark);
+      }
+      .logo svg {
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-muted);
+      }
+      .nav-links a:hover {
+        color: var(--dark);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .mobile-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        background: var(--primary);
+        color: var(--dark);
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        z-index: 2;
+        padding-left: var(--container-padding);
+        padding-right: 5%;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(3.5rem, 7vw, 6rem);
+        line-height: 0.95;
+        font-weight: 900;
+        margin-bottom: 30px;
+        letter-spacing: -3px;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 480px;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        font-weight: 500;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 15px;
+      }
+
+      .btn-white {
+        background: var(--white);
+        color: var(--dark);
+        padding: 16px 36px;
+        border-radius: 12px;
+        font-weight: 700;
+      }
+      .btn-white:hover {
+        background: var(--dark);
+        color: var(--white);
+      }
+
+      /* --- Vertical Text --- */
+      .vertical-text {
+        position: absolute;
+        left: 20px;
+        top: 100%;
+        transform: translateY(-50%) rotate(-90deg);
+        transform-origin: left top;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--dark);
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .vertical-line {
+        width: 220px;
+        height: 2px;
+        background: var(--dark);
+        flex-shrink: 0;
+      }
+
+      .vertical-socials {
+        display: flex;
+        gap: 20px;
+        flex-direction: row;
+      }
+
+      .vertical-social-icon {
+        width: 16px;
+        height: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .vertical-social-icon svg {
+        width: 100%;
+        height: 100%;
+        stroke: var(--dark);
+        fill: none;
+        stroke-width: 2;
+      }
+
+      /* --- The Maze Graphic (Animated) --- */
+      .maze-wrapper {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 55%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .maze-svg {
+        width: 100%;
+        height: auto;
+        max-width: 800px;
+        /* Subtle rotation for dynamic feel */
+        transform: rotate(0deg) scale(1.1) translateY(100px);
+      }
+
+      .maze-path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: drawLine 3s ease-out forwards;
+      }
+
+      @keyframes drawLine {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      /* Exam Icons */
+      .exam-icons {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .exam-icon {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 11px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .exam-icon.gate {
+        top: 15%;
+        left: 12%;
+        color: #ff6b6b;
+        border-color: #ff6b6b;
+      }
+      .exam-icon.railway {
+        top: 25%;
+        left: 35%;
+        color: #4ecdc4;
+        border-color: #4ecdc4;
+      }
+      .exam-icon.ssc {
+        top: 45%;
+        left: 5%;
+        color: #45b7d1;
+        border-color: #45b7d1;
+      }
+      .exam-icon.pcs {
+        top: 60%;
+        left: 30%;
+        color: #ffa502;
+        border-color: #ffa502;
+      }
+      .exam-icon.upsc {
+        top: 75%;
+        left: 15%;
+        color: #8e7dbe;
+        border-color: #8e7dbe;
+      }
+
+      /* --- Stats Overlay --- */
+      .stats-box {
+        position: absolute;
+        bottom: 10%;
+        right: 10%;
+        color: black;
+        padding: 30px;
+        border-radius: 20px;
+        /* box-shadow: 0 20px 40px rgba(0,0,0,0.1); */
+        z-index: 1;
+        max-width: 280px;
+        /* animation: floatUp 1s ease-out 0.5s backwards; */
+      }
+
+      .stats-box h3 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--text-dark);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .stats-box p {
+        font-size: 14px;
+        color: var(--text-dark);
+        font-weight: 500;
+      }
+
+      @keyframes floatUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --- Features Section --- */
+      .features {
+        padding: var(--section-padding) 0;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 50px;
+      }
+
+      .feature-item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 30px;
+        border-radius: var(--radius-lg);
+        transition: 0.3s;
+      }
+      .feature-item:hover {
+        background: var(--light-gray);
+      }
+
+      .icon-box {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 126, 71, 0.1);
+        color: var(--primary);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .feature-item h4 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .feature-item p {
+        color: var(--text-dark);
+        line-height: 1.5;
+      }
+
+      /* --- Categories --- */
+      .categories {
+        background: var(--light-gray);
+        padding: var(--section-padding) 0;
+      }
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .cat-card {
+        background: var(--white);
+        padding: 30px;
+        border-radius: var(--radius-md);
+        text-align: center;
+        border: 1px solid transparent;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .cat-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      .cat-card h4 {
+        margin: 15px 0 5px;
+        font-size: 18px;
+      }
+      .cat-card span {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      /* --- Featured Courses --- */
+      .courses {
+        padding: var(--section-padding) 0;
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .course-card {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: 0.3s;
+        background: var(--white);
+      }
+      .course-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        transform: translateY(-5px);
+      }
+
+      .course-thumb {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+        background: #eee;
+      }
+
+      .course-body {
+        padding: 25px;
+      }
+
+      .course-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .badge {
+        background: rgba(255, 126, 71, 0.15);
+        color: var(--primary);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .star {
+        color: #ffc107;
+      }
+
+      .course-body h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+      .instructor {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+      }
+      .instructor img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+      .instructor span {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .price {
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--dark);
+        margin-top: 15px;
+        display: block;
+      }
+
+      /* --- Testimonials --- */
+      .testimonials {
+        background: var(--dark);
+        color: var(--white);
+        padding: var(--section-padding) 0;
+      }
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+      .testi-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .testi-text {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        font-style: italic;
+        opacity: 0.9;
+      }
+      .testi-user {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .testi-user img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .testi-info h5 {
+        font-size: 16px;
+      }
+      .testi-info span {
+        font-size: 13px;
+        opacity: 0.6;
+      }
+
+      /* --- CTA Section --- */
+      .cta-section {
+        padding: 100px var(--container-padding);
+        text-align: center;
+        background: var(--primary);
+        color: var(--dark);
+      }
+      .cta-section h2 {
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+      .cta-section p {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        font-size: 18px;
+        opacity: 0.9;
+      }
+      .btn-dark {
+        background: var(--dark);
+        color: var(--white);
+        padding: 18px 40px;
+        font-size: 16px;
+        border-radius: 50px;
+        font-weight: 700;
+      }
+      .btn-dark:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
+      }
+
+      /* --- Footer --- */
+      footer {
+        background: var(--white);
+        padding: 80px var(--container-padding) 30px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .footer-brand p {
+        margin-top: 20px;
+        color: var(--text-muted);
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 300px;
+      }
+
+      .footer-col h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: var(--dark);
+      }
+
+      .footer-col ul li {
+        margin-bottom: 12px;
+      }
+      .footer-col ul li a {
+        color: var(--text-muted);
+        font-size: 15px;
+      }
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .socials {
+        display: flex;
+        gap: 15px;
+      }
+      .socials a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--light-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+      .socials a:hover {
+        background: var(--dark);
+        color: var(--white);
+      }
+
+      /* ===================================================================
+         EXTENDED SECTIONS: Pricing, Videos, Resources, Blog,
+         Exam Updates, Career Guidance, Tips & Tricks, FAQ
+      =================================================================== */
+
+      /* --- Pricing Plans (Admin Controlled) --- */
+      .pricing-section {
+        padding: var(--section-padding) 0;
+        background: var(--light-gray);
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        margin-top: 50px;
+      }
+      .pricing-card {
+        background: var(--white);
+        padding: 40px 35px;
+        border-radius: var(--radius-lg);
+        border: 2px solid var(--border-color);
+        transition: 0.3s;
+        position: relative;
+      }
+      .pricing-card.featured {
+        border-color: var(--primary);
+        box-shadow: 0 20px 60px rgba(255, 126, 71, 0.15);
+      }
+      .pricing-badge {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 5px 22px;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .pricing-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+      .pricing-amount {
+        font-size: 52px;
+        font-weight: 900;
+        color: var(--dark);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .pricing-amount sup {
+        font-size: 24px;
+        vertical-align: top;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      .pricing-amount sub {
+        font-size: 16px;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+      .pricing-desc {
+        color: var(--text-muted);
+        font-size: 14px;
+        margin: 14px 0 22px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--border-color);
+        line-height: 1.55;
+      }
+      .pricing-features {
+        list-style: none;
+        margin-bottom: 28px;
+      }
+      .pricing-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 13px;
+        font-size: 15px;
+      }
+      .pricing-features li svg {
+        flex-shrink: 0;
+      }
+      .pricing-features li.off {
+        opacity: 0.38;
+      }
+      .pricing-card .btn {
+        display: block;
+        text-align: center;
+        padding: 14px;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 700;
+        transition: 0.25s;
+      }
+      .pricing-card .btn-primary {
+        background: var(--dark);
+        color: white;
+        border: 2px solid var(--dark);
+      }
+      .pricing-card .btn-primary:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        transform: none;
+      }
+      .pricing-card .btn-outline {
+        background: transparent;
+        border: 2px solid var(--border-color);
+        color: var(--text-main);
+      }
+      .pricing-card .btn-outline:hover {
+        border-color: var(--dark);
+        background: var(--dark);
+        color: white;
+      }
+
+      /* --- Video Lessons --- */
+      .video-section {
+        padding: var(--section-padding) 0;
+      }
+      .video-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 28px;
+        margin-top: 50px;
+        align-items: start;
+      }
+      .video-player-wrap {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: #000;
+        aspect-ratio: 16/9;
+        position: relative;
+      }
+      .video-player-wrap iframe {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: none;
+      }
+      .video-playlist {
+        background: var(--light-gray);
+        border-radius: var(--radius-lg);
+        padding: 18px;
+        max-height: 440px;
+        overflow-y: auto;
+        display: grid;
+        gap: 10px;
+      }
+      .video-playlist::-webkit-scrollbar {
+        width: 4px;
+      }
+      .video-playlist::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+      }
+      .playlist-item {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.2s;
+        background: var(--white);
+        border: 1.5px solid transparent;
+      }
+      .playlist-item:hover {
+        border-color: rgba(255, 126, 71, 0.4);
+      }
+      .playlist-item.active {
+        border-color: var(--primary);
+        background: rgba(255, 126, 71, 0.05);
+      }
+      .playlist-num {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: var(--light-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--text-muted);
+        flex-shrink: 0;
+      }
+      .playlist-item.active .playlist-num {
+        background: var(--primary);
+        color: white;
+      }
+      .playlist-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .playlist-info h5 {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 2px;
+        line-height: 1.35;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .playlist-info span {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+      .playlist-item.active .playlist-info h5 {
+        color: var(--primary);
+      }
+      .video-info {
+        margin-top: 22px;
+      }
+      .video-info h3 {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 10px;
+      }
+      .video-info p {
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+      .video-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .video-tag {
+        padding: 5px 14px;
+        border-radius: 50px;
+        background: rgba(255, 126, 71, 0.1);
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      /* --- Downloadable Resources --- */
+      .resources-section {
+        padding: var(--section-padding) 0;
+        background: var(--dark);
+        color: var(--white);
+      }
+      .resources-section .section-subtitle {
+        color: var(--primary);
+      }
+      .resources-section .section-title {
+        color: var(--white);
+      }
+      .res-filter {
+        display: flex;
+        gap: 10px;
+        margin-top: 35px;
+        flex-wrap: wrap;
+      }
+      .res-filter-btn {
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        background: transparent;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+        font-family: inherit;
+      }
+      .res-filter-btn:hover,
+      .res-filter-btn.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+      }
+      .res-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 18px;
+        margin-top: 22px;
+      }
+      .res-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        padding: 26px;
+        transition: 0.3s;
+      }
+      .res-card:hover {
+        background: rgba(255, 255, 255, 0.09);
+        transform: translateY(-4px);
+        border-color: rgba(255, 126, 71, 0.5);
+      }
+      .res-type-badge {
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 50px;
+        background: rgba(255, 126, 71, 0.18);
+        color: var(--primary);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .res-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: white;
+      }
+      .res-card p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.55;
+        margin-bottom: 18px;
+      }
+      .res-meta {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+      .res-meta span {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .btn-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 20px;
+        border-radius: 50px;
+        background: rgba(255, 126, 71, 0.15);
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: 700;
+        border: 1.5px solid rgba(255, 126, 71, 0.3);
+        transition: 0.2s;
+        cursor: pointer;
+      }
+      .btn-download:hover {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      /* --- Blog & Articles --- */
+      .blog-section {
+        padding: var(--section-padding) 0;
+      }
+      .blog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        margin-top: 50px;
+      }
+      .blog-card {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        background: var(--white);
+        transition: 0.3s;
+      }
+      .blog-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.09);
+        transform: translateY(-4px);
+      }
+      .blog-thumb {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        background: var(--light-gray);
+      }
+      .blog-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.4s;
+      }
+      .blog-card:hover .blog-thumb img {
+        transform: scale(1.06);
+      }
+      .blog-cat-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: var(--primary);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .blog-body {
+        padding: 24px;
+      }
+      .blog-meta {
+        display: flex;
+        gap: 14px;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+      }
+      .blog-body h3 {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+      .blog-body p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 18px;
+      }
+      .read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 700;
+        font-size: 14px;
+        color: var(--primary);
+        transition: 0.2s;
+      }
+      .read-more:hover {
+        gap: 10px;
+      }
+
+      /* --- Exam Updates --- */
+      .exam-updates {
+        padding: var(--section-padding) 0;
+        background: var(--light-gray);
+      }
+      .exam-updates-inner {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 28px;
+        margin-top: 50px;
+        align-items: start;
+      }
+      .exam-list {
+        display: grid;
+        gap: 16px;
+      }
+      .exam-card {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        padding: 22px 24px;
+        border-left: 4px solid var(--primary);
+        transition: 0.3s;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .exam-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        transform: translateX(4px);
+      }
+      .exam-card-left {
+        flex: 1;
+      }
+      .exam-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 50px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      .status-open {
+        background: rgba(34, 197, 94, 0.12);
+        color: #15803d;
+      }
+      .status-upcoming {
+        background: rgba(234, 179, 8, 0.12);
+        color: #92400e;
+      }
+      .status-closed {
+        background: rgba(239, 68, 68, 0.12);
+        color: #b91c1c;
+      }
+      .exam-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 6px;
+      }
+      .exam-card p {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+      .exam-dates {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .exam-date {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+      .exam-date strong {
+        display: block;
+        font-size: 13px;
+        color: var(--dark);
+        font-weight: 700;
+      }
+      .exam-apply-btn {
+        padding: 9px 18px;
+        border-radius: 50px;
+        background: var(--dark);
+        color: white;
+        font-size: 13px;
+        font-weight: 700;
+        display: inline-block;
+        white-space: nowrap;
+        transition: 0.2s;
+        flex-shrink: 0;
+      }
+      .exam-apply-btn:hover {
+        background: var(--primary);
+      }
+      .exam-sidebar {
+        display: grid;
+        gap: 16px;
+      }
+      .exam-alert-card {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        padding: 24px;
+      }
+      .exam-alert-card .alert-icon {
+        font-size: 36px;
+        margin-bottom: 14px;
+      }
+      .exam-alert-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .exam-alert-card p {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+        line-height: 1.5;
+      }
+      .exam-alert-card input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1.5px solid var(--border-color);
+        border-radius: 10px;
+        font-size: 14px;
+        outline: none;
+        margin-bottom: 10px;
+        font-family: inherit;
+      }
+      .exam-alert-card input:focus {
+        border-color: var(--primary);
+      }
+      .exam-alert-card .btn {
+        display: block;
+        width: 100%;
+        padding: 11px;
+        border-radius: 50px;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      /* --- Career Guidance --- */
+      .career-section {
+        padding: var(--section-padding) 0;
+      }
+      .career-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+        margin-top: 50px;
+      }
+      .career-card {
+        padding: 28px;
+        border-radius: var(--radius-lg);
+        background: var(--white);
+        border: 1.5px solid var(--border-color);
+        transition: 0.3s;
+      }
+      .career-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.07);
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+      .career-emoji {
+        font-size: 40px;
+        margin-bottom: 16px;
+      }
+      .career-card h4 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+      .career-card p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+      .career-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .career-skill {
+        padding: 4px 12px;
+        border-radius: 50px;
+        background: var(--light-gray);
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .career-cta-banner {
+        margin-top: 50px;
+        padding: 44px 56px;
+        background: var(--dark);
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        color: white;
+      }
+      .career-cta-banner h3 {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+      .career-cta-banner p {
+        font-size: 15px;
+        opacity: 0.6;
+      }
+      .career-cta-banner .btn {
+        background: var(--primary);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: 0.2s;
+      }
+      .career-cta-banner .btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      /* --- Tips & Tricks --- */
+      .tips-section {
+        padding: var(--section-padding) 0;
+        background: var(--primary);
+      }
+      .tips-section .section-subtitle {
+        color: rgba(0, 0, 0, 0.45);
+      }
+      .tips-section .section-title {
+        color: var(--dark);
+      }
+      .tips-section > .container > p {
+        color: rgba(0, 0, 0, 0.6);
+        max-width: 520px;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+      .tips-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+      }
+      .tip-card {
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: var(--radius-md);
+        padding: 28px;
+        transition: 0.3s;
+      }
+      .tip-card:hover {
+        background: var(--white);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      }
+      .tip-number {
+        font-size: 44px;
+        font-weight: 900;
+        color: rgba(0, 0, 0, 0.08);
+        line-height: 1;
+        margin-bottom: 12px;
+      }
+      .tip-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+      .tip-card p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* --- FAQ Section (Admin Controlled) --- */
+      .faq-section {
+        padding: var(--section-padding) 0;
+      }
+      .faq-inner {
+        max-width: 800px;
+        margin: 50px auto 0;
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--border-color);
+      }
+      .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--dark);
+        gap: 20px;
+        font-family: inherit;
+      }
+      .faq-question:hover {
+        color: var(--primary);
+      }
+      .faq-icon {
+        flex-shrink: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--light-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--primary);
+        transition: 0.3s;
+        line-height: 1;
+      }
+      .faq-item.open .faq-icon {
+        background: var(--primary);
+        color: white;
+        transform: rotate(45deg);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+      .faq-answer-inner {
+        padding-bottom: 22px;
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.75;
+      }
+      .faq-item.open .faq-answer {
+        max-height: 400px;
+      }
+      .faq-admin-note {
+        background: rgba(255, 126, 71, 0.06);
+        border: 1px dashed rgba(255, 126, 71, 0.35);
+        border-radius: 10px;
+        padding: 12px 18px;
+        margin-top: 40px;
+        font-size: 13px;
+        color: var(--text-muted);
+        text-align: center;
+      }
+      .faq-admin-note strong {
+        color: var(--primary);
+      }
+      .faq-admin-note code {
+        background: rgba(0, 0, 0, 0.06);
+        padding: 1px 6px;
+        border-radius: 4px;
+      }
+
+      /* --- Responsive Design --- */
+      @media (max-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 120px;
+          text-align: center;
+        }
+        .hero-content {
+          padding: 0 20px;
+          margin-bottom: 50px;
+        }
+        .hero-content p {
+          margin: 0 auto 30px;
+        }
+        .hero-btns {
+          justify-content: center;
+        }
+        .maze-wrapper {
+          position: relative;
+          width: 100%;
+          height: 400px;
+          right: auto;
+          top: auto;
+          opacity: 0.5;
+        }
+        .maze-svg {
+          transform: rotate(0);
+        }
+        .stats-box {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          margin: -50px auto 0;
+          max-width: 90%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links,
+        .nav-actions .btn {
+          display: none;
+        }
+        .mobile-toggle {
+          display: block;
+        }
+        .section-padding {
+          padding: 60px 0;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+
+        /* Mobile Menu */
+        .nav-links.active {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background: var(--white);
+          padding: 30px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid var(--border-color);
+        }
+        .pricing-grid,
+        .blog-grid,
+        .tips-grid {
+          grid-template-columns: 1fr;
+        }
+        .video-layout {
+          grid-template-columns: 1fr;
+        }
+        .video-playlist {
+          max-height: 260px;
+        }
+        .exam-updates-inner {
+          grid-template-columns: 1fr;
+        }
+        .career-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .career-cta-banner {
+          flex-direction: column;
+          padding: 36px 28px;
+          text-align: center;
+        }
+        .blog-header {
+          flex-direction: column;
+          gap: 16px;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header / Nav -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            ExamCrack
+          </div>
+
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#courses">Batches</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#exam-updates">Exam Updates</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#career">Career</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <a href="#" style="font-weight: 600; font-size: 15px">Log in</a>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+
+          <div class="mobile-toggle" onclick="toggleMenu()">&#9776;</div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="vertical-text">
+          <div class="vertical-socials">
+            <a href="#" class="vertical-social-icon" title="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                  d="M18 2h-3a6 6 0 0 0-6 6v3H7v4h2v8h4v-8h3l1-4h-4V8a2 2 0 0 1 2-2h3z"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="vertical-social-icon" title="Twitter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="vertical-social-icon" title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                ></path>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="vertical-social-icon" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                <circle cx="17.5" cy="6.5" r="1.5"></circle>
+              </svg>
+            </a>
+          </div>
+          <div class="vertical-line"></div>
+          FOLLOW EXAMCRACK
+        </div>
+        <div class="hero-content">
+          <h1>Crack Every<br />Govt Exam<br />With Ease</h1>
+          <p>
+            India's most trusted EdTech platform for UPSC, GATE, SSC, Banking,
+            Railway, and Defence exam prep — with expert faculty, live classes,
+            PYQs, and mock tests.
+          </p>
+          <div class="hero-btns">
+            <a href="#courses" class="btn btn-white">Explore Batches</a>
+            <a
+              href="#exam-updates"
+              class="btn"
+              style="border: 2px solid var(--dark)"
+              >Exam Calendar</a
+            >
+          </div>
+        </div>
+
+        <div class="maze-wrapper">
+          <svg
+            class="maze-svg"
+            viewBox="0 0 800 600"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- Black Paths -->
+            <g
+              class="maze-path"
+              stroke="rgba(0,0,0,0.2)"
+              stroke-width="4"
+              fill="none"
+            >
+              <path
+                d="M0 200 H150 A50 50 0 0 1 200 250 V380 A50 50 0 0 0 250 430 H350"
+              />
+              <path
+                d="M0 210 H150 A40 40 0 0 1 190 250 V380 A60 60 0 0 0 250 440 H350"
+              />
+              <path
+                d="M0 220 H150 A30 30 0 0 1 180 250 V380 A70 70 0 0 0 250 450 H350"
+              />
+              <path
+                d="M0 190 H150 A60 60 0 0 1 210 250 V380 A40 40 0 0 0 250 420 H350"
+              />
+              <path
+                d="M0 180 H150 A70 70 0 0 1 220 250 V380 A30 30 0 0 0 250 410 H350"
+              />
+              <path
+                d="M0 170 H150 A80 80 0 0 1 230 250 V380 A20 20 0 0 0 250 400 H350"
+              />
+            </g>
+            <!-- White Paths (for contrast against orange bg) -->
+            <g class="maze-path" stroke="white" stroke-width="3" fill="none">
+              <path
+                d="M350 430 A50 50 0 0 0 400 380 V150 A50 50 0 0 1 450 100 H700"
+              />
+              <path
+                d="M350 440 A60 60 0 0 0 410 380 V150 A40 40 0 0 1 450 110 H700"
+              />
+              <path
+                d="M350 450 A70 70 0 0 0 420 380 V150 A30 30 0 0 1 450 120 H700"
+              />
+              <path
+                d="M350 420 A40 40 0 0 0 390 380 V150 A60 60 0 0 1 450 90 H700"
+              />
+              <path
+                d="M350 410 A30 30 0 0 0 380 380 V150 A70 70 0 0 1 450 80 H700"
+              />
+              <path
+                d="M350 400 A20 20 0 0 0 370 380 V150 A80 80 0 0 1 450 70 H700"
+              />
+            </g>
+            <!-- Accent Paths -->
+            <!-- <g class="maze-path" stroke="rgba(0,0,0,0.1)" stroke-width="3" fill="none">
+              <path d="M500 600 V430 A50 50 0 0 0 450 380 H350" />
+              <path d="M510 600 V430 A60 60 0 0 0 450 370 H350" />
+              <path d="M520 600 V430 A70 70 0 0 0 450 360 H350" />
+            </g> -->
+          </svg>
+
+          <div class="exam-icons">
+            <div class="exam-icon gate">GATE</div>
+            <div class="exam-icon railway">RAILWAY</div>
+            <div class="exam-icon ssc">SSC</div>
+            <div class="exam-icon pcs">PCS</div>
+            <div class="exam-icon upsc">UPSC</div>
+          </div>
+
+          <div class="stats-box">
+            <h3>10,000+</h3>
+            <p>Aspirants selected in Govt jobs through our platform.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features">
+        <div class="container">
+          <span class="section-subtitle">Why ExamCrack?</span>
+          <h2 class="section-title">Built for serious aspirants</h2>
+
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h4>Top Faculty, Proven Results</h4>
+              <p>
+                Learn from ex-UPSC & IES officers, IITians, and veteran
+                govt-exam educators with 10–20 years of teaching experience.
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <h4>Daily Live Classes</h4>
+              <p>
+                Attend live sessions, ask doubts in real time, and never miss a
+                class — recorded backup available for every lecture.
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="icon-box">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <h4>Lifetime Access</h4>
+              <p>
+                Buy a course once and own it forever. Including all future
+                updates and additional resources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="categories" id="categories">
+        <div class="container">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: end;
+            "
+          >
+            <div>
+              <span class="section-subtitle">Categories</span>
+              <h2 class="section-title">Explore by Topic</h2>
+            </div>
+            <a
+              href="#"
+              class="btn btn-outline"
+              style="display: none; @media (min-width: 768px) {display: block}"
+              >View All</a
+            >
+          </div>
+
+          <div class="cat-grid">
+            <div class="cat-card">
+              <div style="font-size: 32px">🎨</div>
+              <h4>Design</h4>
+              <span>120+ Courses</span>
+            </div>
+            <div class="cat-card">
+              <div style="font-size: 32px">💻</div>
+              <h4>Development</h4>
+              <span>350+ Courses</span>
+            </div>
+            <div class="cat-card">
+              <div style="font-size: 32px">🚀</div>
+              <h4>Marketing</h4>
+              <span>85+ Courses</span>
+            </div>
+            <div class="cat-card">
+              <div style="font-size: 32px">📊</div>
+              <h4>Business</h4>
+              <span>140+ Courses</span>
+            </div>
+            <div class="cat-card">
+              <div style="font-size: 32px">📸</div>
+              <h4>Photography</h4>
+              <span>60+ Courses</span>
+            </div>
+            <div class="cat-card">
+              <div style="font-size: 32px">🧠</div>
+              <h4>Personal Growth</h4>
+              <span>90+ Courses</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Courses -->
+      <section class="courses" id="courses">
+        <div class="container">
+          <span class="section-subtitle">Popular Courses</span>
+          <h2 class="section-title">Featured Classes</h2>
+
+          <div class="course-grid">
+            <!-- Course 1 -->
+            <div class="course-card">
+              <img
+                src="https://picsum.photos/seed/design1/400/250"
+                alt="UI Design"
+                class="course-thumb"
+              />
+              <div class="course-body">
+                <div class="course-meta">
+                  <span class="badge">Design</span>
+                  <div class="rating">
+                    <span class="star">★</span> 4.9 (1.2k)
+                  </div>
+                </div>
+                <h3>Advanced UI/UX Masterclass: From Wireframe to Prototype</h3>
+                <p style="font-size: 14px; color: var(--text-muted)">
+                  Learn to design stunning interfaces used by top tech
+                  companies.
+                </p>
+                <span class="price">$89.99</span>
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user1/50/50"
+                    alt="Instructor"
+                  />
+                  <span>Sarah Jenkins</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+              <img
+                src="https://picsum.photos/seed/code2/400/250"
+                alt="Development"
+                class="course-thumb"
+              />
+              <div class="course-body">
+                <div class="course-meta">
+                  <span class="badge">Development</span>
+                  <div class="rating">
+                    <span class="star">★</span> 4.8 (850)
+                  </div>
+                </div>
+                <h3>Full-Stack Web Development Bootcamp 2024</h3>
+                <p style="font-size: 14px; color: var(--text-muted)">
+                  Go from zero to hero building React and Node.js applications.
+                </p>
+                <span class="price">$94.99</span>
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user2/50/50"
+                    alt="Instructor"
+                  />
+                  <span>David Chen</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+              <img
+                src="https://picsum.photos/seed/market3/400/250"
+                alt="Marketing"
+                class="course-thumb"
+              />
+              <div class="course-body">
+                <div class="course-meta">
+                  <span class="badge">Marketing</span>
+                  <div class="rating">
+                    <span class="star">★</span> 4.7 (2.1k)
+                  </div>
+                </div>
+                <h3>Digital Marketing Strategy & Social Media Growth</h3>
+                <p style="font-size: 14px; color: var(--text-muted)">
+                  Master SEO, content marketing, and paid ads strategy.
+                </p>
+                <span class="price">$69.99</span>
+                <div class="instructor">
+                  <img
+                    src="https://picsum.photos/seed/user3/50/50"
+                    alt="Instructor"
+                  />
+                  <span>Elena Rodriguez</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- Pricing Plans (Admin Controlled)                            -->
+      <!-- ADMIN: Edit data-price attributes or plan features below    -->
+      <!-- ============================================================ -->
+      <section class="pricing-section" id="pricing">
+        <div class="container">
+          <span class="section-subtitle">Choose Your Plan</span>
+          <h2 class="section-title">Simple, transparent pricing</h2>
+          <p
+            style="
+              color: var(--text-muted);
+              max-width: 520px;
+              margin-top: 10px;
+              font-size: 16px;
+            "
+          >
+            Start free, upgrade anytime. All paid plans include unlimited access
+            and a certificate of completion.
+          </p>
+
+          <div class="pricing-grid" id="pricingGrid">
+            <!-- ADMIN: Change data-price to update displayed price dynamically -->
+            <div class="pricing-card" data-plan="free" data-price="0">
+              <div class="pricing-label">Free</div>
+              <div class="pricing-amount"><sup>$</sup>0<sub>/mo</sub></div>
+              <div class="pricing-desc">
+                Perfect for exploring the platform and learning the basics at no
+                cost.
+              </div>
+              <ul class="pricing-features">
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Access to 50+ free courses
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Community forum access
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  5 resource downloads / month
+                </li>
+                <li class="off">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#ccc"
+                    stroke-width="2.5"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                  Certificate of completion
+                </li>
+                <li class="off">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#ccc"
+                    stroke-width="2.5"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                  Live mentor sessions
+                </li>
+              </ul>
+              <a href="#" class="btn btn-outline">Get Started Free</a>
+            </div>
+
+            <div class="pricing-card featured" data-plan="pro" data-price="15">
+              <div class="pricing-badge">Most Popular</div>
+              <div class="pricing-label">Pro</div>
+              <div class="pricing-amount"><sup>$</sup>15<sub>/mo</sub></div>
+              <div class="pricing-desc">
+                For serious learners who want full access, certificates, and
+                career support.
+              </div>
+              <ul class="pricing-features">
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Unlimited course access
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Unlimited resource downloads
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Certificate of completion
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  2 live mentor sessions / month
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Exam updates &amp; alerts
+                </li>
+              </ul>
+              <a href="#" class="btn btn-primary">Start Pro Plan</a>
+            </div>
+
+            <div class="pricing-card" data-plan="business" data-price="49">
+              <div class="pricing-label">Business</div>
+              <div class="pricing-amount"><sup>$</sup>49<sub>/mo</sub></div>
+              <div class="pricing-desc">
+                For teams and organizations building a skill-first learning
+                culture.
+              </div>
+              <ul class="pricing-features">
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Everything in Pro
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Up to 25 team seats
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Admin dashboard &amp; analytics
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Dedicated support manager
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="3"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Custom learning paths
+                </li>
+              </ul>
+              <a href="#" class="btn btn-outline">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Lessons -->
+      <section class="video-section" id="videos">
+        <div class="container">
+          <span class="section-subtitle">Video Lessons</span>
+          <h2 class="section-title">Learn at your own pace</h2>
+          <p
+            style="
+              color: var(--text-muted);
+              max-width: 520px;
+              margin-top: 10px;
+              font-size: 16px;
+            "
+          >
+            Full HD lessons with interactive player, auto-saved progress, speed
+            controls, and captions in 15+ languages.
+          </p>
+
+          <div class="video-layout">
+            <div>
+              <div class="video-player-wrap">
+                <iframe
+                  id="mainVideoPlayer"
+                  src="https://www.youtube.com/embed/bMknfKXIFA8?rel=0&modestbranding=1"
+                  title="Video Lesson"
+                  allow="
+                    accelerometer;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                  "
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="video-info">
+                <h3 id="videoTitle">
+                  The First 20 Hours — How to Learn Anything Fast
+                </h3>
+                <p id="videoDesc">
+                  Discover the science behind rapid skill acquisition. Covers
+                  deliberate practice, the Feynman Technique, and how to build a
+                  study system that compounds results over time.
+                </p>
+                <div class="video-tags">
+                  <span class="video-tag">Study Skills</span>
+                  <span class="video-tag">Productivity</span>
+                  <span class="video-tag">Beginner Friendly</span>
+                  <span class="video-tag">34 min</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="video-playlist">
+              <div
+                class="playlist-item active"
+                onclick="
+                  switchVideo(
+                    this,
+                    'bMknfKXIFA8',
+                    'The First 20 Hours — How to Learn Anything Fast',
+                    'Discover the science behind rapid skill acquisition, deliberate practice, and the Feynman Technique.',
+                  )
+                "
+              >
+                <div class="playlist-num">1</div>
+                <div class="playlist-info">
+                  <h5>The First 20 Hours — Learn Anything Fast</h5>
+                  <span>Study Skills · 34 min</span>
+                </div>
+              </div>
+              <div
+                class="playlist-item"
+                onclick="
+                  switchVideo(
+                    this,
+                    'IlU-zDU6aQ0',
+                    'How to Study Effectively for Exams',
+                    'Evidence-based revision strategies — active recall, spaced repetition, and past papers explained.',
+                  )
+                "
+              >
+                <div class="playlist-num">2</div>
+                <div class="playlist-info">
+                  <h5>How to Study Effectively for Exams</h5>
+                  <span>Exam Prep · 22 min</span>
+                </div>
+              </div>
+              <div
+                class="playlist-item"
+                onclick="
+                  switchVideo(
+                    this,
+                    'o8NPllzkFhE',
+                    'The Power of Habit in Learning',
+                    'How to build consistent daily study habits and break procrastination cycles in competitive prep.',
+                  )
+                "
+              >
+                <div class="playlist-num">3</div>
+                <div class="playlist-info">
+                  <h5>The Power of Habit in Learning</h5>
+                  <span>Mindset · 18 min</span>
+                </div>
+              </div>
+              <div
+                class="playlist-item"
+                onclick="
+                  switchVideo(
+                    this,
+                    'ukLnPbIffxE',
+                    'Introduction to Active Recall',
+                    'Active recall is the single most effective revision technique. Learn exactly how to implement it daily.',
+                  )
+                "
+              >
+                <div class="playlist-num">4</div>
+                <div class="playlist-info">
+                  <h5>Introduction to Active Recall</h5>
+                  <span>Revision Technique · 14 min</span>
+                </div>
+              </div>
+              <div
+                class="playlist-item"
+                onclick="
+                  switchVideo(
+                    this,
+                    'Z-zNHHpXoMM',
+                    'Time Management for Students',
+                    'Practical time-blocking and Pomodoro techniques adapted for exam-focused learners.',
+                  )
+                "
+              >
+                <div class="playlist-num">5</div>
+                <div class="playlist-info">
+                  <h5>Time Management for Students</h5>
+                  <span>Productivity · 26 min</span>
+                </div>
+              </div>
+              <div
+                class="playlist-item"
+                onclick="
+                  switchVideo(
+                    this,
+                    'XRuLV2_A3Ts',
+                    'Building a Study Schedule That Works',
+                    'Step-by-step guide to creating a weekly study schedule aligned with your exam timeline.',
+                  )
+                "
+              >
+                <div class="playlist-num">6</div>
+                <div class="playlist-info">
+                  <h5>Building a Study Schedule That Works</h5>
+                  <span>Planning · 19 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Downloadable Resources -->
+      <section class="resources-section" id="resources">
+        <div class="container">
+          <span class="section-subtitle">Resources</span>
+          <h2 class="section-title">Download &amp; study offline</h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.6);
+              max-width: 520px;
+              margin-top: 10px;
+              font-size: 16px;
+            "
+          >
+            Curated PDFs, handwritten notes, PYQs, and cheat sheets — all ready
+            to download and study anywhere.
+          </p>
+
+          <div class="res-filter">
+            <button
+              class="res-filter-btn active"
+              onclick="filterRes(this, 'all')"
+            >
+              All
+            </button>
+            <button class="res-filter-btn" onclick="filterRes(this, 'notes')">
+              Notes
+            </button>
+            <button class="res-filter-btn" onclick="filterRes(this, 'pdf')">
+              PDFs
+            </button>
+            <button class="res-filter-btn" onclick="filterRes(this, 'pyq')">
+              PYQs
+            </button>
+            <button
+              class="res-filter-btn"
+              onclick="filterRes(this, 'cheatsheet')"
+            >
+              Cheat Sheets
+            </button>
+          </div>
+
+          <div class="res-grid" id="resGrid">
+            <div class="res-card" data-res-type="notes">
+              <span class="res-type-badge">Notes</span>
+              <h4>UI/UX Design Principles — Chapter Notes</h4>
+              <p>
+                Comprehensive notes covering Gestalt, Hick's Law, Fitts's Law,
+                and color psychology.
+              </p>
+              <div class="res-meta">
+                <span>📄 42 pages</span><span>⬇ 3.2k downloads</span>
+              </div>
+              <a href="#" class="btn-download" onclick="return false;"
+                ><svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF</a
+              >
+            </div>
+            <div class="res-card" data-res-type="pyq">
+              <span class="res-type-badge">PYQs</span>
+              <h4>GATE 2024 — Previous Year Questions (CS)</h4>
+              <p>
+                Full-length solved PYQs from 2018–2024 with detailed solutions
+                for Computer Science.
+              </p>
+              <div class="res-meta">
+                <span>📄 88 pages</span><span>⬇ 8.9k downloads</span>
+              </div>
+              <a href="#" class="btn-download" onclick="return false;"
+                ><svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF</a
+              >
+            </div>
+            <div class="res-card" data-res-type="cheatsheet">
+              <span class="res-type-badge">Cheat Sheet</span>
+              <h4>JavaScript ES6+ Quick Reference</h4>
+              <p>
+                One-page cheat sheet covering arrow functions, destructuring,
+                Promises, async/await, and modules.
+              </p>
+              <div class="res-meta">
+                <span>📄 2 pages</span><span>⬇ 14.2k downloads</span>
+              </div>
+              <a href="#" class="btn-download" onclick="return false;"
+                ><svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF</a
+              >
+            </div>
+            <div class="res-card" data-res-type="pdf">
+              <span class="res-type-badge">PDF</span>
+              <h4>Digital Marketing 2024 Playbook</h4>
+              <p>
+                A 70-page guide to SEO, paid ads, email funnels, and social
+                media strategy.
+              </p>
+              <div class="res-meta">
+                <span>📄 70 pages</span><span>⬇ 5.1k downloads</span>
+              </div>
+              <a href="#" class="btn-download" onclick="return false;"
+                ><svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF</a
+              >
+            </div>
+            <div class="res-card" data-res-type="notes">
+              <span class="res-type-badge">Notes</span>
+              <h4>Python for Data Science — Module Notes</h4>
+              <p>
+                Structured notes on NumPy, Pandas, Matplotlib, and Seaborn for
+                absolute beginners.
+              </p>
+              <div class="res-meta">
+                <span>📄 56 pages</span><span>⬇ 9.7k downloads</span>
+              </div>
+              <a href="#" class="btn-download" onclick="return false;"
+                ><svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF</a
+              >
+            </div>
+            <div class="res-card" data-res-type="pyq">
+              <span class="res-type-badge">PYQs</span>
+              <h4>CAT Verbal Ability — 10-Year Archive</h4>
+              <p>
+                Solved Reading Comprehension and VARC questions from CAT
+                2014–2024 with analysis.
+              </p>
+              <div class="res-meta">
+                <span>📄 120 pages</span><span>⬇ 6.3k downloads</span>
+              </div>
+              <a href="#" class="btn-download" onclick="return false;"
+                ><svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog & Articles -->
+      <section class="blog-section" id="blog">
+        <div class="container">
+          <div class="blog-header">
+            <div>
+              <span class="section-subtitle">Blog &amp; Articles</span>
+              <h2 class="section-title">Insights from the learning world</h2>
+            </div>
+            <a href="#" class="btn btn-outline" style="padding: 12px 26px"
+              >View All Articles →</a
+            >
+          </div>
+          <div class="blog-grid">
+            <article class="blog-card">
+              <div class="blog-thumb">
+                <img
+                  src="https://picsum.photos/seed/blog1a/560/280"
+                  alt="Blog"
+                  loading="lazy"
+                />
+                <span class="blog-cat-badge">Study Strategy</span>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta">
+                  <span>March 14, 2026</span><span>· 6 min read</span>
+                </div>
+                <h3>How Spaced Repetition Changed the Way Top Rankers Study</h3>
+                <p>
+                  The single revision strategy used by medical students,
+                  language learners, and exam toppers — and how you can apply it
+                  starting today.
+                </p>
+                <a href="#" class="read-more">Read Article →</a>
+              </div>
+            </article>
+            <article class="blog-card">
+              <div class="blog-thumb">
+                <img
+                  src="https://picsum.photos/seed/blog2b/560/280"
+                  alt="Blog"
+                  loading="lazy"
+                />
+                <span class="blog-cat-badge">Career</span>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta">
+                  <span>March 10, 2026</span><span>· 8 min read</span>
+                </div>
+                <h3>
+                  From Learner to Job-Ready: Build a Portfolio That Gets You
+                  Hired
+                </h3>
+                <p>
+                  Recruiters spend 7 seconds on a resume. Here's how to build a
+                  project portfolio that makes them stop and reach out to you.
+                </p>
+                <a href="#" class="read-more">Read Article →</a>
+              </div>
+            </article>
+            <article class="blog-card">
+              <div class="blog-thumb">
+                <img
+                  src="https://picsum.photos/seed/blog3c/560/280"
+                  alt="Blog"
+                  loading="lazy"
+                />
+                <span class="blog-cat-badge">Exam Updates</span>
+              </div>
+              <div class="blog-body">
+                <div class="blog-meta">
+                  <span>March 6, 2026</span><span>· 5 min read</span>
+                </div>
+                <h3>
+                  GATE 2027 Exam Pattern Changes — What Every Aspirant Must Know
+                </h3>
+                <p>
+                  The official notice is out. We break down the updated
+                  syllabus, pattern changes, and what it means for your
+                  preparation strategy.
+                </p>
+                <a href="#" class="read-more">Read Article →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exam Updates -->
+      <section class="exam-updates" id="exam-updates">
+        <div class="container">
+          <span class="section-subtitle">Exam Updates</span>
+          <h2 class="section-title">Stay ahead of every notification</h2>
+          <p
+            style="
+              color: var(--text-muted);
+              max-width: 520px;
+              margin-top: 10px;
+              font-size: 16px;
+            "
+          >
+            Real-time exam schedules, result announcements, and application
+            windows — all in one place.
+          </p>
+
+          <div class="exam-updates-inner">
+            <div class="exam-list">
+              <div class="exam-card">
+                <div class="exam-card-left">
+                  <span class="exam-status status-open"
+                    ><svg width="8" height="8" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="4" fill="currentColor"></circle>
+                    </svg>
+                    Applications Open</span
+                  >
+                  <h4>GATE 2027 — Graduate Aptitude Test in Engineering</h4>
+                  <p>
+                    Applications are now open for all 30 papers. Exam will be
+                    held in February 2027 across all zones.
+                  </p>
+                  <div class="exam-dates">
+                    <div class="exam-date">
+                      <strong>Sep 1, 2026</strong>Application Opens
+                    </div>
+                    <div class="exam-date">
+                      <strong>Oct 8, 2026</strong>Last Date
+                    </div>
+                    <div class="exam-date">
+                      <strong>Feb 7–9, 2027</strong>Exam Date
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="exam-apply-btn">Apply Now</a>
+              </div>
+
+              <div class="exam-card" style="border-left-color: #f59e0b">
+                <div class="exam-card-left">
+                  <span class="exam-status status-upcoming"
+                    ><svg width="8" height="8" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="4" fill="currentColor"></circle>
+                    </svg>
+                    Results Awaited</span
+                  >
+                  <h4>UPSC Civil Services (Prelims) 2026</h4>
+                  <p>
+                    Prelims conducted successfully. Results expected by end of
+                    June 2026. Mains notification to follow immediately after.
+                  </p>
+                  <div class="exam-dates">
+                    <div class="exam-date">
+                      <strong>May 25, 2026</strong>Prelims Held
+                    </div>
+                    <div class="exam-date">
+                      <strong>June 30, 2026</strong>Result Expected
+                    </div>
+                    <div class="exam-date">
+                      <strong>Sep 2026</strong>Mains Date
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="exam-apply-btn">View Details</a>
+              </div>
+
+              <div class="exam-card">
+                <div class="exam-card-left">
+                  <span class="exam-status status-open"
+                    ><svg width="8" height="8" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="4" fill="currentColor"></circle>
+                    </svg>
+                    Applications Open</span
+                  >
+                  <h4>SSC CGL 2026 — Combined Graduate Level</h4>
+                  <p>
+                    SSC has released the CGL 2026 notification. Tier-I exam is
+                    scheduled for August 2026 across 400+ exam centres.
+                  </p>
+                  <div class="exam-dates">
+                    <div class="exam-date">
+                      <strong>Apr 20, 2026</strong>Application Opens
+                    </div>
+                    <div class="exam-date">
+                      <strong>May 20, 2026</strong>Last Date
+                    </div>
+                    <div class="exam-date">
+                      <strong>Aug 4–24, 2026</strong>Tier I Exam
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="exam-apply-btn">Apply Now</a>
+              </div>
+
+              <div class="exam-card" style="border-left-color: #ef4444">
+                <div class="exam-card-left">
+                  <span class="exam-status status-closed"
+                    ><svg width="8" height="8" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="4" fill="currentColor"></circle>
+                    </svg>
+                    Applications Closed</span
+                  >
+                  <h4>IBPS PO 2026 — Probationary Officer</h4>
+                  <p>
+                    Registration period ended. Admit cards for Prelims will be
+                    available from July 15, 2026 onwards.
+                  </p>
+                  <div class="exam-dates">
+                    <div class="exam-date">
+                      <strong>July 15, 2026</strong>Admit Card
+                    </div>
+                    <div class="exam-date">
+                      <strong>Aug 2026</strong>Prelims Exam
+                    </div>
+                    <div class="exam-date">
+                      <strong>Oct 2026</strong>Mains Exam
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="exam-apply-btn">Download Card</a>
+              </div>
+            </div>
+
+            <div class="exam-sidebar">
+              <div class="exam-alert-card">
+                <div class="alert-icon">🔔</div>
+                <h4>Get Exam Alerts</h4>
+                <p>
+                  Never miss a notification. We'll email you exam dates, result
+                  announcements, and admit card alerts.
+                </p>
+                <input type="email" placeholder="Your email address" />
+                <a href="#" class="btn btn-primary">Subscribe to Alerts</a>
+              </div>
+              <div
+                class="exam-alert-card"
+                style="background: var(--dark); color: white"
+              >
+                <div class="alert-icon">📅</div>
+                <h4 style="color: white">Upcoming in 30 Days</h4>
+                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0">
+                  3 admit cards releasing · 1 result expected · 2 new
+                  notifications
+                </p>
+                <a
+                  href="#"
+                  class="btn"
+                  style="
+                    background: var(--primary);
+                    color: white;
+                    display: block;
+                    text-align: center;
+                    padding: 11px;
+                    border-radius: 50px;
+                    font-weight: 700;
+                    margin-top: 18px;
+                  "
+                  >View Calendar</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Career Guidance -->
+      <section class="career-section" id="career">
+        <div class="container">
+          <span class="section-subtitle">Career Guidance</span>
+          <h2 class="section-title">Discover your perfect career path</h2>
+          <p
+            style="
+              color: var(--text-muted);
+              max-width: 520px;
+              margin-top: 10px;
+              font-size: 16px;
+            "
+          >
+            Explore in-demand roles, required skills, and the fastest learning
+            path to get there — curated by industry experts.
+          </p>
+
+          <div class="career-grid">
+            <div class="career-card">
+              <div class="career-emoji">💻</div>
+              <h4>Full-Stack Developer</h4>
+              <p>
+                Build complete web apps from scratch. One of the most in-demand
+                and highest-paid roles in tech, with remote opportunities
+                worldwide.
+              </p>
+              <div class="career-skills">
+                <span class="career-skill">JavaScript</span>
+                <span class="career-skill">React</span>
+                <span class="career-skill">Node.js</span>
+                <span class="career-skill">SQL</span>
+              </div>
+            </div>
+            <div class="career-card">
+              <div class="career-emoji">🎨</div>
+              <h4>UX / Product Designer</h4>
+              <p>
+                Shape how millions of people interact with software — combining
+                psychology, visual design, and user research.
+              </p>
+              <div class="career-skills">
+                <span class="career-skill">Figma</span>
+                <span class="career-skill">User Research</span>
+                <span class="career-skill">Prototyping</span>
+              </div>
+            </div>
+            <div class="career-card">
+              <div class="career-emoji">📊</div>
+              <h4>Data Analyst</h4>
+              <p>
+                Turn raw data into business intelligence. Analysts are critical
+                in every industry — from fintech to e-commerce to healthcare.
+              </p>
+              <div class="career-skills">
+                <span class="career-skill">Python</span>
+                <span class="career-skill">SQL</span>
+                <span class="career-skill">Tableau</span>
+                <span class="career-skill">Statistics</span>
+              </div>
+            </div>
+            <div class="career-card">
+              <div class="career-emoji">🚀</div>
+              <h4>Digital Marketing Manager</h4>
+              <p>
+                Drive growth through content, SEO, paid ads, and analytics —
+                valued across startups to global brands.
+              </p>
+              <div class="career-skills">
+                <span class="career-skill">SEO</span>
+                <span class="career-skill">Google Ads</span>
+                <span class="career-skill">Content Strategy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="career-cta-banner">
+            <div>
+              <h3>Not sure which path fits you?</h3>
+              <p>
+                Take our 5-minute career quiz and get a personalized learning
+                roadmap based on your goals and current skills.
+              </p>
+            </div>
+            <a href="#" class="btn">Take Career Quiz →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tips & Tricks -->
+      <section class="tips-section" id="tips">
+        <div class="container">
+          <span class="section-subtitle">Tips &amp; Tricks</span>
+          <h2 class="section-title">Level up how you learn</h2>
+          <p>
+            Quick, battle-tested strategies from our top educators to make every
+            study session more effective.
+          </p>
+          <div class="tips-grid">
+            <div class="tip-card">
+              <div class="tip-number">01</div>
+              <h4>Use Active Recall, Not Passive Re-reading</h4>
+              <p>
+                Close your notes and try to recall concepts from memory. This
+                strengthens neural pathways far more effectively than re-reading
+                the same page twice.
+              </p>
+            </div>
+            <div class="tip-card">
+              <div class="tip-number">02</div>
+              <h4>Space Your Revision with Intervals</h4>
+              <p>
+                Review content at 1, 3, 7, and 21 days after first learning it.
+                Spaced repetition is proven to increase long-term retention by
+                over 80%.
+              </p>
+            </div>
+            <div class="tip-card">
+              <div class="tip-number">03</div>
+              <h4>Teach It to Truly Understand It</h4>
+              <p>
+                The Feynman Technique: explain a concept out loud in simple
+                words. Gaps in your explanation reveal exactly what you need to
+                revisit.
+              </p>
+            </div>
+            <div class="tip-card">
+              <div class="tip-number">04</div>
+              <h4>Focus Blocks of 25 Min, Not Marathons</h4>
+              <p>
+                Use the Pomodoro Technique — 25 minutes of focused work followed
+                by a 5-minute break. Prevents burnout and keeps concentration
+                sharp.
+              </p>
+            </div>
+            <div class="tip-card">
+              <div class="tip-number">05</div>
+              <h4>Start with the Hardest Topic First</h4>
+              <p>
+                Your willpower peaks in the morning. Tackle the most difficult
+                subject first and leave easier tasks for lower-energy periods of
+                the day.
+              </p>
+            </div>
+            <div class="tip-card">
+              <div class="tip-number">06</div>
+              <h4>Mock Tests Beat Re-reading Old Notes</h4>
+              <p>
+                Solving past papers and mock tests reveals real gaps faster than
+                revision. Time yourself strictly for authentic exam simulation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials" id="testimonials">
+        <div class="container">
+          <h2 class="section-title" style="color: white">Success Stories</h2>
+          <div class="testimonial-grid">
+            <div class="testi-card">
+              <p class="testi-text">
+                "Lernio completely changed my career path. I took the UX design
+                course and 3 months later I landed a Junior Designer role at a
+                startup!"
+              </p>
+              <div class="testi-user">
+                <img src="https://picsum.photos/seed/t1/50/50" alt="User" />
+                <div class="testi-info">
+                  <h5>Michael Brown</h5>
+                  <span>Product Designer</span>
+                </div>
+              </div>
+            </div>
+            <div class="testi-card">
+              <p class="testi-text">
+                "The quality of content is unmatched. The instructors actually
+                care about your progress, and the community is incredibly
+                supportive."
+              </p>
+              <div class="testi-user">
+                <img src="https://picsum.photos/seed/t2/50/50" alt="User" />
+                <div class="testi-info">
+                  <h5>Jessica Lee</h5>
+                  <span>Frontend Developer</span>
+                </div>
+              </div>
+            </div>
+            <div class="testi-card">
+              <p class="testi-text">
+                "I love that I can learn at my own pace. The mobile app is
+                fantastic for watching lectures during my commute."
+              </p>
+              <div class="testi-user">
+                <img src="https://picsum.photos/seed/t3/50/50" alt="User" />
+                <div class="testi-info">
+                  <h5>Tom Wilson</h5>
+                  <span>Marketing Manager</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- FAQ Section (Admin Controlled)                              -->
+      <!-- ADMIN: Add/edit faq-item blocks. Set data-faq-id for CMS.  -->
+      <!-- ============================================================ -->
+      <section class="faq-section" id="faq">
+        <div class="container">
+          <div style="text-align: center; max-width: 600px; margin: 0 auto">
+            <span class="section-subtitle">FAQs</span>
+            <h2 class="section-title">Questions? We have answers.</h2>
+            <p
+              style="
+                color: var(--text-muted);
+                margin-top: 10px;
+                font-size: 16px;
+              "
+            >
+              Everything you need to know before you start learning. Can't find
+              what you're looking for?
+              <a href="#" style="color: var(--primary); font-weight: 600"
+                >Contact support →</a
+              >
+            </p>
+          </div>
+
+          <div class="faq-inner" id="faqList">
+            <div class="faq-item" data-faq-id="1">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                Can I try Lernio for free before paying?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes! Our Free plan gives you access to 50+ courses, community
+                  forums, and up to 5 resource downloads per month — no credit
+                  card required. Upgrade to Pro at any time to unlock unlimited
+                  access and certificates.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-id="2">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                Do I get lifetime access to courses I purchase?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Yes. If you purchase an individual course (not a
+                  subscription), you own it forever — including all future
+                  updates, attached resources, and new lesson additions. Watch
+                  it at your own pace, on any device.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-id="3">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                How are courses different from video lessons?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Courses are structured programs with a full learning path,
+                  assessments, and a completion certificate. Video lessons are
+                  individual topic-focused segments you can watch independently.
+                  Both are available in HD quality with captions and speed
+                  controls.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-id="4">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                Are the downloadable resources free or paid?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Free plan users get 5 downloads per month. Pro and Business
+                  subscribers have unlimited downloads across all resource types
+                  — notes, PDFs, PYQs, and cheat sheets. Some premium resource
+                  bundles may be available as standalone purchases.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-id="5">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                How does the career guidance section work?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  The career section maps in-demand roles to the exact skills
+                  and courses required to reach them. You can take the career
+                  quiz to get a personalized roadmap. Pro users also unlock
+                  1-on-1 mentor sessions for detailed career coaching and resume
+                  review.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-id="6">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                Can I cancel my subscription at any time?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Absolutely. No long-term contracts or cancellation fees.
+                  Cancel your Pro or Business plan anytime from account
+                  settings, and you'll retain access until the end of your
+                  current billing cycle.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-id="7">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                How often is the exam updates section refreshed?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  The exam updates section is refreshed every 24 hours by our
+                  content team. Pro subscribers also receive push and email
+                  notifications for exams they follow. You can customize
+                  notification preferences from your account profile.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-admin-note">
+            <strong>Admin:</strong> FAQs are editable — add new
+            <code>faq-item</code> blocks with a unique <code>data-faq-id</code>,
+            or connect via the <code>#faqList</code> container to your CMS API.
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <h2>Ready to start learning?</h2>
+        <p>
+          Join over 10,000 students and start your journey today. Unlimited
+          access to all courses.
+        </p>
+        <a href="#" class="btn btn-dark">Get All Access for $15/mo</a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            Lernio
+          </div>
+          <p>
+            Empowering the next generation of creators and thinkers through
+            accessible, high-quality education.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#courses">Browse Courses</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#videos">Video Lessons</a></li>
+            <li><a href="#resources">Resources</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Learn &amp; Explore</h4>
+          <ul>
+            <li><a href="#blog">Blog &amp; Articles</a></li>
+            <li><a href="#exam-updates">Exam Updates</a></li>
+            <li><a href="#career">Career Guidance</a></li>
+            <li><a href="#tips">Tips &amp; Tricks</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2024 Lernio Education. All rights reserved.</span>
+        <div class="socials">
+          <a href="#">FB</a>
+          <a href="#">TW</a>
+          <a href="#">IG</a>
+          <a href="#">LI</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simple Mobile Menu Toggle
+      function toggleMenu() {
+        const navLinks = document.getElementById("navLinks");
+        navLinks.classList.toggle("active");
+      }
+
+      // Video Lesson Switcher
+      function switchVideo(el, videoId, title, desc) {
+        document
+          .querySelectorAll(".playlist-item")
+          .forEach((i) => i.classList.remove("active"));
+        el.classList.add("active");
+        document.getElementById("mainVideoPlayer").src =
+          "https://www.youtube.com/embed/" +
+          videoId +
+          "?rel=0&modestbranding=1";
+        document.getElementById("videoTitle").textContent = title;
+        document.getElementById("videoDesc").textContent = desc;
+      }
+
+      // Resource Filter
+      function filterRes(btn, type) {
+        document
+          .querySelectorAll(".res-filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".res-card").forEach((card) => {
+          card.style.display =
+            type === "all" || card.dataset.resType === type ? "" : "none";
+        });
+      }
+
+      // FAQ Toggle (admin-controlled accordion)
+      function toggleFaq(btn) {
+        const item = btn.closest(".faq-item");
+        const isOpen = item.classList.contains("open");
+        document
+          .querySelectorAll(".faq-item.open")
+          .forEach((i) => i.classList.remove("open"));
+        if (!isOpen) item.classList.add("open");
+      }
+
+      // Add scrolled class to header for style changes on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.05)";
+          header.style.background = "rgba(255, 255, 255, 0.95)";
+        } else {
+          header.style.boxShadow = "none";
+          header.style.background = "rgba(255, 255, 255, 0.85)";
+        }
+      });
+    </script>
+  </body>
+</html>
