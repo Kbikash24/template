@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>ExamCrack — Crack Every Govt Exam With Ease</title>
+  <!-- Google Fonts for modern, clean typography matching the premium EdTech feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) for subtle visual enhancement, but keeping exact semantic structure -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fefefe;
+      font-family: 'Inter', sans-serif;
+      color: #1a2c3e;
+      line-height: 1.4;
+    }
+
+    /* main container - exactly replicates the card-like UI from the reference */
+    .platform-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem 2rem;
+    }
+
+    /* hero / header block */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .brand-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0B2B40 0%, #1A4D6B 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .tagline {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #2c4b66;
+      margin-bottom: 1.5rem;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #2c3e4e;
+      line-height: 1.5;
+      max-width: 780px;
+      margin: 0 auto 2rem auto;
+      font-weight: 400;
+      background: #f8fafc;
+      padding: 0.75rem 1rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+    }
+
+    /* button group: exactly "Explore Batches" and "Exam Calendar" side by side */
+    .button-group {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      background: #1f6392;
+      color: white;
+      border: none;
+      padding: 0.85rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 48px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.2px;
+    }
+
+    .btn-primary:hover {
+      background: #0e4b70;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 18px -6px rgba(31,99,146,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #1f6392;
+      color: #1f6392;
+      padding: 0.85rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 48px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-outline:hover {
+      background: #eef5fa;
+      border-color: #0e4b70;
+      color: #0e4b70;
+      transform: translateY(-2px);
+    }
+
+    /* exam categories row: UPSC, GATE, SSC, Railway */
+    .exam-categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.2rem;
+      margin: 2.8rem 0 3rem 0;
+    }
+
+    .exam-badge {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: #ffffff;
+      padding: 0.6rem 1.6rem;
+      border-radius: 60px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+      color: #1e4a6b;
+      letter-spacing: -0.2px;
+      transition: all 0.2s;
+      border: 1px solid #e2edf2;
+    }
+
+    .exam-badge:hover {
+      transform: scale(1.02);
+      border-color: #bdd4df;
+      box-shadow: 0 12px 20px -12px rgba(0,0,0,0.1);
+    }
+
+    /* stats block: exactly "10,000+ Aspirants selected in Govt jobs through our platform." */
+    .stats-section {
+      background: #f1f7fb;
+      border-radius: 48px;
+      padding: 2rem 1.8rem;
+      text-align: center;
+      margin-top: 1rem;
+      border: 1px solid #e2edf2;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0f4c6b;
+      letter-spacing: -0.02em;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .stat-text {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1f4968;
+      display: inline-block;
+    }
+
+    .stat-description {
+      font-size: 1rem;
+      color: #2c4b66;
+      margin-top: 0.5rem;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    /* making responsive for mobile exact same spacing */
+    @media (max-width: 680px) {
+      .platform-container {
+        padding: 1.5rem;
+      }
+      .brand-title {
+        font-size: 2.3rem;
+      }
+      .tagline {
+        font-size: 1.1rem;
+      }
+      .description {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+      }
+      .exam-badge {
+        font-size: 1.2rem;
+        padding: 0.4rem 1.2rem;
+      }
+      .stat-number {
+        font-size: 2.3rem;
+      }
+      .stat-text {
+        font-size: 1rem;
+      }
+      .btn-primary, .btn-outline {
+        padding: 0.7rem 1.8rem;
+      }
+    }
+
+    /* Additional finesse: ensure that the layout matches exact visual tone: 
+       clean white background, subtle shadows, modern ed-tech vibe */
+    hr {
+      display: none;
+    }
+
+    /* optional subtle underline effect for trust */
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+<body>
+  <div class="platform-container">
+    <!-- Hero content: brand + tagline + description + buttons -->
+    <div class="hero-section">
+      <h1 class="brand-title">ExamCrack</h1>
+      <div class="tagline">Crack Every Govt Exam With Ease</div>
+      <div class="description">
+        India's most trusted EdTech platform for UPSC, GATE, SSC, Banking, Railway, and Defence exam prep — with expert faculty, live classes, PYQs, and mock tests.
+      </div>
+      <div class="button-group">
+        <button class="btn-primary">Explore Batches</button>
+        <button class="btn-outline">Exam Calendar</button>
+      </div>
+    </div>
+
+    <!-- exam categories row: exactly UPSC, GATE, SSC, Railway (as per design) -->
+    <div class="exam-categories">
+      <span class="exam-badge">UPSC</span>
+      <span class="exam-badge">GATE</span>
+      <span class="exam-badge">SSC</span>
+      <span class="exam-badge">Railway</span>
+    </div>
+
+    <!-- stats block: replicates 10,000+ aspirants selected section exactly -->
+    <div class="stats-section">
+      <div>
+        <span class="stat-number">10,000+</span>
+        <span class="stat-text">Aspirants selected</span>
+      </div>
+      <div class="stat-description">in Govt jobs through our platform.</div>
+    </div>
+    <!-- subtle footer to maintain exact spacing, no extra content interferes -->
+    <div class="footer-note"></div>
+  </div>
+
+  <!-- optional tiny interaction for buttons: just alert placeholders, not altering UI but matching expected behavior (click shows demo) but does NOT change design -->
+  <script>
+    // simple non-intrusive handlers to simulate real interaction, but keep UI identical
+    const exploreBtn = document.querySelector('.btn-primary');
+    const calendarBtn = document.querySelector('.btn-outline');
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', () => {
+        alert("✨ Explore our premium batches: UPSC, GATE, SSC, Banking, Railway & Defence. Get live classes, PYQs & mock tests!");
+      });
+    }
+    if (calendarBtn) {
+      calendarBtn.addEventListener('click', () => {
+        alert("📅 Exam Calendar: Check upcoming UPSC, SSC, GATE, Railway and other govt exam dates.");
+      });
+    }
+    // optional hover for badges, but not needed. no additional UI changes.
+  </script>
+</body>
+</html>
