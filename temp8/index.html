@@ -7,30 +7,27 @@
       PrepLab – Accelerate Your Career with Expert-Led Online Courses
     </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <style>
       :root {
-        --teal: #0d6e6e;
-        --teal-dark: #0a4f4f;
-        --teal-light: #e6f4f4;
-        --orange: #f5821f;
-        --orange-light: #fff3e8;
-        --sky: #5bc4d1;
-        --cream: #fdf8f3;
+        --blue: #2563eb; /* Primary Blue */
+        --blue-dark: #1e40af; /* Deep Blue */
+        --blue-light: #60a5fa; /* Light Blue */
+        --blue-bg: #f0f6ff; /* Very Light Blue Background */
+        --blue-accent: #38bdf8; /* Sky Blue Accent */
+        --blue-gray: #64748b; /* Blue Gray for muted text */
         --white: #ffffff;
-        --ink: #111827;
-        --mid: #6b7280;
+        --ink: #1e293b;
+        --mid: #334155;
         --border: #e5e7eb;
         --radius: 16px;
-        --shadow: 0 4px 24px rgba(13, 110, 110, 0.08);
-        --shadow-lg: 0 16px 48px rgba(13, 110, 110, 0.14);
+        --shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
+        --shadow-lg: 0 16px 48px rgba(37, 99, 235, 0.14);
       }
       *,
       *::before,
@@ -43,18 +40,43 @@
         scroll-behavior: smooth;
       }
       body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background: var(--white);
+        font-family: 'Inter', Arial, sans-serif;
+        background: var(--blue-bg);
         color: var(--ink);
         overflow-x: hidden;
         line-height: 1.6;
+        font-weight: 400;
       }
-      h1,
-      h2,
-      h3,
+      h1, h2, h3, h4 {
+        font-family: 'Poppins', Arial, sans-serif;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+      }
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
       h4 {
-        font-family: "Fraunces", serif;
-        line-height: 1.15;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+      p, li, span, label, input, textarea, select, button {
+        font-family: 'Inter', Arial, sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+      }
+      button, .btn {
+        font-family: 'Inter', Arial, sans-serif;
+        font-weight: 500;
       }
       a {
         text-decoration: none;
@@ -82,25 +104,25 @@
         white-space: nowrap;
       }
       .btn-primary {
-        background: var(--orange);
+        background: var(--blue);
         color: #fff;
         padding: 13px 28px;
         font-size: 14px;
-        box-shadow: 0 4px 18px rgba(245, 130, 31, 0.35);
+        box-shadow: 0 4px 18px rgba(37, 99, 235, 0.18);
       }
       .btn-primary:hover {
-        background: #e0720f;
+        background: var(--blue-dark);
         transform: translateY(-1px);
-        box-shadow: 0 8px 28px rgba(245, 130, 31, 0.4);
+        box-shadow: 0 8px 28px rgba(37, 99, 235, 0.22);
       }
       .btn-teal {
-        background: var(--teal);
+        background: var(--blue-accent);
         color: #fff;
         padding: 12px 24px;
         font-size: 14px;
       }
       .btn-teal:hover {
-        background: var(--teal-dark);
+        background: var(--blue);
       }
       .btn-ghost {
         background: transparent;
@@ -148,7 +170,7 @@
         padding: 10px 24px;
         text-align: center;
         font-size: 13px;
-        color: #fff;
+        color: #1e293b;
         font-weight: 500;
         position: relative;
       }
@@ -337,7 +359,7 @@
         border-radius: 50px;
         padding: 6px 16px;
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.85);
+        color: #1e293b;
         font-weight: 500;
         margin-bottom: 22px;
       }
@@ -351,7 +373,7 @@
       .hero-h1 {
         font-size: clamp(2.2rem, 4vw, 3.5rem);
         font-weight: 900;
-        color: #fff;
+        color: #1e293b;
         margin-bottom: 18px;
         line-height: 1.1;
       }
@@ -364,7 +386,7 @@
       }
       .hero-sub {
         font-size: 15px;
-        color: rgba(255, 255, 255, 0.62);
+        color: #334155;
         line-height: 1.78;
         margin-bottom: 32px;
         max-width: 480px;
@@ -384,7 +406,7 @@
       }
       .play-row span {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.65);
+        color: var(--ink);
         font-weight: 500;
       }
       .hero-proof {
@@ -406,7 +428,7 @@
         justify-content: center;
         font-size: 11px;
         font-weight: 700;
-        color: #fff;
+        color: #1e293b;
         margin-left: -8px;
       }
       .proof-av:first-child {
@@ -414,15 +436,15 @@
       }
       .proof-copy {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.65);
+        color: #334155;
       }
       .proof-copy strong {
-        color: #fff;
+        color: #1e293b;
         display: block;
         font-size: 14px;
       }
       .proof-stars {
-        color: var(--orange);
+        color: #1e293b;
         font-size: 12px;
         letter-spacing: 1px;
       }
@@ -574,7 +596,7 @@
       .mi {
         font-size: 13px;
         font-weight: 600;
-        color: rgba(255, 255, 255, 0.4);
+        color: var(--ink);
         letter-spacing: 0.02em;
       }
       @keyframes marquee {
@@ -591,10 +613,10 @@
         padding: 88px 0;
       }
       .section-cream {
-        background: var(--cream);
+        background: var(--blue-bg);
       }
       .section-teal {
-        background: var(--teal-dark);
+        background: var(--blue-dark);
       }
       .section-header {
         text-align: center;
@@ -608,7 +630,7 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.14em;
-        color: var(--orange);
+        color: var(--blue-accent);
         margin-bottom: 12px;
       }
       .eyebrow::before,
@@ -616,7 +638,7 @@
         content: "";
         width: 24px;
         height: 2px;
-        background: var(--orange);
+        background: var(--blue-accent);
         border-radius: 2px;
       }
       .sec-title {
@@ -626,11 +648,11 @@
         margin-bottom: 14px;
       }
       .sec-title .hi {
-        color: var(--teal);
+        color: var(--blue);
         font-style: italic;
       }
       .sec-title .ho {
-        color: var(--orange);
+        color: var(--blue-accent);
       }
       .sec-sub {
         font-size: 15px;
@@ -671,7 +693,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: var(--teal);
+        background: var(--blue);
         opacity: 0;
         transition: 0.25s;
         border-radius: var(--radius);
@@ -687,7 +709,7 @@
         width: 64px;
         height: 64px;
         border-radius: 50%;
-        background: var(--teal-light);
+        background: var(--blue-light);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -699,7 +721,7 @@
       }
       .cat-icon i {
         font-size: 28px;
-        color: var(--teal);
+        color: var(--blue);
       }
       .cat-name {
         font-family: "Fraunces", serif;
@@ -723,8 +745,8 @@
         display: inline-block;
         padding: 7px 18px;
         border-radius: 50px;
-        background: var(--teal-light);
-        color: var(--teal);
+        background: var(--blue-light);
+        color: var(--blue);
         font-size: 12px;
         font-weight: 700;
         position: relative;
@@ -740,12 +762,12 @@
       }
       .cat-card:hover .cat-btn {
         background: #fff;
-        color: var(--teal);
+        color: var(--blue);
       }
 
       /* PARTNERS */
       .partners-bar {
-        background: var(--teal-dark);
+        background: var(--blue-dark);
         padding: 22px 0;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
       }
@@ -759,7 +781,7 @@
       .pl {
         font-size: 14px;
         font-weight: 700;
-        color: rgba(255, 255, 255, 0.38);
+        color: #fff;
         letter-spacing: 0.02em;
         transition: 0.2s;
         cursor: pointer;
@@ -768,7 +790,7 @@
         gap: 5px;
       }
       .pl:hover {
-        color: rgba(255, 255, 255, 0.75);
+        color: #fff;
       }
 
       /* COURSES */
@@ -784,18 +806,22 @@
         border-radius: 50px;
         font-size: 13px;
         font-weight: 600;
-        border: 2px solid var(--border);
+        border: 2px solid var(--blue);
         background: #fff;
-        color: var(--mid);
+        color: var(--blue);
         cursor: pointer;
         transition: 0.15s;
         font-family: "Plus Jakarta Sans", sans-serif;
       }
-      .cf-btn:hover,
       .cf-btn.active {
-        background: var(--teal);
+        background: var(--blue);
         color: #fff;
-        border-color: var(--teal);
+        border-color: var(--blue);
+      }
+      .cf-btn:hover:not(.active) {
+        background: var(--blue);
+        color: #fff;
+        border-color: var(--blue);
       }
       .courses-grid {
         display: grid;
@@ -849,7 +875,7 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        background: var(--teal);
+        background: var(--blue);
         color: #fff;
         font-size: 10px;
         font-weight: 700;
@@ -857,10 +883,10 @@
         border-radius: 50px;
       }
       .cc-badge.hot {
-        background: var(--orange);
+        background: var(--blue-accent);
       }
       .cc-badge.new {
-        background: #7c3aed;
+        background: var(--blue-light);
       }
       .cc-body {
         padding: 16px;
@@ -1031,17 +1057,22 @@
         border-radius: 50px;
         font-size: 13px;
         font-weight: 600;
-        border: 2px solid var(--border);
+        border: 2px solid var(--blue);
         background: #fff;
         cursor: pointer;
         transition: 0.15s;
         font-family: "Plus Jakarta Sans", sans-serif;
-        color: var(--mid);
+        color: var(--blue);
       }
       .et.active {
-        background: var(--teal);
+        background: var(--blue);
         color: #fff;
-        border-color: var(--teal);
+        border-color: var(--blue);
+      }
+      .et:hover:not(.active) {
+        background: var(--blue);
+        color: #fff;
+        border-color: var(--blue);
       }
       .env-grid {
         display: grid;
@@ -1106,7 +1137,7 @@
 
       /* STATS */
       .stats-bar {
-        background: var(--teal);
+        background: var(--blue);
         padding: 44px 0;
       }
       .stats-inner {
@@ -1127,15 +1158,18 @@
         font-weight: 900;
         color: #fff;
         line-height: 1;
+        letter-spacing: -1px;
+        text-shadow: 0 2px 8px rgba(37,99,235,0.10);
       }
       .si-num .plus {
-        color: var(--sky);
+        color: var(--blue-accent);
       }
       .si-lbl {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.6);
+        color: #e0e7ff;
         margin-top: 6px;
         font-weight: 500;
+        letter-spacing: 0.02em;
       }
       @media (max-width: 560px) {
         .stats-inner {
@@ -1167,11 +1201,13 @@
       .toggle-sw {
         width: 52px;
         height: 28px;
-        background: var(--teal);
+        background: var(--blue);
         border-radius: 50px;
         position: relative;
         cursor: pointer;
         border: none;
+        box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+        transition: background 0.2s;
       }
       .toggle-knob {
         position: absolute;
@@ -1181,6 +1217,8 @@
         height: 20px;
         border-radius: 50%;
         background: #fff;
+        border: 2px solid #2563eb;
+        box-shadow: 0 2px 8px rgba(37,99,235,0.15);
         transition: 0.25s;
       }
       .toggle-sw.yr .toggle-knob {
@@ -1225,16 +1263,21 @@
       }
       .pc-pop {
         position: absolute;
-        top: -14px;
+        top: -28px;
         left: 50%;
         transform: translateX(-50%);
         background: var(--orange);
-        color: #fff;
-        font-size: 11px;
+        color: #1e293b;
+        font-size: 13px;
         font-weight: 700;
-        padding: 5px 18px;
+        padding: 7px 22px 7px 18px;
         border-radius: 50px;
         white-space: nowrap;
+        box-shadow: 0 4px 16px 0 rgba(0,0,0,0.08);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        z-index: 2;
       }
       .pc-plan {
         font-size: 12px;
@@ -1245,7 +1288,7 @@
         margin-bottom: 10px;
       }
       .feat .pc-plan {
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--ink);
       }
       .pc-price {
         font-family: "Fraunces", serif;
@@ -1256,7 +1299,7 @@
         margin-bottom: 4px;
       }
       .feat .pc-price {
-        color: #fff;
+        color: #1e293b;
       }
       .pc-price sup {
         font-size: 1.2rem;
@@ -1268,7 +1311,7 @@
         margin-bottom: 24px;
       }
       .feat .pc-period {
-        color: rgba(255, 255, 255, 0.45);
+        color: var(--ink);
       }
       .pc-features {
         list-style: none;
@@ -1285,7 +1328,7 @@
         color: var(--mid);
       }
       .feat .pc-features li {
-        color: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
       }
       .ck {
         width: 18px;
@@ -1597,11 +1640,11 @@
         }
       }
       .cert-text h2 {
-        color: #fff;
+        color: #1e293b;
         font-size: clamp(1.9rem, 3.5vw, 2.75rem);
       }
       .cert-text p {
-        color: rgba(255, 255, 255, 0.57);
+        color: var(--ink);
         font-size: 15px;
         line-height: 1.75;
         margin: 16px 0 28px;
@@ -1616,22 +1659,23 @@
         align-items: center;
         gap: 12px;
         font-size: 14px;
-        color: rgba(255, 255, 255, 0.72);
+        color: #1e293b;
+        font-weight: 500;
       }
       .cp-ico {
         width: 24px;
         height: 24px;
         border-radius: 50%;
-        background: rgba(91, 196, 209, 0.2);
+        background: rgba(37, 99, 235, 0.12);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 12px;
+        font-size: 13px;
         flex-shrink: 0;
       }
       .cp-ico i {
-        font-size: 12px;
-        color: var(--sky);
+        font-size: 13px;
+        color: var(--blue);
       }
       .cert-card {
         background: #fff;
@@ -1843,18 +1887,19 @@
         }
       }
       .contact-card {
-        background: var(--teal-dark);
+        background: #fff;
         border-radius: 20px;
         padding: 40px;
-        color: #fff;
+        color: #1e293b;
+        box-shadow: 0 4px 32px 0 rgba(0,0,0,0.06);
       }
       .contact-card h2 {
         font-size: 2rem;
-        color: #fff;
+        color: #1e293b;
         margin-bottom: 12px;
       }
       .contact-card p {
-        color: rgba(255, 255, 255, 0.57);
+        color: var(--mid);
         font-size: 14px;
         line-height: 1.7;
         margin-bottom: 28px;
@@ -1873,7 +1918,7 @@
         width: 44px;
         height: 44px;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(37, 99, 235, 0.08);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1882,17 +1927,17 @@
       }
       .ci-ico i {
         font-size: 18px;
-        color: #fff;
+        color: var(--blue);
       }
       .ci-txt h5 {
         font-size: 14px;
         font-weight: 700;
-        color: #fff;
+        color: #1e293b;
         margin-bottom: 2px;
       }
       .ci-txt p {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--mid);
       }
       .form-box {
         background: #fff;
@@ -3079,8 +3124,8 @@
             <button
               class="btn-plan"
               style="
-                background: #fff;
-                color: var(--teal);
+                background: var(--blue);
+                color: #fff;
                 border: none;
                 font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
                 font-weight: 700;
@@ -3090,12 +3135,12 @@
                 border-radius: 10px;
               "
               onmouseover="
-                this.style.background = 'var(--orange)';
+                this.style.background = '#1e40af';
                 this.style.color = '#fff';
               "
               onmouseout="
-                this.style.background = '#fff';
-                this.style.color = 'var(--teal)';
+                this.style.background = 'var(--blue)';
+                this.style.color = '#fff';
               "
               onclick="openPayment('Pro Plan', '₹1,299/month')"
             >
@@ -3370,7 +3415,7 @@
             </div>
             <h2>
               Complete Courses.<br />Earn Verified
-              <span style="color: var(--sky); font-style: italic"
+              <span style="color: var(--blue); font-style: italic"
                 >Certificates.</span
               >
             </h2>
@@ -3706,36 +3751,38 @@
 
     <!-- FOOTER -->
     <footer>
-      <div class="footer-main">
+      <div class="footer-main" style="background: #fff; border-top: 1px solid var(--border);">
         <div class="container">
           <div class="footer-grid">
             <div class="footer-brand">
-              <div class="logo" style="color: #fff; margin-bottom: 14px">
-                <div class="logo-mark">
+              <div class="logo" style="color: var(--blue); margin-bottom: 14px">
+                <div class="logo-mark" style="background: var(--blue); color: #fff;">
                   <i class="fas fa-graduation-cap"></i>
                 </div>
                 PrepLab
               </div>
-              <p>
+              <p style="color: var(--mid);">
                 India's most trusted exam prep platform. 2M+ students, 500+
                 courses, 98% pass rate.
               </p>
-              <div class="soc-row" style="margin-top: 18px">
-                <button class="soc"><i class="fab fa-facebook-f"></i></button
-                ><button class="soc"><i class="fab fa-twitter"></i></button
-                ><button class="soc"><i class="fab fa-instagram"></i></button
-                ><button class="soc"><i class="fab fa-youtube"></i></button
-                ><button class="soc"><i class="fab fa-linkedin-in"></i></button>
+              <div class="soc-row" style="margin-top: 18px; display: flex; gap: 10px;">
+                <button class="soc" style="background: var(--blue-bg); color: var(--blue); border: none;"><i class="fab fa-facebook-f"></i></button>
+                <button class="soc" style="background: var(--blue-bg); color: var(--blue); border: none;"><i class="fab fa-twitter"></i></button>
+                <button class="soc" style="background: var(--blue-bg); color: var(--blue); border: none;"><i class="fab fa-instagram"></i></button>
+                <button class="soc" style="background: var(--blue-bg); color: var(--blue); border: none;"><i class="fab fa-youtube"></i></button>
+                <button class="soc" style="background: var(--blue-bg); color: var(--blue); border: none;"><i class="fab fa-linkedin-in"></i></button>
               </div>
-              <div class="nl-box">
-                <h4>Stay Updated <i class="fas fa-envelope-open-text"></i></h4>
-                <p>Get exam alerts, free resources, and tips in your inbox.</p>
-                <div class="nl-form">
+              <div class="nl-box" style="margin-top: 24px;">
+                <h4 style="color: var(--blue); font-size: 16px; font-weight: 700;">Stay Updated <i class="fas fa-envelope-open-text"></i></h4>
+                <p style="color: var(--mid); font-size: 13px;">Get exam alerts, free resources, and tips in your inbox.</p>
+                <div class="nl-form" style="display: flex; gap: 8px; margin-top: 8px;">
                   <input
                     class="nl-input"
                     type="email"
                     placeholder="Your email address"
-                  /><button class="nl-btn" onclick="alert('Subscribed!')">
+                    style="padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--blue-bg); color: var(--ink); font-size: 14px; flex: 1;"
+                  />
+                  <button class="nl-btn" style="background: var(--blue); color: #fff; border: none; border-radius: 10px; padding: 12px 20px; font-weight: 600; cursor: pointer;" onclick="alert('Subscribed!')">
                     Subscribe
                   </button>
                 </div>
@@ -3773,15 +3820,13 @@
               </ul>
             </div>
           </div>
-          <div class="footer-bot">
-            <span
-              >© 2026 PrepLab Technologies Pvt. Ltd. · All Rights Reserved</span
-            >
-            <span style="display: flex; gap: 16px"
-              ><span><i class="fas fa-lock"></i> SSL Secured</span
-              ><span><i class="fas fa-credit-card"></i> Safe Payments</span
-              ><span><i class="fas fa-flag"></i> Made in India</span></span
-            >
+          <div class="footer-bot" style="border-top: 1px solid var(--border); margin-top: 36px; padding-top: 18px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; color: var(--mid); font-size: 13px;">
+            <span>© 2026 PrepLab Technologies Pvt. Ltd. · All Rights Reserved</span>
+            <span style="display: flex; gap: 16px; align-items: center;">
+              <span><i class="fas fa-lock"></i> SSL Secured</span>
+              <span><i class="fas fa-credit-card"></i> Safe Payments</span>
+              <span><i class="fas fa-flag"></i> Made in India</span>
+            </span>
           </div>
         </div>
       </div>
