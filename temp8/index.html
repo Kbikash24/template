@@ -14,6 +14,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <style>
+            /* Force Poppins font for all elements, including inherited and shadowed ones */
+            html, body, *:not(i):not(.fa):not([class*='fa-']) {
+              font-family: 'Poppins', Arial, sans-serif !important;
+            }
       :root {
         --blue: #2563eb; /* Primary Blue */
         --blue-dark: #1e40af; /* Deep Blue */
@@ -40,7 +44,7 @@
         scroll-behavior: smooth;
       }
       body {
-        font-family: 'Inter', Arial, sans-serif;
+        font-family: 'Poppins', Arial, sans-serif !important;
         background: var(--blue-bg);
         color: var(--ink);
         overflow-x: hidden;
@@ -70,26 +74,31 @@
         font-weight: 500;
       }
       p, li, span, label, input, textarea, select, button {
-        font-family: 'Inter', Arial, sans-serif;
+        font-family: 'Poppins', Arial, sans-serif !important;
         font-weight: 400;
         line-height: 1.6;
       }
       button, .btn {
-        font-family: 'Inter', Arial, sans-serif;
+        font-family: 'Poppins', Arial, sans-serif !important;
         font-weight: 500;
       }
       a {
         text-decoration: none;
         color: inherit;
+        font-family: 'Poppins', Arial, sans-serif !important;
       }
       img {
         max-width: 100%;
         display: block;
+        object-fit: cover;
+        height: 100%;
+        border-radius: 16px;
+        vertical-align: middle;
       }
       .container {
         max-width: 1160px;
         margin: 0 auto;
-        padding: 0 28px;
+        padding: 0 16px;
       }
       .btn {
         display: inline-flex;
@@ -164,18 +173,40 @@
         transform: scale(1.05);
       }
 
-      /* OFFER BAR */
+      /* OFFER BAR - ENHANCED HIGHLIGHT */
       #offer-bar {
-        background: var(--orange);
-        padding: 10px 24px;
-        text-align: center;
-        font-size: 13px;
-        color: #1e293b;
-        font-weight: 500;
-        position: relative;
+          
+        background: linear-gradient(135deg, #ff7a18, #ff3d54, #ff006e);
+  background-size: 200% 200%;
+  animation: gradientMove 5s ease infinite, pulseGlow 2s ease-in-out infinite alternate;
+
+  padding: 14px 32px;
+  text-align: center;
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 6px 25px rgba(255, 0, 100, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+
       }
       #offer-bar strong {
-        font-weight: 700;
+        
+          font-weight: 700;
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 8px;
+
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(255,255,255,0.3);
       }
       .ob-close {
         position: absolute;
@@ -185,9 +216,24 @@
         background: none;
         border: none;
         color: #fff;
-        font-size: 18px;
+        font-size: 20px;
         cursor: pointer;
-        opacity: 0.8;
+        opacity: 0.9;
+        transition: all 0.2s ease;
+        padding: 4px;
+        border-radius: 50%;
+      }
+      .ob-close:hover {
+        transform: translateY(-50%) scale(1.2);
+        background: rgba(255,255,255,0.25);
+      }
+      @keyframes pulseGlow {
+        from {
+          box-shadow: 0 4px 20px rgba(245, 101, 101, 0.4);
+        }
+        to {
+          box-shadow: 0 8px 32px rgba(245, 101, 101, 0.6), 0 0 20px rgba(245, 101, 101, 0.3);
+        }
       }
 
       /* NAV */
@@ -315,7 +361,7 @@
         background: var(--teal-dark);
         overflow: hidden;
         position: relative;
-        padding-top: 60px;
+        padding-top: 0;
         padding-bottom: 40px;
       }
       .hero-orb {
@@ -327,7 +373,7 @@
         width: 500px;
         height: 500px;
         background: rgba(91, 196, 209, 0.06);
-        top: -150px;
+        top: 0;
         right: -80px;
       }
       .orb2 {
@@ -341,7 +387,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 48px;
-        align-items: flex-end;
+        align-items: center;
         position: relative;
         z-index: 2;
       }
@@ -455,9 +501,9 @@
         flex-direction: row;
         gap: 20px;
         justify-content: center;
-        align-items: flex-start;
+        align-items: flex-end;
         perspective: 1000px;
-        margin-top: -120px;
+        margin-top: 0;
       }
       .ribbon-wrap {
         position: relative;
@@ -468,7 +514,7 @@
       }
       .ribbon-wrap:nth-child(1) {
         animation-delay: 0.1s;
-        margin-top: 20px;
+        margin-top: 0;
       }
       .ribbon-wrap:nth-child(2) {
         animation-delay: 0.2s;
@@ -476,7 +522,7 @@
       }
       .ribbon-wrap:nth-child(3) {
         animation-delay: 0.3s;
-        margin-top: 1px;
+        margin-top: 0;
       }
       .ribbon {
         position: relative;
@@ -610,7 +656,7 @@
 
       /* SECTION HELPERS */
       .section {
-        padding: 88px 0;
+        padding: 64px 0;
       }
       .section-cream {
         background: var(--blue-bg);
@@ -620,7 +666,7 @@
       }
       .section-header {
         text-align: center;
-        margin-bottom: 52px;
+        margin-bottom: 36px;
       }
       .eyebrow {
         display: inline-flex;
@@ -664,106 +710,139 @@
 
       /* CATEGORIES */
       .cat-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-      }
-      @media (max-width: 860px) {
-        .cat-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 480px) {
-        .cat-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      .cat-card {
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 28px 22px;
-        text-align: center;
-        transition: all 0.25s;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-      }
-      .cat-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: var(--blue);
-        opacity: 0;
-        transition: 0.25s;
-        border-radius: var(--radius);
-      }
-      .cat-card:hover::after {
-        opacity: 1;
-      }
-      .cat-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-      }
-      .cat-icon {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        background: var(--blue-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 16px;
-        font-size: 28px;
-        position: relative;
-        z-index: 1;
-        transition: 0.25s;
-      }
-      .cat-icon i {
-        font-size: 28px;
-        color: var(--blue);
-      }
-      .cat-name {
-        font-family: "Fraunces", serif;
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--ink);
-        margin-bottom: 6px;
-        position: relative;
-        z-index: 1;
-        transition: 0.2s;
-      }
-      .cat-count {
-        font-size: 13px;
-        color: var(--mid);
-        margin-bottom: 16px;
-        position: relative;
-        z-index: 1;
-        transition: 0.2s;
-      }
-      .cat-btn {
-        display: inline-block;
-        padding: 7px 18px;
-        border-radius: 50px;
-        background: var(--blue-light);
-        color: var(--blue);
-        font-size: 12px;
-        font-weight: 700;
-        position: relative;
-        z-index: 1;
-        transition: 0.2s;
-      }
-      .cat-card:hover .cat-name,
-      .cat-card:hover .cat-count {
-        color: #fff;
-      }
-      .cat-card:hover .cat-icon {
-        background: rgba(255, 255, 255, 0.15);
-      }
-      .cat-card:hover .cat-btn {
-        background: #fff;
-        color: var(--blue);
-      }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CARD */
+.cat-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 22px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* GRADIENT HOVER OVERLAY */
+.cat-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  opacity: 0;
+  transition: 0.4s ease;
+  border-radius: var(--radius);
+  z-index: 0;
+}
+
+/* HOVER EFFECT */
+.cat-card:hover::after {
+  opacity: 1;
+}
+
+.cat-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.25);
+}
+
+/* ICON */
+.cat-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #e0ecff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 30px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.35s ease;
+}
+
+.cat-icon i {
+  color: #2563eb;
+  transition: 0.35s;
+}
+
+/* TEXT */
+.cat-name {
+  font-family: "Fraunces", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.cat-count {
+  font-size: 13px;
+  color: var(--mid);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+/* BUTTON */
+.cat-btn {
+  display: inline-block;
+  padding: 9px 22px;
+  border-radius: 50px;
+  background: #dbeafe;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* TEXT COLOR CHANGE ON HOVER */
+.cat-card:hover .cat-name,
+.cat-card:hover .cat-count {
+  color: #fff;
+}
+
+/* ICON ANIMATION */
+.cat-card:hover .cat-icon {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.1) rotate(6deg);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+}
+
+.cat-card:hover .cat-icon i {
+  color: #fff;
+}
+
+/* BUTTON HOVER */
+.cat-card:hover .cat-btn {
+  background: #fff;
+  color: #2563eb;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
 
       /* PARTNERS */
       .partners-bar {
@@ -827,6 +906,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 22px;
+        align-items: stretch;
       }
       @media (max-width: 1024px) {
         .courses-grid {
@@ -1379,6 +1459,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
+        align-items: stretch;
       }
       @media (max-width: 860px) {
         .blog-grid {
@@ -1487,6 +1568,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 22px;
+        align-items: stretch;
       }
       @media (max-width: 860px) {
         .testi-grid {
@@ -2295,6 +2377,7 @@
         grid-template-columns: 2.2fr 1fr 1fr 1fr;
         gap: 40px;
         margin-bottom: 48px;
+        align-items: flex-start;
       }
       @media (max-width: 860px) {
         .footer-grid {
@@ -2447,8 +2530,8 @@
   <body>
     <!-- OFFER BAR -->
     <div id="offer-bar">
-      <i class="fas fa-gift"></i> <strong>Limited Offer:</strong> Get 40% OFF on
-      all courses this week · Use code <strong>PREP40</strong> · Ends Sunday!
+      <i class="fas fa-gift" style="color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.3);"></i> <strong>Limited Offer:</strong> Get 40% OFF on
+      all courses this week · Use code <strong>PREP40</strong> · Ends Sunday! <i class="fas fa-sparkles" style="color: #fbbf24; animation: sparkle 1.5s ease-in-out infinite;"></i>
       <button
         class="ob-close"
         onclick="this.parentElement.style.display = 'none'"
@@ -2500,10 +2583,6 @@
       <div class="container">
         <div class="hero-inner">
           <div class="hero-text">
-            <div class="hero-kicker">
-              <div class="kicker-dot"></div>
-              India's #1 Exam Prep Platform
-            </div>
             <h1 class="hero-h1">
               Accelerate Your <span class="h1-orange">Career</span> with<br />
               <span class="h1-sky">Expert-Led</span> Online
